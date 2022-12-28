@@ -2,80 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_21_04_21__9_05_AM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sdk.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MathController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MathController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3177f72f660bcfba24376fb6d2a06c36.json.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/5401621cb29824fba0fc6123fc718f14.json.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/d05a98ffb1b3468b032bcfd831f97d1e.json.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/vue-style-loader/.github/ISSUE_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/vue-style-loader/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/kc/kpkz.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/kc/kpkz.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/docs/КЦ 7.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/docs/КЦ 8.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_gpa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_gpa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/events.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/events_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/events_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/fulfillment_certification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/fulfillment_certification.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/fulfillment_certification_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/fulfillment_certification_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/pat_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/pat_schedule.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_emergency_drills.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_emergency_drills.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_emergency_drills_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_emergency_drills_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_events_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_goals_trans_yugorsk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_goals_trans_yugorsk.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_goals_trans_yugorsk_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_goals_trans_yugorsk_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kipd_internal_checks_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kr_dtoip.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kr_dtoip.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_perfomance_plan_KiPD.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_perfomance_plan_KiPD.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_perfomance_plan_KiPD_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_perfomance_plan_KiPD_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_plan_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_plan_industrial_safety.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_plan_industrial_safety_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_plan_industrial_safety_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_result_apk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_result_apk.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_result_apk_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_result_apk_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/docs/1. ОБЩАЯ ХАРАКТЕРИСТИКА ПРОИЗВОДСТВЕННОГО ОБЪЕКТА.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/fzaninotto/faker/.travis/xdebug.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/php-inspections-ea-ultimate.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/type.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/sebastian/type/.idea/vcs.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +182,7 @@
       <workItem from="1672057981463" duration="732000" />
       <workItem from="1672062627882" duration="260000" />
       <workItem from="1672151107563" duration="259000" />
-      <workItem from="1672207086877" duration="5125000" />
+      <workItem from="1672207086877" duration="9114000" />
     </task>
     <servers />
   </component>
