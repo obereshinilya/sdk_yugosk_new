@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="tooltip.js"></script>
+    <link href="tooltip.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id="test">Подсказка 1</p>
+    <span id="testContent">yoyoyoyoyo</span>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            var test_cont=document.getElementById('testContent')
+            var newTooltip=new Tooltip(test_cont, 'yo', "test");
+        })
+    </script>
+</body>
+</html>
