@@ -10,7 +10,37 @@
 <head>
     @include('web.include.yugorsk_head')
 </head>
+<style>
+    .map_hover_jas {
+        bottom: auto;
+        border-collapse: collapse;
+        width: 519px;
+        overflow-y: scroll;
+    }
+    .map_hover_jas th
+    {
+        padding: 10px;
+    }
 
+    .form table tr th {
+        font-size: 14px;
+        padding: 10px 15px;
+        border-bottom: 1px solid #ececec;
+        border-right: 1px solid #ececec;
+        font-weight: normal;
+        color: #858585;
+        background: #f2f2f2;
+    }
+
+    .form {
+        bottom: 12%;
+        right: 3%;
+        height: 250px;
+        position: absolute;
+        overflow-y: scroll
+    }
+
+</style>
 <body class="ugorsk">
 <div class="side_menu">
     @include('web.include.side_menu')
@@ -63,7 +93,33 @@
 
             </tbody>
         </table>
+<div class="form">
+        <table class=" map_hover_jas" id="map_hover_jas" >
+            <thead>
+            <tr>
+                <th>
+                    Дата
+                </th>
+                <th>
+                    Статус
+                </th>
+                <th>
+                    Филиал ДО
+                </th>
+                <th>
+                    ТБ
+                </th>
+                <th>
+                    Событие
+                </th>
+            </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+
+        </table>
+    </div>
         <div class="map_block fond_map_block ugorsk">
             <div class="m_move_adapt">
                 <div class="m_move">
