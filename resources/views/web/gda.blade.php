@@ -17,9 +17,13 @@
         width: 519px;
         overflow-y: scroll;
     }
+    .map_hover_jas tbody{
+        font-size: 12px;
+        text-align: center;
+    }
     .map_hover_jas th
     {
-        padding: 10px;
+        padding: 7px;
     }
 
     .form table tr th {
@@ -33,7 +37,7 @@
     }
 
     .form {
-        bottom: 12%;
+        bottom: 15%;
         right: 3%;
         height: 250px;
         position: absolute;
@@ -94,28 +98,129 @@
             </tbody>
         </table>
 <div class="form">
-        <table class=" map_hover_jas" id="map_hover_jas" >
+        <table class="map_hover_jas" id="map_hover_jas" >
             <thead>
             <tr>
-                <th>
-                    Дата
-                </th>
-                <th>
-                    Статус
-                </th>
-                <th>
-                    Филиал ДО
-                </th>
-                <th>
-                    ТБ
-                </th>
-                <th>
-                    Событие
-                </th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Филиал ДО</th>
+                <th>ТБ</th>
+                <th>Событие</th>
             </tr>
             </thead>
             <tbody>
-
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
+                <tr>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                    <td>JKHjkh</td>
+                </tr>
             </tbody>
 
         </table>
