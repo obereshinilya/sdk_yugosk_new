@@ -61,6 +61,9 @@ class OpoController extends Controller
     public function get_status_kc(){
         return RefObj::where('type_obj', '=', '2')->join('public.typestatus', 'public.ref_obj.id_status','=' ,  'public.typestatus.id_status')->orderby('id_obj')->get();
     }
+    public function get_status_line_kc(){
+        return RefTb::wherein('id_tb', [5, 6, 25, 26, 43, 42, 60, 59, 77, 78, 94, 95])->join('public.typestatus', 'public.ref_tb.id_status','=' ,  'public.typestatus.id_status')->orderby('id_tb')->select('id_tb', 'class')->get();
+    }
     public function get_status_do(){
         return DB::table('public.ref_do')->
         join('public.typestatus', 'public.ref_do.id_status','=' ,  'public.typestatus.id_status')->

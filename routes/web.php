@@ -41,6 +41,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             //********************* Страница ОПО ******************************************
             Route::get('/opo', 'OpoController@view_opo');
             Route::get('/get_status_tb', 'OpoController@get_status_tb');
+            Route::get('/get_status_line_kc', 'OpoController@get_status_line_kc');
             Route::get('/get_status_kc', 'OpoController@get_status_kc');
             Route::get('/get_status_do', 'OpoController@get_status_do');
             Route::get('/get_status_tb_kc', 'OpoController@get_status_tb_kc');

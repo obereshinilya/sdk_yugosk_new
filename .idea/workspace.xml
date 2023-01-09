@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/gda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/gda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,9 +163,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Telegram/ks.blade.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../Projects/journal_nadim" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../../../Telegram/ks.blade.php" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../../../Telegram/style.css" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -194,6 +195,7 @@
       <workItem from="1673167588438" duration="88000" />
       <workItem from="1673167704083" duration="16595000" />
       <workItem from="1673242598325" duration="2198000" />
+      <workItem from="1673245290763" duration="16352000" />
     </task>
     <servers />
   </component>
