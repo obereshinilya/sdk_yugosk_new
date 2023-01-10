@@ -53,6 +53,37 @@ class DirectoryController extends Controller
         }
     }
 
+    public function edit_do($id_do)
+    {
+        $data = RefDO::where('id_do', '=', $id_do)->first();
+
+        return view('web.docs.infoDO.edit', compact('data'));
+    }
+
+    public function update_do(Request $request, $id_do)
+    {
+        try {
+            $keys = json_decode($request->keys);
+            $values = json_decode($request->values);
+            $record_data = [];
+            for ($j = 0; $j < count($keys); $j++) {
+                $record_data[$keys[$j]] = $values[$j];
+            }
+
+            RefDO::where('id_do', '=', $id_do)->first()->update($record_data);
+            AdminController::log_record('Изменил ' . $id_do . ' ДО ');//пишем в журнал
+        } catch (\Throwable $e) {
+            return $e;
+        }
+    }
+
+    public function show_do($id_do)
+    {
+        $data = RefDO::where('id_do', '=', $id_do)->first();
+
+        return view('web.docs.infoDO.show', compact('data'));
+    }
+
     public function show_directory_opo()
     {
         $opos = DB::table('public.ref_opo')->
@@ -610,9 +641,9 @@ class DirectoryController extends Controller
 //                unset($record_data['tag_p_in']);
 //                unset($record_data['tag_p_out']);
 RefTb::where('id_tb', '=', $id_tb)->first()->update($to_ref_tb);
-        
+
 //                KRANS_KC::where('id_tb', '=', $id_tb)->first()->update($record_data);
-        TagTable::where('id_tb', '=', $id_tb)->first()->update($to_tag_name);                
+        TagTable::where('id_tb', '=', $id_tb)->first()->update($to_tag_name);
 
                 AdminController::log_record('Изменил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
             }

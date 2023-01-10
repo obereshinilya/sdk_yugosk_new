@@ -44,10 +44,11 @@
                         <th style="width: 5%">Номер</th>
                         <th style="width: 25%">Краткое наименование филиала ДО</th>
                         <th style="width: 45%">Наименование филиала ДО</th>
-                        <th style="width: 25%">Состояние</th>
-                        {{--                        @can('entries-edit')--}}
-                        {{--                        <th style="width: 3%"></th>--}}
-                        {{--                        @endcan--}}
+                        <th style="width: 10%">Регион</th>
+                        <th style="width: 10%">Состояние</th>
+                                                @can('entries-edit')
+                                                <th style="width: 5%"></th>
+                                                @endcan
                     </tr>
 
                     </thead>
@@ -57,7 +58,19 @@
                             <td style="text-align: center">{{ $row->id_do }}</td>
                             <td style="text-align: center">{{ $row->short_name_do }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_do }}</td>
+                            <td style="text-align: center">{{ $row->region }}</td>
                             <td style="text-align: center">{{ $row->descstatus }}</td>
+                            <td class="centered" style="text-align: center">
+
+                                <a href="/docs/directory_do/edit/{{$row->id_do}}"><img alt=""
+                                                                                         src="{{asset('assets/images/icons/edit.svg')}}"
+                                                                                         class="check_i"
+                                                                                         style=" margin-left: 10px; margin-right: 5px"></a>
+                                <a href="/docs/directory_do/show/{{$row->id_do}}"><img alt=""
+                                                                                       src="{{asset('assets/images/icons/search.svg')}}"
+                                                                                       class="check_i"
+                                                                                       ></a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

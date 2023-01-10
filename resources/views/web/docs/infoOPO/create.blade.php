@@ -69,6 +69,30 @@
                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input"></td>
                                 </tr>
+                                <tr>
+                                    <th style="text-align: center">Рег. №</th>
+                                    <td style="padding: 0px"><input type="text" id="reg_num"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center">Дата регистрации ОПО</th>
+                                    <td style="padding: 0px"><input type="date" id="registration_date"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center">Регион</th>
+                                    <td style="padding: 0px"><input type="text" id="region_opo"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center">Класс опасности</th>
+                                    <td style="padding: 0px"><input type="text" id="hazard_class"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
+                                </tr>
                                 </tbody>
                             </table>
                             <div style="text-align: center">
@@ -95,7 +119,7 @@
                 }
             });
 
-            var params = ['id_do', 'type_opo', 'short_name_opo', 'full_name_opo', 'guid_opo',]
+            var params = ['id_do', 'type_opo', 'short_name_opo', 'full_name_opo', 'guid_opo', 'reg_num', 'registration_date', 'region_opo', 'hazard_class']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
