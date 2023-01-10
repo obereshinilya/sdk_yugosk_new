@@ -11,7 +11,7 @@ class RefOpo extends Model
     public $primaryKey = 'id_opo';
 
     protected $fillable = [
-        'id_do', 'type_opo', 'short_name_opo', 'full_name_opo', 'guid_opo', 'id_status'
+        'id_do', 'type_opo', 'short_name_opo', 'full_name_opo', 'guid_opo', 'id_status', 'reg_num', 'registration_date', 'region_opo', 'hazard_class'
     ];
 
 

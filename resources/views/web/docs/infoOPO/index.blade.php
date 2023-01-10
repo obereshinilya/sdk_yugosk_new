@@ -43,7 +43,9 @@
                         <th style="width: 5%">Номер</th>
                         <th style="width: 22.5%">Наименование филиала ДО</th>
                         <th style="width: 24.5%">Наименование ОПО</th>
-                        <th style="width: 22.5%">Состояние</th>
+                        <th style="width: 6.5%">Регион</th>
+                        <th style="width: 6.5%">Рег. №</th>
+                        <th style="width: 10%">Состояние</th>
                         @can('entries-edit')
                             <th style="width: 3%"></th>
                         @endcan
@@ -56,6 +58,8 @@
                             <td style="text-align: center">{{ $row->id_opo }}</td>
                             <td style="text-align: center">{{ $row->short_name_do }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_opo }}</td>
+                            <td style="text-align: center">{{ $row->region_opo }}</td>
+                            <td style="text-align: center" class="name_event">{{ $row->reg_num }}</td>
                             <td style="text-align: center">{{ $row->descstatus }}</td>
                             @can('entries-edit')
                                 <td class="centered" style="text-align: center">
