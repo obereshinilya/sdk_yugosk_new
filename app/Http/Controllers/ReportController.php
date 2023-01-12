@@ -108,7 +108,11 @@ class ReportController extends Controller
 
     public function get_kipd_internal_checks($year)
     {
-        return KIPDInternalChecks::where('year', '=', $year)->orderbydesc('date_check')->get()->toArray();
+        $data = KIPDInternalChecks::where('year', '=', $year)->orderbydesc('date_check')->get()->toArray();
+        foreach ($data as $key => $row) {
+            $data[$key]['name_DO'] = RefDO::where('id_do', '=', $row['name_DO'])->value('short_name_do');
+        }
+        return $data;
     }
 
     public function remove_kipd_internal_checks($id)
@@ -130,7 +134,7 @@ class ReportController extends Controller
 
     public function create_kipd_internal_checks()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_kipd_internal_checks_new', compact('do'));
     }
 
@@ -229,7 +233,11 @@ class ReportController extends Controller
             foreach ($data as $row) {
                 $keys = array_keys($row);
                 foreach ($keys as $key) {
-                    $data_to_table[$key][$i] = $row[$key];
+                    if ($key == 'name_DO') {
+                        $data_to_table[$key][$i] = RefDO::where('id_do', '=', $row['name_DO'])->value('short_name_do');
+                    } else {
+                        $data_to_table[$key][$i] = $row[$key];
+                    }
                 }
                 $i++;
             }
@@ -370,7 +378,7 @@ class ReportController extends Controller
 
     public function create_result_apk()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_result_apk_new', compact('do'));
     }
 
@@ -508,14 +516,19 @@ class ReportController extends Controller
 
     public function get_sved_avar($year)
     {
-        return sved_avar::where('year', '=', $year)->get()->toArray();
+        $data = sved_avar::where('year', '=', $year)->get()->toArray();;
+        foreach ($data as $key => $row) {
+            $data[$key]['naim_filiala'] = RefDO::where('id_do', '=', $row['naim_filiala'])->value('short_name_do');
+        }
+        return $data;
+
     }
 
     public function create_sved_avar()
     {
         $types = Table_incidents::select(DB::raw('CONCAT(type,\'. \',type_incident) AS types'), 'type')->get();
         $type = Table_incidents::select('type')->groupby('type')->get();
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_sved_avar_new', compact('do', 'types', 'type'));
     }
 
@@ -528,12 +541,12 @@ class ReportController extends Controller
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-		if(preg_match('#посыл#', $record_data['vid_techno_sob'])){
-$record_data['indikativn_pokazat'] = 0.5;		
-}else{
-		$record_data['indikativn_pokazat'] = 0;
-		}
-            
+            if (preg_match('#посыл#', $record_data['vid_techno_sob'])) {
+                $record_data['indikativn_pokazat'] = 0.5;
+            } else {
+                $record_data['indikativn_pokazat'] = 0;
+            }
+
             Sved_avar::create($record_data);
             AdminController::log_record('Добавил запись в сведения об аварийности ОПО ');//пишем в журнал
         } catch (\Throwable $e) {
@@ -564,13 +577,13 @@ $record_data['indikativn_pokazat'] = 0.5;
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-if(preg_match('#посыл#', $record_data['vid_techno_sob'])){
-$record_data['indikativn_pokazat'] = 0.5;
-}else{
+            if (preg_match('#посыл#', $record_data['vid_techno_sob'])) {
+                $record_data['indikativn_pokazat'] = 0.5;
+            } else {
                 $record_data['indikativn_pokazat'] = 0;
-                }
+            }
 
-            
+
             Sved_avar::where('id', '=', $id)->first()->update($record_data);
             AdminController::log_record('Открыл сведения об выполнении плана КиПД');//пишем в журнал
         } catch (\Throwable $e) {
@@ -587,12 +600,17 @@ $record_data['indikativn_pokazat'] = 0.5;
 
     public function get_perfomance_plan_KiPD($year)
     {
-        return Perfomance_plan_KiPD::orderByDesc('id')->where('year', '=', $year)->get()->toArray();
+        $data = Perfomance_plan_KiPD::orderByDesc('id')->where('year', '=', $year)->get()->toArray();;
+        foreach ($data as $key => $row) {
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['name_do'])->value('short_name_do');
+        }
+        return $data;
+
     }
 
     public function create_perfomance_plan_KiPD()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_perfomance_plan_KiPD_new', compact('do'));
     }
 
@@ -629,7 +647,7 @@ $record_data['indikativn_pokazat'] = 0.5;
 
     public function edit_perfomance_plan_KiPD($id)
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         $data = Perfomance_plan_KiPD::where('id', '=', $id)->first();
         return view('web.docs.reports.report_perfomance_plan_KiPD_edit', compact('data', 'do'));
     }
@@ -1105,10 +1123,10 @@ $record_data['indikativn_pokazat'] = 0.5;
     public function uncheck_kr_dtoip($num_pp, $year)
     {
         $check = KR_DTOIP::where('year', '=', $year)->where('num_pp', '=', $num_pp)->first();
-        if ($check->check){
-            $check->update(['check'=>false]);
-        }else{
-            $check->update(['check'=>true]);
+        if ($check->check) {
+            $check->update(['check' => false]);
+        } else {
+            $check->update(['check' => true]);
         }
     }
 
@@ -1251,17 +1269,17 @@ $record_data['indikativn_pokazat'] = 0.5;
 
     public function show_conclusions_industrial_safety()
     {
-	$do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get();
+        $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get();
         return view('web.docs.reports.conclusions_industrial_safety', compact('do'));
     }
 
     public function get_conclusions_industrial_safety($year)
     {
-	if($year == 'all'){
-	 return Conclusions_industrial_safety::all();
-	}else{
-        return Conclusions_industrial_safety::where('name_do', '=', $year)->get();
-    	}
+        if ($year == 'all') {
+            return Conclusions_industrial_safety::all();
+        } else {
+            return Conclusions_industrial_safety::where('name_do', '=', $year)->get();
+        }
     }
 
     public function create_conclusions_industrial_safety()
@@ -1350,9 +1368,9 @@ $record_data['indikativn_pokazat'] = 0.5;
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if (count(Fulfillment_certification::where('name_do', '=', $record_data['name_do'])->where('year', '=', $record_data['year'])->get())){
-                return ['1'=>'Про', '2'=>'вал'];
-            }else{
+            if (count(Fulfillment_certification::where('name_do', '=', $record_data['name_do'])->where('year', '=', $record_data['year'])->get())) {
+                return ['1' => 'Про', '2' => 'вал'];
+            } else {
                 Fulfillment_certification::create($record_data);
             }
             AdminController::log_record('Добавил запись в выполнение плана-графика аттестации персонала в области промышленной безопасности');//пишем в журнал
@@ -1424,9 +1442,9 @@ $record_data['indikativn_pokazat'] = 0.5;
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if (count(Pat_schedule::where('name_filial', '=', $record_data['name_filial'])->where('opo_name', '=', $record_data['opo_name'])->where('year', '=', $record_data['year'])->get())){
-                return ['1'=>'er', '2'=>'ror'];
-            }else{
+            if (count(Pat_schedule::where('name_filial', '=', $record_data['name_filial'])->where('opo_name', '=', $record_data['opo_name'])->where('year', '=', $record_data['year'])->get())) {
+                return ['1' => 'er', '2' => 'ror'];
+            } else {
                 Pat_schedule::create($record_data);
                 AdminController::log_record('Добавил запись в График комплексных противоаварийных тренировок');//пишем в журнал
             }

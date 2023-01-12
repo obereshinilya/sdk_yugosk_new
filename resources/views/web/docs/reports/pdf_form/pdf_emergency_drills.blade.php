@@ -44,7 +44,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name_branch}}</td>
@@ -53,7 +53,7 @@
             <td>{{$row->fact_PAT}}</td>
             <td>{{$row->workout_theme}}</td>
             <td>{{$row->name_reg_№_OPO}}</td>
-            <td>{{$row->date_PAT}}</td>
+            <td>{{$data['date_PAT'][$key]}}</td>
             <td>{{$row->№_date_protocol_PAT}}</td>
             <td>{{$row->basis_PAT}}</td>
             <td>{{$row->grade}}</td>

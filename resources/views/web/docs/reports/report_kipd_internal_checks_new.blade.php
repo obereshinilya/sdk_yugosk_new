@@ -15,7 +15,8 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Добавление записи в план корректирующих действий ПБ по внутренним проверкам</h2>
+                        <h2 class="text-muted" style="text-align: center">Добавление записи в план корректирующих
+                            действий ПБ по внутренним проверкам</h2>
                     </div>
 
                     <div class="inside_tab_padding form51"
@@ -25,7 +26,7 @@
                                 <col style="width: 15%">
                                 <col style="width: 35%">
                                 <col style="width: 50%">
-{{--                                <col style="width: 60%">--}}
+                                {{--                                <col style="width: 60%">--}}
                                 <thead>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование</th>
@@ -48,81 +49,95 @@
                                     <td style="padding: 0px"><select id="name_DO" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Наименование подразделения</th>
-                                    <td style="padding: 0px"><input id="podrazdelenie" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="podrazdelenie" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Дата акта</th>
-                                    <td style="padding: 0px"><input id="date_act" type="date" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="date_act" type="date"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Номер акта</th>
-                                    <td style="padding: 0px"><input id="num_act" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="num_act" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Описание несоответствия</th>
-                                    <td style="padding: 0px"><input id="error_comment" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="error_comment" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center" rowspan="3">Мероприятия по устранению несоответствия</th>
+                                    <th style="text-align: center" rowspan="3">Мероприятия по устранению
+                                        несоответствия
+                                    </th>
                                     <th style="text-align: center">Наименование мероприятия</th>
-                                    <td style="padding: 0px"><input id="person" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="person" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель</th>
-                                    <td style="padding: 0px"><input id="name_event" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="name_event" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Срок выполнения</th>
-                                    <td style="padding: 0px"><input id="date_check" type="date" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="date_check" type="date"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" rowspan="5">Корректирующие действия</th>
                                     <th style="text-align: center">Причины появления несоответствия</th>
-                                    <td style="padding: 0px"><input id="reason" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="reason" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Корректирующее действие</th>
-                                    <td style="padding: 0px"><input id="correct_event" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="correct_event" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Требуемые условия и ресурсы</th>
-                                    <td style="padding: 0px"><input id="usloviya" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="usloviya" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель</th>
-                                    <td style="padding: 0px"><input id="person_correct" type="text" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="person_correct" type="text"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Дата выполнения</th>
-                                    <td style="padding: 0px"><input id="date_check_correct" type="date" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input id="date_check_correct" type="date"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
@@ -149,6 +164,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -157,8 +173,8 @@
             });
 
             var params = ['name_DO', 'year', 'date_act', 'num_act', 'error_comment', 'person',
-            'name_event', 'date_check', 'reason', 'correct_event', 'usloviya',
-            'person_correct', 'date_check_correct', 'podrazdelenie']
+                'name_event', 'date_check', 'reason', 'correct_event', 'usloviya',
+                'person_correct', 'date_check_correct', 'podrazdelenie']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
@@ -168,10 +184,10 @@
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
-                    if (typeof res == 'object'){
+                    if (typeof res == 'object') {
                         alert('Не указан срок выполнения!')
-                    }else {
-                       //  console.log(res)
+                    } else {
+                        //  console.log(res)
                         window.location.href = '/docs/kipd_internal_checks'
                     }
                 }

@@ -10,12 +10,17 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
     #table_for_search tr td:last-of-type {
@@ -199,7 +204,7 @@
                 url: '/docs/emergency_drills/get_params/' + document.getElementById('select__year').value,
                 type: 'GET',
                 success: (res) => {
-var num =1
+                    var num = 1
                     var keys = Object.keys(res)
                     for (var key of keys) {
                         var i = 1
@@ -214,7 +219,13 @@ var num =1
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['fact_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['workout_theme']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_reg_№_OPO']}</p></td>`
-                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_PAT']}</p></td>`
+                            let date = new Date(row['date_PAT']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['№_date_protocol_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['basis_PAT']}</p></td>`
                             if (row['grade']) {
@@ -228,7 +239,7 @@ var num =1
                     <a href="#" style="" onclick="remove_record(${row['id']})"><img style="opacity:1; width: 15px; height: 15px; margin: 3px; margin-left: 4px"  alt="" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>
                     </td> @endcan`
                             table_body.appendChild(tr)
-num +=1
+                            num += 1
                             i++
                         }
                     }

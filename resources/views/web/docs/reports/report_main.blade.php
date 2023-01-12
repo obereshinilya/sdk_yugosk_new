@@ -1,5 +1,3 @@
-
-
 @extends('web.layouts.app')
 @section('title')
     Документарный блок
@@ -16,7 +14,7 @@
         @include('web.include.toptable')
     </div>
     <style>
-        .form51 table tr th{
+        .form51 table tr th {
             padding: 5px 10px;
         }
     </style>
@@ -27,7 +25,8 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center; color: ${color_text}">
-                        <h2 class="text-muted" style="text-align: center; color: ${color_text}; display: inline-block">Оценка состояния промышленной безопасности</h2>
+                        <h2 class="text-muted" style="text-align: center; color: ${color_text}; display: inline-block">
+                            Оценка состояния промышленной безопасности</h2>
 
                         <select class="select-css" id="select__year" onchange="get_data()"
                                 style="width: 11%; display: inline-block ; margin-left: 2%">
@@ -42,12 +41,14 @@
                             <tr>
                                 <td style="width: 3%"><img alt="" src="{{asset('assets/images/icons/search.svg')}}">
                                 </td>
-                                <td><input type="text" id="search_text" style="float: left; width: 40%" placeholder="Поиск..."></td>
+                                <td><input type="text" id="search_text" style="float: left; width: 40%"
+                                           placeholder="Поиск..."></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="inside_tab_padding form51" style="height:83%; padding-left: 0px; margin-top: 0px; overflow-y: auto">
+                    <div class="inside_tab_padding form51"
+                         style="height:83%; padding-left: 0px; margin-top: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px" class="form51">
                             <table id="table_for_search" style="display: table; table-layout: fixed">
                                 <thead>
@@ -74,9 +75,9 @@
                                 </tbody>
                             </table>
                         </div>
-                     </div>
-                 </div>
-             </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -85,6 +86,7 @@
             document.getElementById('select__year').value = date.getFullYear()
             get_data()
         })
+
         function get_data() {
             $.ajax({
                 url: '/get_indicator/' + document.getElementById('select__year').value,
@@ -95,15 +97,24 @@
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         var color_text = '#858585'
-                        if (Number(row['sum_ind']) <9 && Number(row['sum_ind']) >=6){
+                        if (Number(row['sum_ind']) < 9 && Number(row['sum_ind']) >= 6) {
                             tr.style.background = '#FFE599'
-                        }else if (Number(row['sum_ind']) >=9) {
+                        } else if (Number(row['sum_ind']) >= 9) {
                             tr.style.background = '#C5E0B3'
-                        }else {
+                        } else {
                             tr.style.background = '#FF0000'
                             color_text = 'white'
                         }
-                        tr.innerHTML += `<td style="text-align: center; color: ${color_text}">${row['date']}</td>`
+                        let date = new Date(row['date']);
+                        let dd = date.getDate();
+                        if (dd < 10) dd = '0' + dd;
+
+                        let mm = date.getMonth() + 1;
+                        if (mm < 10) mm = '0' + mm;
+
+                        let yyyy = date.getFullYear();
+
+                        tr.innerHTML += `<td style="text-align: center; color: ${color_text}">${dd}.${mm}.${yyyy}</td>`
                         tr.innerHTML += `<td style="text-align: center; color: ${color_text}">${row['ind_kipd_internal_checks']}</td>`
                         tr.innerHTML += `<td style="text-align: center; color: ${color_text}">${row['ind_performance_plan_kipd']}</td>`
                         tr.innerHTML += `<td style="text-align: center; color: ${color_text}">${row['ind_result_apk']}</td>`
@@ -120,6 +131,7 @@
                 },
             })
         }
+
         ///скрипт для поиска
         var input = document.getElementById('search_text')
         input.oninput = function () {

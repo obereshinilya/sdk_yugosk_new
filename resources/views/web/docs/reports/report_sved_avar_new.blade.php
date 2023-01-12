@@ -15,7 +15,8 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Добавление записи в cведения об аварийности на ОПО дочернего общества</h2>
+                        <h2 class="text-muted" style="text-align: center">Добавление записи в cведения об аварийности на
+                            ОПО дочернего общества</h2>
                     </div>
 
                     <div class="inside_tab_padding form51"
@@ -42,22 +43,23 @@
                                         </select></td>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center" >Наименование филиала ДО</th>
+                                    <th style="text-align: center">Наименование филиала ДО</th>
                                     <td style="padding: 0px"><select id="naim_filiala" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид техногенного события (авария/инцидент)</th>
-{{--                                    <td style="padding: 0px"><input type="text" id="vid_techno_sob"--}}
-{{--                                                                       style="height: 100%; width: 95%"--}}
-{{--                                                                       class="text-field__input"></td>--}}
-                                    <td style="padding: 0px"><select id="vid_techno_sob" style="height: 100%; width: 50%"
+                                    {{--                                    <td style="padding: 0px"><input type="text" id="vid_techno_sob"--}}
+                                    {{--                                                                       style="height: 100%; width: 95%"--}}
+                                    {{--                                                                       class="text-field__input"></td>--}}
+                                    <td style="padding: 0px"><select id="vid_techno_sob"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                        @foreach($type as $row)
+                                            @foreach($type as $row)
                                                 <option value="{{$row->type}}">{{$row->type}}</option>
                                             @endforeach
                                         </select></td>
@@ -78,9 +80,9 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид аварии/инцидента (по классификатору)</th>
-{{--                                    <td style="padding: 0px"><input type="text" id="vid_avari"--}}
-{{--                                                                    style="height: 100%; width: 95%"--}}
-{{--                                                                    class="text-field__input"></td>--}}
+                                    {{--                                    <td style="padding: 0px"><input type="text" id="vid_avari"--}}
+                                    {{--                                                                    style="height: 100%; width: 95%"--}}
+                                    {{--                                                                    class="text-field__input"></td>--}}
                                     <td style="padding: 0px"><select id="vid_avari" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($types as $row)
@@ -129,23 +131,24 @@
                                         расследованию причин аварии
                                     </th>
                                     <td style="padding: 0px"><textarea id="meropriytia"
-                                                                    style="height: 100%; width: 95%"
+                                                                       style="height: 100%; width: 95%"
                                                                        class="text-field__input"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Отметка о выполнении мероприятия</th>
-                                    <td style="padding: 0px"><select id="otmetka_vypoln" style="height: 100%; width: 25%"
+                                    <td style="padding: 0px"><select id="otmetka_vypoln"
+                                                                     style="height: 100%; width: 25%"
                                                                      class="select-css">
-                                                <option value="false"  selected>Не выполнено</option>
-                                                <option value="true" >Выполнено</option>
+                                            <option value="false" selected>Не выполнено</option>
+                                            <option value="true">Выполнено</option>
                                         </select></td>
                                 </tr>
-{{--                                <tr>--}}
-{{--                                    <th style="text-align: center">Индикативный показатель</th>--}}
-{{--                                    <td style="padding: 0px"><input type="number" min="0" step="0.1" id="indikativn_pokazat"--}}
-{{--                                                                       style="height: 100%; width: 95%"--}}
-{{--                                                                       class="text-field__input"></td>--}}
-{{--                                </tr>--}}
+                                {{--                                <tr>--}}
+                                {{--                                    <th style="text-align: center">Индикативный показатель</th>--}}
+                                {{--                                    <td style="padding: 0px"><input type="number" min="0" step="0.1" id="indikativn_pokazat"--}}
+                                {{--                                                                       style="height: 100%; width: 95%"--}}
+                                {{--                                                                       class="text-field__input"></td>--}}
+                                {{--                                </tr>--}}
                                 </tbody>
                             </table>
                             <div style="text-align: center">
@@ -168,6 +171,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -175,14 +179,14 @@
                 }
             });
 
-            var params = [ 'naim_filiala', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln', 'year']
+            var params = ['naim_filiala', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln', 'year']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
             }
             if (Number(out_data['indikativn_pokazat']) > 1) {
                 alert('Показатель не может быть больше 1!')
-            }else if (out_data['indikativn_pokazat'] === ''){
+            } else if (out_data['indikativn_pokazat'] === '') {
                 alert('Не указан индикативный показатель!')
             } else {
                 $.ajax({

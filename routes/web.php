@@ -79,6 +79,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/directory_opo/save', 'DirectoryController@save_opo');  //сохранение
             Route::get('/docs/directory_opo/edit/{id_opo}', 'DirectoryController@edit_opo');  //обновление
             Route::post('/docs/directory_opo/update/{id_opo}', 'DirectoryController@update_opo');  //сохранение изменений
+            Route::get('/docs/directory_opo/show/{id_opo}', 'DirectoryController@show_opo');  //обновление
 
             Route::get('/docs/directory_obj', 'DirectoryController@show_directory_obj');  //Справочник элементов ОПО
             Route::get('/docs/directory_obj/create', 'DirectoryController@create_obj');  //Создание ОПО

@@ -11,12 +11,17 @@
     @include('web.include.sidebar_doc')
 
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
         #table_for_search tr td:last-of-type {
@@ -135,18 +140,24 @@
                 url: '/docs/goals_trans_yugorsk/get_params/' + document.getElementById('select__year').value,
                 type: 'GET',
                 success: (res) => {
-var num =1
+                    var num = 1
 //console.log( document.getElementById('select__year').value)
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         tr.innerHTML += `<td style="text-align: center">${num}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['safety_goals']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['result_goal']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['data_goal']}</td>`
+                        let date = new Date(row['data_goal']);
+                        let dd = date.getDate();
+                        if (dd < 10) dd = '0' + dd;
+                        let mm = date.getMonth() + 1;
+                        if (mm < 10) mm = '0' + mm;
+                        let yyyy = date.getFullYear();
+                        tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['department']}</td>`
-                        if(Number(row['completion_mark']) > 0){
+                        if (Number(row['completion_mark']) > 0) {
                             tr.innerHTML += `<td style="text-align: center">Выполнено</td>`
-                        }else{
+                        } else {
                             tr.innerHTML += `<td style="text-align: center">Не выполнено</td>`
                         }
                         tr.innerHTML += `<td style="text-align: center">${row['indicative_indicator']}</td>`
@@ -159,7 +170,7 @@ var num =1
                                                                                  src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                                                                         </a></td> @endcan`
                         table_body.appendChild(tr)
-num+=1
+                        num += 1
                     }
                 },
                 error: function (error) {

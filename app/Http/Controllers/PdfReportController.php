@@ -79,11 +79,18 @@ class PdfReportController extends Controller
 
     public function pdf_emergency_drills($year)
     {
-        $data = EmergencyDrills::where('year', '=', $year)->orderbyDesc('name_branch')->orderbydesc('date_PAT')->get();
+        $data['data'] = EmergencyDrills::where('year', '=', $year)->orderbyDesc('name_branch')->orderbydesc('date_PAT')->get();
         $title = 'Сведения о
                             противоаварийных тренировках, проведенных на
                             опасных производственных объектах в ' . $year . ' году';
         $patch = 'emergency_drills' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_PAT) {
+                $data['date_PAT'][$key] = date('d.m.Y', strtotime($row->date_PAT));
+            } else {
+                $data['date_PAT'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_emergency_drills', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -91,11 +98,18 @@ class PdfReportController extends Controller
 
     public function pdf_goals_trans_yugorsk($year)
     {
-        $data = Goals_trans_yugorsk::where('year', '=', $year)->get();
+        $data['data'] = Goals_trans_yugorsk::where('year', '=', $year)->get();
         $title = 'Цели ООО «Газпром
                             трансгаз Югорск» в области
                             производственной безопасности на ' . $year . ' год';
         $patch = 'goals_trans_yugorsk' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->data_goal) {
+                $data['data_goal'][$key] = date('d.m.Y', strtotime($row->data_goal));
+            } else {
+                $data['data_goal'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_goals_trans_yugorsk', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -103,9 +117,16 @@ class PdfReportController extends Controller
 
     public function pdf_perfomance_plan_KiPD($year)
     {
-        $data = Perfomance_plan_KiPD::where('year', '=', $year)->get();
+        $data['data'] = Perfomance_plan_KiPD::where('year', '=', $year)->get();
         $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $year . ' год';
         $patch = 'perfomance_plan_KiPD' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->deadline) {
+                $data['deadline'][$key] = date('d.m.Y', strtotime($row->deadline));
+            } else {
+                $data['deadline'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_perfomance_plan_KiPD', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -113,11 +134,18 @@ class PdfReportController extends Controller
 
     public function pdf_plan_industrial_safety($year)
     {
-        $data = Plan_industrial_safety::where('year', '=', $year)->get();
+        $data['data'] = Plan_industrial_safety::where('year', '=', $year)->get();
         $title = 'Сведения о выполнении плана работ в области
                             промышленной
                             безопасности за ' . $year . ' год';
         $patch = 'plan_industrial_safety' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->period_execution) {
+                $data['period_execution'][$key] = date('d.m.Y', strtotime($row->period_execution));
+            } else {
+                $data['period_execution'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_plan_industrial_safety', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -125,10 +153,27 @@ class PdfReportController extends Controller
 
     public function pdf_kipd_internal_checks($year)
     {
-        $data = KIPDInternalChecks::where('year', '=', $year)->get();
+        $data['data'] = KIPDInternalChecks::where('year', '=', $year)->get();
         $title = 'План корректирующих
                             действий ПБ по внутренним проверкам за ' . $year . ' год.';
         $patch = 'kipd_internal_checks' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_act) {
+                $data['date_act'][$key] = date('d.m.Y', strtotime($row->date_act));
+            } else {
+                $data['date_act'][$key] = '';
+            }
+            if ($row->date_check) {
+                $data['date_check'][$key] = date('d.m.Y', strtotime($row->date_check));
+            } else {
+                $data['date_check'][$key] = '';
+            }
+            if ($row->date_check_correct) {
+                $data['date_check_correct'][$key] = date('d.m.Y', strtotime($row->date_check_correct));
+            } else {
+                $data['date_check_correct'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_kipd_internal_checks', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -170,11 +215,18 @@ class PdfReportController extends Controller
 
     public function pdf_report_events($year)
     {
-        $data = Report_events::where('year', '=', $year)->get();
+        $data['data'] = Report_events::where('year', '=', $year)->get();
         $title = 'Отчет
                             о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных
                             Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $year . ' год.';
         $patch = 'report_events' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_update) {
+                $data['date_update'][$key] = date('d.m.Y', strtotime($row->date_update));
+            } else {
+                $data['date_update'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_report_events', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -182,12 +234,47 @@ class PdfReportController extends Controller
 
     public function pdf_events($year)
     {
-        $data = Events::where('year', '=', $year)->get();
+        $data['data'] = Events::where('year', '=', $year)->get();
         $title = 'Мероприятия
                             по устранению имеющихся нарушений действующих норм и правил, выявленных
                             Северо-Уральским управлением ООО «Газпром газнадзор» при эксплуатации объектов ЕСГ ПАО
                             «Газпром» за ' . $year . ' год.';
         $patch = 'events' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $event) {
+            if ($event->date_issue) {
+                $data['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
+            } else {
+                $data['date_issue'][$key] = '';
+
+            }
+            if ($event->date_base) {
+
+                $data['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
+            } else {
+                $data['date_base'][$key] = '';
+
+            }
+            if ($event->date_repiat) {
+                $data['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
+
+            } else {
+                $data['date_repiat'][$key] = '';
+
+            }
+            if ($event->date_fact) {
+                $data['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
+
+            } else {
+                $data['date_fact'][$key] = '';
+
+            }
+            if ($event->date_update) {
+                $data['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
+            } else {
+                $data['date_update'][$key] = '';
+
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_events', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
@@ -210,7 +297,9 @@ class PdfReportController extends Controller
             $data['all_plan_month'] = 0;
         }
         foreach ($data_from_table as $row) {
-            $data[$row->num_pp]['date'] = $row->date;
+            if ($row->date) {
+                $data[$row->num_pp]['date'] = date('d.m.Y', strtotime($row->date));
+            }
             $data[$row->num_pp]['plan_year'] = $row->plan_year;
             $data[$row->num_pp]['plan_month'] = $row->plan_month;
             $data[$row->num_pp]['fact'] = $row->fact;
@@ -230,9 +319,16 @@ class PdfReportController extends Controller
 
     public function pdf_plan_of_industrial_safety($year)
     {
-        $data = Plan_of_industrial_safety::where('year', '=', $year)->get();
+        $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->get();
         $title = 'План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.pdf';
+        foreach ($data['data'] as $key => $plan) {
+            if ($plan->completion_date) {
+                $data['completion_date'][$key] = date('d.m.Y', strtotime($plan->completion_date));
+            } else {
+                $data['completion_date'][$key] = '';
+            }
+        }
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_plan_of_industrial_safety', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 

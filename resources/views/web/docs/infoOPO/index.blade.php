@@ -63,11 +63,15 @@
                             <td style="text-align: center">{{ $row->descstatus }}</td>
                             @can('entries-edit')
                                 <td class="centered" style="text-align: center">
-                                    <a style="padding-left: 20px" href="/docs/directory_opo/edit/{{$row->id_opo}}"><img
+                                    <a href="/docs/directory_opo/edit/{{$row->id_opo}}"><img
                                             alt=""
                                             src="{{asset('assets/images/icons/edit.svg')}}"
                                             class="check_i"
-                                            style="margin-left: 10px"></a>
+                                            style="margin-left: 10px; margin-right: 5px"></a>
+                                    <a href="/docs/directory_opo/show/{{$row->id_opo}}"><img alt=""
+                                                                                             src="{{asset('assets/images/icons/search.svg')}}"
+                                                                                             class="check_i"
+                                        ></a>
                                 </td>
                             @endcan
                         </tr>

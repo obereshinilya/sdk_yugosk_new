@@ -52,11 +52,46 @@ class ExcelReportController extends Controller
 
     public function excel_events($year)
     {
-        $data = Events::where('year', '=', $year)->get();
+        $data['data'] = Events::where('year', '=', $year)->get();
         $title = ' Мероприятия
                             по устранению имеющихся нарушений действующих норм и правил, выявленных
                             Северо-Уральским управлением ООО «Газпром газнадзор» при эксплуатации объектов ЕСГ ПАО
                             «Газпром» за ' . $year . ' год';
+        foreach ($data['data'] as $key => $event) {
+            if ($event->date_issue) {
+                $data['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
+            } else {
+                $data['date_issue'][$key] = '';
+
+            }
+            if ($event->date_base) {
+
+                $data['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
+            } else {
+                $data['date_base'][$key] = '';
+
+            }
+            if ($event->date_repiat) {
+                $data['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
+
+            } else {
+                $data['date_repiat'][$key] = '';
+
+            }
+            if ($event->date_fact) {
+                $data['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
+
+            } else {
+                $data['date_fact'][$key] = '';
+
+            }
+            if ($event->date_update) {
+                $data['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
+            } else {
+                $data['date_update'][$key] = '';
+
+            }
+        }
         $patch = 'Events' . Carbon::now() . '.xlsx';
 
         return Excel::download(new EventsExport($title, $data), $patch);
@@ -88,10 +123,17 @@ class ExcelReportController extends Controller
 
     public function excel_plan_of_industrial_safety($year)
     {
-        $data = Plan_of_industrial_safety::where('year', '=', $year)->get();
+        $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->get();
         $title = ' План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.xlsx';
 
+        foreach ($data['data'] as $key => $plan) {
+            if ($plan->completion_date) {
+                $data['completion_date'][$key] = date('d.m.Y', strtotime($plan->completion_date));
+            } else {
+                $data['completion_date'][$key] = '';
+            }
+        }
         return Excel::download(new Plan_of_industrial_safety_Export($title, $data), $patch);
 
     }
@@ -111,47 +153,81 @@ class ExcelReportController extends Controller
 
     public function excel_emergency_drills($year)
     {
-        $data = EmergencyDrills::where('year', '=', $year)->get();
+        $data['data'] = EmergencyDrills::where('year', '=', $year)->get();
         $title = ' Сведения о
                             противоаварийных тренировках, проведенных на
                             ОПО в ' . $year . ' году';
         $patch = 'report_emergency_drills' . Carbon::now() . '.xlsx';
-
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_PAT) {
+                $data['date_PAT'][$key] = date('d.m.Y', strtotime($row->date_PAT));
+            } else {
+                $data['date_PAT'][$key] = '';
+            }
+        }
         return Excel::download(new Emergency_drills_Export($title, $data), $patch);
 
     }
 
     public function excel_report_events($year)
     {
-        $data = Report_events::where('year', '=', $year)->get();
+        $data['data'] = Report_events::where('year', '=', $year)->get();
         $title = ' Отчет
                             о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных
                             Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $year . ' год';
         $patch = 'report_events' . Carbon::now() . '.xlsx';
-
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_update) {
+                $data['date_update'][$key] = date('d.m.Y', strtotime($row->date_update));
+            } else {
+                $data['date_update'][$key] = '';
+            }
+        }
         return Excel::download(new Report_events_Export($title, $data), $patch);
 
     }
 
     public function excel_goals_trans_yugorsk($year)
     {
-        $data = Goals_trans_yugorsk::where('year', '=', $year)->get();
+        $data['data'] = Goals_trans_yugorsk::where('year', '=', $year)->get();
         $title = ' Цели ООО «Газпром
                             трансгаз Югорск» в области
                             производственной безопасности на ' . $year . ' год';
         $patch = 'goals_trans_yugorsk' . Carbon::now() . '.xlsx';
-
+        foreach ($data['data'] as $key => $row) {
+            if ($row->data_goal) {
+                $data['data_goal'][$key] = date('d.m.Y', strtotime($row->data_goal));
+            } else {
+                $data['data_goal'][$key] = '';
+            }
+        }
         return Excel::download(new Goals_trans_yugorsk_Export($title, $data), $patch);
 
     }
 
     public function excel_kipd_internal_checks($year)
     {
-        $data = KIPDInternalChecks::where('year', '=', $year)->get();
+        $data['data'] = KIPDInternalChecks::where('year', '=', $year)->get();
         $title = ' План корректирующих
                             действий ПБ по внутренним проверкам за ' . $year . ' год';
         $patch = 'kipd_internal_checks' . Carbon::now() . '.xlsx';
-
+        foreach ($data['data'] as $key => $row) {
+            if ($row->date_act) {
+                $data['date_act'][$key] = date('d.m.Y', strtotime($row->date_act));
+            } else {
+                $data['date_act'][$key] = '';
+            }
+            if ($row->date_check) {
+                $data['date_check'][$key] = date('d.m.Y', strtotime($row->date_check));
+            } else {
+                $data['date_check'][$key] = '';
+            }
+            if ($row->date_check_correct) {
+                $data['date_check_correct'][$key] = date('d.m.Y', strtotime($row->date_check_correct));
+            } else {
+                $data['date_check_correct'][$key] = '';
+            }
+        }
         return Excel::download(new KIPD_internal_checks_Export($title, $data), $patch);
 
     }
@@ -173,7 +249,9 @@ class ExcelReportController extends Controller
             $data['all_plan_month'] = 0;
         }
         foreach ($data_from_table as $row) {
-            $data[$row->num_pp]['date'] = $row->date;
+            if ($row->date) {
+                $data[$row->num_pp]['date'] = date('d.m.Y', strtotime($row->date));
+            }
             $data[$row->num_pp]['plan_year'] = $row->plan_year;
             $data[$row->num_pp]['plan_month'] = $row->plan_month;
             $data[$row->num_pp]['fact'] = $row->fact;
@@ -194,20 +272,34 @@ class ExcelReportController extends Controller
 
     public function excel_perfomance_plan_KiPD($year)
     {
-        $data = Perfomance_plan_KiPD::where('year', '=', $year)->get();
+        $data['data'] = Perfomance_plan_KiPD::where('year', '=', $year)->get();
         $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $year . ' год';
         $patch = 'perfomance_plan_kipd' . Carbon::now() . '.xlsx';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->deadline) {
+                $data['deadline'][$key] = date('d.m.Y', strtotime($row->deadline));
+            } else {
+                $data['deadline'][$key] = '';
+            }
+        }
         return Excel::download(new Perfomance_plan_KiPD_Export($title, $data), $patch);
 
     }
 
     public function excel_plan_industrial_safety($year)
     {
-        $data = Plan_industrial_safety::where('year', '=', $year)->get();
+        $data['data'] = Plan_industrial_safety::where('year', '=', $year)->get();
         $title = 'Сведения о выполнении плана работ в области
                             промышленной
                             безопасности за ' . $year . ' год';
         $patch = 'plan_industrial_safety' . Carbon::now() . '.xlsx';
+        foreach ($data['data'] as $key => $row) {
+            if ($row->period_execution) {
+                $data['period_execution'][$key] = date('d.m.Y', strtotime($row->period_execution));
+            } else {
+                $data['period_execution'][$key] = '';
+            }
+        }
         return Excel::download(new Plan_industrial_safety_Export($title, $data), $patch);
 
     }

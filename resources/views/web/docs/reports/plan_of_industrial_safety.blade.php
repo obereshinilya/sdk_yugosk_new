@@ -10,12 +10,17 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         #table_for_search tr td:last-of-type {
             /*display: flex;*/
@@ -92,17 +97,18 @@
                                         <th style="text-align: center">Мероприятие
                                         </th>
                                         @can('money-info')
-                                        <th style="text-align: center">Стоимость (тыс. руб.) без НДС
-                                            @endcan
+                                            <th style="text-align: center">Стоимость (тыс. руб.) без НДС
+                                                @endcan
 
-                                        </th>
-                                        <th style="text-align: center">Источник финансирования</th>
-                                        <th style="text-align: center">Срок исполнения</th>
-                                        <th style="text-align: center">Ответственный исполнитель (ФИО, должность)</th>
-                                        <th style="text-align: center">Отметка о выполнении</th>
-                                        @can('report-edit')
-                                            <th style="width: 3%"></th>
-                                        @endcan
+                                            </th>
+                                            <th style="text-align: center">Источник финансирования</th>
+                                            <th style="text-align: center">Срок исполнения</th>
+                                            <th style="text-align: center">Ответственный исполнитель (ФИО, должность)
+                                            </th>
+                                            <th style="text-align: center">Отметка о выполнении</th>
+                                            @can('report-edit')
+                                                <th style="width: 3%"></th>
+                                            @endcan
                                     </tr>
                                     </thead>
                                     <tbody id="body_table">
@@ -208,8 +214,14 @@
                             @can('money-info')
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['cost']}</p></td>`
                             @endcan
-                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['src']}</p></td>`
-                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['completion_date']}</p></td>`
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['src']}</p></td>`
+                            let date = new Date(row['completion_date']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['person']}</p></td>`
                             if (row['completion_mark']) {
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">Выполнено</p></td>`

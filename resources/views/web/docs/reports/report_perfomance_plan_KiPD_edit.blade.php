@@ -39,20 +39,21 @@
                                     <th style="text-align: center">Год</th>
                                     <td style="padding: 0px"><select disabled class="select-css" id="year"
                                                                      style="height: 100%; width: 20%">
-                                                <option value="{{$data->year}}">{{$data->year}} год</option>
+                                            <option value="{{$data->year}}">{{$data->year}} год</option>
                                         </select></td>
                                 </tr>
                                 <tr>
                                     <th>Наименование филиала</th>
                                     <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->name_do}}">{{$data->name_do}}</option>
+                                            <option
+                                                value="{{$data->name_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->name_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
-                                                @if($row->short_name_do==$data->name_do)
+                                                @if($row->short_name_do==\App\Models\Main_models\RefDO::where('id_do','=',$data->name_do)->value('short_name_do'))
                                                     @continue
                                                 @else
                                                     <option
-                                                        value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                        value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                                 @endif
                                             @endforeach
                                         </select></td>
@@ -61,30 +62,35 @@
                                     <th style="text-align: center">Корректирующие и предупреждающие действия</th>
                                     <td style="padding: 0px"><textarea id="correct_action"
                                                                        style="height: 100%; width: 95%"
-                                                                       class="text-field__input">{{$data->correct_action}}</textarea></td>
+                                                                       class="text-field__input">{{$data->correct_action}}</textarea>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель</th>
                                     <td style="padding: 0px"><textarea id="respons_executor"
                                                                        style="height: 100%; width: 95%"
-                                                                       class="text-field__input">{{$data->respons_executor}}</textarea></td>
+                                                                       class="text-field__input">{{$data->respons_executor}}</textarea>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Срок выполнения</th>
-                                    <td style="padding: 0px"><input id="deadline" type="date" style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->deadline}}"></td>
+                                    <td style="padding: 0px"><input id="deadline" type="date"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"
+                                                                    value="{{$data->deadline}}"></td>
                                 </tr>
 
                                 <tr>
                                     <th style="text-align: center">Отметка о выполнении</th>
-                                    <td style="padding: 0px"><select id="completion_mark" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="completion_mark"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @if($data->completion_mark == 'true')
-                                            <option value="false"  >Не выполнено</option>
-                                            <option value="true" selected>Выполнено</option>
+                                                <option value="false">Не выполнено</option>
+                                                <option value="true" selected>Выполнено</option>
                                             @else
-                                                <option value="false"  selected>Не выполнено</option>
-                                                <option value="true" >Выполнено</option>
+                                                <option value="false" selected>Не выполнено</option>
+                                                <option value="true">Выполнено</option>
                                             @endif
                                         </select></td>
                                 </tr>
