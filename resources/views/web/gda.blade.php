@@ -88,7 +88,7 @@
             <tbody>
             <tr>
                 <td>Регион</td>
-                <td>Ханты-Мансийск</td>
+                <td>ХМАО-Югра</td>
             </tr>
             <tr>
                 <td>Город</td>
@@ -235,7 +235,6 @@
                     <a href="#openModal" onclick="window.open_modal_opos(5)" class="map_dot good" id="ug05"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(6)" class="map_dot good" id="ug06"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(7)" class="map_dot good" id="ug07"></a>
-                    <a href="#openModal" onclick="window.open_modal_opos(8)" class="map_dot good" id="ug08"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(9)" class="map_dot good" id="ug09"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(10)" class="map_dot good" id="ug10"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(11)" class="map_dot good" id="ug11"></a>
@@ -321,13 +320,13 @@
             [2, 'Салехард'],
             [3, 'Ямбург'],
             [4, 'Пуровская'],
-            [5, 'Хасырейская'],
+            [5, 'Ныдинская'],
             [6, 'Н. Уренгойская'],
-            [7, 'ЦДКС'],
+            [7, 'Хасырейская'],
             [8, 'ЦДКС'],
             [9, 'Надымская'],
             [10, 'Пангодинская'],
-            [11, 'Проавохеттингская'],
+            [11, 'Правохеттинская'],
             [12, 'Ягельная'],
             [13, 'Лонг-Югальская'],
             [14, 'Приозерная'],
@@ -341,7 +340,7 @@
             [22, 'Приполярная'],
             [23, 'Сосьвинская'],
             [24, 'Пунгинская'],
-            [25, 'УзюмУганская'],
+            [25, 'Узюм-Юганская'],
             [26, 'Таежная'],
             [27, 'Комсомольская'],
             [28, 'Комсомольская'],

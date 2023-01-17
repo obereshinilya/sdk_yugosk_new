@@ -170,10 +170,6 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function test() {
-            var date = new Date();
-            document.getElementById('year').value = date.getFullYear()
-        })
 
         function save() {
             $.ajaxSetup({
