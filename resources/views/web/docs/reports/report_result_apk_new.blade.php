@@ -46,7 +46,7 @@
                                 </tr>
                                 <tr>
                                     <th colspan="3">Наименование филиала / дочернего общества</th>
-                                    <td style="padding: 0px"><select id="name_DO" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
@@ -267,7 +267,7 @@
                 }
             });
 
-            var params = ['name_DO', 'level2_plan', 'level2_fact', 'level2_error', 'level2_error_repiat', 'level2_check',
+            var params = ['id_do', 'level2_plan', 'level2_fact', 'level2_error', 'level2_error_repiat', 'level2_check',
                 'level3_plan', 'level3_fact', 'level3_error', 'level3_error_repiat', 'level3_check',
                 'level4_plan', 'level4_fact', 'level4_error', 'level4_error_repiat', 'level4_check',
                 'gaznadzor_check_late', 'gaznadzor_check', 'gaznadzor_error_repiat', 'gaznadzor_error', 'num_gaznadzor',
@@ -295,7 +295,7 @@
                             alert('Для указанного ДО уже есть запись для выбранного года!')
                         } else {
                             // console.log(res)
-                            window.location.href = '/docs/result_apk'
+                            // window.location.href = '/docs/result_apk'
                         }
 
                     }

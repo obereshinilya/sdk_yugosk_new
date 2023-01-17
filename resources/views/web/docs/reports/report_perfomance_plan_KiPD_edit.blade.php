@@ -44,12 +44,12 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование филиала</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             <option
-                                                value="{{$data->name_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->name_do)->value('short_name_do')}}</option>
+                                                value="{{$data->name_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
-                                                @if($row->short_name_do==\App\Models\Main_models\RefDO::where('id_do','=',$data->name_do)->value('short_name_do'))
+                                                @if($row->short_name_do==\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do'))
                                                     @continue
                                                 @else
                                                     <option
@@ -120,7 +120,7 @@
                 }
             });
 
-            var params = ['correct_action', 'respons_executor', 'deadline', 'completion_mark', 'year', 'name_do']
+            var params = ['correct_action', 'respons_executor', 'deadline', 'completion_mark', 'year', 'id_do']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

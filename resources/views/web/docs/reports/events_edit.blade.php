@@ -51,15 +51,16 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->name_do}}">{{$data->name_do}}</option>
+                                            <option
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do',$data->id_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
-                                                @if($data->name_do==$row->short_name_do)
+                                                @if($data->id_do==$row->id_do)
                                                     @continue
                                                 @else
                                                     <option
-                                                        value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                        value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                                 @endif
                                             @endforeach
                                         </select></td>
@@ -77,7 +78,7 @@
                                         акта обследования)
                                     </th>
                                     <td style="padding: 0px"><textarea type="text" id="viols"
-                                                                    style="height: 100%; width: 95%"
+                                                                       style="height: 100%; width: 95%"
                                                                        class="text-field__input">{{$data->viols}}</textarea>
                                     </td>
                                 </tr>
@@ -176,7 +177,7 @@
                 }
             });
 
-            var params = ['name_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note']
+            var params = ['id_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note']
 
             var out_data = []
             for (var param of params) {

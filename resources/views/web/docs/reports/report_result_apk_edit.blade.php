@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title')
-    Создание
+    Редактирование
 @endsection
 
 @section('content')
@@ -44,11 +44,11 @@
                                 </tr>
                                 <tr>
                                     <th colspan="3">Наименование филиала / дочернего общества</th>
-                                    <td style="padding: 0px"><select disabled id="name_DO"
+                                    <td style="padding: 0px"><select disabled id="id_do"
                                                                      style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             <option
-                                                value="{{$data->name_DO}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->name_DO)->value('short_name_do')}}</option>
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
                                         </select></td>
                                 </tr>
                                 <tr>
@@ -285,7 +285,7 @@
                 }
             });
 
-            var params = ['name_DO', 'level2_plan', 'level2_fact', 'level2_error', 'level2_error_repiat', 'level2_check',
+            var params = ['id_do', 'level2_plan', 'level2_fact', 'level2_error', 'level2_error_repiat', 'level2_check',
                 'level3_plan', 'level3_fact', 'level3_error', 'level3_error_repiat', 'level3_check',
                 'level4_plan', 'level4_fact', 'level4_error', 'level4_error_repiat', 'level4_check',
                 'gaznadzor_check_late', 'gaznadzor_check', 'gaznadzor_error_repiat', 'gaznadzor_error', 'num_gaznadzor',

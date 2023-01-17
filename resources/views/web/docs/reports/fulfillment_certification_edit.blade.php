@@ -34,17 +34,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                                                <tr>
+                                <tr>
                                     <th colspan="3">Наименование филиала общества</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->name_do}}">{{$data->name_do}}</option>
+                                            <option
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do',$data->id_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
-                                                @if($row->short_name_do==$data->name_do)
+                                                @if($row->id_do==$data->id_do)
                                                     @continue
                                                 @else
                                                     <option
-                                                        value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                        value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                                 @endif
                                             @endforeach
                                         </select></td>
@@ -138,7 +139,8 @@
                                 </tr>
                                 <tr>
                                     <th>план</th>
-                                    <td style="padding: 0px"><input type="number" min="0" step="1"  style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input type="number" min="0" step="1"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input"
                                                                     id="is_ept_adm_do_plan"
                                                                     value="{{$data->is_ept_adm_do_plan}}">
@@ -146,7 +148,8 @@
                                 </tr>
                                 <tr>
                                     <th>факт</th>
-                                    <td style="padding: 0px"><input type="number" min="0" step="1" style="height: 100%; width: 95%"
+                                    <td style="padding: 0px"><input type="number" min="0" step="1"
+                                                                    style="height: 100%; width: 95%"
                                                                     class="text-field__input"
                                                                     id="is_ept_adm_do_fact"
                                                                     value="{{$data->is_ept_adm_do_fact}}">
@@ -322,7 +325,7 @@
                 }
             });
 
-            var params = ['name_do', 'rostech_cec', 'rostech_cec_plan', 'rostech_cec_fact', 'skills_up_cec_plan', 'skills_up_cec_fact', 'rostech_adm_do', 'rostech_adm_do_plan', 'rostech_adm_do_fact', 'is_ept_adm_do', 'is_ept_adm_do_plan', 'is_ept_adm_do_fact', 'ot_adm_do_plan', 'ot_adm_do_fact', 'pb_ec', 'pb_ec_plan', 'pb_ec_fact', 'skills_up_ec_plan', 'skills_up_ec_fact', 'rostech_do', 'rostech_do_plan', 'rostech_do_fact', 'is_ept_do', 'is_ept_do_plan', 'is_ept_do_fact', 'pb_do_plan', 'pb_do_fact']
+            var params = ['id_do', 'rostech_cec', 'rostech_cec_plan', 'rostech_cec_fact', 'skills_up_cec_plan', 'skills_up_cec_fact', 'rostech_adm_do', 'rostech_adm_do_plan', 'rostech_adm_do_fact', 'is_ept_adm_do', 'is_ept_adm_do_plan', 'is_ept_adm_do_fact', 'ot_adm_do_plan', 'ot_adm_do_fact', 'pb_ec', 'pb_ec_plan', 'pb_ec_fact', 'skills_up_ec_plan', 'skills_up_ec_fact', 'rostech_do', 'rostech_do_plan', 'rostech_do_fact', 'is_ept_do', 'is_ept_do_plan', 'is_ept_do_fact', 'pb_do_plan', 'pb_do_fact']
             var out_data = []
             for (var param of params) {
                 var value = document.getElementById(param).value

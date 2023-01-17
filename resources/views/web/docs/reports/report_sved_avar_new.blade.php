@@ -44,7 +44,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="naim_filiala" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
@@ -179,7 +179,7 @@
                 }
             });
 
-            var params = ['naim_filiala', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln', 'year']
+            var params = ['id_do', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln', 'year']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

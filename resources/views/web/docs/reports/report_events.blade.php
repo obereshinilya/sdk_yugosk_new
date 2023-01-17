@@ -228,7 +228,7 @@
                                 var tr = document.createElement('tr')
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${num}</p></td>`
                                 if (i == 1) {
-                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_do']}</p></td>`
+                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${key}</p></td>`
                                 }
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['num_elim']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['num_unrem']}</p></td>`

@@ -44,11 +44,11 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_DO" disabled
+                                    <td style="padding: 0px"><select id="id_do" disabled
                                                                      style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             <option
-                                                value="{{$edition_data->name_DO}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$edition_data->name_DO)->value('short_name_do')}}</option>
+                                                value="{{$edition_data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$edition_data->id_do)->value('short_name_do')}}</option>
                                         </select></td>
                                 </tr>
                                 <tr>
@@ -182,7 +182,7 @@
                 }
             });
 
-            var params = ['name_DO', 'date_act', 'num_act', 'error_comment', 'person',
+            var params = ['id_do', 'date_act', 'num_act', 'error_comment', 'person',
                 'name_event', 'date_check', 'reason', 'correct_event', 'usloviya',
                 'person_correct', 'date_check_correct', 'podrazdelenie']
             var out_data = []

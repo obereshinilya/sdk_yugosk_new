@@ -11,12 +11,17 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
     #table_for_search tr td:last-of-type {
@@ -158,11 +163,11 @@
                     url: '/docs/get_sved_avar/' + document.getElementById('select__year').value,
                     type: 'GET',
                     success: (res) => {
-var num =1
+                        var num = 1
                         for (var row of res) {
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['naim_filiala']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['vid_techno_sob']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['mesto_techno_sob']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['data_time']}</td>`
@@ -189,7 +194,7 @@ var num =1
                                                                                  src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                                                                         </a></td> @endcan`
                             table_body.appendChild(tr)
-num+=1
+                            num += 1
                         }
                     },
                     error: function (error) {

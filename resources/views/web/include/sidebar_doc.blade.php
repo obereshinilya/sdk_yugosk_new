@@ -97,7 +97,8 @@
                         <a href="/docs/plan_of_industrial_safety" onclick="SaveChecked_link(this)">План работ в области
                             промышленной безопасности
                         </a>
-                        <a href="/docs/conclusions_industrial_safety" onclick="SaveChecked_link(this)">Реестр заключений
+                        <a href="/docs/conclusions_industrial_safety/Краснотурьинское ЛПУМГ"
+                           onclick="SaveChecked_link(this)">Реестр заключений
                             экспертизы промышленной
                             безопасности
                         </a>

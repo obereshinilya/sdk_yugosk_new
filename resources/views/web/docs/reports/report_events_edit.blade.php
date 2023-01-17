@@ -39,19 +39,20 @@
                                     <td style="padding: 0px"><select class="select-css" id="year"
                                                                      style="height: 100%; width: 20%">
                                             <option value="{{$data->year}}">{{$data->year}} год</option>
-                                                                                    </select></td>
+                                        </select></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->name_do}}">{{$data->name_do}}</option>
+                                            <option
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do',$data->id_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
-                                                @if($row->short_name_do==$data->name_do)
+                                                @if($row->id_do==$data->id_do)
                                                     @continue
                                                 @else
                                                     <option
-                                                        value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                        value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                                 @endif
                                             @endforeach
                                         </select></td>
@@ -62,7 +63,8 @@
                                     </th>
                                     <td style="padding: 0px"><input type="number" step="1" id="num_elim"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->num_elim}}"></td>
+                                                                    class="text-field__input"
+                                                                    value="{{$data->num_elim}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Количество не устранённых нарушений с
@@ -70,7 +72,8 @@
                                     </th>
                                     <td style="padding: 0px"><input type="number" step="1" id="num_unrem"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->num_unrem}}"></td>
+                                                                    class="text-field__input"
+                                                                    value="{{$data->num_unrem}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Количество нарушений с не истекшим сроком
@@ -78,7 +81,8 @@
                                     </th>
                                     <td style="padding: 0px"><input type="number" step="1" id="num_unexp_deadlines"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->num_unexp_deadlines}}"></td>
+                                                                    class="text-field__input"
+                                                                    value="{{$data->num_unexp_deadlines}}"></td>
                                 </tr>
                                 <tr>
                                     <th rowspan="2"> Из них</th>
@@ -86,19 +90,22 @@
                                     </th>
                                     <td style="padding: 0px"><input type="number" step="1" id="num_act"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"  value="{{$data->num_act}}"></td>
+                                                                    class="text-field__input"
+                                                                    value="{{$data->num_act}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">с переносом срока устранения, ед.</th>
                                     <td style="padding: 0px"><input type="number" step="1" id="num_repiat"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"  value="{{$data->num_repiat}}"></td>
+                                                                    class="text-field__input"
+                                                                    value="{{$data->num_repiat}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Примечание</th>
                                     <td style="padding: 0px"><input type="text" id="note"
                                                                     style="height: 100%; width: 95%; float: left;"
-                                                                    class="text-field__input" value="{{$data->note}}"></td>
+                                                                    class="text-field__input" value="{{$data->note}}">
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -126,18 +133,21 @@
                 }
             });
 
-            var params = ['name_do', 'num_elim', 'num_unrem', 'num_unexp_deadlines', 'num_act', 'num_repiat', 'note']
+            var params = ['id_do', 'num_elim', 'num_unrem', 'num_unexp_deadlines', 'num_act', 'num_repiat', 'note']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
             }
-            if ((Number(out_data['num_elim'])+Number(out_data['num_unrem'])+Number(out_data['num_unexp_deadlines']))!==(Number(out_data['num_act'])+Number(out_data['num_repiat']))){
+            if ((Number(out_data['num_elim']) + Number(out_data['num_unrem']) + Number(out_data['num_unexp_deadlines'])) !== (Number(out_data['num_act']) + Number(out_data['num_repiat']))) {
                 alert('Количество нарушений не совпадает с графой \'Из них\'')
-            }else {
+            } else {
                 $.ajax({
                     url: '/docs/report_events/update/{{$data->id}}',
                     type: 'POST',
-                    data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                    data: {
+                        keys: JSON.stringify(Object.keys(out_data)),
+                        values: JSON.stringify(Object.values(out_data))
+                    },
                     success: (res) => {
                         console.log(res)
                         window.location.href = '/docs/report_events'

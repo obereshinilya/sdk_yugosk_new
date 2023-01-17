@@ -43,11 +43,11 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select disabled id="naim_filiala"
+                                    <td style="padding: 0px"><select disabled id="id_do"
                                                                      style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             <option
-                                                value="{{$data->naim_filiala}}">{{ \App\Models\Main_models\RefDO::where('id_do','=',$data->naim_filiala)->value('short_name_do')}}</option>
+                                                value="{{$data->id_do}}">{{ \App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
                                         </select></td>
                                 </tr>
                                 <tr>
@@ -191,7 +191,7 @@
                 }
             });
 
-            var params = ['naim_filiala', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln']
+            var params = ['id_do', 'vid_techno_sob', 'mesto_techno_sob', 'data_time', 'vid_avari', 'kratk_opisan', 'nalich_postradav', 'econom_usherb', 'prodolgit_prost', 'litsa_otvetstven', 'meropriytia', 'otmetka_vypoln']
             var out_data = []
             for (var param of params) {
                 // console.log(param)

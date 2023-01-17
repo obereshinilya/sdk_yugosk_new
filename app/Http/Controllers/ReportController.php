@@ -110,7 +110,7 @@ class ReportController extends Controller
     {
         $data = KIPDInternalChecks::where('year', '=', $year)->orderbydesc('date_check')->get()->toArray();
         foreach ($data as $key => $row) {
-            $data[$key]['name_DO'] = RefDO::where('id_do', '=', $row['name_DO'])->value('short_name_do');
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
         }
         return $data;
     }
@@ -233,8 +233,8 @@ class ReportController extends Controller
             foreach ($data as $row) {
                 $keys = array_keys($row);
                 foreach ($keys as $key) {
-                    if ($key == 'name_DO') {
-                        $data_to_table[$key][$i] = RefDO::where('id_do', '=', $row['name_DO'])->value('short_name_do');
+                    if ($key == 'id_do') {
+                        $data_to_table[$key][$i] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
                     } else {
                         $data_to_table[$key][$i] = $row[$key];
                     }
@@ -308,7 +308,7 @@ class ReportController extends Controller
                 $graph_pk = 0.7;
             } else {
                 try {
-                    $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                    $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                     if ((int)$data_last_year[0]['level2_error_repiat'] >= (int)$record_data['level2_error_repiat'] && (int)$data_last_year[0]['level3_error_repiat'] >= (int)$record_data['level3_error_repiat'] && (int)$data_last_year[0]['level4_error_repiat'] >= (int)$record_data['level4_error_repiat']) {
                         $graph_pk = 0.5;
                     } else {
@@ -331,7 +331,7 @@ class ReportController extends Controller
                 $graph_pk = $graph_pk + 0.5;
             } else {
                 try {
-                    $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                    $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                     if ((int)$data_last_year[0]['rosteh_error_repiat'] >= (int)$record_data['rosteh_error_repiat']) {
                         $graph_pk = $graph_pk + 0.3;
                     } else {
@@ -354,7 +354,7 @@ class ReportController extends Controller
                 $graph_pk = $graph_pk + 0.5;
             } else {
                 try {
-                    $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                    $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                     if ((int)$data_last_year[0]['gaznadzor_error_repiat'] >= (int)$record_data['gaznadzor_error_repiat']) {
                         $graph_pk = $graph_pk + 0.3;
 
@@ -391,7 +391,7 @@ class ReportController extends Controller
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if (count(ResultApk::where('year', '=', $record_data['year'])->where('name_DO', '=', $record_data['name_DO'])->get())) {  //если запись для ДО уже есть
+            if (count(ResultApk::where('year', '=', $record_data['year'])->where('id_do', '=', $record_data['id_do'])->get())) {  //если запись для ДО уже есть
                 return ['1' => 'Про', '2' => 'вал'];
             } else {
                 if ($record_data['level2_error']) {
@@ -434,7 +434,7 @@ class ReportController extends Controller
                     $graph_pk = 0.7;
                 } else {
                     try {
-                        $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                        $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                         if ((int)$data_last_year[0]['level2_error_repiat'] > (int)$record_data['level2_error_repiat'] && (int)$data_last_year[0]['level3_error_repiat'] > (int)$record_data['level3_error_repiat'] && (int)$data_last_year[0]['level4_error_repiat'] > (int)$record_data['level4_error_repiat']) {
                             $graph_pk = 0.5;
                         } else {
@@ -457,7 +457,7 @@ class ReportController extends Controller
                     $graph_pk = $graph_pk + 0.5;
                 } else {
                     try {
-                        $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                        $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                         if ((int)$data_last_year[0]['rosteh_error_repiat'] >= (int)$record_data['rosteh_error_repiat']) {
                             $graph_pk = $graph_pk + 0.3;
 
@@ -481,7 +481,7 @@ class ReportController extends Controller
                     $graph_pk = $graph_pk + 0.5;
                 } else {
                     try {
-                        $data_last_year = ResultApk::where('name_DO', '=', $record_data['name_DO'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
+                        $data_last_year = ResultApk::where('id_do', '=', $record_data['id_do'])->where('year', '=', (((int)$record_data['year']) - 1))->get()->toArray();
                         if ((int)$data_last_year[0]['gaznadzor_error_repiat'] >= (int)$record_data['gaznadzor_error_repiat']) {
                             $graph_pk = $graph_pk + 0.3;
 
@@ -518,7 +518,7 @@ class ReportController extends Controller
     {
         $data = sved_avar::where('year', '=', $year)->get()->toArray();;
         foreach ($data as $key => $row) {
-            $data[$key]['naim_filiala'] = RefDO::where('id_do', '=', $row['naim_filiala'])->value('short_name_do');
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
         }
         return $data;
 
@@ -602,7 +602,7 @@ class ReportController extends Controller
     {
         $data = Perfomance_plan_KiPD::orderByDesc('id')->where('year', '=', $year)->get()->toArray();;
         foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['name_do'])->value('short_name_do');
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
         }
         return $data;
 
@@ -687,12 +687,16 @@ class ReportController extends Controller
 
     public function get_plan_industrial_safety($year)
     {
-        return Plan_industrial_safety::orderByDesc('id')->where('year', '=', $year)->get();
+        $data = Plan_industrial_safety::orderByDesc('id')->where('year', '=', $year)->get();
+        foreach ($data as $key => $row) {
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        }
+        return $data;
     }
 
     public function create_plan_industrial_safety()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_plan_industrial_safety_new', compact('do'));
     }
 
@@ -845,11 +849,12 @@ class ReportController extends Controller
 
     public function get_report_events_year($year)
     {
-        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
-
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        $data = DB::table('reports.report_events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.report_events.id_do')->get();
         foreach ($data as $row) {
 
-            $data_to_table[$row->name_do] = Report_events::where('year', '=', $year)->where('name_do', '=', $row->name_do)->orderbydesc('name_do')->get()->toArray();
+            $data_to_table[$row->short_name_do] = Report_events::where('year', '=', $year)->where('id_do', '=', $row->id_do)->orderbydesc('id_do')->get()->toArray();
         }
 
         return $data_to_table;
@@ -858,7 +863,7 @@ class ReportController extends Controller
 
     public function create_report_events()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_events_new', compact('do'));
     }
 
@@ -891,7 +896,7 @@ class ReportController extends Controller
 
     public function edit_report_events($id)
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
 
         $data = Report_events::where('id', '=', $id)->first();
         return view('web.docs.reports.report_events_edit', compact('data', 'do'));
@@ -923,11 +928,12 @@ class ReportController extends Controller
 
     public function get_events($year)
     {
-        $data = Events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
-
+//        $data = Events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        $data = DB::table('reports.events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.events.id_do')->get();
         foreach ($data as $row) {
 
-            $data_to_table[$row->name_do] = Events::where('year', '=', $year)->orderbydesc('id')->where('name_do', '=', $row->name_do)->orderbydesc('name_do')->get()->toArray();
+            $data_to_table[$row->short_name_do] = Events::where('year', '=', $year)->orderbydesc('id')->where('id_do', '=', $row->id_do)->orderbydesc('id_do')->get()->toArray();
         }
 
         return $data_to_table;
@@ -936,7 +942,7 @@ class ReportController extends Controller
 
     public function create_events()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.events_new', compact('do'));
     }
 
@@ -973,7 +979,7 @@ class ReportController extends Controller
 
     public function edit_events($id)
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
 
         $data = Events::where('id', '=', $id)->first();
         return view('web.docs.reports.events_edit', compact('data', 'do'));
@@ -1010,7 +1016,7 @@ class ReportController extends Controller
 
     public function create_emergency_drills()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.report_emergency_drills_new', compact('do'));
     }
 
@@ -1082,9 +1088,12 @@ class ReportController extends Controller
 
     public function get_emergency_drills($year)
     {
-        $data = EmergencyDrills::where('year', '=', $year)->select('name_branch')->groupby('name_branch')->get();
+//        $data = EmergencyDrills::where('year', '=', $year)->select('id_do')->groupby('id_do')->get();
+        $data = DB::table('reports.emergency_drills')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do')->get();
+//      dd($data);
         foreach ($data as $row) {
-            $data_to_table[$row->name_branch] = EmergencyDrills::where('year', '=', $year)->where('name_branch', '=', $row->name_branch)->orderbydesc('date_PAT')->get()->toArray();
+            $data_to_table[$row->short_name_do] = EmergencyDrills::where('year', '=', $year)->where('id_do', '=', $row->id_do)->orderbydesc('date_PAT')->get()->toArray();
         }
 //        dd($data_to_table);
         return $data_to_table;
@@ -1267,10 +1276,16 @@ class ReportController extends Controller
         }
     }
 
-    public function show_conclusions_industrial_safety()
+    public function show_conclusions_industrial_safety($object)
     {
         $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get();
-        return view('web.docs.reports.conclusions_industrial_safety', compact('do'));
+        if ($object == 'all') {
+            $data = Conclusions_industrial_safety::all();
+        } else {
+            $data = Conclusions_industrial_safety::where('name_do', $object)->get();
+        }
+
+        return view('web.docs.reports.conclusions_industrial_safety', compact('do', 'data'));
     }
 
     public function get_conclusions_industrial_safety($year)
@@ -1347,7 +1362,9 @@ class ReportController extends Controller
     public function get_fulfillment_certification($year)
     {
         $data = Fulfillment_certification::where('year', '=', $year)->get();
-
+        foreach ($data as $key => $row) {
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        }
 
         return $data;
 
@@ -1355,7 +1372,7 @@ class ReportController extends Controller
 
     public function create_fulfillment_certification()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
         return view('web.docs.reports.fulfillment_certification_new', compact('do'));
     }
 
@@ -1368,7 +1385,7 @@ class ReportController extends Controller
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if (count(Fulfillment_certification::where('name_do', '=', $record_data['name_do'])->where('year', '=', $record_data['year'])->get())) {
+            if (count(Fulfillment_certification::where('id_do', '=', $record_data['id_do'])->where('year', '=', $record_data['year'])->get())) {
                 return ['1' => 'Про', '2' => 'вал'];
             } else {
                 Fulfillment_certification::create($record_data);
@@ -1388,7 +1405,7 @@ class ReportController extends Controller
     public function edit_fulfillment_certification($id)
     {
         $data = Fulfillment_certification::where('id', '=', $id)->first();
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::get();
 
         return view('web.docs.reports.fulfillment_certification_edit', compact('data', 'do'));
     }
@@ -1418,8 +1435,12 @@ class ReportController extends Controller
 
     public function get_pat_schedule($year)
     {
-        $data = Pat_schedule::where('year', '=', $year)->get();
 
+        $data = Pat_schedule::where('year', '=', $year)->get();
+        foreach ($data as $key => $row) {
+            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+            $data[$key]['name_opo'] = RefOpo::where('id_opo', '=', $row['id_opo'])->value('full_name_opo');
+        }
 
         return $data;
 
@@ -1428,8 +1449,8 @@ class ReportController extends Controller
     public function create_pat_schedule()
     {
         $data = Pat_themes::orderby('id')->get();
-        $do = RefDO::select('short_name_do')->get();
-        $opo = RefOpo::select('full_name_opo')->get();
+        $do = RefDO::get();
+        $opo = RefOpo::get();
         return view('web.docs.reports.pat_schedule_new', compact('data', 'do', 'opo'));
     }
 
@@ -1442,7 +1463,7 @@ class ReportController extends Controller
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if (count(Pat_schedule::where('name_filial', '=', $record_data['name_filial'])->where('opo_name', '=', $record_data['opo_name'])->where('year', '=', $record_data['year'])->get())) {
+            if (count(Pat_schedule::where('id_do', '=', $record_data['id_do'])->where('id_opo', '=', $record_data['id_opo'])->where('year', '=', $record_data['year'])->get())) {
                 return ['1' => 'er', '2' => 'ror'];
             } else {
                 Pat_schedule::create($record_data);

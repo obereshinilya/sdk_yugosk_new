@@ -46,10 +46,10 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -65,11 +65,11 @@
                                         акта обследования)
                                     </th>
                                     <td style="padding: 0px"><textarea type="text" id="viols"
-                                                                    style="height: 100%; width: 95%"
+                                                                       style="height: 100%; width: 95%"
                                                                        class="text-field__input"></textarea></td>
-{{--                                    <td style="padding: 0px"><input type="text" id="viols"--}}
-{{--                                                                    style="height: 100%; width: 95%"--}}
-{{--                                                                    class="text-field__input"></td>--}}
+                                    {{--                                    <td style="padding: 0px"><input type="text" id="viols"--}}
+                                    {{--                                                                    style="height: 100%; width: 95%"--}}
+                                    {{--                                                                    class="text-field__input"></td>--}}
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">№ акта
@@ -161,7 +161,7 @@
                 }
             });
 
-            var params = ['name_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note', 'year']
+            var params = ['id_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note', 'year']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

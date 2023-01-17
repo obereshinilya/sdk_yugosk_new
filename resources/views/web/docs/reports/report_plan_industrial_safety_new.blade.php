@@ -45,46 +45,47 @@
                                         </select></td>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center" >Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_filiala" style="height: 100%; width: 50%"
+                                    <th style="text-align: center">Наименование филиала ДО</th>
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Цели в области ОТ и ПБ</th>
                                     <td style="padding: 0px"><input id="goals_OT_PB" style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование риска</th>
                                     <td style="padding: 0px"><input id="name_risk" style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Мероприятие</th>
                                     <td style="padding: 0px"><input id="events" style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Срок исполнения</th>
                                     <td style="padding: 0px"><input type="date" id="period_execution"
-                                                                       style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель (Ф.И.О., должность)</th>
                                     <td style="padding: 0px"><input id="responsible" style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Отметка о выполнении</th>
-                                    <td style="padding: 0px"><select id="completion_mark" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="completion_mark"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                                <option value="true">Выполнено</option>
-                                                <option value="false">Не выполнено</option>
+                                            <option value="true">Выполнено</option>
+                                            <option value="false">Не выполнено</option>
                                         </select></td>
                                 </tr>
                                 </tbody>
@@ -110,6 +111,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -117,22 +119,25 @@
                 }
             });
 
-            var params = ['name_filiala', 'goals_OT_PB', 'name_risk', 'events', 'period_execution', 'responsible', 'completion_mark', 'year']
+            var params = ['id_do', 'goals_OT_PB', 'name_risk', 'events', 'period_execution', 'responsible', 'completion_mark', 'year']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
             }
-            if(out_data['period_execution']){
+            if (out_data['period_execution']) {
                 $.ajax({
                     url: '/docs/plan_industrial_safety/save',
                     type: 'POST',
-                    data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                    data: {
+                        keys: JSON.stringify(Object.keys(out_data)),
+                        values: JSON.stringify(Object.values(out_data))
+                    },
                     success: (res) => {
                         // console.log(res)
                         window.location.href = '/docs/plan_industrial_safety'
                     }
                 })
-            }else {
+            } else {
                 alert('Не заполнен срок исполнения!')
             }
 

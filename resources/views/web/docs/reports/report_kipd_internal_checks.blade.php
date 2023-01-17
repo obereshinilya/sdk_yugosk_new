@@ -207,7 +207,7 @@
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_DO']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['podrazdelenie']}</td>`
                         if (row['date_act']) {
                             let date = new Date(row['date_act']);

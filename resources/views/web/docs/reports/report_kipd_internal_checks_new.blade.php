@@ -46,7 +46,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_DO" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
@@ -172,7 +172,7 @@
                 }
             });
 
-            var params = ['name_DO', 'year', 'date_act', 'num_act', 'error_comment', 'person',
+            var params = ['id_do', 'year', 'date_act', 'num_act', 'error_comment', 'person',
                 'name_event', 'date_check', 'reason', 'correct_event', 'usloviya',
                 'person_correct', 'date_check_correct', 'podrazdelenie']
             var out_data = []
@@ -187,7 +187,7 @@
                     if (typeof res == 'object') {
                         alert('Не указан срок выполнения!')
                     } else {
-                        //  console.log(res)
+                        console.log(res)
                         window.location.href = '/docs/kipd_internal_checks'
                     }
                 }

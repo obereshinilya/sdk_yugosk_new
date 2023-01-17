@@ -212,20 +212,26 @@
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${num}</p></td>`
                             if (i == 1) {
-                                tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_branch']}</p></td>`
+                                console.log(res)
+                                tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${key}</p></td>`
                             }
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['plan_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['plan_month_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['fact_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['workout_theme']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_reg_№_OPO']}</p></td>`
-                            let date = new Date(row['date_PAT']);
-                            let dd = date.getDate();
-                            if (dd < 10) dd = '0' + dd;
-                            let mm = date.getMonth() + 1;
-                            if (mm < 10) mm = '0' + mm;
-                            let yyyy = date.getFullYear();
-                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                            if (row['date_PAT']) {
+                                let date = new Date(row['date_PAT']);
+                                let dd = date.getDate();
+                                if (dd < 10) dd = '0' + dd;
+                                let mm = date.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
+                                let yyyy = date.getFullYear();
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                            } else {
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
+
+                            }
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['№_date_protocol_PAT']}</p></td>`
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['basis_PAT']}</p></td>`
                             if (row['grade']) {

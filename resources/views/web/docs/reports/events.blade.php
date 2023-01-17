@@ -218,18 +218,24 @@
                                 var tr = document.createElement('tr')
 
                                 if (i == 1) {
-                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_do']}</p></td>`
+                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${key}</p></td>`
                                 }
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['org']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['viols']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['act_num']}</p></td>`
-                                let date = new Date(row['date_issue']);
-                                let dd = date.getDate();
-                                if (dd < 10) dd = '0' + dd;
-                                let mm = date.getMonth() + 1;
-                                if (mm < 10) mm = '0' + mm;
-                                let yyyy = date.getFullYear();
-                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                                if (row['date_issue']) {
+                                    let date = new Date(row['date_issue']);
+                                    let dd = date.getDate();
+                                    if (dd < 10) dd = '0' + dd;
+                                    let mm = date.getMonth() + 1;
+                                    if (mm < 10) mm = '0' + mm;
+                                    let yyyy = date.getFullYear();
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                                } else {
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
+
+                                }
+
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['events']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['person']}</p></td>`
                                 if (row['date_base']) {
