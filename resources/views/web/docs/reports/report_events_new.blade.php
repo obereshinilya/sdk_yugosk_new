@@ -45,10 +45,10 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -127,36 +127,36 @@
                 }
             });
 
-            var params = ['name_do', 'num_elim', 'num_unrem', 'num_unexp_deadlines', 'num_act', 'num_repiat', 'note', 'year',]
+            var params = ['id_do', 'num_elim', 'num_unrem', 'num_unexp_deadlines', 'num_act', 'num_repiat', 'note', 'year',]
             var out_data = []
-	var check_param = true
+            var check_param = true
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
-		if(!out_data[param]){
-			check_param = false
-		}
+                if (!out_data[param]) {
+                    check_param = false
+                }
             }
 
-	if(check_param){
-            if ((Number(out_data['num_elim'])+Number(out_data['num_unrem'])+Number(out_data['num_unexp_deadlines']))!==(Number(out_data['num_act'])+Number(out_data['num_repiat']))){
-                alert('Количество нарушений не совпадает с графой \'Из них\'')
-            }else {
-                $.ajax({
-                    url: '/docs/report_events/save',
-                    type: 'POST',
-                    data: {
-                        keys: JSON.stringify(Object.keys(out_data)),
-                        values: JSON.stringify(Object.values(out_data))
-                    },
-                    success: (res) => {
-                         console.log(res)
-                        window.location.href = '/docs/report_events'
-                    }
-                })
+            if (check_param) {
+                if ((Number(out_data['num_elim']) + Number(out_data['num_unrem']) + Number(out_data['num_unexp_deadlines'])) !== (Number(out_data['num_act']) + Number(out_data['num_repiat']))) {
+                    alert('Количество нарушений не совпадает с графой \'Из них\'')
+                } else {
+                    $.ajax({
+                        url: '/docs/report_events/save',
+                        type: 'POST',
+                        data: {
+                            keys: JSON.stringify(Object.keys(out_data)),
+                            values: JSON.stringify(Object.values(out_data))
+                        },
+                        success: (res) => {
+                            console.log(res)
+                            window.location.href = '/docs/report_events'
+                        }
+                    })
+                }
+            } else {
+                alert('Не все поля заполнены!')
             }
-	}else{
-		alert('Не все поля заполнены!')
-	}
         }
     </script>
 

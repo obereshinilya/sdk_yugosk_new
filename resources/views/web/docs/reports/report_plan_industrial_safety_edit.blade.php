@@ -44,45 +44,53 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала/дочернего общества</th>
-                                    <td style="padding: 0px"><select disabled id="name_filiala" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select disabled id="id_do"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                                <option value="{{$data->name_filiala}}" selected>{{$data->name_filiala}}</option>
+                                            <option value="{{$data->id_do}}"
+                                                    selected>{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
                                         </select></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Цели в области ОТ и ПБ</th>
-                                    <td style="padding: 0px"><input id="goals_OT_PB" style="height: 100%; width: 95%" value="{{$data->goals_OT_PB}}"
-                                                                       class="text-field__input">
+                                    <td style="padding: 0px"><input id="goals_OT_PB" style="height: 100%; width: 95%"
+                                                                    value="{{$data->goals_OT_PB}}"
+                                                                    class="text-field__input">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование риска</th>
-                                    <td style="padding: 0px"><input id="name_risk" style="height: 100%; width: 95%" value="{{$data->name_risk}}"
-                                                                       class="text-field__input">
+                                    <td style="padding: 0px"><input id="name_risk" style="height: 100%; width: 95%"
+                                                                    value="{{$data->name_risk}}"
+                                                                    class="text-field__input">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Мероприятие</th>
-                                    <td style="padding: 0px"><input id="events" style="height: 100%; width: 95%" value="{{$data->events}}"
-                                                                       class="text-field__input">
+                                    <td style="padding: 0px"><input id="events" style="height: 100%; width: 95%"
+                                                                    value="{{$data->events}}"
+                                                                    class="text-field__input">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Срок исполнения</th>
                                     <td style="padding: 0px"><input type="date" id="period_execution"
-                                                                       style="height: 100%; width: 95%" value="{{$data->period_execution}}"
-                                                                       class="text-field__input">
+                                                                    style="height: 100%; width: 95%"
+                                                                    value="{{$data->period_execution}}"
+                                                                    class="text-field__input">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель (Ф.И.О., должность)</th>
-                                    <td style="padding: 0px"><input id="responsible" style="height: 100%; width: 95%" value="{{$data->responsible}}"
-                                                                       class="text-field__input">
+                                    <td style="padding: 0px"><input id="responsible" style="height: 100%; width: 95%"
+                                                                    value="{{$data->responsible}}"
+                                                                    class="text-field__input">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Отметка о выполнении</th>
-                                    <td style="padding: 0px"><select id="completion_mark" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="completion_mark"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @if($data->completion_mark == 'true')
                                                 <option value="true" selected>Выполнено</option>
@@ -120,7 +128,7 @@
                 }
             });
 
-            var params = ['name_filiala', 'goals_OT_PB', 'name_risk', 'events', 'period_execution', 'responsible', 'completion_mark']
+            var params = ['id_do', 'goals_OT_PB', 'name_risk', 'events', 'period_execution', 'responsible', 'completion_mark']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

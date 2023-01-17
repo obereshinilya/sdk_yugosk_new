@@ -13,6 +13,6 @@ class Events extends Model
 
 
     protected $fillable = [
-        'name_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note', 'year', 'date_update'
+        'id_do', 'org', 'viols', 'act_num', 'date_issue', 'events', 'person', 'date_base', 'date_repiat', 'date_fact', 'completion_mark', 'note', 'year', 'date_update'
     ];
 }

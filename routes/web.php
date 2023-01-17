@@ -79,6 +79,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/directory_opo/save', 'DirectoryController@save_opo');  //сохранение
             Route::get('/docs/directory_opo/edit/{id_opo}', 'DirectoryController@edit_opo');  //обновление
             Route::post('/docs/directory_opo/update/{id_opo}', 'DirectoryController@update_opo');  //сохранение изменений
+            Route::get('/docs/directory_opo/show/{id_opo}', 'DirectoryController@show_opo');  //обновление
 
             Route::get('/docs/directory_obj', 'DirectoryController@show_directory_obj');  //Справочник элементов ОПО
             Route::get('/docs/directory_obj/create', 'DirectoryController@create_obj');  //Создание ОПО
@@ -201,7 +202,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
 
-            Route::get('/docs/conclusions_industrial_safety', 'ReportController@show_conclusions_industrial_safety');  // План работ в области промышленной безопасности
+            Route::get('/docs/conclusions_industrial_safety/{object}', 'ReportController@show_conclusions_industrial_safety');  // План работ в области промышленной безопасности
             Route::get('/docs/conclusions_industrial_safety/get_params/{year}', 'ReportController@get_conclusions_industrial_safety');  // выборка за год
             Route::get('/docs/conclusions_industrial_safety/create', 'ReportController@create_conclusions_industrial_safety');  // страница создания записи
             Route::post('/docs/conclusions_industrial_safety/save', 'ReportController@save_conclusions_industrial_safety');  //сохранение

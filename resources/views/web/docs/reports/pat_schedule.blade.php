@@ -11,13 +11,18 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
         #table_for_search tr td:last-of-type {
@@ -141,13 +146,13 @@
                     url: '/docs/pat_schedule/get_params/' + document.getElementById('select__year').value,
                     type: 'GET',
                     success: (res) => {
-var num =1
+                        var num = 1
                         for (var row of res) {
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_filial']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['reg_num_opo']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['opo_name']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['name_opo']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['jan']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['feb']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['mar']}</td>`
@@ -172,7 +177,7 @@ var num =1
                                                                                  src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                                                                         </a></td> @endcan`
                             table_body.appendChild(tr)
-num+=1
+                            num += 1
                         }
                     },
                     error: function (error) {

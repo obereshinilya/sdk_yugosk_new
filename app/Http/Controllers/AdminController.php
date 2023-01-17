@@ -9,6 +9,7 @@ use App\Events\WasUnbanned;
 use App\Models\Logs;
 use App\Models\Logs_safety;
 use App\Models\Permission;
+
 //use App\Models\Role;
 use App\Models\Ref_obj;
 use App\Models\XML_journal;
@@ -37,11 +38,11 @@ class AdminController extends Controller
             ->where('model_has_roles.role_id', '=', 2)->orWhere('model_has_roles.role_id', '=', 3)->where('users.name', '=', Auth::user()->name)->get();
 
         $ip = request()->ip();
-        $message_new = "Пользователь"." ".Auth::user()->name." ".$message;
+        $message_new = "Пользователь" . " " . Auth::user()->name . " " . $message;
         $input['description'] = $message_new;
         $input['username'] = Auth::user()->name;
         $input['ip'] = $ip;
-	$input['created_at'] = date('Y-m-d H:i:s', strtotime('+1 hours'));
+        $input['created_at'] = date('Y-m-d H:i:s', strtotime('+1 hours'));
         $logs = Logs::create($input);
     }
 
@@ -51,12 +52,15 @@ class AdminController extends Controller
         AdminController::log_record('Открыл журнал для просмотра  ');//пишем в журнал
         $logs = Logs::orderBydesc('id')->paginate(20);
         $logs_all = Logs::orderByDesc('id')->get();
+        foreach ($logs as $key => $log) {
+            $date[$key] = date('d.m.Y H:m:s', strtotime($log->created_at));
+        }
         $i = count($logs_all);
         $page = $request->page;
-        if ($page == null){
+        if ($page == null) {
             $page = 1;
         }
-        return view('web.admin.admin_main', ['logs' => $logs, 'all_logs' => $logs_all, 'i'=>$i, 'page'=>$page]);
+        return view('web.admin.admin_main', ['logs' => $logs, 'all_logs' => $logs_all, 'i' => $i, 'page' => $page, 'date' => $date]);
     }
 
 
@@ -66,9 +70,9 @@ class AdminController extends Controller
         $js_logs = Logs::orderByDesc('id')->get();
         $setting_journal = Logs_safety::first();
         //проверки на заполненность
-        if ((count($js_logs)/$setting_journal->js_max)*100 > $setting_journal->js_warning){
+        if ((count($js_logs) / $setting_journal->js_max) * 100 > $setting_journal->js_warning) {
             return 4;   //если предупредительный ЖС
-        } elseif ((count($js_logs)/$setting_journal->js_max)*100 > $setting_journal->js_attention) {
+        } elseif ((count($js_logs) / $setting_journal->js_max) * 100 > $setting_journal->js_attention) {
             return 3;   //если аварийный ЖС
         }
     }
@@ -80,6 +84,7 @@ class AdminController extends Controller
         AdminController::log_record('Открыл для просмотра конфигурацию безопасности');
         return view('web.config_safety.edit', compact('config'));
     }
+
     //обновление настроек
     public function config_update(Request $request)
     {
@@ -93,7 +98,7 @@ class AdminController extends Controller
             'time_password' => 'required|numeric|min:1',
             'js_max' => 'required|numeric|min:1',
             'js_attention' => 'required|numeric|min:1',
-            'js_warning' => 'required|numeric|min:'.$js_warning,
+            'js_warning' => 'required|numeric|min:' . $js_warning,
 
         ]);
         $input = $request->all();
@@ -118,11 +123,14 @@ class AdminController extends Controller
             ->join('users', 'model_has_roles.model_id', '=', 'users.id')
             ->join('logs', 'users.name', '=', 'logs.username')->where('roles.name', '!=', "Администратор ИС")->where('roles.name', '!=', "Администратор ИБ")->
             orderByDesc('logs.id')->get();
+        foreach ($data['logs'] as $key => $log) {
+            $data['date'][$key] = date('d.m.Y H:m:s', strtotime($log->created_at));
+        }
         $data['count'] = count($data['logs']);
         $patch = 'logs' . Carbon::now() . '.pdf';
         $ip = request()->ip();
         event(new AddLogs(Auth::user()->name, $patch, $ip));  //пишем в журнал
-        $pdf = PDF::loadView('web.admin.logs_pdf', $data);
+        $pdf = PDF::loadView('web.admin.logs_pdf', compact('data'));
 
         return $pdf->download($patch);
     }
@@ -143,7 +151,7 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $user->ban();
-        $this->log_record('Заблокировал пользователя '.$user->name);//пишем в журнал
+        $this->log_record('Заблокировал пользователя ' . $user->name);//пишем в журнал
         return redirect('/users');
     }
 
@@ -153,7 +161,7 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         $user->unban();
-        $this->log_record('Разблокировал пользователя '.$user->name);//пишем в журнал
+        $this->log_record('Разблокировал пользователя ' . $user->name);//пишем в журнал
         return redirect('/users');
     }
 

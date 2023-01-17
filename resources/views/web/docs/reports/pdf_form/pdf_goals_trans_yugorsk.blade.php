@@ -35,15 +35,15 @@
     </thead>
     <tbody>
 
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->safety_goals}}</td>
             <td>{{$row->result_goal}}</td>
-            <td>{{$row->data_goal}}</td>
+            <td>{{$data['data_goal'][$key]}}</td>
             <td>{{$row->department}}</td>
             @if($row->completion_mark == '1')
-            <td>Выполнено</td>
+                <td>Выполнено</td>
             @else
                 <td>Не выполнено</td>
             @endif

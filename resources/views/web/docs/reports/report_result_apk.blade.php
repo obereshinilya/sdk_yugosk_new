@@ -46,7 +46,9 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th style="position:sticky; top:0" id="name_DO" colspan="2">Наименование филиала / дочернего общества</th>
+                                            <th style="position:sticky; top:0" id="id_do" colspan="2">Наименование
+                                                филиала / дочернего общества
+                                            </th>
                                         </tr>
                                         <tr>
                                             <th rowspan="2">Проведено проверок II уровня АПК</th>
@@ -260,7 +262,7 @@
 //				if(key == 'name_DO'){
 //tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; position:sticky; top:90px">${res[key][j]}</td>`
 //				}else{
-				tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${res[key][j]}</td>`
+                                tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${res[key][j]}</td>`
 //				}
                             }
                             table_body.appendChild(tr)

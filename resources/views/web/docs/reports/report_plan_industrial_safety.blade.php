@@ -11,12 +11,17 @@
     @include('web.include.sidebar_doc')
 
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
         #table_for_search tr td:last-of-type {
@@ -132,11 +137,22 @@
                 success: (res) => {
                     for (var row of res) {
                         var tr = document.createElement('tr')
-                        tr.innerHTML += `<td style="text-align: center">${row['name_filiala']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['goals_OT_PB']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['name_risk']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['events']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['period_execution']}</td>`
+                        if (row['period_execution']) {
+                            let date = new Date(row['period_execution']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
+                        } else {
+                            tr.innerHTML += `<td style="text-align: center;"></td>`
+
+                        }
                         tr.innerHTML += `<td style="text-align: center">${row['responsible']}</td>`
                         if (row['completion_mark']) {
                             tr.innerHTML += `<td style="text-align: center">Выполнено</td>`

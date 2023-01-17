@@ -46,10 +46,10 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
-                                    <td style="padding: 0px"><select id="name_branch" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -76,8 +76,9 @@
                                     <th style="text-align: center" colspan="2">Наименование (тема) противоаварийной
                                         тренировки
                                     </th>
-                                    <td style="padding-top: 0px; padding-bottom: 0px"><select id="workout_theme" style="height: 100%; width: 95%"
-                                                class="select-css">
+                                    <td style="padding-top: 0px; padding-bottom: 0px"><select id="workout_theme"
+                                                                                              style="height: 100%; width: 95%"
+                                                                                              class="select-css">
                                             @foreach(\App\Pat_themes::all() as $row)
                                                 <option value="{{$row->pat_desc}}">{{$row->pat_desc}}</option>
                                             @endforeach
@@ -87,8 +88,8 @@
                                 <tr>
                                     <th style="text-align: center" colspan="2">Наименование, рег. № ОПО</th>
                                     <td style="padding: 0px"><input type="text" id="name_reg_№_OPO"
-                                                                       style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Дата ПАТ</th>
@@ -99,22 +100,23 @@
                                 <tr>
                                     <th style="text-align: center" colspan="2">№ и дата протокола проведения ПАТ</th>
                                     <td style="padding: 0px"><input type="text" id="№_date_protocol_PAT"
-                                                                       style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Основание проведения ПАТ (плановая,
                                         внеплановая - указать причину)
                                     </th>
-                                    <td style="padding: 0px"><input type="text" id="basis_PAT" style="height: 100%; width: 95%"
-                                                                       class="text-field__input"></td>
+                                    <td style="padding: 0px"><input type="text" id="basis_PAT"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Оценка</th>
                                     <td style="padding: 0px"><select id="grade" style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                                <option value="true">Удовл.</option>
-                                                <option value="false">Не удовл.</option>
+                                            <option value="true">Удовл.</option>
+                                            <option value="false">Не удовл.</option>
                                         </select></td>
                                 </tr>
                                 </tbody>
@@ -140,6 +142,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -147,18 +150,21 @@
                 }
             });
 
-            var params = ['name_branch', 'plan_PAT', 'fact_PAT', 'workout_theme', 'name_reg_№_OPO', 'date_PAT', '№_date_protocol_PAT', 'basis_PAT', 'grade', 'year', 'plan_month_PAT']
+            var params = ['id_do', 'plan_PAT', 'fact_PAT', 'workout_theme', 'name_reg_№_OPO', 'date_PAT', '№_date_protocol_PAT', 'basis_PAT', 'grade', 'year', 'plan_month_PAT']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
             }
-            if(!out_data['date_PAT']){
+            if (!out_data['date_PAT']) {
                 alert('Не заполнена дата ПАТ!')
-            }else {
+            } else {
                 $.ajax({
                     url: '/docs/emergency_drills/save',
                     type: 'POST',
-                    data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                    data: {
+                        keys: JSON.stringify(Object.keys(out_data)),
+                        values: JSON.stringify(Object.values(out_data))
+                    },
                     success: (res) => {
                         // console.log(out_data)
                         window.location.href = '/docs/emergency_drills'

@@ -12,7 +12,7 @@ class KIPDInternalChecks extends Model
     public $timestamps = false;
 
 
-    protected $fillable = ['name_DO', 'indicator', 'date_check_correct', 'person_correct', 'usloviya', 'correct_event', 'reason', 'date_check', 'person', 'name_event', 'error_comment', 'date_act',
+    protected $fillable = ['id_do', 'indicator', 'date_check_correct', 'person_correct', 'usloviya', 'correct_event', 'reason', 'date_check', 'person', 'name_event', 'error_comment', 'date_act',
         'num_act', 'year', 'in_use', 'podrazdelenie'
     ];
 }
