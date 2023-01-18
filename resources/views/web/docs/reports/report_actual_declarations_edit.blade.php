@@ -36,11 +36,11 @@
                                 <tbody>
                                 <tr>
                                     <th style="text-align: center" colspan="1">Год</th>
-                                    <td style="padding: 0px"><select disabled id="year"
-                                                                     style="height: 100%; width: 20%"
-                                                                     class="select-css">
-                                            <option value="{{$data->year}}">{{$data->year}} год</option>
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input disabled style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030"
+                                               value="{{$data->year}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование ДПБ</th>

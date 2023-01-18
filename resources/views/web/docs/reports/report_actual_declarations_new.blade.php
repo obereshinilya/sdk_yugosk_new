@@ -38,13 +38,10 @@
                                 <tr>
                                     <th style="text-align: center">Год</th>
 
-                                    <td style="padding: 0px"><select id="year"
-                                                                     style="height: 100%; width: 20%"
-                                                                     class="select-css">
-                                            @for($i=2021; $i<=2030; $i++)
-                                                <option value="{{$i}}">{{$i}} год</option>
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование ДПБ</th>
@@ -105,6 +102,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {

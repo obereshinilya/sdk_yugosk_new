@@ -34,12 +34,11 @@
                                 <tbody>
                                 <tr>
                                     <th colspan="2">Год</th>
-                                    <td style="padding: 0px"><select class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            @for($i=2000; $i<=2025; $i++)
-                                                <option value="{{$i}}">{{$i}} год</option>
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030">
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="2">Наименование центра финансовой ответственности</th>
@@ -300,21 +299,21 @@
 
             }
 
-                $.ajax({
-                    url: '/docs/conclusions_industrial_safety/save',
-                    type: 'POST',
-                    data: {
-                        keys: JSON.stringify(Object.keys(out_data)),
-                        values: JSON.stringify(Object.values(out_data))
-                    },
-                    success: (res) => {
+            $.ajax({
+                url: '/docs/conclusions_industrial_safety/save',
+                type: 'POST',
+                data: {
+                    keys: JSON.stringify(Object.keys(out_data)),
+                    values: JSON.stringify(Object.values(out_data))
+                },
+                success: (res) => {
 
-                        console.log(res)
-                        // window.location.href = '/docs/conclusions_industrial_safety'
+                    console.log(res)
+                    // window.location.href = '/docs/conclusions_industrial_safety'
 
 
-                    }
-                })
+                }
+            })
 
         }
     </script>

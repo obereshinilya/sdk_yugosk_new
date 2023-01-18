@@ -34,17 +34,11 @@
                                 <tbody>
                                 <tr>
                                     <th colspan="2">Год</th>
-                                    <td style="padding: 0px"><select class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            <option value="{{$data->year}}">{{$data->year}} год</option>
-                                            @for($i=2000; $i<=2025; $i++)
-                                                @if($i==$data->year)
-                                                    @continue
-                                                @else
-                                                    <option value="{{$i}}">{{$i}} год</option>
-                                                @endif
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030"
+                                               value="{{$data->year}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="2">Наименование центра финансовой ответственности</th>
@@ -248,21 +242,24 @@
                                     <th id="" colspan="2">Условия действия заключений</th>
                                     <td style="padding: 0px"><input id="conditions_concl" type="text"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->conditions_concl}}">
+                                                                    class="text-field__input"
+                                                                    value="{{$data->conditions_concl}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th id="" colspan="2">Срок выполнения условий</th>
                                     <td style="padding: 0px"><input id="due_date" type="text"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->due_date}}">
+                                                                    class="text-field__input"
+                                                                    value="{{$data->due_date}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th id="" colspan="2">Приоритетность</th>
                                     <td style="padding: 0px"><input id="priority" type="text"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->priority}}">
+                                                                    class="text-field__input"
+                                                                    value="{{$data->priority}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -271,14 +268,16 @@
                                     </th>
                                     <td style="padding: 0px"><input id="concl_num" type="text"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->concl_num}}">
+                                                                    class="text-field__input"
+                                                                    value="{{$data->concl_num}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th id="" colspan="2">Наименование экспертной организации</th>
                                     <td style="padding: 0px"><input id="exp_org_name" type="text"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input" value="{{$data->exp_org_name}}">
+                                                                    class="text-field__input"
+                                                                    value="{{$data->exp_org_name}}">
                                     </td>
                                 </tr>
                                 </tbody>

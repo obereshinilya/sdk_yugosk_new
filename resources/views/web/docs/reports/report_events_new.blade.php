@@ -36,12 +36,10 @@
                                 <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            @for($i=2015; $i<=2023; $i++)
-                                                <option value="{{$i}}">{{$i}} год</option>
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>
