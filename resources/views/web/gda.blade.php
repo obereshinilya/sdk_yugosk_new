@@ -81,7 +81,7 @@
             </table>
         </div>
 
-        <div class="plan_naming"><p>Ситуационный план по ООО «Газпром трансгаз Югорск»</p></div>
+        <div class="plan_naming"><p style="color:#000">Ситуационный план ООО «Газпром трансгаз Югорск»</p></div>
 
 
         <table class="modal_table map_hover">
