@@ -343,4 +343,17 @@ class PdfReportController extends Controller
         return $pdf->download($patch);
 
     }
+
+    public function pdf_jas($start, $end)
+    {
+        $data['data'] = \App\Models\Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();;
+        foreach ($data['data'] as $key => $jas) {
+            $data['date'][$key] = date('d.m.Y H:m:s', strtotime($jas->date));
+        }
+        $title = 'Журнал аварийных событий за период с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($end));
+        $patch = 'jas' . Carbon::now() . '.pdf';
+        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_jas', compact('data', 'title'))->setPaper('a4', 'landscape');
+        return $pdf->download($patch);
+
+    }
 }

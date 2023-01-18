@@ -5,7 +5,7 @@
 
 @section('content')
     <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
-    <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.dataTables.min.js')}}" defer></script>
 
     @include('web.include.sidebar_doc')
     <style>
@@ -106,6 +106,7 @@
                             style="text-align: center; width: 60%; display: inline-block; margin: 0 20px">Журнал
                             аварийных событий
                         </h2>
+
                         @can('jas-create')
                             <div class="bat_add" style="margin-left: 0; display: inline-block"><a
                                     href="/jas_new_record" style="display: inline-block">Добавить
@@ -113,7 +114,28 @@
                             </div>
                         @endcan
                     </div>
+                    <div style="display: inline-block; width: 50%">
+                        <h3 class="text-muted" style="display: inline-block; margin-right: 20px">Период:</h3>
+                        <input type="date" class="text-field__input" id="jas_start" onchange="get_data()"
+                               style="width: 23%; display: inline-block; margin-right: 10px"
+                               max="{{date('Y-m-d')}}"></input>
+                        <input type="date" class="text-field__input" id="jas_end"
+                               style="width: 23%; display: inline-block" onchange="get_data()"
+                               max="{{date('Y-m-d')}}"></input>
+                    </div>
+                    <div style="display:inline-block; width: 24%; text-align: right">
+                        @can('doc-create')
+                            <div class="bat_info excel" style="display: inline-block"><a
+                                    href="/excel_jas"
+                                    style="display: inline-block">Экспорт в excel</a>
+                            </div>
 
+                            <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
+                                    href="/pdf_jas"
+                                    style="display: inline-block">Печать в pdf</a>
+                            </div>
+                        @endcan
+                    </div>
                     <div class="inside_tab_padding form51" style="height:102%; padding-left: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px" class="form51">
                             <table class="myTable" id="myTable">
@@ -128,37 +150,37 @@
                                     <th style="text-align: center">Состояние</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @foreach($data_to_jas as $key=>$row)
-                                    <tr>
-                                        <td style="text-align: center">
-                                            {{$date[$key]}}
+                                <tbody id="body_table">
+                                {{--                                @foreach($data_to_jas as $key=>$row)--}}
+                                {{--                                    <tr>--}}
+                                {{--                                        <td style="text-align: center">--}}
+                                {{--                                            {{$date[$key]}}--}}
 
-                                        </td>
-                                        <td style="text-align: center">{{$row->status}}</td>
-                                        <td style="text-align: center">{{$row->opo}}</td>
-                                        <td style="text-align: center">{{$row->elem_opo}}</td>
-                                        <td style="text-align: center">{{$row->sobitie}}</td>
-                                        <td id="{{$row->id}}" contenteditable="true"
-                                            onblur="save_comment(this.id, this.textContent)"
-                                            style="text-align: center">{{$row->comment}}</td>
-                                        <td style="text-align: center">
+                                {{--                                        </td>--}}
+                                {{--                                        <td style="text-align: center">{{$row->status}}</td>--}}
+                                {{--                                        <td style="text-align: center">{{$row->opo}}</td>--}}
+                                {{--                                        <td style="text-align: center">{{$row->elem_opo}}</td>--}}
+                                {{--                                        <td style="text-align: center">{{$row->sobitie}}</td>--}}
+                                {{--                                        <td id="{{$row->id}}" contenteditable="true"--}}
+                                {{--                                            onblur="save_comment(this.id, this.textContent)"--}}
+                                {{--                                            style="text-align: center">{{$row->comment}}</td>--}}
+                                {{--                                        <td style="text-align: center">--}}
 
-                                            @if ($row->check == false)
-                                                @can('events-kavit')
-                                                    <button row-id="{{$row->id}}" onclick="commit(this)"
-                                                            class="btn btn-info"
-                                                            style="color: whitesmoke; font-size: 13px; background-color: indianred">
-                                                        Квитировать
-                                                    </button>
-                                                @endcan
-                                            @else
-                                                {{'Просмотрено'}}
-                                            @endif
+                                {{--                                            @if ($row->check == false)--}}
+                                {{--                                                @can('events-kavit')--}}
+                                {{--                                                    <button row-id="{{$row->id}}" onclick="commit(this)"--}}
+                                {{--                                                            class="btn btn-info"--}}
+                                {{--                                                            style="color: whitesmoke; font-size: 13px; background-color: indianred">--}}
+                                {{--                                                        Квитировать--}}
+                                {{--                                                    </button>--}}
+                                {{--                                                @endcan--}}
+                                {{--                                            @else--}}
+                                {{--                                                {{'Просмотрено'}}--}}
+                                {{--                                            @endif--}}
 
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{--                                        </td>--}}
+                                {{--                                    </tr>--}}
+                                {{--                                @endforeach--}}
                                 </tbody>
                             </table>
                         </div>
@@ -169,6 +191,91 @@
         {{--    </div>--}}
 
         <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let date = new Date();
+                let dd = date.getDate();
+                if (dd < 10) dd = '0' + dd;
+                let mm = date.getMonth() + 1;
+                if (mm < 10) mm = '0' + mm;
+                let yyyy = date.getFullYear();
+                document.getElementById('jas_end').value = yyyy + '-' + mm + '-' + dd;
+                let startdate = new Date();
+                startdate.setMonth(startdate.getMonth() - 1);
+                dd = startdate.getDate();
+                if (dd < 10) dd = '0' + dd;
+                mm = startdate.getMonth() + 1;
+                if (mm < 10) mm = '0' + mm;
+                yyyy = startdate.getFullYear();
+                document.getElementById('jas_start').value = yyyy + '-' + mm + '-' + dd;
+                get_data()
+
+
+            })
+
+            function get_data() {
+
+                @can('doc-create')
+                let pdf = document.querySelector('.pdf');
+                pdf.firstChild.href = '/pdf_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value;
+                let excel = document.querySelector('.excel');
+                excel.firstChild.href = '/excel_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value;
+                @endcan
+
+                let table_body = document.getElementById('body_table')
+                table_body.innerHTML = '';
+                // console.log(document.getElementById('jas_end').value)
+                $.ajax({
+                    url: '/get_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value,
+                    type: 'GET',
+                    success: (res) => {
+                        if ($.fn.dataTable.isDataTable('#myTable')) {
+                            $('#myTable').DataTable().destroy();
+                        }
+                        for (var row of res) {
+                            var tr = document.createElement('tr')
+                            let date = new Date(row['date']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+
+                            tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy}  ${row['date'].split('.')[0].split(' ')[1]}  </td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['status']}</td>`
+
+                            tr.innerHTML += `<td style="text-align: center">${row['opo']}</td>`
+
+
+                            tr.innerHTML += `<td style="text-align: center">${row['elem_opo']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['sobitie']}</td>`
+                            tr.innerHTML += `<td style="text-align: center" id='${row['id']}' contenteditable="true" onblur="save_comment(this.id, this.textContent)" >${row['comment']}</td>`
+
+                            if (!row['check']) {
+                                @can('events-kavit')
+                                    tr.innerHTML += `<td style="text-align: center"><button row-id="${row['id']}" onclick="commit(this) class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">  Квитировать </button> </td>`
+                                @endcan
+                            } else {
+                                tr.innerHTML += `<td style="text-align: center">Просмотрено</td>`;
+                            }
+
+                            table_body.appendChild(tr)
+
+                        }
+                        $('#myTable').DataTable({
+                            "pagingType": "full_numbers",
+                            destroy: true,
+                            order: [[0, 'desc']],
+                        });
+                    },
+                    error: function (error) {
+                        var table_body = document.getElementById('body_table')
+                        table_body.innerText = ''
+                    },
+
+                })
+
+            }
+
             function commit(button) {
                 var id = button.getAttribute('row-id')
                 $.ajax({
@@ -194,24 +301,5 @@
                 })
             }
 
-            $(document).ready(function () {
-                $('#myTable').DataTable({
-                    "pagingType": "full_numbers",
-                    destroy: true,
-                    order: [[0, 'desc']],
-                });
-                //$('.btn').click(function () {
-                //	var id = this.getAttribute('row-id')
-                //      $.ajax({
-                //        url: '/jas_commit/' + id,
-                //      type: 'GET',
-                //      success: (res) => {
-                //        var td = this.parentNode
-                //td.removeChild(this)
-                //      td.innerText = 'Просмотрено'
-                // }
-                //  })
-//            });
-            });
         </script>
 @endsection

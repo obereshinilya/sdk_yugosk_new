@@ -9,7 +9,7 @@
         @include('web.admin.inc.new_JAS')
     @endcan
     @include('web.include.sidebar_doc')
-<p style="display: none" id="select_type_tb"></p>
+    <p style="display: none" id="select_type_tb"></p>
     <div class="inside_content">
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
@@ -35,17 +35,19 @@
                                 <tbody id="table_obj">
                                 <tr>
                                     <th style="text-align: center">Филиал дочернего общества</th>
-                                    <td style="padding: 0px"><select style="height: 100%; width: 70%" onchange="get_opo(this.value); this.setAttribute('disabled', 'true')"
+                                    <td style="padding: 0px"><select style="height: 100%; width: 70%"
+                                                                     onchange="get_opo(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Наименование филиала ДО...</option>
-                                        @foreach(\App\Models\Main_models\RefDO::all() as $row)
+                                            @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get() as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
                                 <tr id="opo" style="display: none">
                                     <th style="text-align: center">ОПО</th>
-                                    <td style="padding: 0px"><select id="id_opo" style="height: 100%; width: 70%" onchange="get_obj(this.value); this.setAttribute('disabled', 'true')"
+                                    <td style="padding: 0px"><select id="id_opo" style="height: 100%; width: 70%"
+                                                                     onchange="get_obj(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Наименование ОПО...</option>
 
@@ -53,7 +55,8 @@
                                 </tr>
                                 <tr id="obj" style="display: none">
                                     <th style="text-align: center">Элемент ОПО</th>
-                                    <td style="padding: 0px"><select id="id_obj" style="height: 100%; width: 70%" onchange="get_typetb(this.value); this.setAttribute('disabled', 'true')"
+                                    <td style="padding: 0px"><select id="id_obj" style="height: 100%; width: 70%"
+                                                                     onchange="get_typetb(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Элемент ОПО...</option>
 
@@ -61,7 +64,8 @@
                                 </tr>
                                 <tr id="tb" style="display: none">
                                     <th style="text-align: center">Тип ТБ</th>
-                                    <td style="padding: 0px"><select id="type_tb" style="height: 100%; width: 70%" onchange="get_tb(this.value); this.setAttribute('disabled', 'true')"
+                                    <td style="padding: 0px"><select id="type_tb" style="height: 100%; width: 70%"
+                                                                     onchange="get_tb(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Тип ТБ...</option>
 
@@ -69,7 +73,8 @@
                                 </tr>
                                 <tr id="tb_selected" style="display: none">
                                     <th style="text-align: center">Наименование ТБ</th>
-                                    <td style="padding: 0px"><select id="id_tb" style="height: 100%; width: 70%" onchange="this.setAttribute('disabled', 'true'); document.getElementById('sobitie_tr').style.display = ''; document.getElementById('comment_tr').style.display = ''; document.getElementById('repair_row').style.display = ''; document.getElementById('save_button').style.display = ''"
+                                    <td style="padding: 0px"><select id="id_tb" style="height: 100%; width: 70%"
+                                                                     onchange="this.setAttribute('disabled', 'true'); document.getElementById('sobitie_tr').style.display = ''; document.getElementById('comment_tr').style.display = ''; document.getElementById('repair_row').style.display = ''; document.getElementById('save_button').style.display = ''"
                                                                      class="select-css">
                                             <option value="">Наименование ТБ...</option>
 
@@ -102,7 +107,8 @@
                             <div style="text-align: center">
                                 <div class="bat_add"
                                      style="width: 10%; display: inline-block; margin-top: 20px; margin-bottom: 20px; margin-left: 0px">
-                                    <a href="#" id="save_button" style="display: none" onclick="save()">Сохранить</a></div>
+                                    <a href="#" id="save_button" style="display: none" onclick="save()">Сохранить</a>
+                                </div>
                                 <div class="bat_add"
                                      style="width: 10%; display: inline-block; margin-top: 20px; margin-bottom: 20px; margin-left: 0px">
                                     <a style="background-color: #CD5C5C" href="/jas_full">Отменить</a>
@@ -116,13 +122,13 @@
     </div>
 
     <script>
-        function get_opo(id_do){
+        function get_opo(id_do) {
             $.ajax({
-                url: '/get_do/'+id_do,
+                url: '/get_do/' + id_do,
                 type: 'GET',
                 success: (res) => {
                     var id_opo = document.getElementById('id_opo')
-                    for(var opo of res){
+                    for (var opo of res) {
                         var option = new Option(opo['full_name_opo'], opo['id_opo'])
                         id_opo.append(option)
                     }
@@ -130,13 +136,14 @@
                 }
             })
         }
-        function get_obj(id_opo){
+
+        function get_obj(id_opo) {
             $.ajax({
-                url: '/get_obj/'+id_opo,
+                url: '/get_obj/' + id_opo,
                 type: 'GET',
                 success: (res) => {
                     var select_opo = document.getElementById('id_obj')
-                    for(var opo of res){
+                    for (var opo of res) {
                         var option = new Option(opo['full_name_obj'], opo['id_obj'])
                         select_opo.append(option)
                     }
@@ -144,13 +151,14 @@
                 }
             })
         }
-        function get_typetb(id_obj){
+
+        function get_typetb(id_obj) {
             $.ajax({
-                url: '/get_typetb/'+id_obj,
+                url: '/get_typetb/' + id_obj,
                 type: 'GET',
                 success: (res) => {
                     var select_opo = document.getElementById('type_tb')
-                    for(var opo of res){
+                    for (var opo of res) {
                         var option = new Option(opo['full_name_type'], opo['type_tb'])
                         select_opo.append(option)
                     }
@@ -158,16 +166,17 @@
                 }
             })
         }
-        function get_tb(type_tb){
+
+        function get_tb(type_tb) {
             var tr = document.createElement('tr')
             $.ajax({
-                url: '/get_tb_for_jas/'+document.getElementById('type_tb').value+'/'+document.getElementById('id_obj').value,
+                url: '/get_tb_for_jas/' + document.getElementById('type_tb').value + '/' + document.getElementById('id_obj').value,
                 type: 'GET',
                 success: (res) => {
                     var select_tr = document.getElementById('tb_selected')
                     var select = document.getElementById('id_tb')
                     select_tr.style.display = ''
-                    for(var row of res){
+                    for (var row of res) {
                         var option = new Option(row['short_name_tb'], row['id_tb'])
                         select.append(option)
                     }
@@ -175,6 +184,7 @@
             })
 
         }
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -185,19 +195,22 @@
             var out_data = []
             var check_data = true
             for (var param of params) {
-                if (document.getElementById(param).value){
+                if (document.getElementById(param).value) {
                     out_data[param] = document.getElementById(param).value
-                }else {
+                } else {
                     check_data = false
                 }
             }
-            if (!check_data){
+            if (!check_data) {
                 alert('Неверно заполнена форма!')
-            }else{
+            } else {
                 $.ajax({
                     url: '/save_new_jas',
                     type: 'POST',
-                    data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                    data: {
+                        keys: JSON.stringify(Object.keys(out_data)),
+                        values: JSON.stringify(Object.values(out_data))
+                    },
                     success: (res) => {
                         // console.log(res)
                         window.location.href = '/jas_full'

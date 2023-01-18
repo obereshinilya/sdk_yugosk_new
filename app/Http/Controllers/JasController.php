@@ -51,7 +51,7 @@ class JasController extends Controller
 
     public function get_tb_for_jas($type_tb, $id_obj)
     {
-        return RefTb::where('type_tb', '=', $type_tb)->where('id_obj', '=', $id_obj)->get();
+        return RefTb::where('type_tb', '=', $type_tb)->where('id_obj', '=', $id_obj)->orderby('short_name_tb')->get();
     }
 
     public function jas_new_record()
@@ -61,12 +61,12 @@ class JasController extends Controller
 
     public function showJas()
     {
-        $data_to_jas = \App\Models\Jas::orderbydesc('id')->where('auto_generate', '=', true)->get();
+//        $data_to_jas = \App\Models\Jas::orderbydesc('id')->where('auto_generate', '=', true)->get();
         AdminController::log_record('Открыл журнал аварийных событий  ');//пишем в журнал
-        foreach ($data_to_jas as $key => $jas) {
-            $date[$key] = date('d.m.Y H:m:s', strtotime($jas->date));
-        }
-        return view('web.jas.index', compact('data_to_jas', 'date'));
+//        foreach ($data_to_jas as $key => $jas) {
+//            $date[$key] = date('d.m.Y H:m:s', strtotime($jas->date));
+//        }
+        return view('web.jas.index');
     }
 
     public function jas_in_top_table()
@@ -95,6 +95,12 @@ class JasController extends Controller
         } catch (\Throwable $e) {
             return $e;
         }
+    }
+
+    public function get_jas_date($start, $end)
+    {
+        $data = Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();
+        return $data;
     }
 
 

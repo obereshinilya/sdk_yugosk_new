@@ -1,4 +1,3 @@
-
 <style>
     body {
         font-family: DejaVu Sans, sans-serif;
@@ -90,7 +89,7 @@
     <tbody>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->name_DO}}</td>
+            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->level2_plan}}</td>
             <td>{{$row->level2_fact}}</td>
             <td>{{$row->level2_error}}</td>

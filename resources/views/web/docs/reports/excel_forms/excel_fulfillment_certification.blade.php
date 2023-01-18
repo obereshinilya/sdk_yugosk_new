@@ -82,7 +82,7 @@
     <tbody>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->name_do}}</td>
+            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->rostech_cec}}</td>
             <td>{{$row->rostech_cec_plan}}</td>
             <td>{{$row->rostech_cec_fact}}</td>
