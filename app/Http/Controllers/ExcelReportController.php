@@ -315,10 +315,10 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_sved_avar($year)
+    public function excel_sved_avar($start, $finish)
     {
-        $data = Sved_avar::where('year', '=', $year)->get();
-        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за ' . $year . ' год.';
+        $data = Sved_avar::where('data_time', '>=', $start)->where('data_time', '<=', $finish)->get();;
+        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($finish));
         $patch = 'sved_avar' . Carbon::now() . '.xlsx';
         return Excel::download(new Sved_avar_Export($title, $data), $patch);
 

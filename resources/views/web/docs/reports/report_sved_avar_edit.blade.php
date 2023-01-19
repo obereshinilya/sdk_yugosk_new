@@ -44,6 +44,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала ДО</th>
+                                    <th style="text-align: center">Наименование филиала ДО</th>
                                     <td style="padding: 0px"><select disabled id="id_do"
                                                                      style="height: 100%; width: 50%"
                                                                      class="select-css">
@@ -76,10 +77,14 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Дата и время техногенного события (МСК)</th>
-                                    <td style="padding: 0px"><input type="text" id="data_time"
-                                                                    value="{{$data->data_time}}"
-                                                                    style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                    <td style="padding: 0px">
+
+
+                                        <input type="datetime-local" id="data_time"
+                                               style="height: 100%; width: 50%"
+                                               class="text-field__input" max="{{date('Y-m-d\TH:m')}}"
+                                               value="{{$data->data_time}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид аварии/инцидента (по классификатору)</th>

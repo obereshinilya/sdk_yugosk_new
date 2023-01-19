@@ -65,12 +65,12 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
-                                        <div class="bat_info excel" style="display: inline-block"><a
-                                                href="/excel_sved_avar/"
+                                        <div class="bat_info" style="display: inline-block"><a
+                                                href="#openModal1"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
-                                        <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                href="/pdf_sved_avar/"
+                                        <div class="bat_info" style="display: inline-block; margin-left: 0px"><a
+                                                href="#openModal"
                                                 style="display: inline-block">Печать в pdf</a>
                                         </div>
                                     @endcan
@@ -142,6 +142,91 @@
                 </div>
             </div>
         </div>
+
+        <div id="openModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#close" class="close">×</a>
+                    </div>
+                    <div class="modal-body">
+                        <table class="modal_table map_hover">
+                            <thead>
+                            <th colspan="2">Выберите период</th>
+
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td style="text-align: center">
+                                    <input type="date" class="text-field__input" style="width: 94%" id="start_date_pdf"
+                                           onchange="getprint()" max="{{date('Y-m-d')}}">
+
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="date" class="text-field__input" style="width: 94%" id="finish_date_pdf"
+                                           onchange="getprint()" max="{{date('Y-m-d')}}">
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <div class="bat_info print__pdf" style="display: inline-block; margin-left: 0"><a
+                                            href="#openModal"
+                                            style="display: inline-block; margin: 0">Печать</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="openModal1" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#close" class="close">×</a>
+                    </div>
+                    <div class="modal-body">
+                        <table class="modal_table map_hover">
+                            <thead>
+                            <th colspan="2">Выберите период</th>
+
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td style="text-align: center">
+                                    <input type="date" class="text-field__input" style="width: 94%"
+                                           id="start_date_excel" onchange="getexcel()" max="{{date('Y-m-d')}}">
+
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="date" class="text-field__input" style="width: 94%"
+                                           id="finish_date_excel" onchange="getexcel()" max="{{date('Y-m-d')}}">
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <div class="bat_info print__excel" style="display: inline-block; margin-left: 0"><a
+                                            href="#openModal"
+                                            style="display: inline-block; margin: 0">Выгрузка в excel</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var date = new Date();
@@ -149,13 +234,19 @@
                 get_data()
             })
 
+            function getprint() {
+                let pdf = document.querySelector('.print__pdf');
+                pdf.firstChild.href = /pdf_sved_avar/ + document.getElementById('start_date_pdf').value + '/' + document.getElementById('finish_date_pdf').value;
+
+            }
+
+            function getexcel() {
+                let pdf = document.querySelector('.print__excel');
+                pdf.firstChild.href = /excel_sved_avar/ + document.getElementById('start_date_excel').value + '/' + document.getElementById('finish_date_excel').value;
+
+            }
+
             function get_data() {
-                @can('doc-create')
-                let pdf = document.querySelector('.pdf');
-                pdf.firstChild.href = '/pdf_sved_avar/' + document.getElementById('select__year').value;
-                let excel = document.querySelector('.excel');
-                excel.firstChild.href = '/excel_sved_avar/' + document.getElementById('select__year').value;
-                @endcan
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
                 $.ajax({
@@ -169,7 +260,19 @@
                             tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['vid_techno_sob']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['mesto_techno_sob']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['data_time']}</td>`
+
+                            var newDate = new Date(row['data_time']);
+
+
+                            let dd = newDate.getDate();
+                            if (dd < 10) dd = '0' + dd;
+
+                            let mm = newDate.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+
+                            let yyyy = newDate.getFullYear();
+
+                            tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy} ${newDate.toISOString().split('T')[1].split('.')[0]}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['vid_avari']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['kratk_opisan']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['nalich_postradav']}</td>`

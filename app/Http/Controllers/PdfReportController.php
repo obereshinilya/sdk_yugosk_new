@@ -203,10 +203,10 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_sved_avar($year)
+    public function pdf_sved_avar($start, $finish)
     {
-        $data = Sved_avar::where('year', '=', $year)->get();
-        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за ' . $year . ' год.';
+        $data = Sved_avar::where('data_time', '>=', $start)->where('data_time', '<=', $finish)->get();
+        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($finish));
         $patch = 'sved_avar' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_sved_avar', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);

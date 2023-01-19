@@ -72,9 +72,10 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Дата и время техногенного события (МСК)</th>
-                                    <td style="padding: 0px"><input type="text" id="data_time"
-                                                                    style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                    <td style="padding: 0px"><input type="datetime-local" id="data_time"
+                                                                    style="height: 100%; width: 50%"
+                                                                    class="text-field__input"
+                                                                    max="{{date('Y-m-d\TH:m')}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид аварии/инцидента (по классификатору)</th>

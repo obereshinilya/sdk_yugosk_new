@@ -248,6 +248,19 @@
                 success: (res) => {
                     var table_body = document.getElementById('body_table')
                     table_body.innerText = ''
+                    let sum = 0;
+                    let level2_check = 0
+                        , level2_error = 0,
+                        level3_check = 0,
+                        level3_error = 0,
+                        level4_check = 0,
+                        level4_error = 0,
+                        gaznadzor_check = 0,
+                        gaznadzor_error = 0,
+                        rosteh_check = 0,
+                        rosteh_error = 0,
+                        percent,
+                        min
                     for (var key of Object.keys(res)) {
                         var num_record = Object.keys(res['id']).length
                         if (key !== 'id' && key !== 'year') {
@@ -263,6 +276,132 @@
 //				}else{
                                 tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${res[key][j]}</td>`
 //				}
+                            }
+                            if (key == 'id_do') {
+                                tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">Итого по ДО</td>`
+                            } else if (key != 'level2_percent' && key != 'level3_percent' && key != 'level4_percent' && key != 'gaznadzor_percent' && key != 'rosteh_percent' && key != 'ind_graph' && key != 'ind_repiat_apk' && key != 'ind_repiat_gaznadzor' && key != 'ind_rosteh') {
+                                sum = 0
+                                for (var j = 1; j <= num_record; j++) {
+                                    switch (key) {
+                                        case 'level2_error':
+                                            level2_error += res[key][j];
+                                            break;
+                                        case 'level2_check':
+                                            level2_check += res[key][j];
+                                            break;
+                                        case 'level3_error':
+                                            level3_error += res[key][j];
+                                            break;
+                                        case 'level3_check':
+                                            level3_check += res[key][j];
+                                            break;
+                                        case 'level4_error':
+                                            level4_error += res[key][j];
+                                            break;
+                                        case 'level4_check':
+                                            level4_check += res[key][j];
+                                            break;
+                                        case 'gaznadzor_error':
+                                            gaznadzor_error += res[key][j];
+                                            break;
+                                        case 'gaznadzor_check':
+                                            gaznadzor_check += res[key][j];
+                                            break;
+                                        case 'rosteh_error':
+                                            rosteh_error += res[key][j];
+                                            break;
+                                        case 'rosteh_check':
+                                            rosteh_check += res[key][j];
+                                            break;
+
+                                    }
+                                    sum += res[key][j]
+                                }
+                                ;
+                                tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${sum}</td>`
+                            } else {
+                                switch (key) {
+                                    case 'level2_percent':
+                                        if (level2_check == 0 && level2_error == 0) {
+                                            percent = 100
+                                        } else {
+                                            percent = level2_check / level2_error * 100;
+                                        }
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${percent.toFixed(3)}</td>`;
+                                        break;
+                                    case 'level3_percent':
+                                        if (level3_check == 0 && level3_error == 0) {
+                                            percent = 100
+                                        } else {
+                                            percent = level3_check / level3_error * 100;
+                                        }
+
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${percent.toFixed(3)}</td>`;
+                                        break;
+                                    case 'level4_percent':
+                                        if (level4_check == 0 && level4_error == 0) {
+                                            percent = 100
+                                        } else {
+                                            percent = level4_check / level4_error * 100;
+                                        }
+
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${percent.toFixed(3)}</td>`;
+                                        break;
+                                    case 'gaznadzor_percent':
+                                        if (gaznadzor_check == 0 && gaznadzor_error == 0) {
+                                            percent = 100
+                                        } else {
+                                            percent = gaznadzor_check / gaznadzor_error * 100;
+                                        }
+
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${percent.toFixed(3)}</td>`;
+                                        break;
+                                    case 'rosteh_percent':
+                                        if (rosteh_check == 0 && rosteh_error == 0) {
+                                            percent = 100
+                                        } else {
+                                            percent = rosteh_check / rosteh_error * 100;
+                                        }
+
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${percent.toFixed(3)}</td>`;
+                                        break;
+                                    case 'ind_graph':
+                                        min = res[key][1];
+                                        for (var j = 1; j <= num_record; j++) {
+                                            if (res[key][j] < min) {
+                                                min = res[key][j];
+                                            }
+                                        }
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${min}</td>`;
+                                        break;
+                                    case 'ind_repiat_apk':
+                                        min = res[key][1];
+                                        for (var j = 1; j <= num_record; j++) {
+                                            if (res[key][j] < min) {
+                                                min = res[key][j];
+                                            }
+                                        }
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${min}</td>`;
+                                        break;
+                                    case 'ind_repiat_gaznadzor':
+                                        min = res[key][1];
+                                        for (var j = 1; j <= num_record; j++) {
+                                            if (res[key][j] < min) {
+                                                min = res[key][j];
+                                            }
+                                        }
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${min}</td>`;
+                                        break;
+                                    case 'ind_rosteh':
+                                        min = res[key][1];
+                                        for (var j = 1; j <= num_record; j++) {
+                                            if (res[key][j] < min) {
+                                                min = res[key][j];
+                                            }
+                                        }
+                                        tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${min}</td>`;
+                                        break;
+                                }
                             }
                             table_body.appendChild(tr)
                         }
