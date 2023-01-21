@@ -19,6 +19,7 @@
                         <a href="/docs/directory_opo">Справочник ОПО</a>
                         <a href="/docs/directory_obj">Справочник элементов ОПО</a>
                         <a href="/docs/directory_tb">Справочник ТБ элементов ОПО</a>
+                        <a href="/docs/opo">Сведения, характеризующие ОПО</a>
                </div>
                 </label>
                 <label class="accordion">
