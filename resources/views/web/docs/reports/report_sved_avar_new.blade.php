@@ -35,12 +35,10 @@
                                 <tbody>
                                 <tr>
                                     <th style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            @for($i=2015; $i<=2023; $i++)
-                                                <option value="{{$i}}">{{$i}} год</option>
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала ДО</th>
@@ -74,9 +72,10 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Дата и время техногенного события (МСК)</th>
-                                    <td style="padding: 0px"><input type="text" id="data_time"
-                                                                    style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                    <td style="padding: 0px"><input type="datetime-local" id="data_time"
+                                                                    style="height: 100%; width: 50%"
+                                                                    class="text-field__input"
+                                                                    max="{{date('Y-m-d\TH:m')}}"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид аварии/инцидента (по классификатору)</th>

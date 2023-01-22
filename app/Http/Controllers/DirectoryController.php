@@ -184,7 +184,7 @@ class DirectoryController extends Controller
 
     public function get_do($id_do)
     {
-        return RefOpo::where('id_do', '=', $id_do)->get()->toArray();
+        return RefOpo::where('id_do', '=', $id_do)->orderby('full_name_opo')->get()->toArray();
     }
 
     public function save_obj(Request $request)
@@ -672,13 +672,13 @@ class DirectoryController extends Controller
 
     public function get_obj($id_opo)
     {
-        return RefObj::where('id_opo', '=', $id_opo)->get()->toArray();
+        return RefObj::where('id_opo', '=', $id_opo)->orderby('full_name_obj')->get()->toArray();
     }
 
     public function get_typetb($id_obj)
     {
         $type_obj = RefObj::where('id_obj', '=', $id_obj)->first()->type_obj;
-        return TypeTb::where('from_type_obj', '=', $type_obj)->get()->toArray();
+        return TypeTb::where('from_type_obj', '=', $type_obj)->orderby('full_name_type')->get()->toArray();
     }
 
     public function get_tb($type_tb)

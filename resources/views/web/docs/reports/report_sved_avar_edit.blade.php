@@ -36,12 +36,14 @@
                                 <tbody>
                                 <tr>
                                     <th style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select disabled class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            <option value="{{$data->year}}">{{$data->year}} год</option>
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input disabled style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030"
+                                               value="{{$data->year}}">
+                                    </td>
                                 </tr>
                                 <tr>
+                                    <th style="text-align: center">Наименование филиала ДО</th>
                                     <th style="text-align: center">Наименование филиала ДО</th>
                                     <td style="padding: 0px"><select disabled id="id_do"
                                                                      style="height: 100%; width: 50%"
@@ -75,10 +77,14 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Дата и время техногенного события (МСК)</th>
-                                    <td style="padding: 0px"><input type="text" id="data_time"
-                                                                    value="{{$data->data_time}}"
-                                                                    style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                    <td style="padding: 0px">
+
+
+                                        <input type="datetime-local" id="data_time"
+                                               style="height: 100%; width: 50%"
+                                               class="text-field__input" max="{{date('Y-m-d\TH:m')}}"
+                                               value="{{$data->data_time}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Вид аварии/инцидента (по классификатору)</th>

@@ -203,10 +203,10 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_sved_avar($year)
+    public function pdf_sved_avar($start, $finish)
     {
-        $data = Sved_avar::where('year', '=', $year)->get();
-        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за ' . $year . ' год.';
+        $data = Sved_avar::where('data_time', '>=', $start)->where('data_time', '<=', $finish)->get();
+        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($finish));
         $patch = 'sved_avar' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_sved_avar', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
@@ -340,6 +340,19 @@ class PdfReportController extends Controller
         $title = 'График комплексных противоаварийных тренировок I - II уровня на опасных производственных объектах ООО «Газпром трансгаз Югорск» на ' . $year . ' год';
         $patch = 'pat_schedule' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_pat_schedule', compact('data', 'title'))->setPaper('a4', 'landscape');
+        return $pdf->download($patch);
+
+    }
+
+    public function pdf_jas($start, $end)
+    {
+        $data['data'] = \App\Models\Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();;
+        foreach ($data['data'] as $key => $jas) {
+            $data['date'][$key] = date('d.m.Y H:m:s', strtotime($jas->date));
+        }
+        $title = 'Журнал аварийных событий за период с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($end));
+        $patch = 'jas' . Carbon::now() . '.pdf';
+        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_jas', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
     }

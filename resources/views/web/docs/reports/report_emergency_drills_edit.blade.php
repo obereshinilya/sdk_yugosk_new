@@ -30,10 +30,11 @@
                                 <thead>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select disabled class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            <option value="{{$data->year}}">{{$data->year}} год</option>
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input disabled style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030"
+                                               value="{{$data->year}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Наименование филиала ДО</th>

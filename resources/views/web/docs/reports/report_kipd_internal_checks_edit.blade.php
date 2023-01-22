@@ -37,10 +37,11 @@
                                 <tbody>
                                 <tr>
                                     <th colspan="2" style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select disabled class="select-css" id="year"
-                                                                     style="height: 100%; width: 20%">
-                                            <option value="{{$edition_data->year}}">{{$edition_data->year}} год</option>
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input disabled style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030"
+                                               value="{{$edition_data->year}}">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center" colspan="2">Наименование филиала ДО</th>
@@ -170,10 +171,6 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function test() {
-            var date = new Date();
-            document.getElementById('year').value = date.getFullYear()
-        })
 
         function save() {
             $.ajaxSetup({

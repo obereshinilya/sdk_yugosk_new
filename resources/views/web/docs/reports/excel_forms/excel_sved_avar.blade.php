@@ -46,7 +46,7 @@
     @foreach($data as $row)
         <tr>
             <td>{{$row->id}}</td>
-            <td>{{$row->naim_filiala}}</td>
+            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->vid_techno_sob}}</td>
             <td>{{$row->mesto_techno_sob}}</td>
             <td>{{$row->data_time}}</td>
