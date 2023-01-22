@@ -62,10 +62,10 @@
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
-                                @foreach($pdf_files as $image)
+                                @foreach($pdf_files as $key=>$image)
                                     <tr>
                                         <td style="text-align: center">{{ $image->name  }}</td>
-                                        <td style="text-align: center">{{ $image->date }}</td>
+                                        <td style="text-align: center">{{ $date[$key] }}</td>
                                         <td style="text-align: center">
                                             <a href="/docs/norm_document_open/{{ $image->id }}"
                                                style="text-align: center">

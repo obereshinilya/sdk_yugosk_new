@@ -12,12 +12,18 @@
     @include('web.include.sidebar_doc')
     <style>
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
 
-        th, td{
+        .form51 table tr td {
+            padding: 2px 3px
+        }
+
+        th, td {
             word-break: break-word;
         }
+
         @can('report-edit')
         #table_for_search tr td:last-of-type {
             /*display: flex;*/
@@ -94,7 +100,7 @@
                                 <thead>
                                 <tr>
                                     <th style="text-align: center">№ п/п</th>
-                                    <th style="text-align: center">Даименование филиала ДО</th>
+                                    <th style="text-align: center">Наименование филиала ДО</th>
                                     <th style="text-align: center">Корректирующие и предупреждающие действия</th>
                                     <th style="text-align: center">Ответственный исполнитель</th>
                                     <th style="text-align: center">Срок выполнения</th>
@@ -129,14 +135,20 @@
                     url: '/docs/get_perfomance_plan_KiPD/' + document.getElementById('select__year').value,
                     type: 'GET',
                     success: (res) => {
-var num = 1;
+                        var num = 1;
                         for (var row of res) {
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center">${num}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['correct_action']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['respons_executor']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['deadline']}</td>`
+                            let date = new Date(row['deadline']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
                             if (row['completion_mark']) {
                                 tr.innerHTML += `<td style="text-align: center">Выполнено</td>`
 
@@ -153,7 +165,7 @@ var num = 1;
                                      src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                             </a></td> @endcan`
                             table_body.appendChild(tr)
-num += 1
+                            num += 1
                         }
                     },
                     error: function (error) {

@@ -35,13 +35,13 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name_do}}</td>
             <td>{{$row->correct_action}}</td>
             <td>{{$row->respons_executor}}</td>
-            <td>{{$row->deadline}}</td>
+            <td>{{$data['deadline'][$key]}}</td>
             @if($row->completion_mark == 'true')
                 <td>Выполнено</td>
             @else

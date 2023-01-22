@@ -41,7 +41,7 @@
     </thead>
     <tbody>
     {{$sum=0}}
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->struct_unit}}</td>
             <td>{{$row->goals}}</td>
@@ -49,7 +49,7 @@
             <td>{{$row->event}}</td>
             <td>{{$row->cost}}</td>
             <td>{{$row->src}}</td>
-            <td>{{$row->completion_date}}</td>
+            <td>{{$data['completion_date'][$key]}}</td>
             <td>{{$row->person}}</td>
             @if($row->completion_mark)
                 <td>Выполнено</td>

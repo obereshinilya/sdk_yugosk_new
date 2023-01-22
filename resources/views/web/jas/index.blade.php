@@ -102,7 +102,9 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center; width: 60%; display: inline-block; margin: 0 20px">Журнал аварийных событий
+                        <h2 class="text-muted"
+                            style="text-align: center; width: 60%; display: inline-block; margin: 0 20px">Журнал
+                            аварийных событий
                         </h2>
                         @can('jas-create')
                             <div class="bat_add" style="margin-left: 0; display: inline-block"><a
@@ -127,24 +129,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($data_to_jas as $row)
+                                @foreach($data_to_jas as $key=>$row)
                                     <tr>
                                         <td style="text-align: center">
-{{--                                            {{$row->date}}--}}
-                                            <?php
-                                            echo date("Y-m-d H:i:s", strtotime($row->date))
-                                            ?>
+                                            {{$date[$key]}}
+
                                         </td>
                                         <td style="text-align: center">{{$row->status}}</td>
                                         <td style="text-align: center">{{$row->opo}}</td>
                                         <td style="text-align: center">{{$row->elem_opo}}</td>
                                         <td style="text-align: center">{{$row->sobitie}}</td>
-                                        <td id="{{$row->id}}" contenteditable="true" onblur="save_comment(this.id, this.textContent)" style="text-align: center">{{$row->comment}}</td>
+                                        <td id="{{$row->id}}" contenteditable="true"
+                                            onblur="save_comment(this.id, this.textContent)"
+                                            style="text-align: center">{{$row->comment}}</td>
                                         <td style="text-align: center">
 
                                             @if ($row->check == false)
                                                 @can('events-kavit')
-                                                    <button row-id="{{$row->id}}" onclick="commit(this)" class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">Квитировать
+                                                    <button row-id="{{$row->id}}" onclick="commit(this)"
+                                                            class="btn btn-info"
+                                                            style="color: whitesmoke; font-size: 13px; background-color: indianred">
+                                                        Квитировать
                                                     </button>
                                                 @endcan
                                             @else
@@ -161,12 +166,12 @@
                 </div>
             </div>
         </div>
-{{--    </div>--}}
+        {{--    </div>--}}
 
-    <script>
-        function commit(button){
-	var id = button.getAttribute('row-id')
-$.ajax({
+        <script>
+            function commit(button) {
+                var id = button.getAttribute('row-id')
+                $.ajax({
                     url: '/jas_commit/' + id,
                     type: 'GET',
                     success: (res) => {
@@ -175,36 +180,38 @@ $.ajax({
                         td.innerText = 'Просмотрено'
                     }
                 })
-	}
-        function save_comment(id_jas, text){
-            if (!text){
-                text = ''
             }
-            $.ajax({
-                url: '/save_comment/'+id_jas+'/'+text,
-                type: 'GET',
-                success: (res) => {
+
+            function save_comment(id_jas, text) {
+                if (!text) {
+                    text = ''
                 }
-            })
-        }
-        $(document).ready(function () {
-            $('#myTable').DataTable({
-                "pagingType": "full_numbers",
-                destroy: true,
-                order: [[0, 'desc']],
-            });
-            //$('.btn').click(function () {
-	//	var id = this.getAttribute('row-id')
-          //      $.ajax({
-            //        url: '/jas_commit/' + id,
-              //      type: 'GET',
-              //      success: (res) => {
+                $.ajax({
+                    url: '/save_comment/' + id_jas + '/' + text,
+                    type: 'GET',
+                    success: (res) => {
+                    }
+                })
+            }
+
+            $(document).ready(function () {
+                $('#myTable').DataTable({
+                    "pagingType": "full_numbers",
+                    destroy: true,
+                    order: [[0, 'desc']],
+                });
+                //$('.btn').click(function () {
+                //	var id = this.getAttribute('row-id')
+                //      $.ajax({
+                //        url: '/jas_commit/' + id,
+                //      type: 'GET',
+                //      success: (res) => {
                 //        var td = this.parentNode
-                        //td.removeChild(this)
-                  //      td.innerText = 'Просмотрено'
-                   // }
-              //  })
+                //td.removeChild(this)
+                //      td.innerText = 'Просмотрено'
+                // }
+                //  })
 //            });
-        });
-    </script>
+            });
+        </script>
 @endsection

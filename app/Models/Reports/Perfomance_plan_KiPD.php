@@ -12,5 +12,5 @@ class Perfomance_plan_KiPD extends Model
     public $timestamps = false;
 
 
-    protected $fillable = ['№_pp', 'correct_action', 'respons_executor', 'deadline', 'completion_mark', 'indicative_indicat', 'year', 'name_do'];
+    protected $fillable = ['№_pp', 'correct_action', 'respons_executor', 'deadline', 'completion_mark', 'indicative_indicat', 'year', 'id_do'];
 }

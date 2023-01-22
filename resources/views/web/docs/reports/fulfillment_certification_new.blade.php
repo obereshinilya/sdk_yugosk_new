@@ -44,10 +44,10 @@
                                 </tr>
                                 <tr>
                                     <th colspan="3">Наименование филиала общества</th>
-                                    <td style="padding: 0px"><select id="name_do" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -306,7 +306,7 @@
                 }
             });
 
-            var params = ['name_do', 'rostech_cec', 'rostech_cec_plan', 'rostech_cec_fact', 'skills_up_cec_plan', 'skills_up_cec_fact', 'rostech_adm_do', 'rostech_adm_do_plan', 'rostech_adm_do_fact', 'is_ept_adm_do', 'is_ept_adm_do_plan', 'is_ept_adm_do_fact', 'ot_adm_do_plan', 'ot_adm_do_fact', 'pb_ec', 'pb_ec_plan', 'pb_ec_fact', 'skills_up_ec_plan', 'skills_up_ec_fact', 'rostech_do', 'rostech_do_plan', 'rostech_do_fact', 'is_ept_do', 'is_ept_do_plan', 'is_ept_do_fact', 'pb_do_plan', 'pb_do_fact', 'year']
+            var params = ['id_do', 'rostech_cec', 'rostech_cec_plan', 'rostech_cec_fact', 'skills_up_cec_plan', 'skills_up_cec_fact', 'rostech_adm_do', 'rostech_adm_do_plan', 'rostech_adm_do_fact', 'is_ept_adm_do', 'is_ept_adm_do_plan', 'is_ept_adm_do_fact', 'ot_adm_do_plan', 'ot_adm_do_fact', 'pb_ec', 'pb_ec_plan', 'pb_ec_fact', 'skills_up_ec_plan', 'skills_up_ec_fact', 'rostech_do', 'rostech_do_plan', 'rostech_do_fact', 'is_ept_do', 'is_ept_do_plan', 'is_ept_do_fact', 'pb_do_plan', 'pb_do_fact', 'year']
             var out_data = []
             for (var param of params) {
                 var value = document.getElementById(param).value
@@ -323,9 +323,9 @@
                     values: JSON.stringify(Object.values(out_data))
                 },
                 success: (res) => {
-                    if (typeof res === 'object'){
+                    if (typeof res === 'object') {
                         alert('Запись для ОПО на выбранный год уже существует!')
-                    }else {
+                    } else {
                         window.location.href = '/docs/fulfillment_certification'
                     }
                     // console.log(res)

@@ -22,12 +22,14 @@
             background: #c6c6c6;
             outline: none;
             border-radius: 15px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
             transition: .5s
         }
+
         input:checked[type="checkbox"] {
             background: #4bd562;
         }
+
         input[type="checkbox"]::before {
             content: '';
             position: absolute;
@@ -38,11 +40,13 @@
             left: 0;
             background: #fff;
             transform: scale(1.1);
-            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
         }
+
         input:checked[type="checkbox"]::before {
             left: 15px
         }
+
         td {
             text-align: center;
         }
@@ -78,10 +82,10 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование филиала</th>
-                                    <td style="padding: 0px"><select id="name_filial" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($do as $row)
-                                                <option value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
+                                                <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -92,10 +96,10 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование ОПО</th>
-                                    <td style="padding: 0px"><select id="opo_name" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select id="id_opo" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             @foreach($opo as $row)
-                                                <option value="{{$row->full_name_opo}}">{{$row->full_name_opo}}</option>
+                                                <option value="{{$row->id_opo}}">{{$row->full_name_opo}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
@@ -186,12 +190,12 @@
 
     <script>
         var all_td = document.getElementsByClassName('with_selector')[0].querySelectorAll('td');
-        for(let i = 0; i < all_td.length; i++){
+        for (let i = 0; i < all_td.length; i++) {
             // all_td[i].id = i;
             all_td[i].addEventListener('mouseover', () => {
                 all_td[i].parentNode.style.background = '#F5F5F0'
-                for (var td of all_td){
-                    if (td.cellIndex === all_td[i].cellIndex){
+                for (var td of all_td) {
+                    if (td.cellIndex === all_td[i].cellIndex) {
                         td.style.background = '#F5F5F0'
                     }
                 }
@@ -199,8 +203,8 @@
             });
             all_td[i].addEventListener('mouseout', () => {
                 all_td[i].parentNode.style.background = ''
-                for (var td of all_td){
-                    if (td.cellIndex === all_td[i].cellIndex){
+                for (var td of all_td) {
+                    if (td.cellIndex === all_td[i].cellIndex) {
                         td.style.background = ''
                     }
                 }
@@ -219,7 +223,7 @@
                 }
             });
 
-            var params = ['name_filial', 'reg_num_opo', 'opo_name', 'year']
+            var params = ['id_do', 'reg_num_opo', 'id_opo', 'year']
             let themes = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec',]
             let str;
             var out_data = []
@@ -244,9 +248,9 @@
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
                     // console.log(res)
-                    if (typeof res === 'object'){
+                    if (typeof res === 'object') {
                         alert('Запись для данного ОПО на указанный год уже существует!')
-                    }else {
+                    } else {
                         window.location.href = '/docs/pat_schedule'
 
                     }

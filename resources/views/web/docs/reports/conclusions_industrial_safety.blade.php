@@ -10,9 +10,10 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
+
         @can('report-edit')
         #table_for_search tr td:last-of-type {
             /*display: flex;*/
@@ -23,9 +24,10 @@
         }
 
         @endcan
-        .selected_column{
+        .selected_column {
             font-weight: bold;
         }
+
         table {
             -webkit-print-color-adjust: exact; /* благодаря этому заработал цвет*/
             white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */
@@ -34,6 +36,7 @@
             /*word-wrap: break-word;*/
             /*word-break: break-all;*/
         }
+
         .form51 table tr th {
             padding: 3px;
         }
@@ -48,7 +51,7 @@
                         <select class="select-css" id="select__year" onchange="get_data()"
                                 style="width: 20%; display: inline-block; margin-left: 2%">
                             <option value="all">По всем филиалам</option>
-                        @foreach($do as $row)
+                            @foreach($do as $row)
                                 <option value="{{$row->name_do}}">{{$row->name_do}}</option>
                             @endforeach
                         </select>
@@ -120,8 +123,11 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th rowspan="2" style="position: sticky; left: 2px; z-index: 20" onclick="sorted_table(0, this)">№ п/п</th>
-                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20" onclick="sorted_table(1, this)">Наименование центра финансовой
+                                    <th rowspan="2" style="position: sticky; left: 2px; z-index: 20"
+                                        onclick="sorted_table(0, this)">№ п/п
+                                    </th>
+                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"
+                                        onclick="sorted_table(1, this)">Наименование центра финансовой
                                         отвественности
                                     </th>
                                     <th rowspan="2" onclick="sorted_table(2, this)">Наименование филиала</th>
@@ -132,29 +138,44 @@
                                     <th colspan="2">Срок эксплуатации/ наработка на момент ЭПБ</th>
                                     <th colspan="2">Срок продления безопасной эксплуатации</th>
                                     <th colspan="2">Дата/наработка следующей ЭПБ</th>
-                                    <th rowspan="2" onclick="sorted_table(21, this)">Уведомление о внесении в реестр (№ письма,
+                                    <th rowspan="2" onclick="sorted_table(21, this)">Уведомление о внесении в реестр (№
+                                        письма,
                                         дата)
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(22, this)">Регистрационный номер заключения ЭПБ</th>
-                                    <th rowspan="2" onclick="sorted_table(23, this)">Наличие условий действий заключений</th>
+                                    <th rowspan="2" onclick="sorted_table(22, this)">Регистрационный номер заключения
+                                        ЭПБ
+                                    </th>
+                                    <th rowspan="2" onclick="sorted_table(23, this)">Наличие условий действий
+                                        заключений
+                                    </th>
                                     <th rowspan="2" onclick="sorted_table(24, this)">Факт выполнения условий</th>
-                                    <th rowspan="2" onclick="sorted_table(25, this)" style="">Условия действия заключений</th>
+                                    <th rowspan="2" onclick="sorted_table(25, this)" style="">Условия действия
+                                        заключений
+                                    </th>
                                     <th rowspan="2" onclick="sorted_table(26, this)">Срок выполнения условий</th>
                                     <th rowspan="2" onclick="sorted_table(27, this)">Приоритетность</th>
                                     <th rowspan="2" onclick="sorted_table(28, this)">Номер заключения ЭПБ подрядной
                                         организации
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(29, this)">Наименование экспертной организации</th>
+                                    <th rowspan="2" onclick="sorted_table(29, this)">Наименование экспертной
+                                        организации
+                                    </th>
                                     @can('report-edit')
                                         <th rowspan="2" style="width: 1%"></th>
                                     @endcan
                                 </tr>
                                 <tr>
                                     <th style="top:25px" onclick="sorted_table(4, this)">Наименование объекта</th>
-                                    <th style="top:25px" onclick="sorted_table(5, this)">Наименов-е цеха/ местонахождения</th>
+                                    <th style="top:25px" onclick="sorted_table(5, this)">Наименов-е цеха/
+                                        местонахождения
+                                    </th>
                                     <th style="top:25px" onclick="sorted_table(6, this)">№ цеха</th>
-                                    <th style="top:25px" onclick="sorted_table(7, this)">Наименов-е ТУ, здания, сооружения</th>
-                                    <th style="top:25px" onclick="sorted_table(8, this)">Изготовитель/ проектная организация</th>
+                                    <th style="top:25px" onclick="sorted_table(7, this)">Наименов-е ТУ, здания,
+                                        сооружения
+                                    </th>
+                                    <th style="top:25px" onclick="sorted_table(8, this)">Изготовитель/ проектная
+                                        организация
+                                    </th>
                                     <th style="top:25px" onclick="sorted_table(9, this)"> Станц-й номер, рег.№, участок
                                         (км-км)
                                     </th>
@@ -167,11 +188,13 @@
                                     </th>
                                     <th style="top:25px" onclick="sorted_table(15, this)">Наработка ТУ, часов
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(16, this)"> Кол-во лет ТУ, зданию, сооружению
+                                    <th style="top:25px" onclick="sorted_table(16, this)"> Кол-во лет ТУ, зданию,
+                                        сооружению
                                     </th>
                                     <th style="top:25px" onclick="sorted_table(17, this)">Наработка ТУ, часов
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(18, this)"> Кол-во лет ТУ, зданию, сооружению
+                                    <th style="top:25px" onclick="sorted_table(18, this)"> Кол-во лет ТУ, зданию,
+                                        сооружению
                                     </th>
                                     <th style="top:25px" onclick="sorted_table(19, this)">Наработка до следующего ЭПБ
                                     </th>
@@ -180,6 +203,51 @@
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
+                                @foreach($data as $row)
+                                    <tr>
+                                        <td style="text-align: center; position: sticky; left: 2px; background-color: white">{{$row->id}}</td>
+                                        <td style="text-align: center; position: sticky; left: 5.8%; background-color: white">{{$row->center_name}}</td>
+                                        <td style="text-align: center">{{$row->name_do}}</td>
+                                        <td style="text-align: center">{{$row->type_tu}}</td>
+                                        <td style="text-align: center">{{$row->object_name}}</td>
+                                        <td style="text-align: center">{{$row->workshop_name}}</td>
+                                        <td style="text-align: center">{{$row->n_workshop}}</td>
+                                        <td style="text-align: center">{{$row->name_tu}}</td>
+                                        <td style="text-align: center">{{$row->manufacturer}}</td>
+                                        <td style="text-align: center">{{$row->station_number}}</td>
+                                        <td style="text-align: center">{{$row->factory_num}}</td>
+                                        <td style="text-align: center">{{$row->pipeline_length}}</td>
+
+                                        <td style="text-align: center">{{$row->inv_tu_num}}</td>
+                                        <td style="text-align: center">{{$row->date_comiss}}</td>
+                                        <td style="text-align: center">{{$row->date_epb}}</td>
+                                        <td style="text-align: center">{{$row->runtime_tu}}</td>
+                                        <td style="text-align: center">{{$row->age_tu}}</td>
+                                        <td style="text-align: center">{{$row->runtime_ext_tu}}</td>
+                                        <td style="text-align: center">{{$row->age_ext_tu}}</td>
+                                        <td style="text-align: center">{{$row->runtime_epb}}</td>
+                                        <td style="text-align: center">{{$row->date_next_epb}}</td>
+                                        <td style="text-align: center">{{$row->notification}}</td>
+                                        <td style="text-align: center">{{$row->reg_num}}</td>
+                                        <td style="text-align: center">{{$row->conditions}}</td>
+                                        <td style="text-align: center">{{$row->completion_mark}}</td>
+                                        <td style="text-align: center">{{$row->conditions_concl}}</td>
+                                        <td style="text-align: center">{{$row->due_date}}</td>
+                                        <td style="text-align: center">{{$row->priority}}</td>
+                                        <td style="text-align: center">{{$row->concl_num}}</td>
+                                        <td style="text-align: center">{{$row->exp_org_name}}</td>
+                                        @can('report-edit')
+                                            <td style="text-align: center; min-width: auto">
+                                                <a href="#" onclick="edit_record({{$row->id}})"><img
+                                                        style="width: 15px; height: 15px; margin: 3px" alt=""
+                                                        src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>
+                                                <a href="#" style="" onclick="remove_record({{$row->id}})"><img
+                                                        style="opacity:1; width: 15px; height: 15px; margin: 3px" alt=""
+                                                        src="{{asset('assets/images/icons/trash.svg')}}"
+                                                        class="trash_i"></a>
+                                            </td>  @endcan
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -190,115 +258,118 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('select__year').value = 'Краснотурьинское ЛПУМГ';
-
-            get_data()
+            document.getElementById('select__year').value = '{{$data[0]->name_do}}';
+            @can('doc-create')
+            let excel = document.querySelector('.bat_info');
+            excel.firstChild.href = '/excel_conclusions_industrial_safety/' + document.getElementById('select__year').value;
+            @endcan
+            // get_data()
         })
-        function sorted_table(column, th){
+
+        function sorted_table(column, th) {
             var class_list = th.classList
-            for(var asc of document.getElementsByClassName('asc')){
-                if (asc !== th){
+            for (var asc of document.getElementsByClassName('asc')) {
+                if (asc !== th) {
                     asc.classList.remove('asc')
                     asc.style.background = ''
                 }
             }
-            for(var desc of document.getElementsByClassName('desc')){
-                if (desc !== th){
+            for (var desc of document.getElementsByClassName('desc')) {
+                if (desc !== th) {
                     desc.classList.remove('desc')
                     desc.style.background = ''
                 }
             }
-            if (class_list.contains('asc')){
+            if (class_list.contains('asc')) {
                 th.style.background = '#FADADD'
                 th.classList.remove('asc')
                 th.classList.add('desc')
                 var sorting = '<'
-            }else if (class_list.contains('desc')){
+            } else if (class_list.contains('desc')) {
                 th.style.background = ''
                 th.classList.remove('desc')
                 var sorting = false
-            }else {
+            } else {
                 th.style.background = '#00FF7F'
                 th.classList.add('asc')
                 var sorting = '>'
-6            }
-            if (sorting){
-                if (sorting === '>'){
+                6
+            }
+            if (sorting) {
+                if (sorting === '>') {
                     let sortedRows = Array.from(table_for_search.rows)
                         .slice(2)
                         .sort((rowA, rowB) => rowA.cells[column].innerHTML > rowB.cells[column].innerHTML ? 1 : -1);
                     table_for_search.tBodies[0].append(...sortedRows);
-                }else {
+                } else {
                     let sortedRows = Array.from(table_for_search.rows)
                         .slice(2)
                         .sort((rowA, rowB) => rowA.cells[column].innerHTML < rowB.cells[column].innerHTML ? 1 : -1);
                     table_for_search.tBodies[0].append(...sortedRows);
                 }
-            }else {
+            } else {
                 let sortedRows = Array.from(table_for_search.rows)
                     .slice(2)
                     .sort((rowA, rowB) => Number(rowA.cells[0].innerHTML) > Number(rowB.cells[0].innerHTML) ? 1 : -1);
                 table_for_search.tBodies[0].append(...sortedRows);
             }
         }
+
         function get_data() {
-            @can('doc-create')
-            let excel = document.querySelector('.bat_info');
-            excel.firstChild.href = '/excel_conclusions_industrial_safety/' + document.getElementById('select__year').value;
-            @endcan
-            var table_body = document.getElementById('body_table')
-            table_body.innerText = ''
-            $.ajax({
-                url: '/docs/conclusions_industrial_safety/get_params/' + document.getElementById('select__year').value,
-                type: 'GET',
-                success: (res) => {
-                    for (var row of res) {
-                        var tr = document.createElement('tr');
-                        tr.innerHTML += `<td style="text-align: center; position: sticky; left: 2px; background-color: white">${row['id']}</td>`
-                        tr.innerHTML += `<td style="text-align: center; position: sticky; left: 5.8%; background-color: white">${row['center_name']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['type_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['object_name']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['workshop_name']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['n_workshop']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['manufacturer']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['station_number']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['factory_num']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['pipeline_length']}</td>`
 
-                        tr.innerHTML += `<td style="text-align: center">${row['inv_tu_num']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['date_comiss']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['date_epb']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['runtime_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['age_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['runtime_ext_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['age_ext_tu']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['runtime_epb']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['date_next_epb']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['notification']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['reg_num']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['conditions']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['completion_mark']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['conditions_concl']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['due_date']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['priority']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['concl_num']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['exp_org_name']}</td>`
-                        tr.innerHTML += ` @can('report-edit') <td style="text-align: center; min-width: auto">
-                    <a href="#" onclick="edit_record(${row['id']})"><img style="width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>
-                    <a href="#" style="" onclick="remove_record(${row['id']})"><img style="opacity:1; width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>
-                    </td>  @endcan`
 
-                        table_body.appendChild(tr)
-                    }
-                },
-                error: function (error) {
-                    var table_body = document.getElementById('body_table')
-                    table_body.innerText = ''
-                },
+            window.location.href = '/docs/conclusions_industrial_safety/' + document.getElementById('select__year').value;
+            {{--$.ajax({--}}
+            {{--    url: '/docs/conclusions_industrial_safety/get_params/' + document.getElementById('select__year').value,--}}
+            {{--    type: 'GET',--}}
+            {{--    success: (res) => {--}}
+            {{--        for (var row of res) {--}}
+            {{--            var tr = document.createElement('tr');--}}
+            {{--            tr.innerHTML += `<td style="text-align: center; position: sticky; left: 2px; background-color: white">${row['id']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center; position: sticky; left: 5.8%; background-color: white">${row['center_name']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['type_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['object_name']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['workshop_name']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['n_workshop']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['name_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['manufacturer']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['station_number']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['factory_num']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['pipeline_length']}</td>`--}}
 
-            })
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['inv_tu_num']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_comiss']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_epb']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['age_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_ext_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['age_ext_tu']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_epb']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_next_epb']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['notification']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['reg_num']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['conditions']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['completion_mark']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['conditions_concl']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['due_date']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['priority']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['concl_num']}</td>`--}}
+            {{--            tr.innerHTML += `<td style="text-align: center">${row['exp_org_name']}</td>`--}}
+            {{--            tr.innerHTML += ` @can('report-edit') <td style="text-align: center; min-width: auto">--}}
+            {{--        <a href="#" onclick="edit_record(${row['id']})"><img style="width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>--}}
+            {{--        <a href="#" style="" onclick="remove_record(${row['id']})"><img style="opacity:1; width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>--}}
+            {{--        </td>  @endcan`--}}
+
+            {{--            table_body.appendChild(tr)--}}
+            {{--        }--}}
+            {{--    },--}}
+            {{--    error: function (error) {--}}
+            {{--        var table_body = document.getElementById('body_table')--}}
+            {{--        table_body.innerText = ''--}}
+            {{--    },--}}
+
+            {{--})--}}
         }
 
         //скрипт для удаления

@@ -13,6 +13,6 @@ class Pat_schedule extends Model
 
 
     protected $fillable = [
-        'name_filial', 'reg_num_opo', 'opo_name', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'year'
+        'id_do', 'reg_num_opo', 'id_opo', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'year'
     ];
 }

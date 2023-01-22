@@ -22,12 +22,14 @@
             background: #c6c6c6;
             outline: none;
             border-radius: 15px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
             transition: .5s
         }
+
         input:checked[type="checkbox"] {
             background: #4bd562;
         }
+
         input[type="checkbox"]::before {
             content: '';
             position: absolute;
@@ -38,11 +40,13 @@
             left: 0;
             background: #fff;
             transform: scale(1.1);
-            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
         }
+
         input:checked[type="checkbox"]::before {
             left: 15px
         }
+
         td {
             text-align: center;
         }
@@ -83,17 +87,12 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование филиала</th>
-                                    <td style="padding: 0px"><select disabled id="name_filial" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select disabled id="id_do"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->name_filial}}">{{$data->name_filial}}</option>
-                                            @foreach($do as $row)
-                                                @if($row->short_name_do==$data->name_filial)
-                                                    @continue
-                                                @else
-                                                    <option
-                                                        value="{{$row->short_name_do}}">{{$row->short_name_do}}</option>
-                                                @endif
-                                            @endforeach
+                                            <option
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do',$data->id_do)->value('short_name_do')}}</option>
+
                                         </select></td>
                                 </tr>
                                 <tr>
@@ -104,17 +103,12 @@
                                 </tr>
                                 <tr>
                                     <th>Наименование ОПО</th>
-                                    <td style="padding: 0px"><select disabled id="opo_name" style="height: 100%; width: 50%"
+                                    <td style="padding: 0px"><select disabled id="id_opo"
+                                                                     style="height: 100%; width: 50%"
                                                                      class="select-css">
-                                            <option value="{{$data->opo_name}}">{{$data->opo_name}}</option>
-                                            @foreach($opo as $row)
-                                                @if($data->opo_name==$row->full_name_opo)
-                                                    @continue
-                                                @else
-                                                    <option
-                                                        value="{{$row->full_name_opo}}">{{$row->full_name_opo}}</option>
-                                                @endif
-                                            @endforeach
+                                            <option
+                                                value="{{$data->id_opo}}">{{\App\Models\Main_models\RefOpo::where('id_opo',$data->id_opo)->value('full_name_opo')}}</option>
+
                                         </select></td>
                                 </tr>
                                 </tbody>
@@ -216,12 +210,12 @@
 
     <script>
         var all_td = document.getElementsByClassName('with_selector')[0].querySelectorAll('td');
-        for(let i = 0; i < all_td.length; i++){
+        for (let i = 0; i < all_td.length; i++) {
             // all_td[i].id = i;
             all_td[i].addEventListener('mouseover', () => {
                 all_td[i].parentNode.style.background = '#F5F5F0'
-                for (var td of all_td){
-                    if (td.cellIndex === all_td[i].cellIndex){
+                for (var td of all_td) {
+                    if (td.cellIndex === all_td[i].cellIndex) {
                         td.style.background = '#F5F5F0'
                     }
                 }
@@ -229,8 +223,8 @@
             });
             all_td[i].addEventListener('mouseout', () => {
                 all_td[i].parentNode.style.background = ''
-                for (var td of all_td){
-                    if (td.cellIndex === all_td[i].cellIndex){
+                for (var td of all_td) {
+                    if (td.cellIndex === all_td[i].cellIndex) {
                         td.style.background = ''
                     }
                 }
@@ -249,7 +243,7 @@
                 }
             });
 
-            var params = ['name_filial', 'reg_num_opo', 'opo_name', 'year']
+            var params = ['id_do', 'reg_num_opo', 'id_opo', 'year']
             let themes = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec',]
             let str;
             var out_data = []

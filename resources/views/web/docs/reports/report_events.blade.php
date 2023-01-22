@@ -10,12 +10,17 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
         #table_for_search tr td:last-of-type {
@@ -215,7 +220,7 @@
                     type: 'GET',
                     success: (res) => {
                         //console.log(res)
-var num =1
+                        var num = 1
                         var keys = Object.keys(res)
                         for (var key of keys) {
                             var i = 1
@@ -223,7 +228,7 @@ var num =1
                                 var tr = document.createElement('tr')
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${num}</p></td>`
                                 if (i == 1) {
-                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_do']}</p></td>`
+                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${key}</p></td>`
                                 }
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['num_elim']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['num_unrem']}</p></td>`
@@ -235,9 +240,15 @@ var num =1
                                 } else {
                                     tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
                                 }
+                                let date = new Date(row['date_update']);
+                                let dd = date.getDate();
+                                if (dd < 10) dd = '0' + dd;
+                                let mm = date.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
+                                let yyyy = date.getFullYear();
 
 
-                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_update']}</p></td>`
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
 
                                 tr.innerHTML += ` @can('report-edit') <td style="text-align: center; min-width: auto">
                     <a href="#" onclick="edit_record(${row['id']})"><img style="width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>
@@ -245,7 +256,7 @@ var num =1
                     </td> @endcan`
                                 table_body.appendChild(tr)
                                 i++
-num+=1
+                                num += 1
                             }
                         }
                     },

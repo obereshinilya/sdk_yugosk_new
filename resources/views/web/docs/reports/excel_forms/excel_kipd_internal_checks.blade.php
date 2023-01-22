@@ -48,13 +48,13 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name_DO}}</td>
             <td>{{$row->podrazdelenie}}</td>
             @if($row->date_act)
-                <td>{{$row->parts_DPB}}</td>
+                <td>{{$row->date_act}}</td>
             @else
                 <td></td>
             @endif
@@ -62,13 +62,13 @@
             <td>{{$row->error_comment}}</td>
             <td>{{$row->name_event}}</td>
             <td>{{$row->person}}</td>
-            <td>{{$row->date_check}}</td>
+            <td>{{$data['date_check'][$key]}}</td>
             <td>{{$row->reason}}</td>
             <td>{{$row->correct_event}}</td>
             <td>{{$row->usloviya}}</td>
             <td>{{$row->person_correct}}</td>
             @if($row->date_check_correct)
-                <td>{{$row->date_check_correct}}</td>
+                <td>{{$data['date_check_correct'][$key]}}</td>
             @else
                 <td></td>
             @endif

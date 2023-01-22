@@ -34,13 +34,13 @@
     </thead>
     <tbody>
 
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->name_filiala}}</td>
             <td>{{$row->goals_OT_PB}}</td>
             <td>{{$row->name_risk}}</td>
             <td>{{$row->events}}</td>
-            <td>{{$row->period_execution}}</td>
+            <td>{{$data['period_execution'][$key]}}</td>
             <td>{{$row->responsible}}</td>
             @if($row->completion_mark == 'true')
                 <td>Выполнено</td>

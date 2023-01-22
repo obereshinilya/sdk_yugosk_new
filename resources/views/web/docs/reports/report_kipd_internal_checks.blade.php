@@ -10,9 +10,10 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
+
         @can('report-edit')
         #table_for_search tr td:last-of-type {
             /*display: flex;*/
@@ -21,8 +22,15 @@
             height: 100%;
             padding: 15px 0;
         }
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
+
         @endcan
         input[type="checkbox"] {
             position: relative;
@@ -195,14 +203,20 @@
                 url: '/docs/get_kipd_internal_checks/' + document.getElementById('select__year').value,
                 type: 'GET',
                 success: (res) => {
-var num = 1;
+                    var num = 1;
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_DO']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['podrazdelenie']}</td>`
                         if (row['date_act']) {
-                            tr.innerHTML += `<td style="text-align: center">${row['date_act']}</td>`
+                            let date = new Date(row['date_act']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
                         } else {
                             tr.innerHTML += `<td style="text-align: center"></td>`
                         }
@@ -210,13 +224,30 @@ var num = 1;
                         tr.innerHTML += `<td style="text-align: center">${row['error_comment']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['name_event']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['person']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['date_check']}</td>`
+                        if (row['date_check']) {
+                            let date = new Date(row['date_check']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
+                        } else {
+                            tr.innerHTML += `<td style="text-align: center"></td>`
+                        }
+
                         tr.innerHTML += `<td style="text-align: center">${row['reason']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['correct_event']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['usloviya']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['person_correct']}</td>`
                         if (row['date_check_correct']) {
-                            tr.innerHTML += `<td style="text-align: center">${row['date_check_correct']}</td>`
+                            let date = new Date(row['date_check_correct']);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+                            tr.innerHTML += `<td style="text-align: center;">${dd}.${mm}.${yyyy}</td>`
                         } else {
                             tr.innerHTML += `<td style="text-align: center"></td>`
                         }
@@ -231,7 +262,7 @@ var num = 1;
                     <a href="#" style="" onclick="remove_record(${row['id']})"><img style="opacity:1; width: 15px; height: 15px; margin-left: 4px"  alt="" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>
                     </td> @endcan `
                         table_body.appendChild(tr)
-num +=1
+                        num += 1
                     }
                 },
                 error: function (error) {

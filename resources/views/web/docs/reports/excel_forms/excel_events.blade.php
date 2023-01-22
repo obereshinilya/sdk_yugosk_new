@@ -51,25 +51,25 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name_do}}</td>
             <td>{{$row->org}}</td>
             <td>{{$row->viols}}</td>
             <td>{{$row->act_num}}</td>
-            <td>{{$row->date_issue}}</td>
+            <td>{{$data['date_issue'][$key]}}</td>
             <td>{{$row->events}}</td>
             <td>{{$row->person}}</td>
-            <td>{{$row->date_base}}</td>
-            <td>{{$row->date_repiat}}</td>
-            <td>{{$row->date_fact}}</td>
+            <td>{{$data['date_base'][$key]}}</td>
+            <td>{{$data['date_repiat'][$key]}}</td>
+            <td>{{$data['date_fact'][$key]}}</td>
             @if ($row->completion_mark)
                 <td>Выполнено</td>
             @else
                 <td>Не выполнено</td>
             @endif
-            <td>{{$row->date_update}}</td>
+            <td>{{$data['date_update'][$key]}}</td>
             <td>{{$row->note}}</td>
         </tr>
     @endforeach

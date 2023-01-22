@@ -21,9 +21,9 @@ class JasController extends Controller
             for ($j = 0; $j < count($keys); $j++) {
                 $record_data[$keys[$j]] = $values[$j];
             }
-            if ($record_data['repair'] == 'false'){
+            if ($record_data['repair'] == 'false') {
                 $to_table['status'] = TypeStatus::where('id_status', '=', RefTb::where('id_tb', '=', $record_data['id_tb'])->first()->id_status)->first()->descstatus;
-            }else{
+            } else {
 //            RefTb::where('id_tb', '=', $record_data['id_tb'])->first()->update(['id_status'=>4]);
                 $to_table['status'] = 'Регламентные работы';
             }
@@ -34,32 +34,39 @@ class JasController extends Controller
             $to_table['auto_generate'] = true;
             $to_table['check'] = true;
             Jas::create($to_table);
-            if ($record_data['repair'] != 'false'){
-                RefTb::where('id_tb', '=', $record_data['id_tb'])->first()->update(['id_status'=>4]);
+            if ($record_data['repair'] != 'false') {
+                RefTb::where('id_tb', '=', $record_data['id_tb'])->first()->update(['id_status' => 4]);
             }
             AdminController::log_record('Добавил запись в журнал аварийных событий  ');//пишем в журнал
-        }catch (\Throwable $exception){
+        } catch (\Throwable $exception) {
             return $exception;
         }
 
     }
+
     public function save_comment($id_record, $text)
     {
-        Jas::where('id', '=', $id_record)->first()->update(['comment'=>$text]);
+        Jas::where('id', '=', $id_record)->first()->update(['comment' => $text]);
     }
+
     public function get_tb_for_jas($type_tb, $id_obj)
     {
         return RefTb::where('type_tb', '=', $type_tb)->where('id_obj', '=', $id_obj)->get();
     }
+
     public function jas_new_record()
     {
         return view('web.jas.create');
     }
+
     public function showJas()
     {
         $data_to_jas = \App\Models\Jas::orderbydesc('id')->where('auto_generate', '=', true)->get();
         AdminController::log_record('Открыл журнал аварийных событий  ');//пишем в журнал
-        return view('web.jas.index', compact('data_to_jas'));
+        foreach ($data_to_jas as $key => $jas) {
+            $date[$key] = date('d.m.Y H:m:s', strtotime($jas->date));
+        }
+        return view('web.jas.index', compact('data_to_jas', 'date'));
     }
 
     public function jas_in_top_table()
@@ -67,23 +74,25 @@ class JasController extends Controller
         $data_to_jas = \App\Models\Jas::orderbyDesc('id')->where('auto_generate', '=', true)->take(20)->get();
         return $data_to_jas;
     }
+
     public function check_new_JAS()
     {
         $data_to_jas = \App\Models\Jas::orderbyDesc('id')->where('auto_generate', '=', true)->where('check', '=', false)->get();
-        if (count($data_to_jas) != 0){
+        if (count($data_to_jas) != 0) {
             return $data_to_jas;
-        } else{
+        } else {
             return false;
         }
     }
+
     public function jas_commit($id)
     {
         try {
-            $check_sobitie = \App\Models\Jas::find($id)->update(['check'=>true]);
+            $check_sobitie = \App\Models\Jas::find($id)->update(['check' => true]);
             $date = date('Y-m-d H:i:s', strtotime(\App\Models\Jas::find($id)->first()->date));
             AdminController::log_record("Квитировал событие от $date ");//пишем в журнал
             return true;
-        } catch (\Throwable $e){
+        } catch (\Throwable $e) {
             return $e;
         }
     }

@@ -49,7 +49,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($data as $row)
+    @foreach($data['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name_do}}</td>
@@ -59,7 +59,7 @@
             <td>{{$row->num_act}}</td>
             <td>{{$row->num_repiat}}</td>
             <td>{{$row->note}}</td>
-            <td>{{$row->date_update}}</td>
+            <td>{{$data['date_update'][$key]}}</td>
         </tr>
     @endforeach
     </tbody>

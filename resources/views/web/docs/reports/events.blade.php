@@ -10,12 +10,17 @@
     @endcan
     @include('web.include.sidebar_doc')
     <style>
-        th, td{
+        th, td {
             word-break: break-word;
         }
 
-.form51 table tr th{padding: 2px 3px}
-.form51 table tr td{padding: 2px 3px}
+        .form51 table tr th {
+            padding: 2px 3px
+        }
+
+        .form51 table tr td {
+            padding: 2px 3px
+        }
 
         @can('report-edit')
         #table_for_search tr td:last-of-type {
@@ -113,8 +118,12 @@
                                         @endcan
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">без учета переноса срока</th>
-                                        <th style="text-align: center">с учётом переноса срока</th>
+                                        <th style="text-align: center;     position: sticky;    top: 25px;">без учета
+                                            переноса срока
+                                        </th>
+                                        <th style="text-align: center;  position: sticky;    top: 25px;">с учётом
+                                            переноса срока
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody id="body_table"></tbody>
@@ -209,22 +218,56 @@
                                 var tr = document.createElement('tr')
 
                                 if (i == 1) {
-                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${row['name_do']}</p></td>`
+                                    tr.innerHTML += `<td rowspan="${res[key].length}" style="text-align: center"><p style="margin: 0; display: inline; ">${key}</p></td>`
                                 }
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['org']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['viols']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['act_num']}</p></td>`
-                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_issue']}</p></td>`
+                                if (row['date_issue']) {
+                                    let date = new Date(row['date_issue']);
+                                    let dd = date.getDate();
+                                    if (dd < 10) dd = '0' + dd;
+                                    let mm = date.getMonth() + 1;
+                                    if (mm < 10) mm = '0' + mm;
+                                    let yyyy = date.getFullYear();
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                                } else {
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
+
+                                }
+
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['events']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['person']}</p></td>`
-                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_base']}</p></td>`
+                                if (row['date_base']) {
+                                    date = new Date(row['date_base']);
+                                    dd = date.getDate();
+                                    if (dd < 10) dd = '0' + dd;
+                                    mm = date.getMonth() + 1;
+                                    if (mm < 10) mm = '0' + mm;
+                                    yyyy = date.getFullYear();
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                                } else {
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
+                                }
                                 if (row['date_repiat']) {
-                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_repiat']}</p></td>`
+                                    date = new Date(row['date_repiat']);
+                                    dd = date.getDate();
+                                    if (dd < 10) dd = '0' + dd;
+                                    mm = date.getMonth() + 1;
+                                    if (mm < 10) mm = '0' + mm;
+                                    yyyy = date.getFullYear();
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
                                 } else {
                                     tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
                                 }
                                 if (row['date_fact']) {
-                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_fact']}</p></td>`
+                                    date = new Date(row['date_fact']);
+                                    dd = date.getDate();
+                                    if (dd < 10) dd = '0' + dd;
+                                    mm = date.getMonth() + 1;
+                                    if (mm < 10) mm = '0' + mm;
+                                    yyyy = date.getFullYear();
+                                    tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
                                 } else {
                                     tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
                                 }
@@ -233,8 +276,13 @@
                                 } else {
                                     tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">Не выполнено</p></td>`
                                 }
-
-                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['date_update']}</p></td>`
+                                date = new Date(row['date_update']);
+                                dd = date.getDate();
+                                if (dd < 10) dd = '0' + dd;
+                                mm = date.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
+                                yyyy = date.getFullYear();
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
                                 if (row['note']) {
                                     tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['note']}</p></td>`
                                 } else {
