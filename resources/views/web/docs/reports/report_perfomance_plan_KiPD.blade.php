@@ -39,15 +39,14 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline-block">Выполнение плана КиПД,
+                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin-right: 10px">
+                            Выполнение плана КиПД,
                             утвержденного по
                             результатам анализа ЕСУПБ в ПАО «Газпром» за </h2>
-                        <select class="select-css" id="select__year" onchange="get_data()"
-                                style="width: 11%; display: inline-block; margin-left: 2%">
-                            @for($i=2015; $i<=2023; $i++)
-                                <option value="{{$i}}">{{$i}} год</option>
-                            @endfor
-                        </select>
+                        <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
+                               id="select__year" class="text-field__input" min="1970" max="2030"
+                               onblur="get_data()"></input>
+                        <h2 class="text-muted" style="text-align: center; display: inline;">год</h2>
                     </div>
 
                     <div class="doc_header" style="padding-bottom: 6px">

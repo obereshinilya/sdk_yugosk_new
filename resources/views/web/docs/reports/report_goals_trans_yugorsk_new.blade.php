@@ -35,13 +35,10 @@
                                 <tbody>
                                 <tr>
                                     <th style="text-align: center">Год</th>
-                                    <td style="padding: 0px"><select id="year"
-                                                                     style="height: 100%; width: 20%"
-                                                                     class="select-css">
-                                            @for($i=2015; $i<=2023; $i++)
-                                                <option value="{{$i}}">{{$i}} год</option>
-                                            @endfor
-                                        </select></td>
+                                    <td style="padding: 0px">
+                                        <input style="width: 20%; " type="number"
+                                               id="year" class="text-field__input" min="1970" max="2030">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Цели в области производственной безопасности</th>
@@ -104,6 +101,7 @@
             var date = new Date();
             document.getElementById('year').value = date.getFullYear()
         })
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -116,16 +114,19 @@
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value
             }
-            if (out_data['data_goal'] === ''){
+            if (out_data['data_goal'] === '') {
                 alert('Не указан срок достижения цели!')
-            }else {
+            } else {
                 $.ajax({
                     url: '/docs/goals_trans_yugorsk/save',
                     type: 'POST',
-                    data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                    data: {
+                        keys: JSON.stringify(Object.keys(out_data)),
+                        values: JSON.stringify(Object.values(out_data))
+                    },
                     success: (res) => {
-//console.log(res)              
-          window.location.href = '/docs/goals_trans_yugorsk'
+//console.log(res)
+                        window.location.href = '/docs/goals_trans_yugorsk'
                     }
                 })
             }

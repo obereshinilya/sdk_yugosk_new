@@ -23,6 +23,7 @@
             padding: 0px;
             margin: 0px;
         }
+
         input[type="checkbox"] {
             position: relative;
             width: 30px;
@@ -61,15 +62,14 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline-block">Сведения о выполнении
+                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin-right: 10px">
+                            Сведения о выполнении
                             графика КР и ДТОиР ОПО за
                         </h2>
-                        <select class="select-css" id="select__year" onchange="get_data()"
-                                style="width: 11%; display: inline-block ; margin-left: 2%">
-                            @for($i=2015; $i<=2023; $i++)
-                                <option value="{{$i}}">{{$i}} год</option>
-                            @endfor
-                        </select>
+                        <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
+                               id="select__year" class="text-field__input" min="1970" max="2030"
+                               onblur="get_data()"></input>
+                        <h2 class="text-muted" style="text-align: center; display: inline;">год</h2>
                         @can('doc-create')
                             <div class="bat_info" style="display: inline-block"><a
                                     href="#"
@@ -145,8 +145,9 @@
                                                                                                   class="text-field__input">
                                     </td>
                                     <td style="text-align: center" class="indicator"></td>
-                                    <td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: center" class="num_pp">2</td>
@@ -178,8 +179,9 @@
                                                                                                   class="text-field__input">
                                     </td>
                                     <td style="text-align: center" class="indicator"></td>
-                                    <td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -211,8 +213,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -244,8 +248,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -276,8 +282,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -307,8 +315,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -338,8 +348,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -350,7 +362,8 @@
                                     <td style="text-align: center" class="plan_year"></td>
                                     <td style="text-align: center" class="plan_month data_table"></td>
                                     <td style="text-align: center" class="fact data_table"></td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"></td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"></td>
 
                                 </tr>
                                 <tr>
@@ -380,8 +393,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -411,8 +426,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -442,8 +459,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -473,8 +492,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -504,8 +525,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -536,8 +559,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -569,8 +594,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -601,8 +628,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 {{--                                Второй раздел --}}
@@ -615,8 +644,10 @@
                                     <td style="text-align: center" class="plan_year"></td>
                                     <td style="text-align: center" class="plan_month data_table"></td>
                                     <td style="text-align: center" class="fact data_table"></td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -648,8 +679,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -681,8 +714,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -714,8 +749,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -745,8 +782,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -778,8 +817,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -811,8 +852,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -844,8 +887,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -877,8 +922,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -910,8 +957,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -941,8 +990,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 {{--                                    Третий раздел--}}
@@ -976,8 +1027,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1008,8 +1061,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1039,8 +1094,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1070,8 +1127,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1101,8 +1160,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 {{--                                    Четвертый раздел--}}
@@ -1135,8 +1196,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1168,8 +1231,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1201,8 +1266,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1234,8 +1301,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1265,8 +1334,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1296,8 +1367,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1329,8 +1402,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1361,8 +1436,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1394,8 +1471,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1426,8 +1505,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1458,8 +1539,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1490,8 +1573,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1524,8 +1609,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
-</td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1560,7 +1647,10 @@
                                                                                                   style="height: 100%; width: 83%"
                                                                                                   class="text-field__input">
                                     </td>
-                                    <td style="text-align: center" class="indicator"></td><td style="text-align: center"><input class="check" type="checkbox" onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)"></td>
+                                    <td style="text-align: center" class="indicator"></td>
+                                    <td style="text-align: center"><input class="check" type="checkbox"
+                                                                          onclick="unchecked(this.parentNode.parentNode.getElementsByClassName('num_pp')[0].textContent)">
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1617,7 +1707,7 @@
                                 tr.getElementsByClassName('fact')[0].getElementsByTagName('input')[0].value = '';
                                 tr.getElementsByClassName('name_event')[0].getElementsByTagName('input')[0].value = '';
                                 tr.getElementsByClassName('indicator')[0].textContent = '';
-                                tr.getElementsByClassName('indicator')[0].style.background  = '';
+                                tr.getElementsByClassName('indicator')[0].style.background = '';
                                 tr.getElementsByClassName('check')[0].removeAttribute('checked');
                             } else {
                                 tr.getElementsByClassName('date')[0].getElementsByTagName('input')[0].setAttribute('disabled', 'true');
@@ -1629,10 +1719,10 @@
                                 tr.getElementsByClassName('plan_month')[0].getElementsByTagName('input')[0].value = '';
                                 tr.getElementsByClassName('fact')[0].getElementsByTagName('input')[0].value = '';
                                 tr.getElementsByClassName('indicator')[0].textContent = '';
-                                tr.getElementsByClassName('indicator')[0].style.background  = '';
+                                tr.getElementsByClassName('indicator')[0].style.background = '';
                                 try {
                                     tr.getElementsByClassName('check')[0].removeAttribute('checked');
-                                }catch (e){
+                                } catch (e) {
 
                                 }
                             }
@@ -1662,7 +1752,7 @@
                                 tr.getElementsByClassName('plan_month')[0].getElementsByTagName('input')[0].value = res[number_in_table]['plan_month']
                                 tr.getElementsByClassName('fact')[0].getElementsByTagName('input')[0].value = res[number_in_table]['fact']
                                 tr.getElementsByClassName('name_event')[0].getElementsByTagName('input')[0].value = res[number_in_table]['name_event']
-                                if (res[number_in_table]['check']){
+                                if (res[number_in_table]['check']) {
                                     tr.getElementsByClassName('check')[0].setAttribute('checked', true)
                                 }
                                 var td_ind = tr.getElementsByClassName('indicator')[0]
@@ -1683,7 +1773,7 @@
                                 tr.getElementsByClassName('plan_year')[0].getElementsByTagName('input')[0].value = res[number_in_table]['plan_year']
                                 tr.getElementsByClassName('plan_month')[0].getElementsByTagName('input')[0].value = res[number_in_table]['plan_month']
                                 tr.getElementsByClassName('fact')[0].getElementsByTagName('input')[0].value = res[number_in_table]['fact']
-                                if (res[number_in_table]['check']){
+                                if (res[number_in_table]['check']) {
                                     tr.getElementsByClassName('check')[0].setAttribute('checked', true)
                                 }
                                 var td_ind = tr.getElementsByClassName('indicator')[0]
@@ -1769,6 +1859,7 @@
                 }
             })
         }
+
         //скрипт, чтоб не учитывать
         function unchecked(num_pp) {
             $.ajax({

@@ -10,6 +10,7 @@ use App\Exports\Emergency_drills_Export;
 use App\Exports\EventsExport;
 use App\Exports\FulfillmentsExport;
 use App\Exports\Goals_trans_yugorsk_Export;
+use App\Exports\Jas_Export;
 use App\Exports\KIPD_internal_checks_Export;
 use App\Exports\Kr_dtoip_Export;
 use App\Exports\Pat_scheduleExport;
@@ -314,12 +315,25 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_sved_avar($year)
+    public function excel_sved_avar($start, $finish)
     {
-        $data = Sved_avar::where('year', '=', $year)->get();
-        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за ' . $year . ' год.';
+        $data = Sved_avar::where('data_time', '>=', $start)->where('data_time', '<=', $finish)->get();;
+        $title = 'Сведения об аварийности на опасных производственных объектах дочернего общества за с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($finish));
         $patch = 'sved_avar' . Carbon::now() . '.xlsx';
         return Excel::download(new Sved_avar_Export($title, $data), $patch);
+
+    }
+
+    public function excel_jas($start, $end)
+    {
+        $data['data'] = \App\Models\Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();;
+        foreach ($data['data'] as $key => $jas) {
+            $data['date'][$key] = date('d.m.Y H:m:s', strtotime($jas->date));
+        }
+        $title = 'Журнал аварийных событий за период с ' . date('d.m.Y', strtotime($start)) . ' по ' . date('d.m.Y', strtotime($end));
+        $patch = 'jas' . Carbon::now() . '.xlsx';
+        return Excel::download(new Jas_Export($title, $data), $patch);
+
 
     }
 }

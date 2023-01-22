@@ -49,8 +49,6 @@
     <tr>
 
 
-
-
         <th id="ind_repiat_gaznadzor" style="writing-mode: vertical-lr;">Типовые/повторяющиеся нарушения корп.
             контроль
         </th>
@@ -62,7 +60,7 @@
     <tbody>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->name_DO}}</td>
+            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
 
 
             <td>{{$row->num_gaznadzor}}</td>

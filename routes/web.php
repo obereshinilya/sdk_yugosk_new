@@ -64,6 +64,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
                 Route::get('/get_tb_for_jas/{type_tb}/{id_obj}', "JasController@get_tb_for_jas"); // создание нового события
                 Route::get('/save_comment/{id_record}/{text}', "JasController@save_comment"); // изменение комментария
                 Route::post('/save_new_jas', 'JasController@save_new_jas');  //сохранение
+                Route::get('/get_jas/{start}/{end}', "JasController@get_jas_date"); // жас за определенный период
             });
             //********************* Справочники ******************************************
             Route::get('/docs/directory_do', 'DirectoryController@show_directory_do');  //Справочник ДО
@@ -250,12 +251,13 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/pdf_plan_industrial_safety/{year}', 'PdfReportController@pdf_plan_industrial_safety');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
             Route::get('/pdf_kipd_internal_checks/{year}', 'PdfReportController@pdf_kipd_internal_checks');     // скачать План корректирующих действий ПБ по внутренним проверкам за
             Route::get('/pdf_result_apk/{year}/{type}', 'PdfReportController@pdf_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора
-            Route::get('/pdf_sved_avar/{year}', 'PdfReportController@pdf_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
+            Route::get('/pdf_sved_avar/{start}/{finish}', 'PdfReportController@pdf_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
             Route::get('/pdf_report_events/{year}', 'PdfReportController@pdf_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/pdf_events/{year}', 'PdfReportController@pdf_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/pdf_kr_dtoip/{year}', 'PdfReportController@pdf_kr_dtoip');  //скачать КР ДТОиР ОПО
             Route::get('/pdf_plan_of_industrial_safety/{year}', 'PdfReportController@pdf_plan_of_industrial_safety');     // скачать план работ в области ПБ
             Route::get('/pdf_pat_schedule/{year}', 'PdfReportController@pdf_pat_schedule');     // скачать График комплексных противоаварийных тренировок
+            Route::get('/pdf_jas/{start}/{end}', 'PdfReportController@pdf_jas');     // скачать ЖАС за выбранный период
 
 ///////////************** Отчеты Excel **************************************/////////////////////////
             Route::get('/excel_conclusions_industrial_safety/{year}', 'ExcelReportController@excel_conclusions_industrial_safety');
@@ -272,7 +274,8 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/excel_perfomance_plan_KiPD/{year}', 'ExcelReportController@excel_perfomance_plan_KiPD');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
             Route::get('/excel_plan_industrial_safety/{year}', 'ExcelReportController@excel_plan_industrial_safety');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
             Route::get('/excel_result_apk/{year}', 'ExcelReportController@excel_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора
-            Route::get('/excel_sved_avar/{year}', 'ExcelReportController@excel_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
+            Route::get('/excel_sved_avar/{start}/{finish}', 'ExcelReportController@excel_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
+            Route::get('/excel_jas/{start}/{end}', 'ExcelReportController@excel_jas');     // скачать Жас за определенный период
 
 
 ///////////************** Нормативно-справочная информация **************************************/////////////////////////
