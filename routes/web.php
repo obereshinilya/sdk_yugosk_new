@@ -98,6 +98,13 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/get_tb/{type_tb}', 'DirectoryController@get_tb');  //получение строк для создания
             Route::post('/docs/directory_tb/save/{type_tb}', 'DirectoryController@save_tb');  //сохранение
 
+            Route::get('/docs/opo', 'OPOintelligenceController@opo');  //Сведения, характеризующие ОПО
+            Route::get('/docs/edit_intelligence_opo/{id_add_info_opo}', 'OPOintelligenceController@edit_intelligence');  //Изменение сведений, характеризующих ОПО
+            Route::get('/docs/create_intelligence_opo', 'OPOintelligenceController@create_intelligence');  //Добавление сведений, характеризующих ОПО
+            Route::post('/docs/intelligence_opo/save', 'OPOintelligenceController@save_add_composition_opo');  //сохранение
+            Route::post('/docs/intelligence_opo/update/{id_add_info_opo}', 'OPOintelligenceController@update_intelligence_opo');  //сохранение изменений
+            Route::get('/docs/show_intelligence_opo/{id_add_info_opo}', 'OPOintelligenceController@show_intelligence_opo');  //просмотр
+
             //********************* Отчеты ***********************************************
             Route::get('/docs', 'ReportController@index');  //главная страница
 

@@ -1,8 +1,8 @@
 <div class="sidebar">
 
-    @include('web.include.sidebar_top')
+        @include('web.include.sidebar_top')
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
     <div class="sidebar_bottom rounded ">
 
@@ -20,6 +20,8 @@
                         <a href="/docs/directory_opo" onclick="SaveChecked_link(this)">Справочник ОПО</a>
                         <a href="/docs/directory_obj" onclick="SaveChecked_link(this)">Справочник элементов ОПО</a>
                         <a href="/docs/directory_tb" onclick="SaveChecked_link(this)">Справочник ТБ элементов ОПО</a>
+                        <a href="/docs/opo" onclick="SaveChecked_link(this)">Сведения, характеризующие ОПО</a>
+
                     </div>
                 </label>
                 <label class="accordion">
