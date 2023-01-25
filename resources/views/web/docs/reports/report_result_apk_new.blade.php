@@ -293,7 +293,7 @@
                             alert('Для указанного ДО уже есть запись для выбранного года!')
                         } else {
                             // console.log(res)
-                            // window.location.href = '/docs/result_apk'
+                            window.location.href = '/docs/result_apk'
                         }
 
                     }
