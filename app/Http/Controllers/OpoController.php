@@ -108,6 +108,7 @@ class OpoController extends Controller
         $comment_rows['mku']['v_p']['desc'] = 'Скорость падения давления, (кгс/см²)/мин';
         $comment_rows['mku']['v_p_km']['desc'] = 'Скорость падения давления на погонный километр, (кгс/см²)/(мин*км)';
         $comment_rows['mku']['time_low']['desc'] = 'Расчетная дата перехода участка в класс безопасности "Низкий"';
+        $comment_rows['mku']['left_time_low']['desc'] = 'Переход в класс безопасности "Низкий" через (дней)';
         $comment_rows['mku']['date_end']['desc'] = 'Дата окончания действия экспертизы ПБ';
         $comment_rows['mku']['left_time']['desc'] = 'Действие экспертизы ПБ закончится через (дней)';
         $comment_rows['mku']['t_in']['desc'] = 'Температура газа в входе МКУ (°С)';

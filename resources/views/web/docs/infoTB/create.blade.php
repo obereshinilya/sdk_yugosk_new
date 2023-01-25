@@ -181,8 +181,8 @@
                     type: 'POST',
                     data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                     success: (res) => {
-                        // console.log(res)
-                        window.location.href = '/docs/directory_tb'
+                        console.log(res)
+                        // window.location.href = '/docs/directory_tb'
                     }
                 })
             }
