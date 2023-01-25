@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Conclusions_industrial_safety;
 use App\Events;
 use App\Fulfillment_certification;
+use App\Models\Logs;
 use App\Models\Main_models\AllIndicators;
 use App\Models\Main_models\RefDO;
 use App\Models\Main_models\RefOpo;
@@ -1276,16 +1277,72 @@ class ReportController extends Controller
         }
     }
 
-    public function show_conclusions_industrial_safety($object)
+    public function show_conclusions_industrial_safety(Request $request, $center_name, $name_do, $type_tu)
     {
-        $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get();
-        if ($object == 'all') {
-            $data = Conclusions_industrial_safety::all();
-        } else {
-            $data = Conclusions_industrial_safety::where('name_do', $object)->get();
+        if ($center_name != 'all'){
+            $center_name = explode(',', $center_name);
+            $data_one = Conclusions_industrial_safety::wherein('center_name', $center_name);
+            $number = Conclusions_industrial_safety::wherein('center_name', $center_name);
+            $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();
+            for ($i=0; $i<count($center); $i++){
+                if (in_array($center[$i]['center_name'], $center_name)){
+                    $center[$i]['in'] = true;
+                }else{
+                    $center[$i]['in'] = false;
+                }
+            }
+        }else{
+            $data_one = Conclusions_industrial_safety::orderby('id');
+            $number = Conclusions_industrial_safety::orderby('id');
+            $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($center); $i++){
+                $center[$i]['in'] = true;
+            }
+        }
+        if ($name_do != 'all'){
+            $name_do = explode(',', $name_do);
+            $data_one = $data_one->wherein('name_do', $name_do);
+            $number = $number->wherein('name_do', $name_do);
+            $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();
+            for ($i=0; $i<count($do); $i++){
+                if (in_array($do[$i]['name_do'], $name_do)){
+                    $do[$i]['in'] = true;
+                }else{
+                    $do[$i]['in'] = false;
+                }
+            }
+        }else{
+            $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($do); $i++){
+                $do[$i]['in'] = true;
+            }
+        }
+        if ($type_tu != 'all'){
+            $type_tu = explode(',', $type_tu);
+            $data_one = $data_one->wherein('type_tu', $type_tu);
+            $number = $number->wherein('type_tu', $type_tu);
+            $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();
+            for ($i=0; $i<count($tu); $i++){
+                if (in_array($tu[$i]['type_tu'], $type_tu)){
+                    $tu[$i]['in'] = true;
+                }else{
+                    $tu[$i]['in'] = false;
+                }
+            }
+        }else{
+            $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($tu); $i++){
+                $tu[$i]['in'] = true;
+            }
         }
 
-        return view('web.docs.reports.conclusions_industrial_safety', compact('do', 'data'));
+        $data_one = $data_one->paginate(1000);
+        $i = count($number->get());
+        $page = $request->page;
+        if ($page == null) {
+            $page = 1;
+        }
+        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu'));
     }
 
     public function get_conclusions_industrial_safety($year)

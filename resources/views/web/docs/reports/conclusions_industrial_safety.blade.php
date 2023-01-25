@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+    @push('app-css')
+        <link href="{{ asset('css/app_short.css') }}" rel="stylesheet">
+    @endpush
     {{--    Включаем всплывашку с новым сообщением о событии--}}
     @can('events-view')
         @include('web.admin.inc.new_JAS')
@@ -46,15 +49,8 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline-block">Реестр заключений
-                            экспертизы промышленной безопасности. Объект: </h2>
-                        <select class="select-css" id="select__year" onchange="get_data()"
-                                style="width: 20%; display: inline-block; margin-left: 2%">
-                            <option value="all">По всем филиалам</option>
-                            @foreach($do as $row)
-                                <option value="{{$row->name_do}}">{{$row->name_do}}</option>
-                            @endforeach
-                        </select>
+                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin: 5px">Реестр заключений
+                            экспертизы промышленной безопасности</h2>
                     </div>
                     <div class="doc_header" style="padding-bottom: 6px">
                         <table>
@@ -85,7 +81,7 @@
                         </table>
                     </div>
                     <div class="inside_tab_padding form51"
-                         style="height:72.5vh; padding: 0px; margin: 0px; overflow-y: auto">
+                         style="height:68.5vh; padding: 0px; margin: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px; width: 350%" class="form51">
                             <table id="table_for_search" style="display: table; table-layout: fixed; width: 100%">
                                 <colgroup>
@@ -121,17 +117,106 @@
                                     <col style="width: 2%">
                                     <col style="width: 1%">
                                 </colgroup>
+                                <style>
+                                    label {
+                                        font: 14px 'Fira Sans', sans-serif;
+                                    }
+                                    .checkbox{
+                                        float: left;
+                                        width: 90%;
+                                        text-align: left;
+                                    }
+                                    input{
+                                        margin: 0.4rem;
+                                    }
+                                    fieldset{
+                                        position: absolute; width: 250px; height: 250px; right: -240px; bottom: -260px; background-color: white; z-index: 30; padding: 3px; overflow-y: auto
+                                    }
+                                    .img{
+                                        position: absolute; right: 0px; bottom: 0px; width: 20px; border: 2px solid white; border-radius: 2px; background-color: white
+                                    }
+                                    .img:hover{
+                                        border: 2px solid darkgray;
+                                    }
+                                </style>
                                 <thead>
                                 <tr>
                                     <th rowspan="2" style="position: sticky; left: 2px; z-index: 20"
                                         onclick="sorted_table(0, this)">№ п/п
                                     </th>
-                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"
-                                        onclick="sorted_table(1, this)">Наименование центра финансовой
-                                        отвественности
+                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"><p onclick="sorted_table(1, this.parentNode)">Наименование центра финансовой
+                                            отвественности</p>
+                                        <img class="img"  alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="if(document.getElementById('fieldsheet_name_center').style.display === 'none'){document.getElementById('fieldsheet_name_center').style.display = ''}else {document.getElementById('fieldsheet_name_center').style.display = 'none'}">
+                                        <fieldset id="fieldsheet_name_center" style="display: none">
+                                            @foreach($center as $row)
+                                            <div class="checkbox">
+                                                @if($row['in'])
+                                                <input type="checkbox" class="checkbox_button" name="{{$row['center_name']}}" checked>
+                                                @else
+                                                <input type="checkbox" class="checkbox_button" name="{{$row['center_name']}}">
+                                                @endif
+                                                <label for="{{$row['center_name']}}">{{$row['center_name']}}</label>
+                                            </div>
+                                            @endforeach
+                                                <div class="bat_add" style="margin-left: 0px">
+                                                    <a
+                                                        onclick="get_data()"
+                                                        style="display: inline-block; margin-left: 0px">Применить</a>
+                                                    <a
+                                                        onclick="checked('fieldsheet_name_center')"
+                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
+                                                </div>
+                                        </fieldset>
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(2, this)">Наименование филиала</th>
-                                    <th rowspan="2" onclick="sorted_table(3, this)">Вид ТУ, зданий и сооружений</th>
+                                    <th rowspan="2"><p onclick="sorted_table(2, this.parentNode)">Наименование филиала</p>
+                                        <img class="img"  alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="if(document.getElementById('fieldsheet_name_do').style.display === 'none'){document.getElementById('fieldsheet_name_do').style.display = ''}else {document.getElementById('fieldsheet_name_do').style.display = 'none'}">
+                                        <fieldset id="fieldsheet_name_do" style="display: none">
+                                            @foreach($do as $row)
+                                                <div class="checkbox">
+                                                    @if($row['in'])
+                                                        <input type="checkbox" class="checkbox_button" name="{{$row['name_do']}}" checked>
+                                                    @else
+                                                        <input type="checkbox" class="checkbox_button" name="{{$row['name_do']}}">
+                                                    @endif
+                                                    <label for="{{$row['name_do']}}">{{$row['name_do']}}</label>
+                                                </div>
+                                            @endforeach
+                                            <div class="bat_add" style="margin-left: 0px">
+                                                <a
+                                                    onclick="get_data()"
+                                                    style="display: inline-block; margin-left: 0px">Применить</a>
+                                                <a
+                                                    onclick="checked('fieldsheet_name_do')"
+                                                    style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
+                                            </div>
+                                        </fieldset>
+                                    </th>
+                                    <th rowspan="2"><p onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и сооружений</p>
+                                        <img class="img"  alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="if(document.getElementById('fieldsheet_type_tu').style.display === 'none'){document.getElementById('fieldsheet_type_tu').style.display = ''}else {document.getElementById('fieldsheet_type_tu').style.display = 'none'}">
+                                        <fieldset id="fieldsheet_type_tu" style="display: none">
+                                            @foreach($tu as $row)
+                                                <div class="checkbox">
+                                                    @if($row['in'])
+                                                        <input type="checkbox" class="checkbox_button" name="{{$row['type_tu']}}" checked>
+                                                    @else
+                                                        <input type="checkbox" class="checkbox_button" name="{{$row['type_tu']}}">
+                                                    @endif
+                                                    <label for="{{$row['type_tu']}}">{{$row['type_tu']}}</label>
+                                                </div>
+                                            @endforeach
+                                            <div class="bat_add" style="margin-left: 0px">
+                                                <a
+                                                    onclick="get_data()"
+                                                    style="display: inline-block; margin-left: 0px">Применить</a>
+                                                <a
+                                                    onclick="checked('fieldsheet_type_tu')"
+                                                    style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
+                                            </div>
+                                        </fieldset>
+                                    </th>
                                     <th colspan="9">Место проведения ЭПБ</th>
                                     <th rowspan="2" onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</th>
                                     <th rowspan="2" onclick="sorted_table(14, this)">Дата проведения ЭПБ</th>
@@ -203,45 +288,45 @@
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
-                                @foreach($data as $row)
+                                @foreach($data_one as $key=>$data)
                                     <tr>
-                                        <td style="text-align: center; position: sticky; left: 2px; background-color: white">{{$row->id}}</td>
-                                        <td style="text-align: center; position: sticky; left: 5.8%; background-color: white">{{$row->center_name}}</td>
-                                        <td style="text-align: center">{{$row->name_do}}</td>
-                                        <td style="text-align: center">{{$row->type_tu}}</td>
-                                        <td style="text-align: center">{{$row->object_name}}</td>
-                                        <td style="text-align: center">{{$row->workshop_name}}</td>
-                                        <td style="text-align: center">{{$row->n_workshop}}</td>
-                                        <td style="text-align: center">{{$row->name_tu}}</td>
-                                        <td style="text-align: center">{{$row->manufacturer}}</td>
-                                        <td style="text-align: center">{{$row->station_number}}</td>
-                                        <td style="text-align: center">{{$row->factory_num}}</td>
-                                        <td style="text-align: center">{{$row->pipeline_length}}</td>
+                                        <td style="text-align: center; position: sticky; left: 2px; background-color: white">{{$data->id}}</td>
+                                        <td style="text-align: center; position: sticky; left: 5.8%; background-color: white">{{$data->center_name}}</td>
+                                        <td style="text-align: center">{{$data->name_do}}</td>
+                                        <td style="text-align: center">{{$data->type_tu}}</td>
+                                        <td style="text-align: center">{{$data->object_name}}</td>
+                                        <td style="text-align: center">{{$data->workshop_name}}</td>
+                                        <td style="text-align: center">{{$data->n_workshop}}</td>
+                                        <td style="text-align: center">{{$data->name_tu}}</td>
+                                        <td style="text-align: center">{{$data->manufacturer}}</td>
+                                        <td style="text-align: center">{{$data->station_number}}</td>
+                                        <td style="text-align: center">{{$data->factory_num}}</td>
+                                        <td style="text-align: center">{{$data->pipeline_length}}</td>
 
-                                        <td style="text-align: center">{{$row->inv_tu_num}}</td>
-                                        <td style="text-align: center">{{$row->date_comiss}}</td>
-                                        <td style="text-align: center">{{$row->date_epb}}</td>
-                                        <td style="text-align: center">{{$row->runtime_tu}}</td>
-                                        <td style="text-align: center">{{$row->age_tu}}</td>
-                                        <td style="text-align: center">{{$row->runtime_ext_tu}}</td>
-                                        <td style="text-align: center">{{$row->age_ext_tu}}</td>
-                                        <td style="text-align: center">{{$row->runtime_epb}}</td>
-                                        <td style="text-align: center">{{$row->date_next_epb}}</td>
-                                        <td style="text-align: center">{{$row->notification}}</td>
-                                        <td style="text-align: center">{{$row->reg_num}}</td>
-                                        <td style="text-align: center">{{$row->conditions}}</td>
-                                        <td style="text-align: center">{{$row->completion_mark}}</td>
-                                        <td style="text-align: center">{{$row->conditions_concl}}</td>
-                                        <td style="text-align: center">{{$row->due_date}}</td>
-                                        <td style="text-align: center">{{$row->priority}}</td>
-                                        <td style="text-align: center">{{$row->concl_num}}</td>
-                                        <td style="text-align: center">{{$row->exp_org_name}}</td>
+                                        <td style="text-align: center">{{$data->inv_tu_num}}</td>
+                                        <td style="text-align: center">{{$data->date_comiss}}</td>
+                                        <td style="text-align: center">{{$data->date_epb}}</td>
+                                        <td style="text-align: center">{{$data->runtime_tu}}</td>
+                                        <td style="text-align: center">{{$data->age_tu}}</td>
+                                        <td style="text-align: center">{{$data->runtime_ext_tu}}</td>
+                                        <td style="text-align: center">{{$data->age_ext_tu}}</td>
+                                        <td style="text-align: center">{{$data->runtime_epb}}</td>
+                                        <td style="text-align: center">{{$data->date_next_epb}}</td>
+                                        <td style="text-align: center">{{$data->notification}}</td>
+                                        <td style="text-align: center">{{$data->reg_num}}</td>
+                                        <td style="text-align: center">{{$data->conditions}}</td>
+                                        <td style="text-align: center">{{$data->completion_mark}}</td>
+                                        <td style="text-align: center">{{$data->conditions_concl}}</td>
+                                        <td style="text-align: center">{{$data->due_date}}</td>
+                                        <td style="text-align: center">{{$data->priority}}</td>
+                                        <td style="text-align: center">{{$data->concl_num}}</td>
+                                        <td style="text-align: center">{{$data->exp_org_name}}</td>
                                         @can('report-edit')
                                             <td style="text-align: center; min-width: auto">
-                                                <a href="#" onclick="edit_record({{$row->id}})"><img
+                                                <a href="#" onclick="edit_record({{$data->id}})"><img
                                                         style="width: 15px; height: 15px; margin: 3px" alt=""
                                                         src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>
-                                                <a href="#" style="" onclick="remove_record({{$row->id}})"><img
+                                                <a href="#" style="" onclick="remove_record({{$data->id}})"><img
                                                         style="opacity:1; width: 15px; height: 15px; margin: 3px" alt=""
                                                         src="{{asset('assets/images/icons/trash.svg')}}"
                                                         class="trash_i"></a>
@@ -252,19 +337,101 @@
                             </table>
                         </div>
                     </div>
+                    <div style="height: 7vh">
+                        <table class="table table-hover " style="width: border-box; margin-bottom: 0px; float: left; width: 100%">
+                            <tbody>
+                            <tr>
+                                <td style="border-right: 0px"><p style="font-size: 18px">Всего записей:{{$i}}</p></td>
+                                <td>  {{ $data_one->links() }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('select__year').value = '{{$data[0]->name_do}}';
             @can('doc-create')
-            let excel = document.querySelector('.bat_info');
-            excel.firstChild.href = '/excel_conclusions_industrial_safety/' + document.getElementById('select__year').value;
+            // let excel = document.querySelector('.bat_info');
+            // excel.firstChild.href = '/excel_conclusions_industrial_safety/' + document.getElementById('select__year').value;
             @endcan
-            // get_data()
+            checked()
         })
+        function checked(id){
+            if (id){
+                var true_button = false
+                var checkboxes = document.getElementById(id).getElementsByClassName('checkbox_button')
+                for (var check of checkboxes){
+                    if (check.hasAttribute('checked')){
+                        true_button = true
+                    }
+                }
+                if (true_button){
+                    for (var check of checkboxes){
+                        check.removeAttribute('checked')
+                    }
+                }else {
+                    for (var check of checkboxes){
+                        check.setAttribute('checked', true)
+                    }
+                }
+            }else {
+                for (var check of document.getElementsByClassName('checkbox_button')){
+                    check.addEventListener('click', function(){
+                        if (this.hasAttribute('checked')){
+                            this.removeAttribute('checked')
+                        }else {
+                            this.setAttribute('checked', true)
+                        }
+                    })
+                }
+            }
+        }
+        function get_data() {
+            var fieldsheet_name_center = document.getElementById('fieldsheet_name_center').getElementsByTagName('input')
+            var arr_name_center = []
+            var name_centre_check = true
+            for(var row of fieldsheet_name_center){
+                if (row.hasAttribute('checked')){
+                    arr_name_center.push(row.getAttribute('name'))
+                }else {
+                    name_centre_check = false
+                }
+            }
+            if (arr_name_center.length == 0 || name_centre_check){
+                arr_name_center = 'all'
+            }
+            var fieldsheet_name_do = document.getElementById('fieldsheet_name_do').getElementsByTagName('input')
+            var arr_name_do = []
+            var name_do_check = true
+            for(var row of fieldsheet_name_do){
+                if (row.hasAttribute('checked')){
+                    arr_name_do.push(row.getAttribute('name'))
+                }else {
+                    name_do_check = false
+                }
+            }
+            if (arr_name_do.length == 0 || name_do_check ){
+                arr_name_do = 'all'
+            }
+            var fieldsheet_type_tu = document.getElementById('fieldsheet_type_tu').getElementsByTagName('input')
+            var arr_type_tu = []
+            var type_tu_check = true
+            for(var row of fieldsheet_type_tu){
+                if (row.hasAttribute('checked')){
+                    arr_type_tu.push(row.getAttribute('name'))
+                }else {
+                    type_tu_check = false
+                }
+            }
+            if (arr_type_tu.length == 0 || type_tu_check){
+                arr_type_tu = 'all'
+            }
+            // console.log(arr_name_center)
+            window.location.href = '/docs/conclusions_industrial_safety/' + arr_name_center+'/'+arr_name_do+'/'+arr_type_tu;
+        }
 
         function sorted_table(column, th) {
             var class_list = th.classList
@@ -315,62 +482,6 @@
             }
         }
 
-        function get_data() {
-
-
-            window.location.href = '/docs/conclusions_industrial_safety/' + document.getElementById('select__year').value;
-            {{--$.ajax({--}}
-            {{--    url: '/docs/conclusions_industrial_safety/get_params/' + document.getElementById('select__year').value,--}}
-            {{--    type: 'GET',--}}
-            {{--    success: (res) => {--}}
-            {{--        for (var row of res) {--}}
-            {{--            var tr = document.createElement('tr');--}}
-            {{--            tr.innerHTML += `<td style="text-align: center; position: sticky; left: 2px; background-color: white">${row['id']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center; position: sticky; left: 5.8%; background-color: white">${row['center_name']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['type_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['object_name']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['workshop_name']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['n_workshop']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['name_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['manufacturer']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['station_number']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['factory_num']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['pipeline_length']}</td>`--}}
-
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['inv_tu_num']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_comiss']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_epb']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['age_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_ext_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['age_ext_tu']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['runtime_epb']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['date_next_epb']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['notification']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['reg_num']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['conditions']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['completion_mark']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['conditions_concl']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['due_date']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['priority']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['concl_num']}</td>`--}}
-            {{--            tr.innerHTML += `<td style="text-align: center">${row['exp_org_name']}</td>`--}}
-            {{--            tr.innerHTML += ` @can('report-edit') <td style="text-align: center; min-width: auto">--}}
-            {{--        <a href="#" onclick="edit_record(${row['id']})"><img style="width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>--}}
-            {{--        <a href="#" style="" onclick="remove_record(${row['id']})"><img style="opacity:1; width: 15px; height: 15px; margin: 3px"  alt="" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>--}}
-            {{--        </td>  @endcan`--}}
-
-            {{--            table_body.appendChild(tr)--}}
-            {{--        }--}}
-            {{--    },--}}
-            {{--    error: function (error) {--}}
-            {{--        var table_body = document.getElementById('body_table')--}}
-            {{--        table_body.innerText = ''--}}
-            {{--    },--}}
-
-            {{--})--}}
-        }
 
         //скрипт для удаления
         function remove_record(id) {
@@ -411,6 +522,7 @@
             var search_text = new RegExp(document.getElementById('search_text').value, 'i');   //искомый текст
             var search_text_sec = new RegExp(document.getElementById('search_text_Second').value, 'i');   //искомый текст
             var search_text_third = new RegExp(document.getElementById('search_text_third').value, 'i');   //искомый текст
+            var check_full = false
             for (var i = 0; i < table_boby_rows.length; i++) {  //проходимся по строкам
                 var flag_success = false   //станет true, если есть совпадение в строке
                 var flag_success_sec = false   //станет true, если есть совпадение в строке
@@ -429,8 +541,21 @@
                 }
                 if (flag_success && flag_success_sec && flag_success_third) {
                     table_boby_rows[i].style.display = ""
+                    check_full = true
                 } else {
                     table_boby_rows[i].style.display = "none"
+                }
+            }
+            if (!check_full){
+                var tr = document.createElement('tr')
+                tr.id = 'time_row'
+                tr.innerHTML = '<td colspan="31" style="text-align: left">На данной странице ничего не найдено</td>'
+                document.getElementById('table_for_search').getElementsByTagName('tbody')[0].appendChild(tr);
+            }else {
+                try{
+                    document.getElementById('time_row').parentNode.removeChild(document.getElementById('time_row'))
+                }catch (e){
+
                 }
             }
         }

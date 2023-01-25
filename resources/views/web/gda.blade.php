@@ -14,8 +14,10 @@
     .map_hover_jas {
         bottom: auto;
         border-collapse: collapse;
-        width: 519px;
+        /*width: 519px;*/
+        width: 660px;
         overflow-y: scroll;
+        z-index: 999;
     }
     .map_hover_jas tbody{
         font-size: 12px;
@@ -102,7 +104,6 @@
             <thead>
             <tr>
                 <th>Дата</th>
-                <th>Статус</th>
                 <th>Филиал ДО</th>
                 <th>ТБ</th>
                 <th>Событие</th>
@@ -110,116 +111,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                </tr>
-                <tr>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
-                    <td>JKHjkh</td>
+                    <td colspan="4">Аварийных событий нет</td>
                 </tr>
             </tbody>
 
@@ -312,8 +204,29 @@
 </body>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function test() {
+        check_new_JAS()
+        setInterval(check_new_JAS ,10000)
+    })
+    function check_new_JAS(){
+        $.ajax({
+            url: '/new_jas_main',
+            type: 'GET',
+            success: (res) => {
+                var table_body = document.getElementById('map_hover_jas').getElementsByTagName('tbody')[0]
+                table_body.innerHTML = ''
+                for (var i=0; i<res.length; i++){
+                    var tr = document.createElement('tr')
+                    tr.innerHTML+=`<td>${res[i]['date']}</td>`
+                    tr.innerHTML+=`<td>${res[i]['name_do']}</td>`
+                    tr.innerHTML+=`<td>${res[i]['name_tb']}</td>`
+                    tr.innerHTML+=`<td>${res[i]['event']}</td>`
+                    table_body.appendChild(tr);
+                }
+            }
+        })
+    }
     document.getElementById('main_link_li').className = 'active'
-
     function open_modal_opos(id){
         var opos = new Map([     //массив наименований ОПО по точкам
             [1, 'Харп'],

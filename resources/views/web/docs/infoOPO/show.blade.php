@@ -15,7 +15,7 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Редактирование записи в справочнике ОПО
+                        <h2 class="text-muted" style="text-align: center">Просмотр записи в справочнике ОПО
                         </h2>
                     </div>
 

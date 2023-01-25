@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jas;
 use App\Models\Main_models\KRANS;
 use App\Models\Main_models\MKU;
 use App\Models\Main_models\RefDO;
@@ -14,6 +15,21 @@ use Illuminate\Support\Facades\DB;
 
 class OpoController extends Controller
 {
+    public function new_jas_main(){
+        $data = Jas::where('active', '=', true)->get();
+        $to_table = [];
+        $i = 0;
+        if (count($data)){
+            foreach ($data as $row){
+                $to_table[$i]['date'] = date('d.m.Y H:i', strtotime($row->date));
+                $to_table[$i]['name_do'] = 'Краснотурьинское ЛПУМГ';
+                $to_table[$i]['name_tb'] = $row->elem_opo;
+                $to_table[$i]['event'] = $row->sobitie;
+                $i++;
+            }
+            return $to_table;
+        }
+    }
     public function to_lower_tag ()
     {
         foreach (TagTable::get() as $row){
