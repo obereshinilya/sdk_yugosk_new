@@ -39,7 +39,7 @@
                                                                      class="select-css">
                                             <option
                                                 value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
-                                            @foreach(\App\Models\Main_models\RefDO::all() as $row)
+                                            @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get() as $row)
                                                 @if($row->id_do==$data->id_do)
                                                     @continue
                                                 @else

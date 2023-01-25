@@ -9,6 +9,11 @@
     @can('events-view')
         @include('web.admin.inc.new_JAS')
     @endcan
+    <style>
+        .form51 table tr th{
+            padding: 3px 3px;
+        }
+    </style>
     <div style="height: 75.3vh">
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
@@ -246,6 +251,7 @@
                 url: '/docs/get_result_apk/' + document.getElementById('select__year').value,
                 type: 'GET',
                 success: (res) => {
+                    console.log(res)
                     var table_body = document.getElementById('body_table')
                     table_body.innerText = ''
                     let sum = 0;
@@ -261,21 +267,14 @@
                         rosteh_error = 0,
                         percent,
                         min
+
                     for (var key of Object.keys(res)) {
                         var num_record = Object.keys(res['id']).length
                         if (key !== 'id' && key !== 'year') {
                             var tr = document.createElement('tr')
                             var height = document.getElementById(key).clientHeight
                             for (var j = 1; j <= num_record; j++) {
-                                // if (!res[key][j]){
-                                //     res[key][j] = ' '
-                                // }
-//console.log(key)
-//				if(key == 'name_DO'){
-//tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; position:sticky; top:90px">${res[key][j]}</td>`
-//				}else{
-                                tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${res[key][j]}</td>`
-//				}
+                                tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; text-align: center">${res[key][j]}</td>`
                             }
                             if (key == 'id_do') {
                                 tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">Итого по ДО</td>`
@@ -317,7 +316,6 @@
                                     }
                                     sum += res[key][j]
                                 }
-                                ;
                                 tr.innerHTML += `<td style="height: ${height}px; padding-top: 0px; padding-bottom: 0px; ">${sum}</td>`
                             } else {
                                 switch (key) {

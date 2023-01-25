@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Image;
+use App\Models\Reports\ExcelFiles;
 use App\Models\Reports\PdfFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,15 +11,63 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadFilesController extends Controller
 {
+    public function show_excel()
+    {
+        AdminController::log_record('Открыл журнал СтатусГТЮ');//пишем в журнал
+        $pdf_files = ExcelFiles::all();
+        $date = false;
+        $message = '';
+        foreach ($pdf_files as $key => $row) {
+            $date[$key] = date('d.m.Y H:i', strtotime($row->date));
+        }
+        return view('web.docs.document.excel_files', compact('pdf_files', 'date', 'message'));
+    }
+    public function save_excel(Request $request)
+    {
+        foreach ($request->file() as $file) {
+            foreach ($file as $f) {
+                if (!file_exists((public_path('storage/docs/' . $f->getClientOriginalName())))) {       // проверка на существование файла
+                    $f->move(public_path('storage/docs/'), $f->getClientOriginalName()); //public\storage\docs
+                    ExcelFiles::create(['name' => $f->getClientOriginalName()]);
+                    AdminController::log_record('Загрузил данные с системы "СтатусГТЮ" ' . $f->getClientMimeType());//пишем в журнал
+                }else{
+                    $message = 'Файл с таким именем уже существует!';
+                    $pdf_files = ExcelFiles::all();
+                    $date = false;
+                    foreach ($pdf_files as $key => $row) {
+                        $date[$key] = date('d.m.Y H:i', strtotime($row->date));
+                    }
+                    return view('web.docs.document.excel_files', compact('pdf_files', 'date', 'message'));
+                }
+            }
+        }
+        return redirect()->route('show_excel');
+    }
+    public function excel_delete($id)
+    {
+        $f_base = ExcelFiles::where('id', '=', $id)->first();
+        $f_path = unlink('storage/docs/' . $f_base->name);
+        AdminController::log_record('Удалил файл от системы "СтатусГТЮ" ' . $f_base->name);//пишем в журнал
+        $f_base->delete();
+        return redirect()->route('show_excel');
+    }
+    public function excel_download($id)
+    {
+        $path = 'storage/docs/' . ExcelFiles::where('id', '=', $id)->first()->name;
+        return response()->download($path, basename($path));
+    }
+
+
     public function show_files()
     {
         AdminController::log_record('Открыл нормативную документацию');//пишем в журнал
+        $message = '';
         $pdf_files = PdfFiles::all();
+        $date = false;
         foreach ($pdf_files as $key => $row) {
-
-            $date[$key] = date('d.m.Y', strtotime($row->date));
+            $date[$key] = date('d.m.Y H:i', strtotime($row->date));
         }
-        return view('web.docs.document.pdf_files', compact('pdf_files', 'date'));
+        return view('web.docs.document.pdf_files', compact('pdf_files', 'date', 'message'));
     }
 
     public function save_file(Request $request)
@@ -28,9 +77,17 @@ class UploadFilesController extends Controller
                 if (!file_exists((public_path('storage/docs/' . $f->getClientOriginalName())))) {       // проверка на существование файла
                     $f->move(public_path('storage/docs/'), $f->getClientOriginalName()); //public\storage\docs
                     PdfFiles::create(['name' => $f->getClientOriginalName()]);
+                    AdminController::log_record('Загрузил нормативную документацию ' . $f->getClientMimeType());//пишем в журнал
+                }else{
+                    $message = 'Файл с таким именем уже существует!';
+                    $pdf_files = PdfFiles::all();
+                    $date = false;
+                    foreach ($pdf_files as $key => $row) {
+                        $date[$key] = date('d.m.Y H:i', strtotime($row->date));
+                    }
+                    return view('web.docs.document.pdf_files', compact('pdf_files', 'date', 'message'));
                 }
             }
-            AdminController::log_record('Загрузил нормативную документацию ' . $f->getClientMimeType());//пишем в журнал
         }
         return redirect()->route('show_files');
     }
@@ -50,6 +107,7 @@ class UploadFilesController extends Controller
         $f_base->delete();
         return redirect()->route('show_files');
     }
+
 
 
 }

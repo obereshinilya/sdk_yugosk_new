@@ -48,7 +48,7 @@
                                     <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 50%"
                                                                      class="select-css">
                                             <option
-                                                value="{{$data->name_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
+                                                value="{{$data->id_do}}">{{\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do')}}</option>
                                             @foreach($do as $row)
                                                 @if($row->short_name_do==\App\Models\Main_models\RefDO::where('id_do','=',$data->id_do)->value('short_name_do'))
                                                     @continue
@@ -131,7 +131,8 @@
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
-                    console.log(res)
+                    // console.log(out_data)
+                    // console.log(res)
                     window.location.href = '/docs/perfomance_plan_KiPD'
                 }
             })

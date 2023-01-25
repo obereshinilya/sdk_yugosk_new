@@ -48,7 +48,7 @@
                                                                      class="select-css">
                                             <option
                                                 value="{{$data->id_opo}}">{{\App\Models\Main_models\RefOpo::where('id_opo','=',$data->id_opo)->value('full_name_opo')}}</option>
-                                            @foreach(\App\Models\Main_models\RefOpo::all() as $row)
+                                            @foreach(\App\Models\Main_models\RefOpo::orderby('full_name_opo')->get() as $row)
                                                 @if($row->id_opo==$data->id_opo)
                                                     @continue
                                                 @else

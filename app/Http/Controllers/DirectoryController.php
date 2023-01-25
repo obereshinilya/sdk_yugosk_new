@@ -28,7 +28,7 @@ class DirectoryController extends Controller
     {
         $opos = DB::table('public.ref_do')->
         join('public.typestatus', 'public.ref_do.id_status', '=', 'public.typestatus.id_status')
-            ->orderby('id_do')->get();
+            ->orderby('short_name_do')->get();
         AdminController::log_record('Открыл справочник филиалов ДО ');//пишем в журнал
         return view('web.docs.infoDO.index', compact('opos'));
     }
@@ -102,7 +102,7 @@ class DirectoryController extends Controller
         join('public.ref_opo', 'public.ref_obj.id_opo', '=', 'public.ref_opo.id_opo')->
         join('public.ref_do', 'public.ref_opo.id_do', '=', 'public.ref_do.id_do')->
         join('public.typestatus', 'public.ref_obj.id_status', '=', 'public.typestatus.id_status')
-            ->orderby('id_obj')->get();
+            ->orderby('short_name_do', 'ASC')->orderby('full_name_opo', 'ASC')->orderby('full_name_obj', 'ASC')->get();
         AdminController::log_record('Открыл справочник элементов ОПО  ');//пишем в журнал
         return view('web.docs.infoObj.index', compact('objects'));
     }

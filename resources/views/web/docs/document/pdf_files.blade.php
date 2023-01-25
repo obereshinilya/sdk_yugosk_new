@@ -62,26 +62,35 @@
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
-                                @foreach($pdf_files as $key=>$image)
+                                @if($message)
+                                    <td colspan="4"><b>{{$message}}</b></td>
+                                @endif
+                                @if(count($pdf_files))
+                                    @foreach($pdf_files as $key=>$image)
+                                        <tr>
+                                            <td style="text-align: center">{{ $image->name  }}</td>
+                                            <td style="text-align: center">{{ $date[$key] }}</td>
+                                            <td style="text-align: center">
+                                                <a href="/docs/norm_document_open/{{ $image->id }}"
+                                                   style="text-align: center">
+                                                    <img style="height: 20px"
+                                                         src="{{ asset('assets/images/icons/pdf.svg') }}" class="pdf_i">
+                                                </a>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <a href="/docs/norm_document_delete/{{ $image->id }}"
+                                                   style="text-align: center; margin-left: 35%">
+                                                    <img style="height: 20px" alt=""
+                                                         src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td style="text-align: center">{{ $image->name  }}</td>
-                                        <td style="text-align: center">{{ $date[$key] }}</td>
-                                        <td style="text-align: center">
-                                            <a href="/docs/norm_document_open/{{ $image->id }}"
-                                               style="text-align: center">
-                                                <img style="height: 20px"
-                                                     src="{{ asset('assets/images/icons/pdf.svg') }}" class="pdf_i">
-                                            </a>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <a href="/docs/norm_document_delete/{{ $image->id }}"
-                                               style="text-align: center; margin-left: 35%">
-                                                <img style="height: 20px" alt=""
-                                                     src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
-                                            </a>
-                                        </td>
+                                        <td colspan="4">Данные отсутствуют</td>
                                     </tr>
-                                @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
