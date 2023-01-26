@@ -25,6 +25,12 @@
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
                         <h2 class="text-muted" style="text-align: center; display: inline-block">Загрузка данных с системы "СтатусГТЮ"</h2>
+                        <h3 style="float: right">Скачать шаблон
+                            <a href="/docs/example_excel"
+                                             style="text-align: center; display: inline-block; margin-left: 15px">
+                                <img style="height: 20px"
+                                     src="{{ asset('assets/images/icons/download.svg') }}" class="pdf_i">
+                            </a></h3>
                     </div>
                     <div class="doc_header" style="padding-bottom: 6px">
                         <table>

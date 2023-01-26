@@ -26,8 +26,8 @@ class UploadFilesController extends Controller
     {
         foreach ($request->file() as $file) {
             foreach ($file as $f) {
-                if (!file_exists((public_path('storage/docs/' . $f->getClientOriginalName())))) {       // проверка на существование файла
-                    $f->move(public_path('storage/docs/'), $f->getClientOriginalName()); //public\storage\docs
+                if (!file_exists((public_path('storage/docs/excel/' . $f->getClientOriginalName())))) {       // проверка на существование файла
+                    $f->move(public_path('storage/docs/excel/'), $f->getClientOriginalName()); //public\storage\docs
                     ExcelFiles::create(['name' => $f->getClientOriginalName()]);
                     AdminController::log_record('Загрузил данные с системы "СтатусГТЮ" ' . $f->getClientMimeType());//пишем в журнал
                 }else{
@@ -46,14 +46,19 @@ class UploadFilesController extends Controller
     public function excel_delete($id)
     {
         $f_base = ExcelFiles::where('id', '=', $id)->first();
-        $f_path = unlink('storage/docs/' . $f_base->name);
+        $f_path = unlink('storage/docs/excel/' . $f_base->name);
         AdminController::log_record('Удалил файл от системы "СтатусГТЮ" ' . $f_base->name);//пишем в журнал
         $f_base->delete();
         return redirect()->route('show_excel');
     }
     public function excel_download($id)
     {
-        $path = 'storage/docs/' . ExcelFiles::where('id', '=', $id)->first()->name;
+        $path = 'storage/docs/excel/' . ExcelFiles::where('id', '=', $id)->first()->name;
+        return response()->download($path, basename($path));
+    }
+    public function excel_example()
+    {
+        $path = 'storage/docs/Форма Статус ГТЮ.xlsx';
         return response()->download($path, basename($path));
     }
 
@@ -74,8 +79,8 @@ class UploadFilesController extends Controller
     {
         foreach ($request->file() as $file) {
             foreach ($file as $f) {
-                if (!file_exists((public_path('storage/docs/' . $f->getClientOriginalName())))) {       // проверка на существование файла
-                    $f->move(public_path('storage/docs/'), $f->getClientOriginalName()); //public\storage\docs
+                if (!file_exists((public_path('storage/docs/pdf/' . $f->getClientOriginalName())))) {       // проверка на существование файла
+                    $f->move(public_path('storage/docs/pdf/'), $f->getClientOriginalName()); //public\storage\docs
                     PdfFiles::create(['name' => $f->getClientOriginalName()]);
                     AdminController::log_record('Загрузил нормативную документацию ' . $f->getClientMimeType());//пишем в журнал
                 }else{
@@ -95,19 +100,16 @@ class UploadFilesController extends Controller
     public function open_files($id)
     {
         $f = PdfFiles::where('id', '=', $id)->first();
-        $image = 'storage/docs/' . $f->name;
+        $image = 'storage/docs/pdf/' . $f->name;
         return view('web.docs.document.open_pdf', compact('image'));
     }
 
     public function delete_file($id)
     {
         $f_base = PdfFiles::where('id', '=', $id)->first();
-        $f_path = unlink('storage/docs/' . $f_base->name);
+        $f_path = unlink('storage/docs/pdf/' . $f_base->name);
         AdminController::log_record('Удалил нормативную документацию ' . $f_base->name);//пишем в журнал
         $f_base->delete();
         return redirect()->route('show_files');
     }
-
-
-
 }
