@@ -38,7 +38,7 @@
                                     <td style="padding: 0px"><select style="height: 100%; width: 70%" onchange="get_opo(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Наименование филиала ДО...</option>
-                                        @foreach(\App\Models\Main_models\RefDO::all() as $row)
+                                        @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get() as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
@@ -181,8 +181,8 @@
                     type: 'POST',
                     data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                     success: (res) => {
-                        console.log(res)
-                        // window.location.href = '/docs/directory_tb'
+                        // console.log(res)
+                        window.location.href = '/docs/directory_tb'
                     }
                 })
             }

@@ -186,7 +186,7 @@
                         alert('Не указан срок выполнения!')
                     } else {
                         console.log(res)
-                        window.location.href = '/docs/kipd_internal_checks'
+                        // window.location.href = '/docs/kipd_internal_checks'
                     }
                 }
             })

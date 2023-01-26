@@ -37,7 +37,7 @@
                                     <th style="text-align: center">Филиал дочернего общества</th>
                                     <td style="padding: 0px"><select id="id_do" style="height: 100%; width: 70%"
                                                                      class="select-css">
-                                            @foreach(\App\Models\Main_models\RefDO::all() as $row)
+                                            @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get() as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>

@@ -135,7 +135,7 @@ class ReportController extends Controller
 
     public function create_kipd_internal_checks()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_kipd_internal_checks_new', compact('do'));
     }
 
@@ -233,6 +233,7 @@ class ReportController extends Controller
             $i = 1;
             foreach ($data as $row) {
                 $keys = array_keys($row);
+                list($keys[array_search('id_do', $keys)], $keys[array_search('id', $keys)]) = array($keys[array_search('id', $keys)], $keys[array_search('id_do', $keys)]);
                 foreach ($keys as $key) {
                     if ($key == 'id_do') {
                         $data_to_table[$key][$i] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
@@ -379,7 +380,7 @@ class ReportController extends Controller
 
     public function create_result_apk()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_result_apk_new', compact('do'));
     }
 
@@ -529,7 +530,7 @@ class ReportController extends Controller
     {
         $types = Table_incidents::select(DB::raw('CONCAT(type,\'. \',type_incident) AS types'), 'type')->get();
         $type = Table_incidents::select('type')->groupby('type')->get();
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_sved_avar_new', compact('do', 'types', 'type'));
     }
 
@@ -611,7 +612,7 @@ class ReportController extends Controller
 
     public function create_perfomance_plan_KiPD()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_perfomance_plan_KiPD_new', compact('do'));
     }
 
@@ -648,7 +649,7 @@ class ReportController extends Controller
 
     public function edit_perfomance_plan_KiPD($id)
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         $data = Perfomance_plan_KiPD::where('id', '=', $id)->first();
         return view('web.docs.reports.report_perfomance_plan_KiPD_edit', compact('data', 'do'));
     }
@@ -697,7 +698,7 @@ class ReportController extends Controller
 
     public function create_plan_industrial_safety()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_plan_industrial_safety_new', compact('do'));
     }
 
@@ -864,7 +865,7 @@ class ReportController extends Controller
 
     public function create_report_events()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_events_new', compact('do'));
     }
 
@@ -897,7 +898,7 @@ class ReportController extends Controller
 
     public function edit_report_events($id)
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
 
         $data = Report_events::where('id', '=', $id)->first();
         return view('web.docs.reports.report_events_edit', compact('data', 'do'));
@@ -943,7 +944,7 @@ class ReportController extends Controller
 
     public function create_events()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.events_new', compact('do'));
     }
 
@@ -980,7 +981,7 @@ class ReportController extends Controller
 
     public function edit_events($id)
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
 
         $data = Events::where('id', '=', $id)->first();
         return view('web.docs.reports.events_edit', compact('data', 'do'));
@@ -1017,7 +1018,7 @@ class ReportController extends Controller
 
     public function create_emergency_drills()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.report_emergency_drills_new', compact('do'));
     }
 
@@ -1336,7 +1337,7 @@ class ReportController extends Controller
             }
         }
 
-        $data_one = $data_one->paginate(1000);
+        $data_one = $data_one->paginate(2500);
         $i = count($number->get());
         $page = $request->page;
         if ($page == null) {
@@ -1356,7 +1357,7 @@ class ReportController extends Controller
 
     public function create_conclusions_industrial_safety()
     {
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::orderby('short_name_do')->select('short_name_do')->get();
         return view('web.docs.reports.conclusions_industrial_safety_new', compact('do'));
     }
 
@@ -1387,7 +1388,7 @@ class ReportController extends Controller
     public function edit_conclusions_industrial_safety($id)
     {
         $data = Conclusions_industrial_safety::where('id', '=', $id)->first();
-        $do = RefDO::select('short_name_do')->get();
+        $do = RefDO::orderby('short_name_do')->select('short_name_do')->get();
 
         return view('web.docs.reports.conclusions_industrial_safety_edit', compact('data', 'do'));
     }
@@ -1429,7 +1430,7 @@ class ReportController extends Controller
 
     public function create_fulfillment_certification()
     {
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
         return view('web.docs.reports.fulfillment_certification_new', compact('do'));
     }
 
@@ -1462,7 +1463,7 @@ class ReportController extends Controller
     public function edit_fulfillment_certification($id)
     {
         $data = Fulfillment_certification::where('id', '=', $id)->first();
-        $do = RefDO::get();
+        $do = RefDO::orderby('short_name_do')->get();
 
         return view('web.docs.reports.fulfillment_certification_edit', compact('data', 'do'));
     }
@@ -1506,8 +1507,8 @@ class ReportController extends Controller
     public function create_pat_schedule()
     {
         $data = Pat_themes::orderby('id')->get();
-        $do = RefDO::get();
-        $opo = RefOpo::get();
+        $do = RefDO::orderby('short_name_do')->get();
+        $opo = RefOpo::orderby('full_name_opo')->get();
         return view('web.docs.reports.pat_schedule_new', compact('data', 'do', 'opo'));
     }
 
@@ -1553,8 +1554,8 @@ class ReportController extends Controller
         $nov = explode(', ', Pat_schedule::where('id', '=', $id)->value('nov'));
         $dec = explode(', ', Pat_schedule::where('id', '=', $id)->value('dec'));
         $themes = Pat_themes::orderby('id')->get();
-        $do = RefDO::select('short_name_do')->get();
-        $opo = RefOpo::select('full_name_opo')->get();
+        $do = RefDO::orderby('short_name_do')->select('short_name_do')->get();
+        $opo = RefOpo::orderby('full_name_opo')->select('full_name_opo')->get();
 
         return view('web.docs.reports.pat_schedule_edit', compact('data', 'do', 'opo', 'themes', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'));
     }

@@ -53,9 +53,10 @@
 
                     </thead>
                     <tbody>
+                    <?php $i =1 ?>
                     @foreach ($opos as $row)
                         <tr>
-                            <td style="text-align: center">{{ $row->id_do }}</td>
+                            <td style="text-align: center">{{ $i }}</td>
                             <td style="text-align: center">{{ $row->short_name_do }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_do }}</td>
                             <td style="text-align: center">{{ $row->region }}</td>
@@ -72,6 +73,7 @@
                                                                                        ></a>
                             </td>
                         </tr>
+                        <?php $i++ ?>
                     @endforeach
                     </tbody>
                 </table>

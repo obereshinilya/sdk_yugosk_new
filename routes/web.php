@@ -299,6 +299,11 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/norm_document_delete/{id}', ['as' => 'delete_file', 'uses' => 'UploadFilesController@delete_file']);  //открыть файл
             Route::post('/docs/upload', ['as' => 'upload_file', 'uses' => 'UploadFilesController@save_file']); //загрузить файл
 
+            Route::get('/docs/status_gtu', ['as' => 'show_excel', 'uses' => 'UploadFilesController@show_excel']);  //таблица со всеми pdf
+            Route::post('/docs/upload_excel', ['as' => 'upload_excel', 'uses' => 'UploadFilesController@save_excel']); //загрузить файл
+            Route::get('/docs/excel_delete/{id}', ['as' => 'excel_delete', 'uses' => 'UploadFilesController@excel_delete']);  //открыть файл
+            Route::get('/docs/excel_download/{id}', ['as' => 'excel_download', 'uses' => 'UploadFilesController@excel_download']);  //открыть файл
+            Route::get('/docs/example_excel', ['as' => 'excel_example', 'uses' => 'UploadFilesController@excel_example']);  //открыть файл
 
         });
     });

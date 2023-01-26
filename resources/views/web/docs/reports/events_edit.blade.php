@@ -135,7 +135,7 @@
                                             <option
                                                 value="{{$data->completion_mark}}">{{$data->completion_mark? 'Выполнено': 'Не выполнено'}}</option>
                                             <option
-                                                value="{{$data->completion_mark? 1 : 0}}">{{$data->completion_mark? 'Не выполнено': 'Выполнено'}}</option>
+                                                value="{{$data->completion_mark? 0 : 1}}">{{$data->completion_mark? 'Не выполнено': 'Выполнено'}}</option>
                                         </select></td>
                                 </tr>
                                 <tr>

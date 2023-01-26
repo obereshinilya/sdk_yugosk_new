@@ -38,14 +38,14 @@
                                     <td style="padding: 0px"><select style="height: 100%; width: 70%" onchange="get_opo_from_do(this.value); this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Наименование филиала...</option>
-                                        @foreach(\App\Models\Main_models\RefDO::all() as $row)
+                                        @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get() as $row)
                                                 <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
                                             @endforeach
                                         </select></td>
                                 </tr>
                                 <tr id="opo" style="display: none">
                                     <th style="text-align: center">ОПО</th>
-                                    <td style="padding: 0px"><select id="id_opo" style="height: 100%; width: 70%"
+                                    <td style="padding: 0px"><select id="id_opo" style="height: 100%; width: 70%" onchange="this.setAttribute('disabled', 'true')"
                                                                      class="select-css">
                                             <option value="">Наименование ОПО...</option>
                                             {{--                                            @foreach(\App\Models\Main_models\RefOpo::all() as $row)--}}

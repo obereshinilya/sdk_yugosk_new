@@ -214,13 +214,18 @@
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['cost']}</p></td>`
                             @endcan
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['src']}</p></td>`
-                            let date = new Date(row['completion_date']);
-                            let dd = date.getDate();
-                            if (dd < 10) dd = '0' + dd;
-                            let mm = date.getMonth() + 1;
-                            if (mm < 10) mm = '0' + mm;
-                            let yyyy = date.getFullYear();
-                            tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                            if (row['completion_date']){
+                                let date = new Date(row['completion_date']);
+                                let dd = date.getDate();
+                                if (dd < 10) dd = '0' + dd;
+                                let mm = date.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
+                                let yyyy = date.getFullYear();
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${dd}.${mm}.${yyyy}</p></td>`
+                            }else {
+                                tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; "></p></td>`
+                            }
+
                             tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">${row['person']}</p></td>`
                             if (row['completion_mark']) {
                                 tr.innerHTML += `<td style="text-align: center"><p style="margin: 0; display: inline; ">Выполнено</p></td>`

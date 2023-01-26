@@ -1936,7 +1936,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu36">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu338" id="lpu36">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -1959,7 +1959,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1  disabled__lpu" id="lpu37">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1  lpu339" id="lpu37">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -1982,7 +1982,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu " id="lpu38">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu279" id="lpu38">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2005,7 +2005,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu " id="lpu39">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu278 " id="lpu39">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2028,7 +2028,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu40">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu277" id="lpu40">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2051,7 +2051,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu71">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu340" id="lpu71">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2074,7 +2074,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu72">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu341" id="lpu72">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2097,7 +2097,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu41">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu289" id="lpu41">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2120,7 +2120,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu42">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu290" id="lpu42">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -2143,7 +2143,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 disabled__lpu" id="lpu43">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 lpu291" id="lpu43">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3089,7 +3089,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu90">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu273" id="lpu90">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3112,7 +3112,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu91">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu285" id="lpu91">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3135,7 +3135,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu92">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu297" id="lpu92">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3158,7 +3158,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu93">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu306" id="lpu93">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3181,7 +3181,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu94">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu317" id="lpu94">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3204,7 +3204,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu95">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu274" id="lpu95">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3227,7 +3227,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu96">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu286" id="lpu96">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3250,7 +3250,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu97">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu298" id="lpu97">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3273,7 +3273,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu98">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu307" id="lpu98">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3296,7 +3296,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu99">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu318" id="lpu99">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3342,7 +3342,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu101">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu275" id="lpu101">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3365,7 +3365,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu102">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu287" id="lpu102">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3388,7 +3388,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu103">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu299" id="lpu103">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3411,7 +3411,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu104">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu308" id="lpu104">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3434,7 +3434,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu105">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu309" id="lpu105">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3457,7 +3457,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu106">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu319" id="lpu106">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3480,7 +3480,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu107">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu326" id="lpu107">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3526,7 +3526,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu109">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu276" id="lpu109">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3549,7 +3549,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu110">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu288" id="lpu110">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3572,7 +3572,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu111">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu300" id="lpu111">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3595,7 +3595,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu112">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu310" id="lpu112">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3618,7 +3618,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu113">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu311" id="lpu113">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3641,7 +3641,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu114">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu320" id="lpu114">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3664,7 +3664,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu115">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu327" id="lpu115">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3757,7 +3757,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu119">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu342" id="lpu119">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3780,7 +3780,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu120">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu343" id="lpu120">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3803,7 +3803,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu121">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu344" id="lpu121">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3826,7 +3826,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu122">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu345" id="lpu122">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3849,7 +3849,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu123">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu331" id="lpu123">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3918,7 +3918,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu126">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu346" id="lpu126">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3941,7 +3941,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu127">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu332" id="lpu127">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3964,7 +3964,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu128">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu348" id="lpu128">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -3987,7 +3987,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu129">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu333" id="lpu129">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4010,468 +4010,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu130">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu131">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu132">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu133">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu134">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu135">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu136">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu137">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu138">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu139">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu140">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu141">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu142">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu143">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu144">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu145">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu146">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu147">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu148">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu149">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
-                         viewBox="0 0 12.3444 8.9934">
-                        <defs>
-                            <style>.a {
-                                    fill: #49ce56;
-                                }
-
-                                .b {
-                                    fill: #52ba5a;
-                                }</style>
-                        </defs>
-                        <path class="a"
-                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
-                        <path class="b"
-                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
-                        <path class="a"
-                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
-                        <path class="b"
-                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
-                    </svg>
-                </a>
-
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu150">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu347" id="lpu130">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4495,7 +4034,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu151">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu280" id="lpu131">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4518,7 +4057,468 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu152">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu292" id="lpu132">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu301" id="lpu133">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu312" id="lpu134">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu321" id="lpu135">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu281" id="lpu136">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu293" id="lpu137">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu302" id="lpu138">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu313" id="lpu139">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu322" id="lpu140">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu283" id="lpu141">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu295" id="lpu142">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu304" id="lpu143">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu314" id="lpu144">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu323" id="lpu145">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu282" id="lpu146">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu294" id="lpu147">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu303" id="lpu148">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu315" id="lpu149">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu324" id="lpu150">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu328" id="lpu151">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
+                         viewBox="0 0 12.3444 8.9934">
+                        <defs>
+                            <style>.a {
+                                    fill: #49ce56;
+                                }
+
+                                .b {
+                                    fill: #52ba5a;
+                                }</style>
+                        </defs>
+                        <path class="a"
+                              d="M11.8964,8.57h-.8929c-.6826,0-1.3652-.0028-2.0478.0029a.2352.2352,0,0,1-.2251-.1259q-1.241-1.9129-2.49-3.82a.1918.1918,0,0,1-.0015-.2524C7.0727,3.1174,7.9006,1.8562,8.7348.6A.2765.2765,0,0,1,8.9223.4788c.9665-.0075,1.933-.0051,2.9-.0047.0212,0,.0424.0043.0745.0078Z"/>
+                        <path class="b"
+                              d="M8.9517,8.8228a.4833.4833,0,0,1-.4307-.2393Q7.28,6.67,6.0317,4.7642a.4354.4354,0,0,1,0-.5284L7.1689,2.5146Q7.8464,1.4871,8.5269.4614A.5176.5176,0,0,1,8.92.229c.8135-.0063,1.624-.0039,2.438-.0054l.7573.0357.0308.2226V8.82l-1.6309-.0005c-.518.0015-1.039-.0005-1.5581.0035Zm1.6621-8.1q-.8445,0-1.6895.0059c-.435.6919-.8867,1.3765-1.3384,2.061L6.4478,4.5127C7.2832,5.7612,8.1128,7.0356,8.94,8.311c.5342.0078,1.0547.0083,1.5757.0083l1.13.0005V.7275L11.3579.7236Q10.9859.7236,10.6138.7231Z"/>
+                        <path class="a"
+                              d="M.4745,8.57h.8929c.6826,0,1.3652-.0028,2.0478.0029A.2351.2351,0,0,0,3.64,8.447q1.2411-1.9129,2.49-3.82a.1918.1918,0,0,0,.0016-.2524C5.2981,3.1174,4.47,1.8562,3.6361.6A.2767.2767,0,0,0,3.4486.4788C2.4821.4713,1.5155.4737.549.4741.5278.4742.5066.4784.4745.4819Z"/>
+                        <path class="b"
+                              d="M3.4189,8.8228H3.4126c-.519-.0044-1.0391-.0049-1.5576-.0035L.2246,8.82V.2568L.4482.2334A.7966.7966,0,0,1,.5488.2241L1.0127.2236C1.8242.2227,2.6382.2222,3.4507.229A.5218.5218,0,0,1,3.8438.46q.6687,1.0064,1.332,2.0142L6.34,4.2363a.4365.4365,0,0,1,0,.5269Q5.09,6.67,3.85,8.5835A.4833.4833,0,0,1,3.4189,8.8228ZM2.3438,8.3193c.3574,0,.7153.0005,1.0732.0035.8413-1.2872,1.67-2.5616,2.5044-3.8331L4.7583,2.75Q4.094,1.7429,3.4277.7378C2.6353.7227,1.8252.7222,1.0132.7236l-.2886,0V8.32l1.13-.0005Z"/>
+                    </svg>
+                </a>
+
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu329" id="lpu152">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4587,7 +4587,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu155">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu334" id="lpu155">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4633,7 +4633,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu157">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu335" id="lpu157">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4656,7 +4656,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu158">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu330" id="lpu158">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4725,7 +4725,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu161">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu336" id="lpu161">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4748,7 +4748,7 @@
                     </svg>
                 </a>
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu162">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu337" id="lpu162">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4874,7 +4874,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu167">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu284" id="lpu167">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4898,7 +4898,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu168">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu296" id="lpu168">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4922,7 +4922,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu169">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu305" id="lpu169">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4946,7 +4946,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu170">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu316" id="lpu170">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>
@@ -4970,7 +4970,7 @@
                 </a>
 
 
-                <a class="info_checker fugure1 rotate disabled__lpu" id="lpu171">
+                <a href="#openModal" onclick="update_ModalWindow(this.classList)" class="info_checker fugure1 rotate lpu325" id="lpu171">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.3444" height="8.9934"
                          viewBox="0 0 12.3444 8.9934">
                         <defs>

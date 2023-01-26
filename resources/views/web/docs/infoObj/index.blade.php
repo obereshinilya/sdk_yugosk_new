@@ -52,9 +52,10 @@
 
                     </thead>
                     <tbody>
+                    <?php $i =1 ?>
                     @foreach ($objects as $row)
                         <tr>
-                            <td style="text-align: center">{{ $row->id_obj }}</td>
+                            <td style="text-align: center">{{ $i }}</td>
                             <td style="text-align: center">{{ $row->short_name_do }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_opo }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_obj }}</td>
@@ -68,6 +69,7 @@
                                 </td>
                             @endcan
                         </tr>
+                        <?php $i++ ?>
                     @endforeach
                     </tbody>
                 </table>

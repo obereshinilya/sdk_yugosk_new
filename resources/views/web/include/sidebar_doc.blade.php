@@ -21,7 +21,6 @@
                         <a href="/docs/directory_obj" onclick="SaveChecked_link(this)">Справочник элементов ОПО</a>
                         <a href="/docs/directory_tb" onclick="SaveChecked_link(this)">Справочник ТБ элементов ОПО</a>
                         <a href="/docs/opo" onclick="SaveChecked_link(this)">Сведения, характеризующие ОПО</a>
-
                     </div>
                 </label>
                 <label class="accordion">
@@ -43,10 +42,10 @@
                             объектов</a>
                         <a href="/docs/type_of_hazards" onclick="SaveChecked_link(this)">Справочник видов опасных
                             веществ</a>
-                        <a href="/docs/norm_document" onclick="SaveChecked_link(this)">Нормативная документация</a>
                         <a href="/docs/pat_themes" onclick="SaveChecked_link(this)">Перечень тем ПАТ
                         </a>
-
+                        <a href="/docs/norm_document" onclick="SaveChecked_link(this)">Нормативная документация</a>
+                        <a href="/docs/status_gtu" onclick="SaveChecked_link(this)">Данные с системы "СтатусГТЮ"</a>
                     </div>
                 </label>
                 <label class="accordion">
