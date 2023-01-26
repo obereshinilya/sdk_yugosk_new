@@ -640,7 +640,6 @@
                 th.style.background = '#00FF7F'
                 th.classList.add('asc')
                 var sorting = '>'
-                6
             }
             if (sorting) {
                 if (sorting === '>') {

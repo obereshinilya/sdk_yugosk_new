@@ -221,51 +221,67 @@
                 excel.firstChild.href = '/excel_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value;
                 @endcan
 
-                let table_body = document.getElementById('body_table')
-                table_body.innerHTML = '';
+
                 // console.log(document.getElementById('jas_end').value)
                 $.ajax({
                     url: '/get_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value,
                     type: 'GET',
                     success: (res) => {
-                        if ($.fn.dataTable.isDataTable('#myTable')) {
-                            $('#myTable').DataTable().destroy();
-                        }
-                        for (var row of res) {
-                            var tr = document.createElement('tr')
-                            let date = new Date(row['date']);
-                            let dd = date.getDate();
-                            if (dd < 10) dd = '0' + dd;
-                            let mm = date.getMonth() + 1;
-                            if (mm < 10) mm = '0' + mm;
-                            let yyyy = date.getFullYear();
-
-                            tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy}  ${row['date'].split('.')[0].split(' ')[1]}  </td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['status']}</td>`
-
-                            tr.innerHTML += `<td style="text-align: center">${row['opo']}</td>`
-
-
-                            tr.innerHTML += `<td style="text-align: center">${row['elem_opo']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['sobitie']}</td>`
-                            tr.innerHTML += `<td style="text-align: center" id='${row['id']}' contenteditable="true" onblur="save_comment(this.id, this.textContent)" >${row['comment']}</td>`
-
-                            if (!row['check']) {
-                                @can('events-kavit')
-                                    tr.innerHTML += `<td style="text-align: center"><button row-id="${row['id']}" onclick="commit(this) class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">  Квитировать </button> </td>`
-                                @endcan
-                            } else {
-                                tr.innerHTML += `<td style="text-align: center">Просмотрено</td>`;
+                        if (res.length){
+                            if ($.fn.dataTable.isDataTable('#myTable')) {
+                                $('#myTable').DataTable().destroy();
                             }
+                            let table_body = document.getElementById('body_table')
+                            table_body.innerHTML = '';
+                            for (var row of res) {
+                                var tr = document.createElement('tr')
+                                let date = new Date(row['date']);
+                                let dd = date.getDate();
+                                if (dd < 10) dd = '0' + dd;
+                                let mm = date.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
+                                let yyyy = date.getFullYear();
 
-                            table_body.appendChild(tr)
+                                tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy}  ${row['date'].split('.')[0].split(' ')[1]}  </td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['status']}</td>`
 
+                                tr.innerHTML += `<td style="text-align: center">${row['opo']}</td>`
+
+
+                                tr.innerHTML += `<td style="text-align: center">${row['elem_opo']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['sobitie']}</td>`
+                                tr.innerHTML += `<td style="text-align: center" id='${row['id']}' contenteditable="true" onblur="save_comment(this.id, this.textContent)" >${row['comment']}</td>`
+
+                                if (!row['check']) {
+                                    @can('events-kavit')
+                                        tr.innerHTML += `<td style="text-align: center"><button row-id="${row['id']}" onclick="commit(this) class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">  Квитировать </button> </td>`
+                                    @endcan
+                                } else {
+                                    tr.innerHTML += `<td style="text-align: center">Просмотрено</td>`;
+                                }
+
+                                table_body.appendChild(tr)
+
+                            }
+                            $('#myTable').DataTable({
+                                "pagingType": "full_numbers",
+                                destroy: true,
+                                order: [[0, 'desc']],
+                            });
+                        }else {
+                            if ($.fn.dataTable.isDataTable('#myTable')) {
+                                $('#myTable').DataTable().destroy();
+                            }
+                            let table_body = document.getElementById('body_table')
+                            table_body.innerHTML = '';
+                            $('#myTable').DataTable({
+                                "pagingType": "full_numbers",
+                                destroy: true,
+                                order: [[0, 'desc']],
+                            });
                         }
-                        $('#myTable').DataTable({
-                            "pagingType": "full_numbers",
-                            destroy: true,
-                            order: [[0, 'desc']],
-                        });
+                        console.log(res.length)
+
                     },
                     error: function (error) {
                         var table_body = document.getElementById('body_table')

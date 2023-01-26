@@ -199,7 +199,11 @@ class OpoController extends Controller
             select('*')->first();
         $keys = array_keys($comment_rows[$from_ref_tb['nametable']]);
         foreach ($keys as $key){
-            $comment_rows[$from_ref_tb['nametable']][$key]['value'] = $from_tb_table->$key;
+            if ($key == 'time_low' || $key == 'date_end'){
+                $comment_rows[$from_ref_tb['nametable']][$key]['value'] = date('d.m.Y', strtotime($from_tb_table->$key));
+            }else{
+                $comment_rows[$from_ref_tb['nametable']][$key]['value'] = $from_tb_table->$key;
+            }
         }
         //Добавление общей информации по ТБ
         $comment_rows[$from_ref_tb['nametable']]['full_name']['desc'] = 'Наименование ТБ';

@@ -326,7 +326,7 @@ class ExcelReportController extends Controller
 
     public function excel_jas($start, $end)
     {
-        $data['data'] = \App\Models\Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();;
+        $data['data'] = \App\Models\Jas::where('date', '>=', date('Y-m-d 00:01', strtotime($start)))->where('date', '<=', date('Y-m-d 23:59', strtotime($end)))->orderbydesc('id')->where('auto_generate', '=', true)->get();
         foreach ($data['data'] as $key => $jas) {
             $data['date'][$key] = date('d.m.Y H:m:s', strtotime($jas->date));
         }

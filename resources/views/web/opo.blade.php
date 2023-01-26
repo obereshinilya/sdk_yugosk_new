@@ -5114,8 +5114,8 @@
                 <p class="info_name_txt km_87" id="km57"></p>
                 <p class="info_name_txt km_104" id="km58"></p>
 
-                <p class="info_name_txt km_273" id="km68"></p>
-                <p class="info_name_txt km_274" id="km69"></p>
+{{--                <p class="info_name_txt km_273" id="km68"></p>--}}
+{{--                <p class="info_name_txt km_274" id="km69"></p>--}}
 
                 <!-- НАЗВАНИЯ И МЕСТНОСТЬ -->
 

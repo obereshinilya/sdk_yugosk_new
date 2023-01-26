@@ -109,7 +109,7 @@ class DirectoryController extends Controller
 
     public function show_directory_tb()
     {
-        $tb = DB::table('public.ref_tb')->
+        $tb = DB::table('public.ref_tb')->where('ref_tb.type_tb', '!=', '2')->where('ref_tb.type_tb', '!=', '12')->
         join('public.ref_obj', 'public.ref_tb.id_obj', '=', 'public.ref_obj.id_obj')->
         join('public.ref_opo', 'public.ref_obj.id_opo', '=', 'public.ref_opo.id_opo')->
         join('public.ref_do', 'public.ref_opo.id_do', '=', 'public.ref_do.id_do')->

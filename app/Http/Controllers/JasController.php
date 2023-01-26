@@ -99,7 +99,7 @@ class JasController extends Controller
 
     public function get_jas_date($start, $end)
     {
-        $data = Jas::where('date', '>=', $start)->where('date', '<=', $end)->orderbydesc('id')->where('auto_generate', '=', true)->get();
+        $data = Jas::where('date', '>=', date('Y-m-d 00:01', strtotime($start)))->where('date', '<=', date('Y-m-d 23:59', strtotime($end)))->orderbydesc('id')->where('auto_generate', '=', true)->get();
         return $data;
     }
 

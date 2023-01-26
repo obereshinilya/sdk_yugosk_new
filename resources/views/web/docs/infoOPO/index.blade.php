@@ -40,12 +40,32 @@
                 <table id="table_for_search" style="display: table; table-layout: fixed">
                     <thead>
                     <tr>
-                        <th style="width: 5%">Номер</th>
-                        <th style="width: 22.5%">Наименование филиала ДО</th>
-                        <th style="width: 24.5%">Наименование ОПО</th>
-                        <th style="width: 6.5%">Регион</th>
-                        <th style="width: 6.5%">Рег. №</th>
-                        <th style="width: 10%">Состояние</th>
+                        <style>
+                            .img{
+                                position: absolute; right: 0px; bottom: 0px; width: 20px; border: 2px solid white; border-radius: 2px; background-color: white
+                            }
+                        </style>
+                        <th onclick="sorted_table(1, this)" style="width: 5%">Номер
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(2, this)" style="width: 18.5%">Наименование филиала ДО
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(3, this)" style="width: 22.5%">Наименование ОПО
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(4, this)" style="width: 10%">Дата регистрации
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(5, this)" style="width: 6%">Регион
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(6, this)" style="width: 8%">Рег. №
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(7, this)" style="width: 6%">Состояние
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
                         @can('entries-edit')
                             <th style="width: 3%"></th>
                         @endcan
@@ -58,6 +78,7 @@
                             <td style="text-align: center">{{ $row->id_opo }}</td>
                             <td style="text-align: center">{{ $row->short_name_do }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->full_name_opo }}</td>
+                            <td style="text-align: center" class="name_event">{{ date('m.d.Y', strtotime($row->registration_date)) }}</td>
                             <td style="text-align: center">{{ $row->region_opo }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->reg_num }}</td>
                             <td style="text-align: center">{{ $row->descstatus }}</td>
@@ -104,6 +125,57 @@
                 } else {
                     table_boby_rows[i].style.display = "none"
                 }
+            }
+        }
+        function sorted_table(column, th) {
+            var class_list = th.classList
+            for (var asc of document.getElementsByClassName('asc')) {
+                if (asc !== th) {
+                    asc.classList.remove('asc')
+                    asc.style.background = ''
+                }
+            }
+            for (var desc of document.getElementsByClassName('desc')) {
+                if (desc !== th) {
+                    desc.classList.remove('desc')
+                    desc.style.background = ''
+                }
+            }
+            if (class_list.contains('asc')) {
+                th.getElementsByClassName('img')[0].style.display = ''
+                th.getElementsByClassName('img')[0].style.rotate = ''
+                th.getElementsByClassName('img')[0].style.rotate = '180deg'
+                th.classList.remove('asc')
+                th.classList.add('desc')
+                var sorting = '<'
+            } else if (class_list.contains('desc')) {
+                th.getElementsByClassName('img')[0].style.display = 'none'
+                th.classList.remove('desc')
+                var sorting = false
+            } else {
+                th.getElementsByClassName('img')[0].style.display = ''
+                th.getElementsByClassName('img')[0].style.rotate = ''
+
+                th.classList.add('asc')
+                var sorting = '>'
+            }
+            if (sorting) {
+                if (sorting === '>') {
+                    let sortedRows = Array.from(table_for_search.rows)
+                        .slice(1)
+                        .sort((rowA, rowB) => rowA.cells[column].innerHTML > rowB.cells[column].innerHTML ? 1 : -1);
+                    table_for_search.tBodies[0].append(...sortedRows);
+                } else {
+                    let sortedRows = Array.from(table_for_search.rows)
+                        .slice(1)
+                        .sort((rowA, rowB) => rowA.cells[column].innerHTML < rowB.cells[column].innerHTML ? 1 : -1);
+                    table_for_search.tBodies[0].append(...sortedRows);
+                }
+            } else {
+                let sortedRows = Array.from(table_for_search.rows)
+                    .slice(1)
+                    .sort((rowA, rowB) => Number(rowA.cells[0].innerHTML) > Number(rowB.cells[0].innerHTML) ? 1 : -1);
+                table_for_search.tBodies[0].append(...sortedRows);
             }
         }
     </script>
