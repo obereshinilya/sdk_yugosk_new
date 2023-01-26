@@ -9,7 +9,7 @@ use App\Models\Main_models\GPA;
 use App\Models\Main_models\InputShleif;
 use App\Models\Main_models\KRANS;
 use App\Models\Main_models\KRANS_KC;
-use App\Models\Main_models\LineRecirk;
+//use App\Models\Main_models\LineRecirk;
 use App\Models\Main_models\MKU;
 use App\Models\Main_models\OutputShleif;
 use App\Models\Main_models\RefDO;
@@ -278,16 +278,16 @@ class DirectoryController extends Controller
             get()->first();
             return view('web.docs.infoTB.edit_tech_obv', compact('data_tb'));
         } elseif ($type === 5) {//если линия рециркуляции
-            $data_tb = DB::table('public.ref_tb')->where('public.ref_tb.id_tb', '=', $id_tb)->
-            join('public.typetb', 'public.ref_tb.type_tb', '=', 'public.typetb.type_tb')->
-            join('public.buffer_table_mku_tags', 'public.ref_tb.id_tb', '=', 'public.buffer_table_mku_tags.id_tb')->
-            join('public.ref_obj', 'public.ref_tb.id_obj', '=', 'public.ref_obj.id_obj')->
-            join('public.ref_opo', 'public.ref_obj.id_opo', '=', 'public.ref_opo.id_opo')->
-            join('public.ref_do', 'public.ref_opo.id_do', '=', 'public.ref_do.id_do')->
-            join('public.line_recirc', 'public.ref_tb.id_tb', '=', 'public.line_recirc.id_tb')->
-            select('ref_tb.*', 'typetb.*', 'ref_obj.full_name_obj', 'ref_opo.full_name_opo', 'ref_do.full_name_do', 'line_recirc.*', 'buffer_table_mku_tags.*')->
-            get()->first();
-            return view('web.docs.infoTB.edit_line_recirk', compact('data_tb'));
+//            $data_tb = DB::table('public.ref_tb')->where('public.ref_tb.id_tb', '=', $id_tb)->
+//            join('public.typetb', 'public.ref_tb.type_tb', '=', 'public.typetb.type_tb')->
+//            join('public.buffer_table_mku_tags', 'public.ref_tb.id_tb', '=', 'public.buffer_table_mku_tags.id_tb')->
+//            join('public.ref_obj', 'public.ref_tb.id_obj', '=', 'public.ref_obj.id_obj')->
+//            join('public.ref_opo', 'public.ref_obj.id_opo', '=', 'public.ref_opo.id_opo')->
+//            join('public.ref_do', 'public.ref_opo.id_do', '=', 'public.ref_do.id_do')->
+//            join('public.line_recirc', 'public.ref_tb.id_tb', '=', 'public.line_recirc.id_tb')->
+//            select('ref_tb.*', 'typetb.*', 'ref_obj.full_name_obj', 'ref_opo.full_name_opo', 'ref_do.full_name_do', 'line_recirc.*', 'buffer_table_mku_tags.*')->
+//            get()->first();
+//            return view('web.docs.infoTB.edit_line_recirk', compact('data_tb'));
         } elseif ($type === 6) {//если вх шлейф
             $data_tb = DB::table('public.ref_tb')->where('public.ref_tb.id_tb', '=', $id_tb)->
             join('public.typetb', 'public.ref_tb.type_tb', '=', 'public.typetb.type_tb')->
@@ -493,26 +493,26 @@ class DirectoryController extends Controller
                 //             $to_ref_tb['id_status'] =3;
                 //       }
                 //     unset($record_data['id_status']);
-                $to_ref_tb['full_name_tb'] = $record_data['full_name_tb'];
-                $to_ref_tb['short_name_tb'] = $record_data['short_name_tb'];
-                $to_ref_tb['guid_tb'] = $record_data['guid_tb'];
-                unset($record_data['full_name_tb']);
-                unset($record_data['short_name_tb']);
-                unset($record_data['guid_tb']);
-                $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];
-                $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
-                $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
-                $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
-                unset($record_data['tag_p_in']);
-                unset($record_data['tag_p_out']);
-                unset($record_data['tag_t_in']);
-                unset($record_data['tag_t_out']);
-                RefTb::where('id_tb', '=', $id_tb)->first()->update($to_ref_tb);
+//                $to_ref_tb['full_name_tb'] = $record_data['full_name_tb'];
+//                $to_ref_tb['short_name_tb'] = $record_data['short_name_tb'];
+//                $to_ref_tb['guid_tb'] = $record_data['guid_tb'];
+//                unset($record_data['full_name_tb']);
+//                unset($record_data['short_name_tb']);
+//                unset($record_data['guid_tb']);
+//                $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];
+//                $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
+//                $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
+//                $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
+//                unset($record_data['tag_p_in']);
+//                unset($record_data['tag_p_out']);
+//                unset($record_data['tag_t_in']);
+//                unset($record_data['tag_t_out']);
+//                RefTb::where('id_tb', '=', $id_tb)->first()->update($to_ref_tb);
+//
+//                LineRecirk::where('id_tb', '=', $id_tb)->first()->update($record_data);
+//                TagTable::where('id_tb', '=', $id_tb)->first()->update($to_tag_name);
 
-                LineRecirk::where('id_tb', '=', $id_tb)->first()->update($record_data);
-                TagTable::where('id_tb', '=', $id_tb)->first()->update($to_tag_name);
-
-                AdminController::log_record('Изменил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
+//                AdminController::log_record('Изменил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
             } elseif ($type_tb == 6) {  //вх шлейф
 //                if ($record_data['id_status']){
                 //                  $to_ref_tb['id_status'] = $record_data['id_status'];
@@ -1047,19 +1047,19 @@ class DirectoryController extends Controller
                 TechObv::create($record_data);
                 AdminController::log_record('Добавил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
             } elseif ($type_tb == 5) { //Лин.рецирк
-                $to_tag_name['id_tb'] = $record_data['id_tb'];
-                $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];
-                $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
-                $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
-                $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
-                $to_tag_name['typetb'] = $type_tb;
-                unset($record_data['tag_p_in']);
-                unset($record_data['tag_p_out']);
-                unset($record_data['tag_t_in']);
-                unset($record_data['tag_t_out']);
-                TagTable::create($to_tag_name);
-                LineRecirk::create($record_data);
-                AdminController::log_record('Добавил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
+//                $to_tag_name['id_tb'] = $record_data['id_tb'];
+//                $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];
+//                $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
+//                $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
+//                $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
+//                $to_tag_name['typetb'] = $type_tb;
+//                unset($record_data['tag_p_in']);
+//                unset($record_data['tag_p_out']);
+//                unset($record_data['tag_t_in']);
+//                unset($record_data['tag_t_out']);
+//                TagTable::create($to_tag_name);
+//                LineRecirk::create($record_data);
+//                AdminController::log_record('Добавил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал
             } elseif ($type_tb == 6) { //Вх. шлейф
                 $to_tag_name['id_tb'] = $record_data['id_tb'];
                 $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];

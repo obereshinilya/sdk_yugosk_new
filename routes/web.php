@@ -214,8 +214,9 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/plan_of_industrial_safety/edit/{id}', 'ReportController@edit_plan_of_industrial_safety');  //обновление
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
-
-            Route::get('/docs/conclusions_industrial_safety/{center_name}/{name_do}/{type_tu}', 'ReportController@show_conclusions_industrial_safety');  // План работ в области промышленной безопасности
+//            Route::get('/docs/conclusions_industrial_safety/{center_name}/{name_do}/{type_tu}', 'ReportController@show_conclusions_industrial_safety');  // План работ в области промышленной безопасности
+            Route::get('/docs/conclusions_industrial_safety_main', 'ReportController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
+            Route::post('/docs/conclusions_industrial_safety', 'ReportController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
             Route::get('/docs/conclusions_industrial_safety/get_params/{year}', 'ReportController@get_conclusions_industrial_safety');  // выборка за год
             Route::get('/docs/conclusions_industrial_safety/create', 'ReportController@create_conclusions_industrial_safety');  // страница создания записи
             Route::post('/docs/conclusions_industrial_safety/save', 'ReportController@save_conclusions_industrial_safety');  //сохранение

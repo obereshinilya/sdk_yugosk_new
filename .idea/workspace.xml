@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/docs/Oper_skv_2023_01_21 (1) (1).xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/storage/docs/Федеральный закон от 21 июля 1997 г. N 116-ФЗ 'О промышленно.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/admin/inc/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/admin/inc/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/document/excel_files.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/document/excel_files.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Main_models/LineRecirk.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Main_models/MKU.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main_models/MKU.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_mku.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_mku.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
@@ -202,7 +208,8 @@
       <workItem from="1674535430932" duration="35000" />
       <workItem from="1674539024862" duration="45339000" />
       <workItem from="1674661715031" duration="7806000" />
-      <workItem from="1674708467272" duration="627000" />
+      <workItem from="1674708467272" duration="20522000" />
+      <workItem from="1674740112941" duration="4762000" />
     </task>
     <servers />
   </component>

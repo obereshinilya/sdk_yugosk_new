@@ -113,6 +113,7 @@ class OpoController extends Controller
         $comment_rows['mku']['left_time']['desc'] = 'Действие экспертизы ПБ закончится через (дней)';
         $comment_rows['mku']['t_in']['desc'] = 'Температура газа в входе МКУ (°С)';
         $comment_rows['mku']['t_out']['desc'] = 'Температура газа на выходе МКУ (°С)';
+        $comment_rows['mku']['lamda']['desc'] = 'Частота возникновения аварий, λ';
         //Описание для кранов
         $comment_rows['krans']['p_1']['desc'] = 'Давление входное, кгс/см²';
         $comment_rows['krans']['p_2']['desc'] = 'Давление выходное, кгс/см²)';
@@ -140,16 +141,16 @@ class OpoController extends Controller
         $comment_rows['output_shleif']['date_end']['desc'] = 'Дата окончания действия экспертизы ПБ';
         $comment_rows['output_shleif']['left_time']['desc'] = 'Действие экспертизы ПБ закончится через (дней)';
         //Описание лин рециркуляции
-        $comment_rows['line_recirc']['p_w']['desc'] = 'Разрешенное рабочее давление (кгс/см²)';
-        $comment_rows['line_recirc']['p_out']['desc'] = 'Давление перед краном №8 (кгс/см²)';
-        $comment_rows['line_recirc']['p_in']['desc'] = 'Давление после крана №7 (кгс/см²)';
-        $comment_rows['line_recirc']['t_out']['desc'] = 'Температура перед краном №8 (°С)';
-        $comment_rows['line_recirc']['t_in']['desc'] = 'Температура после крана №7 (°С)';
-        $comment_rows['line_recirc']['n']['desc'] = 'Общее количество допустимых дефектов';
-        $comment_rows['line_recirc']['n_w']['desc'] = 'Общее количество дефектов в работоспособном состоянии';
-        $comment_rows['line_recirc']['n_lim']['desc'] = 'Общее количество дефектов в предельном состоянии';
-        $comment_rows['line_recirc']['date_end']['desc'] = 'Дата окончания действия экспертизы ПБ';
-        $comment_rows['line_recirc']['left_time']['desc'] = 'Действие экспертизы ПБ закончится через (дней)';
+//        $comment_rows['line_recirc']['p_w']['desc'] = 'Разрешенное рабочее давление (кгс/см²)';
+//        $comment_rows['line_recirc']['p_out']['desc'] = 'Давление перед краном №8 (кгс/см²)';
+//        $comment_rows['line_recirc']['p_in']['desc'] = 'Давление после крана №7 (кгс/см²)';
+//        $comment_rows['line_recirc']['t_out']['desc'] = 'Температура перед краном №8 (°С)';
+//        $comment_rows['line_recirc']['t_in']['desc'] = 'Температура после крана №7 (°С)';
+//        $comment_rows['line_recirc']['n']['desc'] = 'Общее количество допустимых дефектов';
+//        $comment_rows['line_recirc']['n_w']['desc'] = 'Общее количество дефектов в работоспособном состоянии';
+//        $comment_rows['line_recirc']['n_lim']['desc'] = 'Общее количество дефектов в предельном состоянии';
+//        $comment_rows['line_recirc']['date_end']['desc'] = 'Дата окончания действия экспертизы ПБ';
+//        $comment_rows['line_recirc']['left_time']['desc'] = 'Действие экспертизы ПБ закончится через (дней)';
 //        //АВО
         $comment_rows['avo']['p_w']['desc'] = 'Разрешенное рабочее давление (кгс/см²)';
         $comment_rows['avo']['p_out']['desc'] = 'Давление на выходе АВО (кгс/см²)';

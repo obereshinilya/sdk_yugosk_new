@@ -24,15 +24,28 @@
 
 <div class="content map_content fond_content flex_main">
 
+{{--    <div class="fond_map risk_block_top centered">--}}
+{{--        <div class="high_risk risk_color"><span></span> Предельное состояние</div>--}}
+{{--        <div class="middle_risk risk_color"><span></span> Работоспособно</div>--}}
+{{--        <div class="no_risk risk_color"><span></span> Исправно</div>--}}
+{{--        <div class="bad_info_risk risk_color"><span></span> Недостоверные данные</div>--}}
+{{--        <div class="repair_risk risk_color"><span></span> Ремонтные работы</div>--}}
+{{--    </div>--}}
     <div class="fond_map risk_block_top centered">
+        <div class="risk_color"><span></span>Состояние ТБ</div>
         <div class="high_risk risk_color"><span></span> Предельное состояние</div>
         <div class="middle_risk risk_color"><span></span> Работоспособно</div>
-{{--                <div class="low_risk risk_color"><span></span> Предпосылка к инциденту</div>--}}
+        {{--                <div class="low_risk risk_color"><span></span> Предпосылка к инциденту</div>--}}
         <div class="no_risk risk_color"><span></span> Исправно</div>
         <div class="bad_info_risk risk_color"><span></span> Недостоверные данные</div>
         <div class="repair_risk risk_color"><span></span> Ремонтные работы</div>
-    </div>
 
+        <div class="risk_color"><span></span>|</div>
+        <div class="risk_color"><span></span>Состояние КУ</div>
+        <div class="high_risk risk_color"><span></span> Закрыт</div>
+        <div class="no_risk risk_color"><span></span> Открыт</div>
+
+    </div>
     <div class="flex_content kc">
 
 

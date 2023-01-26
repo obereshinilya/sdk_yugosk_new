@@ -1278,8 +1278,50 @@ class ReportController extends Controller
         }
     }
 
-    public function show_conclusions_industrial_safety(Request $request, $center_name, $name_do, $type_tu)
+    public function show_conclusions_industrial_safety_main(Request $request)
     {
+        $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($center); $i++){
+            $center[$i]['in'] = true;
+        }
+        $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($do); $i++){
+            $do[$i]['in'] = true;
+        }
+        $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($tu); $i++){
+            $tu[$i]['in'] = true;
+        }
+        $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($object); $i++){
+            $object[$i]['in'] = true;
+        }
+        $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($date_epb); $i++){
+            $date_epb[$i]['in'] = true;
+        }
+        $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();   //отправим в всплывашку
+        for ($i=0; $i<count($date_next_epb); $i++){
+            $date_next_epb[$i]['in'] = true;
+        }
+        $data_one = Conclusions_industrial_safety::orderby('id');
+        $number = Conclusions_industrial_safety::orderby('id');
+        $data_one = $data_one->paginate(1000);
+        $i = count($number->get());
+        $page = $request->page;
+        if ($page == null) {
+            $page = 1;
+        }
+        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu', 'object', 'date_epb', 'date_next_epb'));
+    }
+    public function show_conclusions_industrial_safety(Request $request)
+    {
+        $center_name = $request->arr_name_center;
+        $name_do = $request->arr_name_do;
+        $type_tu = $request->arr_type_tu;
+        $date_next_epb_all = $request->arr_date_next_epb;
+        $object_name = $request->arr_object_name;
+        $date_epb_all = $request->arr_date_epb;
         if ($center_name != 'all'){
             $center_name = explode(',', $center_name);
             $data_one = Conclusions_industrial_safety::wherein('center_name', $center_name);
@@ -1336,14 +1378,68 @@ class ReportController extends Controller
                 $tu[$i]['in'] = true;
             }
         }
+        if ($object_name != 'all'){
+            $object_name = explode(',', $object_name);
+            $data_one = $data_one->wherein('object_name', $object_name);
+            $number = $number->wherein('object_name', $object_name);
+            $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();
+            for ($i=0; $i<count($object); $i++){
+                if (in_array($object[$i]['object_name'], $object_name)){
+                    $object[$i]['in'] = true;
+                }else{
+                    $object[$i]['in'] = false;
+                }
+            }
+        }else{
+            $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($object); $i++){
+                $object[$i]['in'] = true;
+            }
+        }
+        if ($date_epb_all != 'all'){
+            $date_epb_all = explode(',', $date_epb_all);
+            $data_one = $data_one->wherein('date_epb', $date_epb_all);
+            $number = $number->wherein('date_epb', $date_epb_all);
+            $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();
+            for ($i=0; $i<count($date_epb); $i++){
+                if (in_array($date_epb[$i]['date_epb'], $date_epb_all)){
+                    $date_epb[$i]['in'] = true;
+                }else{
+                    $date_epb[$i]['in'] = false;
+                }
+            }
+        }else{
+            $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($date_epb); $i++){
+                $date_epb[$i]['in'] = true;
+            }
+        }
+        if ($date_next_epb_all != 'all'){
+            $date_next_epb_all = explode(',', $date_next_epb_all);
+            $data_one = $data_one->wherein('date_next_epb', $date_next_epb_all);
+            $number = $number->wherein('date_next_epb', $date_next_epb_all);
+            $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();
+            for ($i=0; $i<count($date_next_epb); $i++){
+                if (in_array($date_next_epb[$i]['date_next_epb'], $date_next_epb_all)){
+                    $date_next_epb[$i]['in'] = true;
+                }else{
+                    $date_next_epb[$i]['in'] = false;
+                }
+            }
+        }else{
+            $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();   //отправим в всплывашку
+            for ($i=0; $i<count($date_next_epb); $i++){
+                $date_next_epb[$i]['in'] = true;
+            }
+        }
 
-        $data_one = $data_one->paginate(2500);
+        $data_one = $data_one->paginate(1000);
         $i = count($number->get());
         $page = $request->page;
         if ($page == null) {
             $page = 1;
         }
-        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu'));
+        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu', 'object', 'date_epb', 'date_next_epb'));
     }
 
     public function get_conclusions_industrial_safety($year)

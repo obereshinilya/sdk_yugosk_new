@@ -98,7 +98,7 @@
                         <a href="/docs/plan_of_industrial_safety" onclick="SaveChecked_link(this)">План работ в области
                             промышленной безопасности
                         </a>
-                        <a href="/docs/conclusions_industrial_safety/all/all/all"
+                        <a href="/docs/conclusions_industrial_safety_main"
                            onclick="SaveChecked_link(this)">Реестр заключений
                             экспертизы промышленной
                             безопасности

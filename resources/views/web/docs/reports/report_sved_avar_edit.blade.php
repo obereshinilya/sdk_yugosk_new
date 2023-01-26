@@ -44,7 +44,6 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Наименование филиала ДО</th>
-                                    <th style="text-align: center">Наименование филиала ДО</th>
                                     <td style="padding: 0px"><select disabled id="id_do"
                                                                      style="height: 100%; width: 50%"
                                                                      class="select-css">
