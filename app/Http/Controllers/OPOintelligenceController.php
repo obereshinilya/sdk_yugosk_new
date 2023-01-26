@@ -74,6 +74,14 @@ class OPOintelligenceController extends Controller
             return $e;
         }
     }
+    public function delete_all($id)
+    {
+        add_info_opo::where('id_add_info_opo', '=', $id)->first()->delete();
+        foreach (opo_parts_norm::where('id_opo_from_list', '=', $id)->get() as $row){
+            $row->delete();
+        }
+        AdminController::log_record('Удалил запись в сведения, характеризующие ОПО');//пишем в журнал
+    }
     public function get_part_opo($id_opo)
     {
         return opo_parts_norm::where('id_opo_from_list', '=', $id_opo)->get();

@@ -72,7 +72,7 @@
                                                                                             style="margin-left: 2px">
                                     </a>
                                     <a href="#" style="">
-                                        <img style="margin-left: 2px" src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i"></a>
+                                        <img style="margin-left: 2px" src="{{asset('assets/images/icons/trash.svg')}}" onclick="drop_info_opo({{$row->id_add_info_opo}})" class="trash_i"></a>
                                 </td>
                             @endcan
                         </tr>
@@ -85,6 +85,15 @@
 
     </div>
     <script>
+        function drop_info_opo(id_opo){
+            $.ajax({
+                url: '/docs/intelligence_opo/delete_all/'+id_opo,
+                type: 'GET',
+                success: (res) => {
+                    window.location.href = '/docs/opo'
+                }
+            })
+        }
         var input = document.getElementById('search_text')
         input.oninput = function () {
             setTimeout(find_it, 100);
