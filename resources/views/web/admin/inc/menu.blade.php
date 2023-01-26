@@ -1,7 +1,7 @@
 <div id="jda_attention_modal_content" style="text-align: center">
     <h3 id="jda_attention_text"></h3>
 </div>
-
+@include('web.include.sum_checker_tree.sumchecker_tree')
 <script>
     document.addEventListener('DOMContentLoaded', function (){
         var modal_content=document.getElementById('files_tree_modal_content')
@@ -26,9 +26,7 @@
     <a href="/admin/perm" class="btn btn-primary">Список привилегий</a>
     <a class="btn btn-primary" href="{{ route('roles.index') }}">Список ролей</a>
     <a class="btn btn-primary" href="{{ route('users.index') }}">Список пользователей</a>
-        @can('check-sum')
-{{--    <a class="btn btn-primary" id="seumchecker_go_btn">Контрольные суммы</a>--}}
-        @endcan
+    <a class="btn btn-primary" id="seumchecker_go_btn">Контрольные суммы</a>
         @can('safety-edit')
         <a class="btn btn-primary" href="{{ route('config_safety') }}">Конфигурация безопасности</a>
         @endcan
