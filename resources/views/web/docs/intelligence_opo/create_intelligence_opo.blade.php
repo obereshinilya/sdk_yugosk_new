@@ -50,13 +50,13 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Добавление записи в сведения,
+                        <h2 class="text-muted" style="text-align: center; padding: 3px">Добавление записи в сведения,
                             характеризующие ОПО
                         </h2>
                     </div>
 
                     <div class="inside_tab_padding form51"
-                         style="height:70vh; padding: 0px; margin: 0px; overflow-y: auto">
+                         style="height:78vh; padding: 0px; margin: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px" class="form51">
                             <table>
                                 <col style="width: 5%">
@@ -87,7 +87,7 @@
                                     <th style="text-align: left">Типовое наименование (именной код объекта)</th>
                                     <td style="padding: 0px"><select id="type_name" style="height: 100%; width: 98%"
                                                                      class="select-css">
-                                            @foreach(\App\Models\intelligence_opo_model\opo_parts::all() as $row)
+                                            @foreach(\App\Models\intelligence_opo_model\opo_parts::orderby('object_list')->get() as $row)
                                                 <option value="{{$row->id_parts}}">{{$row->object_list}}</option>
                                             @endforeach
                                         </select>
@@ -332,7 +332,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">4.6.</th>
-                                    <th style="text-align: left">4.6. ОПО, предусмотренные пунктом 6
+                                    <th style="text-align: left">ОПО, предусмотренные пунктом 6
                                         приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
                                     <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_6">
@@ -458,7 +458,7 @@
                                     <th style="text-align: left" colspan="7"><b>6. Сведения о составе ОПО</b>
                                         @can('entries-add')
                                             <div style="padding-right: 10px; display: inline" class="bat_add"><a
-                                                    style="float: right; " href="#">Добавить
+                                                    style="float: right; " onclick="add_new_part()">Добавить
                                                     сведения</a></div>
                                         @endcan
                                     </th>
@@ -477,27 +477,8 @@
                                     @endcan
                                 </tr>
                                 </thead>
-                                <tbody>
-                                {{--                                @foreach ($opoint as $row)--}}
-                                {{--                                    <tr>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->number_pp}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_sites}}</td>--}}
-                                {{--                                        <td style="text-align: center" class="name_event">{{ $row->brief_description}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_substance}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->operational_character}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->numerical_designation}}</td>--}}
-                                {{--                                        @can('entries-edit')--}}
-                                {{--                                            <td class="centered" style="text-align: center">--}}
-                                {{--                                                <a style="padding-left: 20px" href="/docs/edit_intelligence_opo/{{$row->id_opo}}"><img--}}
-                                {{--                                                        alt=""--}}
-                                {{--                                                        src="{{asset('assets/images/icons/edit.svg')}}"--}}
-                                {{--                                                        class="check_i"--}}
-                                {{--                                                        style="margin-left: 10px">--}}
-                                {{--                                                </a>--}}
-                                {{--                                            </td>--}}
-                                {{--                                        @endcan--}}
-                                </tr>
-                                {{--                                @endforeach--}}
+                                <tbody id="tbody_part">
+
                                 </tbody>
                             </table>
                             <table>
@@ -695,8 +676,16 @@
             </div>
         </div>
     </div>
-
+<style>
+    .pdf_i:hover{
+        transform: scale(1.3);
+    }
+</style>
     <script>
+        function add_new_part(){
+            alert('Добавить сведения возможно только после сохранения записи!')
+        }
+
         function save() {
             $.ajaxSetup({
                 headers: {
@@ -710,7 +699,7 @@
                 'full_name_le', 'applicants_address', 'head_position', 'surname_head', 'sign', 'date_signing',
                 'registration_number', 'date_registration', 'date_change', 'name_rostekhnadzor', 'position_person_rostekh',
                 'full_name_person_rostekh', 'sign_person_rostekh', 'date_person_rostekh'];
-            let themes = [ 'chk_2_1_a',
+            let themes = [ 'chk_2_1_a','chk_2_1',
                 'chk_2_1_b', 'chk_2_1_v', 'chk_2_3', 'chk_2_4', 'chk_2_5', 'chk_2_6', 'chk_3_1', 'chk_3_2', 'chk_3_3', 'chk_3_4',
                 'chk_4_1', 'chk_4_2', 'chk_4_3', 'chk_4_4', 'chk_4_5', 'chk_4_6', 'chk_4_7', 'chk_4_8', 'chk_4_9', 'chk_4_10',
                 'chk_4_11', 'chk_4_11_a', 'chk_4_11_b', 'chk_4_11_v', 'chk_4_12', 'chk_5_1', 'chk_5_2', 'chk_5_3']
@@ -732,6 +721,7 @@
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
+                    // console.log(out_data)
                     // console.log(res)
                     window.location.href = '/docs/opo'
                 }

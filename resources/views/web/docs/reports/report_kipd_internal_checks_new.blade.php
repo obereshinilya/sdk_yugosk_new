@@ -185,8 +185,8 @@
                     if (typeof res == 'object') {
                         alert('Не указан срок выполнения!')
                     } else {
-                        console.log(res)
-                        // window.location.href = '/docs/kipd_internal_checks'
+                        // console.log(res)
+                        window.location.href = '/docs/kipd_internal_checks'
                     }
                 }
             })

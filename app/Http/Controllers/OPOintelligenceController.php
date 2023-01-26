@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\intelligence_opo_model\add_info_opo;
+use App\Models\intelligence_opo_model\opo_parts_norm;
 use App\Models\Main_models\RefDO;
 use App\Models\intelligence_opo_model\opo;
 use App\Models\Main_models\RefOpo;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\App;
 
 class OPOintelligenceController extends Controller
 {
-    public function opo(Request $request)
+    public function opo()
     {
         $opoint = add_info_opo::all();
         AdminController::log_record('Открыл сведения, характеризующие ОПО  ');//пишем в журнал
@@ -24,7 +25,7 @@ class OPOintelligenceController extends Controller
         return view('web.docs.intelligence_opo.edit_intelligence_opo', compact('data'));
     }
 
-    public function create_intelligence (Request $request)
+    public function create_intelligence ()
     {
         return view('web.docs.intelligence_opo.create_intelligence_opo');
     }
@@ -36,14 +37,46 @@ class OPOintelligenceController extends Controller
             $values = json_decode($request->values);
             $record_data = [];
             for ($j = 0; $j < count($keys); $j++) {
-                $record_data[$keys[$j]] = $values[$j];
+                if ($values[$j]){
+                    $record_data[$keys[$j]] = $values[$j];
+                }
             }
-            $record_data['type_name'] = 3;
             add_info_opo::create($record_data);
             AdminController::log_record('Добавил запись в сведения, характеризующие ОПО');//пишем в журнал
         } catch (\Throwable $e) {
             return $e;
         }
+    }
+    public function save_part_opo(Request $request)
+    {
+        try {
+            $keys = json_decode($request->keys);
+            $values = json_decode($request->values);
+            $record_data = [];
+            for ($j = 0; $j < count($keys); $j++) {
+                if ($values[$j]){
+                    $record_data[$keys[$j]] = $values[$j];
+                }
+            }
+            opo_parts_norm::create($record_data);
+            AdminController::log_record('Добавил запись в сведения, характеризующие ОПО');//пишем в журнал
+        } catch (\Throwable $e) {
+            return $e;
+        }
+    }
+    public function delete_part_opo($id)
+    {
+//        return opo_parts_norm::where('id', '=', $id)->first();
+        try {
+            opo_parts_norm::where('id', '=', $id)->first()->delete();
+            AdminController::log_record('Удалил запись в сведения, характеризующие ОПО');//пишем в журнал
+        } catch (\Throwable $e) {
+            return $e;
+        }
+    }
+    public function get_part_opo($id_opo)
+    {
+        return opo_parts_norm::where('id_opo_from_list', '=', $id_opo)->get();
     }
 
     public function update_intelligence_opo(Request $request, $id_add_info_opo)

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class add_info_opo extends Model
 {
-    protected $table = 'intelligence_opo.add_info_opo';
+    protected $table = 'intelligence_opo.opo_list';
 
     public $primaryKey = 'id_add_info_opo';
     public $timestamps = false;

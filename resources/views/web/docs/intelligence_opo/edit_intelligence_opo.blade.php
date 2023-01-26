@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @section('title')
-    Создание
+    Редактирование
 @endsection
 
 @section('content')
@@ -50,12 +50,12 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Редактирование записи в сведениях, характеризующие ОПО
+                        <h2 class="text-muted" style="text-align: center; padding: 3px">Редактирование записи в сведениях, характеризующие ОПО
                         </h2>
                     </div>
 
                     <div class="inside_tab_padding form51"
-                         style="height:70vh; padding: 0px; margin: 0px; overflow-y: auto">
+                         style="height:78vh; padding: 0px; margin: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px" class="form51">
                             <table>
                                 <col style="width: 5%">
@@ -86,9 +86,10 @@
                                     <th style="text-align: center">1.2.</th>
                                     <th style="text-align: left">Типовое наименование (именной код объекта)</th>
                                     <td style="padding: 0px"><select id="type_name" style="height: 100%; width: 98%"
-                                                                     class="select-css">
-                                                                    value="{{$data->type_name}}"
-                                            @foreach(\App\Models\intelligence_opo_model\opo_parts::all() as $row)
+                                                                     class="select-css" value="{{$data->type_name}}">
+                                            <option value="{{$data->type_name}}">{{\App\Models\intelligence_opo_model\opo_parts::where('id_parts', '=', $data->type_name)->first()->object_list}}</option>
+
+                                        @foreach(\App\Models\intelligence_opo_model\opo_parts::where('id_parts', '!=', $data->type_name)->orderby('object_list')->get() as $row)
                                                 <option value="{{$row->id_parts}}">{{$row->object_list}}</option>
                                             @endforeach
                                         </select>
@@ -338,7 +339,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">4.6.</th>
-                                    <th style="text-align: left">4.6. ОПО, предусмотренные пунктом 6
+                                    <th style="text-align: left">ОПО, предусмотренные пунктом 6
                                         приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
                                     <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_6"  value="{{$data->chk_4_6}}" {{$data->chk_4_6 ? 'checked':''}}>
@@ -464,7 +465,7 @@
                                     <th style="text-align: left" colspan="7"><b>6. Сведения о составе ОПО</b>
                                         @can('entries-add')
                                             <div style="padding-right: 10px; display: inline" class="bat_add"><a
-                                                    style="float: right; " href="#">Добавить
+                                                    style="float: right; " onclick="add_new_part()">Добавить
                                                     сведения</a></div>
                                         @endcan
                                     </th>
@@ -483,27 +484,8 @@
                                     @endcan
                                 </tr>
                                 </thead>
-                                <tbody>
-                                {{--                                @foreach ($opoint as $row)--}}
-                                {{--                                    <tr>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->number_pp}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_sites}}</td>--}}
-                                {{--                                        <td style="text-align: center" class="name_event">{{ $row->brief_description}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_substance}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->operational_character}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->numerical_designation}}</td>--}}
-                                {{--                                        @can('entries-edit')--}}
-                                {{--                                            <td class="centered" style="text-align: center">--}}
-                                {{--                                                <a style="padding-left: 20px" href="/docs/edit_intelligence_opo/{{$row->id_opo}}"><img--}}
-                                {{--                                                        alt="--}}
-                                {{--                                                        src="{{asset('assets/images/icons/edit.svg')}}"--}}
-                                {{--                                                        class="check_i"--}}
-                                {{--                                                        style="margin-left: 10px">--}}
-                                {{--                                                </a>--}}
-                                {{--                                            </td>--}}
-                                {{--                                        @endcan--}}
-                                </tr>
-                                {{--                                @endforeach--}}
+                                <tbody id="tbody_part">
+
                                 </tbody>
                             </table>
                             <table>
@@ -703,6 +685,91 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function test() {
+            get_parts()
+        })
+
+        function add_new_part(){
+            var tbody = document.getElementById('tbody_part')
+            tbody.innerHTML = ''
+            var tr = document.createElement('tr')
+            tr.id = 'new_tr'
+            tr.innerHTML += `<td></td>`
+            tr.innerHTML += `<td class="name_part" contenteditable="true"></td>`
+            tr.innerHTML += `<td class="desc" contenteditable="true"></td>`
+            tr.innerHTML += `<td class="name_thing" contenteditable="true"></td>`
+            tr.innerHTML += `<td class="desc_tech" contenteditable="true"></td>`
+            tr.innerHTML += `<td class="class_hazard" contenteditable="true"></td>`
+            tr.innerHTML += `<td>
+                <img style="height: 20px" src="{{ asset('assets/images/icons/check.svg') }}" onclick="save_part()" class="pdf_i">
+                <img style="height: 20px; margin-left: 10px" src="{{ asset('assets/images/icons/close.svg') }}" onclick="get_parts()" class="pdf_i">
+            </td>`
+            tbody.appendChild(tr)
+        }
+        function save_part(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var out_data = []
+            out_data['id_opo_from_list'] = '{{$data->id_add_info_opo}}'
+            var tds = document.getElementById('new_tr').getElementsByTagName('td')
+            for (var td of tds) {
+                if (td.className){
+                    out_data[td.className] = td.textContent
+                }
+            }
+            $.ajax({
+                url: '/docs/intelligence_opo/save_part',
+                type: 'POST',
+                data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
+                success: (res) => {
+                    // console.log(res)
+                    get_parts()
+                }
+            })
+        }
+        function get_parts(){
+            $.ajax({
+                url: '/docs/intelligence_opo/get_part/{{$data->id_add_info_opo}}',
+                type: 'GET',
+                success: (res) => {
+                    var tbody = document.getElementById('tbody_part')
+                    tbody.innerHTML = ''
+                    if (res.length){
+                        var i = 1
+                        for (var row of res){
+                            var tr = document.createElement('tr')
+                            tr.innerHTML += `<td style="text-align: center">${i}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['name_part']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['desc']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['name_thing']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['desc_tech']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['class_hazard']}</td>`
+                            tr.innerHTML += `<td>
+<img style="height: 20px" src="{{ asset('assets/images/icons/trash.svg') }}" onclick="delete_part(${row['id']})" class="pdf_i">
+</td>`
+                            tbody.appendChild(tr)
+                            i++
+                        }
+                    }
+                }
+            })
+        }
+        function delete_part(id){
+            // console.log(id)
+            $.ajax({
+                url: '/docs/intelligence_opo/delete_part/'+id,
+                type: 'GET',
+                success: (res) => {
+                    console.log(res)
+                    get_parts()
+                }
+            })
+        }
+
+
         function update() {
             $.ajaxSetup({
                 headers: {
@@ -716,7 +783,7 @@
                 'full_name_le', 'applicants_address', 'head_position', 'surname_head', 'sign', 'date_signing',
                 'registration_number', 'date_registration', 'date_change', 'name_rostekhnadzor', 'position_person_rostekh',
                 'full_name_person_rostekh', 'sign_person_rostekh', 'date_person_rostekh'];
-            let themes = [ 'chk_2_1_a',
+            let themes = [ 'chk_2_1_a', 'chk_2_1',
                 'chk_2_1_b', 'chk_2_1_v', 'chk_2_3', 'chk_2_4', 'chk_2_5', 'chk_2_6', 'chk_3_1', 'chk_3_2', 'chk_3_3', 'chk_3_4',
                 'chk_4_1', 'chk_4_2', 'chk_4_3', 'chk_4_4', 'chk_4_5', 'chk_4_6', 'chk_4_7', 'chk_4_8', 'chk_4_9', 'chk_4_10',
                 'chk_4_11', 'chk_4_11_a', 'chk_4_11_b', 'chk_4_11_v', 'chk_4_12', 'chk_5_1', 'chk_5_2', 'chk_5_3']
@@ -733,9 +800,8 @@
                     out_data[theme] = 0
                 }
             }
-            console.log(out_data)
             $.ajax({
-                url: '/docs/intelligence_opo/update/{{$data->id_add_info_opo}}',
+                url: '/docs/intelligence_opo/update',
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {

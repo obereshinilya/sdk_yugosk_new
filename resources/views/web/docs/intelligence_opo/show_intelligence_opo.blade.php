@@ -50,12 +50,12 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header">
-                        <h2 class="text-muted" style="text-align: center">Просмотр записи в сведениях, характеризующие ОПО
+                        <h2 class="text-muted" style="text-align: center; padding: 3px">Просмотр записи в сведениях, характеризующих ОПО
                         </h2>
                     </div>
 
                     <div class="inside_tab_padding form51"
-                         style="height:70vh; padding: 0px; margin: 0px; overflow-y: auto">
+                         style="height:78vh; padding: 0px; margin: 0px; overflow-y: auto">
                         <div style="background: #FFFFFF; border-radius: 6px" class="form51">
                             <table>
                                 <col style="width: 5%">
@@ -87,10 +87,8 @@
                                     <th style="text-align: left">Типовое наименование (именной код объекта)</th>
                                     <td style="padding: 0px"><select disabled id="type_name" style="height: 100%; width: 98%"
                                                                      class="select-css">
-                                            value="{{$data->type_name}}"
-                                            @foreach(\App\Models\intelligence_opo_model\opo_parts::all() as $row)
-                                                <option value="{{$row->id_parts}}">{{$row->object_list}}</option>
-                                            @endforeach
+                                            <option value="{{$data->type_name}}">{{\App\Models\intelligence_opo_model\opo_parts::where('id_parts', '=', $data->type_name)->first()->object_list}}</option>
+
                                         </select>
                                     </td>
                                 </tr>
@@ -338,7 +336,7 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">4.6.</th>
-                                    <th style="text-align: left">4.6. ОПО, предусмотренные пунктом 6
+                                    <th style="text-align: left">ОПО, предусмотренные пунктом 6
                                         приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
                                     <td style="text-align: center"><input disabled class="check" type="checkbox" id="chk_4_6"  value="{{$data->chk_4_6}}" {{$data->chk_4_6 ? 'checked':''}}>
@@ -458,15 +456,10 @@
                                 <col style="width: 16%">
                                 <col style="width: 17%">
                                 <col style="width: 16%">
-                                <col style="width: 7%">
                                 <thead>
                                 <tr>
                                     <th style="text-align: left" colspan="7"><b>6. Сведения о составе ОПО</b>
-                                        @can('entries-add')
-                                            <div style="padding-right: 10px; display: inline" class="bat_add"><a
-                                                    style="float: right; " href="#">Добавить
-                                                    сведения</a></div>
-                                        @endcan
+
                                     </th>
                                 </tr>
                                 <tr>
@@ -478,32 +471,11 @@
                                     <th>Наименование опасного вещества</th>
                                     <th>Проектные (эксплуатационные) характеристики технических устройств</th>
                                     <th>Числовое обозначение признака опасности</th>
-                                    @can('entries-edit')
-                                        <th></th>
-                                    @endcan
+
                                 </tr>
                                 </thead>
-                                <tbody>
-                                {{--                                @foreach ($opoint as $row)--}}
-                                {{--                                    <tr>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->number_pp}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_sites}}</td>--}}
-                                {{--                                        <td style="text-align: center" class="name_event">{{ $row->brief_description}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->name_substance}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->operational_character}}</td>--}}
-                                {{--                                        <td style="text-align: center">{{ $row->numerical_designation}}</td>--}}
-                                {{--                                        @can('entries-edit')--}}
-                                {{--                                            <td class="centered" style="text-align: center">--}}
-                                {{--                                                <a style="padding-left: 20px" href="/docs/edit_intelligence_opo/{{$row->id_opo}}"><img--}}
-                                {{--                                                        alt="--}}
-                                {{--                                                        src="{{asset('assets/images/icons/edit.svg')}}"--}}
-                                {{--                                                        class="check_i"--}}
-                                {{--                                                        style="margin-left: 10px">--}}
-                                {{--                                                </a>--}}
-                                {{--                                            </td>--}}
-                                {{--                                        @endcan--}}
-                                </tr>
-                                {{--                                @endforeach--}}
+                                <tbody id="tbody_part">
+
                                 </tbody>
                             </table>
                             <table>
@@ -700,29 +672,35 @@
         </div>
     </div>
 
-{{--    <script>--}}
-{{--        function update() {--}}
-{{--            $.ajaxSetup({--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-{{--                }--}}
-{{--            });--}}
-
-{{--            var params = ['short_name_do', 'full_name_do', 'guid_do', 'region', 'name_manager', 'phone_manager', 'mail_manager', 'name_chief_engineer', 'phone_chief_engineer', 'mail_chief_engineer', 'name_otpb_engineer', 'phone_otpb_engineer', 'mail_otpb_engineer', 'name_pb_engineer', 'phone_pb_engineer', 'mail_pb_engineer', 'name_ot_engineer', 'phone_ot_engineer', 'mail_ot_engineer' ]--}}
-{{--            var out_data = []--}}
-{{--            for (var param of params) {--}}
-{{--                out_data[param] = document.getElementById(param).value--}}
-{{--            }--}}
-{{--            $.ajax({--}}
-{{--                url: '/docs/directory_do/update/{{$data->id_do}}',--}}
-{{--                type: 'POST',--}}
-{{--                data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},--}}
-{{--                success: (res) => {--}}
-{{--                    window.location.href = '/docs/directory_do'--}}
-{{--                }--}}
-{{--            })--}}
-{{--        }--}}
-{{--    </script>--}}
+<script>
+    document.addEventListener('DOMContentLoaded', function test() {
+        get_parts()
+    })
+    function get_parts(){
+        $.ajax({
+            url: '/docs/intelligence_opo/get_part/{{$data->id_add_info_opo}}',
+            type: 'GET',
+            success: (res) => {
+                var tbody = document.getElementById('tbody_part')
+                tbody.innerHTML = ''
+                if (res.length){
+                    var i = 1
+                    for (var row of res){
+                        var tr = document.createElement('tr')
+                        tr.innerHTML += `<td style="text-align: center">${i}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['name_part']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['desc']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['name_thing']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['desc_tech']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['class_hazard']}</td>`
+                        tbody.appendChild(tr)
+                        i++
+                    }
+                }
+            }
+        })
+    }
+</script>
 
 @endsection
 

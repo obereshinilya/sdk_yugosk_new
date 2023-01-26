@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class opo_parts extends Model
 {
-    protected $table = 'intelligence_opo.opo_parts';
+    protected $table = 'intelligence_opo.type_opo';
     public $timestamps = false;
     public $primaryKey = 'id_parts';
 

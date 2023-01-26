@@ -103,6 +103,9 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/edit_intelligence_opo/{id_add_info_opo}', 'OPOintelligenceController@edit_intelligence');  //Изменение сведений, характеризующих ОПО
             Route::get('/docs/create_intelligence_opo', 'OPOintelligenceController@create_intelligence');  //Добавление сведений, характеризующих ОПО
             Route::post('/docs/intelligence_opo/save', 'OPOintelligenceController@save_add_composition_opo');  //сохранение
+            Route::post('/docs/intelligence_opo/save_part', 'OPOintelligenceController@save_part_opo');  //сохранение
+            Route::get('/docs/intelligence_opo/get_part/{id_opo}', 'OPOintelligenceController@get_part_opo');  //сохранение
+            Route::get('/docs/intelligence_opo/delete_part/{id}', 'OPOintelligenceController@delete_part_opo');  //сохранение
             Route::post('/docs/intelligence_opo/update/{id_add_info_opo}', 'OPOintelligenceController@update_intelligence_opo');  //сохранение изменений
             Route::get('/docs/show_intelligence_opo/{id_add_info_opo}', 'OPOintelligenceController@show_intelligence_opo');  //просмотр
 
