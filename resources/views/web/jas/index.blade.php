@@ -254,7 +254,7 @@
 
                                 if (!row['check']) {
                                     @can('events-kavit')
-                                        tr.innerHTML += `<td style="text-align: center"><button row-id="${row['id']}" onclick="commit(this) class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">  Квитировать </button> </td>`
+                                        tr.innerHTML += `<td style="text-align: center"><button row-id="${row['id']}" onclick="commit(this)" class="btn btn-info" style="color: whitesmoke; font-size: 13px; background-color: indianred">  Квитировать </button> </td>`
                                     @endcan
                                 } else {
                                     tr.innerHTML += `<td style="text-align: center">Просмотрено</td>`;

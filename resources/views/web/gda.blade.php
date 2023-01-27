@@ -213,14 +213,25 @@
             url: '/new_jas_main',
             type: 'GET',
             success: (res) => {
-                var table_body = document.getElementById('map_hover_jas').getElementsByTagName('tbody')[0]
-                table_body.innerHTML = ''
-                for (var i=0; i<res.length; i++){
+                if (res.length){
+                    var table_body = document.getElementById('map_hover_jas').getElementsByTagName('tbody')[0]
+                    table_body.innerHTML = ''
+                    for (var i=0; i<res.length; i++){
+                        var tr = document.createElement('tr')
+                        tr.innerHTML+=`<td>${res[i]['date']}</td>`
+                        tr.innerHTML+=`<td>${res[i]['name_do']}</td>`
+                        tr.innerHTML+=`<td>${res[i]['name_tb']}</td>`
+                        tr.innerHTML+=`<td>${res[i]['event']}</td>`
+                        table_body.appendChild(tr);
+                    }
+                }else {
+                    var table_body = document.getElementById('map_hover_jas').getElementsByTagName('tbody')[0]
+                    table_body.innerHTML = ''
                     var tr = document.createElement('tr')
-                    tr.innerHTML+=`<td>${res[i]['date']}</td>`
-                    tr.innerHTML+=`<td>${res[i]['name_do']}</td>`
-                    tr.innerHTML+=`<td>${res[i]['name_tb']}</td>`
-                    tr.innerHTML+=`<td>${res[i]['event']}</td>`
+                    tr.innerHTML+=`<td colspan="4"></td>`
+                    table_body.appendChild(tr);
+                    var tr = document.createElement('tr')
+                    tr.innerHTML+=`<td colspan="4">Аварийных событий нет</td>`
                     table_body.appendChild(tr);
                 }
             }

@@ -30,6 +30,7 @@ class UploadFilesController extends Controller
                     $f->move(public_path('storage/docs/excel/'), $f->getClientOriginalName()); //public\storage\docs
                     ExcelFiles::create(['name' => $f->getClientOriginalName()]);
                     AdminController::log_record('Загрузил данные с системы "СтатусГТЮ" ' . $f->getClientMimeType());//пишем в журнал
+                    shell_exec('python3 /var/www/html/read_ITC_file.py "'.$f->getClientOriginalName().'"');
                 }else{
                     $message = 'Файл с таким именем уже существует!';
                     $pdf_files = ExcelFiles::all();

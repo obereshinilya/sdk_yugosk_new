@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoOPO/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoOPO/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/gda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/gda.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +200,8 @@
       <workItem from="1674539024862" duration="45339000" />
       <workItem from="1674661715031" duration="7806000" />
       <workItem from="1674708467272" duration="20522000" />
-      <workItem from="1674740112941" duration="8267000" />
+      <workItem from="1674740112941" duration="8843000" />
+      <workItem from="1674794102820" duration="4023000" />
     </task>
     <servers />
   </component>
