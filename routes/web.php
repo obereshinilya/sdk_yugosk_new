@@ -144,10 +144,10 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/actual_declarations/remove/{id}', 'ReportController@remove_actual_declarations');  //удаление
             Route::get('/docs/actual_declarations/edit/{id}', 'ReportController@edit_actual_declarations');  //обновление
             Route::post('/docs/actual_declarations/update/{id}', 'ReportController@update_actual_declarations');  //сохранение изменений
-            Route::get('/docs/actual_declarations/get_params/{year}', 'ReportController@get_actual_declarations');  //за год
+            Route::get('/docs/actual_declarations/get_params', 'ReportController@get_actual_declarations');  //за год
 
             Route::get('/docs/sved_avar', 'ReportController@sved_avar');  //Сведения об аварийности на опасных производственных объектах ДО
-            Route::get('/docs/get_sved_avar/{year}', 'ReportController@get_sved_avar');  //данные
+            Route::get('/docs/get_sved_avar/{year}/{year_end}', 'ReportController@get_sved_avar');  //данные
             Route::get('/docs/sved_avar/create', 'ReportController@create_sved_avar');  //создание
             Route::post('/docs/sved_avar/save', 'ReportController@save_sved_avar');  //сохранение
             Route::get('/docs/sved_avar/remove/{id}', 'ReportController@remove_sved_avar');  //удаление
@@ -214,15 +214,15 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/plan_of_industrial_safety/edit/{id}', 'ReportController@edit_plan_of_industrial_safety');  //обновление
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
-//            Route::get('/docs/conclusions_industrial_safety/{center_name}/{name_do}/{type_tu}', 'ReportController@show_conclusions_industrial_safety');  // План работ в области промышленной безопасности
-            Route::get('/docs/conclusions_industrial_safety_main', 'ReportController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
-            Route::post('/docs/conclusions_industrial_safety', 'ReportController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
-            Route::get('/docs/conclusions_industrial_safety/get_params/{year}', 'ReportController@get_conclusions_industrial_safety');  // выборка за год
-            Route::get('/docs/conclusions_industrial_safety/create', 'ReportController@create_conclusions_industrial_safety');  // страница создания записи
-            Route::post('/docs/conclusions_industrial_safety/save', 'ReportController@save_conclusions_industrial_safety');  //сохранение
-            Route::get('/docs/conclusions_industrial_safety/remove/{id}', 'ReportController@remove_conclusions_industrial_safety');  //удаление
-            Route::get('/docs/conclusions_industrial_safety/edit/{id}', 'ReportController@edit_conclusions_industrial_safety');  //обновление
-            Route::post('/docs/conclusions_industrial_safety/update/{id}', 'ReportController@update_conclusions_industrial_safety');  //сохранение изменений
+            Route::get('/docs/conclusions_industrial_safety_main', 'ConclusionsController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
+            Route::get('/get_group_conclusion/{column}', 'ConclusionsController@get_group_conclusion');
+
+            Route::post('/docs/conclusions_industrial_safety', 'ConclusionsController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
+            Route::get('/docs/conclusions_industrial_safety/create', 'ConclusionsController@create_conclusions_industrial_safety');  // страница создания записи
+            Route::post('/docs/conclusions_industrial_safety/save', 'ConclusionsController@save_conclusions_industrial_safety');  //сохранение
+            Route::get('/docs/conclusions_industrial_safety/remove/{id}', 'ConclusionsController@remove_conclusions_industrial_safety');  //удаление
+            Route::get('/docs/conclusions_industrial_safety/edit/{id}', 'ConclusionsController@edit_conclusions_industrial_safety');  //обновление
+            Route::post('/docs/conclusions_industrial_safety/update/{id}', 'ConclusionsController@update_conclusions_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/fulfillment_certification', 'ReportController@show_fulfillment_certification');  // План работ в области промышленной безопасности
             Route::get('/docs/fulfillment_certification/get_params/{year}', 'ReportController@get_fulfillment_certification');  // выборка за год
@@ -250,7 +250,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/get_indicator/{year}', 'MathController@get_indicator'); //получение данных с таблицы с результатами
 
 ///////////************** Отчеты PDF **************************************/////////////////////////
-            Route::get('/pdf_actual_declarations/{year}', 'PdfReportController@pdf_actual_declarations');     // скачать реестр актуальных деклараций
+            Route::get('/pdf_actual_declarations', 'PdfReportController@pdf_actual_declarations');     // скачать реестр актуальных деклараций
             Route::get('/pdf_emergency_drills/{year}', 'PdfReportController@pdf_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
             Route::get('/pdf_goals_trans_yugorsk/{year}', 'PdfReportController@pdf_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
             Route::get('/pdf_perfomance_plan_KiPD/{year}', 'PdfReportController@pdf_perfomance_plan_KiPD');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
@@ -266,12 +266,12 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/pdf_jas/{start}/{end}', 'PdfReportController@pdf_jas');     // скачать ЖАС за выбранный период
 
 ///////////************** Отчеты Excel **************************************/////////////////////////
-            Route::get('/excel_conclusions_industrial_safety/{year}', 'ExcelReportController@excel_conclusions_industrial_safety');
+            Route::get('/excel_conclusions_industrial_safety', 'ExcelReportController@excel_conclusions_industrial_safety');
             Route::get('/excel_events/{year}', 'ExcelReportController@excel_events');
             Route::get('/excel_fulfillment_certification/{year}', 'ExcelReportController@excel_fulfillment_certification');
             Route::get('/excel_pat_schedule/{year}', 'ExcelReportController@excel_pat_schedule');
             Route::get('/excel_plan_of_industrial_safety/{year}', 'ExcelReportController@excel_plan_of_industrial_safety');
-            Route::get('/excel_actual_declarations/{year}', 'ExcelReportController@excel_actual_declarations');
+            Route::get('/excel_actual_declarations', 'ExcelReportController@excel_actual_declarations');
             Route::get('/excel_emergency_drills/{year}', 'ExcelReportController@excel_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
             Route::get('/excel_report_events/{year}', 'ExcelReportController@excel_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/excel_goals_trans_yugorsk/{year}', 'ExcelReportController@excel_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год

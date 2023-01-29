@@ -38,16 +38,18 @@
     </tr>
     </thead>
     <tbody>
+    <?php $i=1?>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->id}}</td>
+            <td>{{$i}}</td>
             <td>{{$row->name_DPB}}</td>
             <td>{{$row->parts_DPB}}</td>
             <td>{{$row->massage_rtn}}</td>
-            <td>{{$row->reg_num_DPB}}</td>
+            <td>{{$row->reg_num_dpb}}</td>
             <td>{{$row->name_zepb}}</td>
             <td>{{$row->reg_num_date_zepb}}</td>
         </tr>
+        <?php $i++?>
     @endforeach
     </tbody>
 </table>

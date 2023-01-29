@@ -147,6 +147,7 @@
                                     <th style="text-align: center">Элемент ОПО</th>
                                     <th style="text-align: center">Описание события</th>
                                     <th style="text-align: center">Комментарий</th>
+                                    <th style="text-align: center">Автор комментария</th>
                                     <th style="text-align: center">Состояние</th>
                                 </tr>
                                 </thead>
@@ -251,6 +252,7 @@
                                 tr.innerHTML += `<td style="text-align: center">${row['elem_opo']}</td>`
                                 tr.innerHTML += `<td style="text-align: center">${row['sobitie']}</td>`
                                 tr.innerHTML += `<td style="text-align: center" id='${row['id']}' contenteditable="true" onblur="save_comment(this.id, this.textContent)" >${row['comment']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['author']}</td>`
 
                                 if (!row['check']) {
                                     @can('events-kavit')
@@ -313,6 +315,7 @@
                     url: '/save_comment/' + id_jas + '/' + text,
                     type: 'GET',
                     success: (res) => {
+                        get_data()
                     }
                 })
             }

@@ -6,48 +6,44 @@
 
     .table th,
     .table td {
+        text-align: center;
         padding: 5px;
-        vertical-align: top;
+        vertical-align: center;
         border-top: 1px solid #dee2e6;
         border: 1px solid black; /* Параметры рамки */
-        text-align: center;
-    }
-
-    .table-hover tbody tr:hover {
-        color: #212529;
-        background-color: rgba(0, 0, 0, 0.075);
+        ;
     }
 </style>
-<h2 class="text-muted" style="text-align: center">{{$title}}</h2>
-<table style="border-collapse: collapse;" class="table table-hover">
+<h2 class="text-muted" style="margin: 0px; text-align: center; padding-bottom: 10px">{{$title}}</h2>
+<table style="border-collapse: collapse; width: 100%; display: table; table-layout: auto" class="table table-hover">
     <thead>
     <tr>
-        <th style="width: 25vh">№ п/п</th>
-        <th style="width: 25vh">Наименование ДПБ</th>
-        <th style="text-align: center">Составные части ДПБ</th>
-        <th style="text-align: center">Введена в действие уведомлением Ростехнадзора рег. №,
+        <th style="">№ п/п</th>
+        <th style="">Наименование ДПБ</th>
+        <th style="">Составные части ДПБ</th>
+        <th style="">Введена в действие уведомлением Ростехнадзора рег. №,
             дата
         </th>
-        <th style="text-align: center">Рег. № ДПБ в Ростехнадзоре</th>
-        <th style="text-align: center">Наименование ЗЭПБ</th>
-        <th style="text-align: center">Рег.№ ЗЭПБ в Ростехнадзоре,
+        <th style="">Рег. № ДПБ в Ростехнадзоре</th>
+        <th style="">Наименование ЗЭПБ</th>
+        <th style="">Рег.№ ЗЭПБ в Ростехнадзоре,
             дата
         </th>
     </tr>
     </thead>
     <tbody>
-
+<?php $i=1?>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->id}}</td>
+            <td>{{$i}}</td>
             <td>{{$row->name_DPB}}</td>
             <td>{{$row->parts_DPB}}</td>
             <td>{{$row->massage_rtn}}</td>
-            <td>{{$row->reg_num_DPB}}</td>
+            <td>{{$row->reg_num_dpb}}</td>
             <td>{{$row->name_zepb}}</td>
             <td>{{$row->reg_num_date_zepb}}</td>
-
         </tr>
+        <?php $i++?>
     @endforeach
 
     </tbody>

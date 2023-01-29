@@ -67,10 +67,10 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_actual_declarations($year)
+    public function pdf_actual_declarations()
     {
-        $data = ActualDeclarations::where('year', '=', $year)->get();
-        $title = 'Реестр актуальных деклараций промышленной безопасности опасных производственных объектов ' . $year . 'год';
+        $data = ActualDeclarations::orderby('id')->get();
+        $title = 'Реестр актуальных деклараций промышленной безопасности опасных производственных объектов';
         $patch = 'actual_declarations' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_actual_declarations', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);

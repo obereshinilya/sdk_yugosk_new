@@ -41,10 +41,11 @@ use Excel;
 
 class ExcelReportController extends Controller
 {
-    public function excel_conclusions_industrial_safety($year)
+    public function excel_conclusions_industrial_safety()
     {
-        $data = Conclusions_industrial_safety::where('name_do', '=', $year)->get();
-        $title = 'Реестр заключений экспертизы промышленной безопасности за ' . $year . 'год';
+//        set_time_limit(2000000);
+        $data = Conclusions_industrial_safety::all();
+        $title = 'Реестр заключений экспертизы промышленной безопасности';
         $patch = 'Conclusions_industrial_safety' . Carbon::now() . '.xlsx';
 
         return Excel::download(new ConclusionsExport($title, $data), $patch);
@@ -139,13 +140,13 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_actual_declarations($year)
+    public function excel_actual_declarations()
     {
-        $data = ActualDeclarations::where('year', '=', $year)->get();
+        $data = ActualDeclarations::orderby('id')->get();
         $title = ' Реестр актуальных
                             деклараций промышленной
                             безопасности
-                            опасных производственных объектов ' . $year . ' год';
+                            опасных производственных объектов ';
         $patch = 'report_actual_declarations' . Carbon::now() . '.xlsx';
 
         return Excel::download(new Actual_declarations_Export($title, $data), $patch);

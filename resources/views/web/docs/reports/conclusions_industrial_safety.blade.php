@@ -44,17 +44,15 @@
             padding: 3px;
         }
     </style>
-    <form method="POST"  style="display: none" action="{{ route('open_conclusions_industrial_safety') }}">
+    <form method="POST" style="display: none" action="{{ route('open_conclusions_industrial_safety') }}">
         @csrf
-                <input id="arr_name_center" type="text" class="form-control" name="arr_name_center">
-                <input id="arr_name_do" type="text" class="form-control" name="arr_name_do">
-                <input id="arr_date_epb" type="text" class="form-control" name="arr_date_epb">
-                <input id="arr_date_next_epb" type="text" class="form-control" name="arr_date_next_epb">
-                <input id="arr_type_tu" type="text" class="form-control" name="arr_type_tu">
-                <input id="arr_object_name" type="text" class="form-control" name="arr_object_name">
-                <button type="submit" id="submit_button" class="btn btn-primary">
-                    Сохранить
-                </button>
+        <div id="post_form">
+
+            <button type="submit" id="submit_button" class="btn btn-primary">
+                Сохранить
+            </button>
+        </div>
+
     </form>
 
     <div class="inside_content" style="margin-top: 0px">
@@ -71,20 +69,20 @@
                             <tr>
                                 <td style="width: 3%"><img alt="" src="{{asset('assets/images/icons/search.svg')}}">
                                 </td>
-                                <td><input type="text" id="search_text" placeholder="Первый фильтр..."></td>
-                                <td><input type="text" id="search_text_Second" placeholder="Второй фильтр..."></td>
-                                <td><input type="text" id="search_text_third" placeholder="Третий фильтр..."></td>
+                                <td><input type="text" id="search_text" oninput="find_it()" placeholder="Первый фильтр..."></td>
+                                <td><input type="text" id="search_text_Second" oninput="find_it()" placeholder="Второй фильтр..."></td>
+                                <td><input type="text" id="search_text_third" oninput="find_it()" placeholder="Третий фильтр..."></td>
                                 <td>
                                     <div class="bat_info" style="display: inline-block"><a
                                             href="/docs/conclusions_industrial_safety_main"
                                             style="display: inline-block">Сброс фильтров</a>
                                     </div>
-                                    @can('doc-create')
-                                        <div class="bat_info" style="display: inline-block; margin-left: 0px"><a
-                                                href="/docs/conclusions_industrial_safety/excel/{year}"
-                                                style="display: inline-block">Экспорт в excel</a>
-                                        </div>
-                                    @endcan
+{{--                                    @can('doc-create')--}}
+{{--                                        <div class="bat_info" style="display: inline-block; margin-left: 0px"><a--}}
+{{--                                                href="/excel_conclusions_industrial_safety"--}}
+{{--                                                style="display: inline-block">Экспорт в excel</a>--}}
+{{--                                        </div>--}}
+{{--                                    @endcan--}}
                                     @can('entries-add')
                                         <div class="bat_add" style="margin-left: 0; display: inline-block"><a
                                                 href="/docs/conclusions_industrial_safety/create"
@@ -164,120 +162,23 @@
                                     <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"><p onclick="sorted_table(1, this.parentNode)">Наименование центра финансовой
                                             отвественности</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_name_center'); if(document.getElementById('fieldsheet_name_center').style.display === 'none'){document.getElementById('fieldsheet_name_center').style.display = ''}else {document.getElementById('fieldsheet_name_center').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_name_center" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_name_center" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px;">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_name_center')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-
-                                            @foreach($center as $row)
-                                            <div class="checkbox">
-                                                @if($row['in'])
-                                                <input type="checkbox" class="checkbox_button" name="{{$row['center_name']}}" checked>
-                                                @else
-                                                <input type="checkbox" class="checkbox_button" name="{{$row['center_name']}}">
-                                                @endif
-                                                <label for="{{$row['center_name']}}">{{$row['center_name']}}</label>
-                                            </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('center_name', this.parentNode); hide_all_field('fieldsheet_center_name')">
                                     </th>
                                     <th rowspan="2"><p onclick="sorted_table(2, this.parentNode)">Наименование филиала</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_name_do'); if(document.getElementById('fieldsheet_name_do').style.display === 'none'){document.getElementById('fieldsheet_name_do').style.display = ''}else {document.getElementById('fieldsheet_name_do').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_name_do" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_name_do" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px; top: 0px; position: sticky">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_name_do')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-                                            @foreach($do as $row)
-                                                <div class="checkbox">
-                                                    @if($row['in'])
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['name_do']}}" checked>
-                                                    @else
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['name_do']}}">
-                                                    @endif
-                                                    <label for="{{$row['name_do']}}">{{$row['name_do']}}</label>
-                                                </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('name_do', this.parentNode); hide_all_field('fieldsheet_name_do')">
                                     </th>
                                     <th rowspan="2"><p onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и сооружений</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_type_tu'); if(document.getElementById('fieldsheet_type_tu').style.display === 'none'){document.getElementById('fieldsheet_type_tu').style.display = ''}else {document.getElementById('fieldsheet_type_tu').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_type_tu" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_type_tu" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_type_tu')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-
-                                            @foreach($tu as $row)
-                                                <div class="checkbox">
-                                                    @if($row['in'])
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['type_tu']}}" checked>
-                                                    @else
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['type_tu']}}">
-                                                    @endif
-                                                    <label for="{{$row['type_tu']}}">{{$row['type_tu']}}</label>
-                                                </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">
                                     </th>
                                     <th colspan="9">Место проведения ЭПБ</th>
                                     <th rowspan="2" onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</th>
-{{--                                    <th rowspan="2" onclick="sorted_table(14, this)">Дата проведения ЭПБ</th>--}}
 
                                     <th rowspan="2"><p onclick="sorted_table(14, this.parentNode)">Дата проведения ЭПБ</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_date_epb'); if(document.getElementById('fieldsheet_date_epb').style.display === 'none'){document.getElementById('fieldsheet_date_epb').style.display = ''}else {document.getElementById('fieldsheet_date_epb').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_date_epb" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_date_epb" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_date_epb')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-
-                                            @foreach($date_epb as $row)
-                                                <div class="checkbox">
-                                                    @if($row['in'])
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['date_epb']}}" checked>
-                                                    @else
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['date_epb']}}">
-                                                    @endif
-                                                    <label for="{{$row['date_epb']}}">{{$row['date_epb']}}</label>
-                                                </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('date_epb', this.parentNode); hide_all_field('fieldsheet_date_epb')">
                                     </th>
-
 
                                     <th colspan="2">Срок эксплуатации/ наработка на момент ЭПБ</th>
                                     <th colspan="2">Срок продления безопасной эксплуатации</th>
@@ -309,43 +210,10 @@
                                     @endcan
                                 </tr>
                                 <tr>
-{{--                                    <th style="top:25px" onclick="sorted_table(4, this)">Наименование объекта</th>--}}
-
-
                                     <th style="top:25px"><p onclick="sorted_table(4, this.parentNode)">Наименование объекта</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_object');if(document.getElementById('fieldsheet_object').style.display === 'none'){document.getElementById('fieldsheet_object').style.display = ''}else {document.getElementById('fieldsheet_object').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_object" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_object" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px; top: 0px; position: sticky">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_object')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-
-                                            @foreach($object as $row)
-                                                <div class="checkbox">
-                                                    @if($row['in'])
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['object_name']}}" checked>
-                                                    @else
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['object_name']}}">
-                                                    @endif
-                                                    <label for="{{$row['object_name']}}">{{$row['object_name']}}</label>
-                                                </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('object_name', this.parentNode); hide_all_field('fieldsheet_object_name')">
                                     </th>
-
-
-
-
-
-
                                     <th style="top:25px" onclick="sorted_table(5, this)">Наименов-е цеха/
                                         местонахождения
                                     </th>
@@ -378,38 +246,10 @@
                                     </th>
                                     <th style="top:25px" onclick="sorted_table(19, this)">Наработка до следующего ЭПБ
                                     </th>
-{{--                                    <th style="top:25px" onclick="sorted_table(20, this)"> Дата следующего ЭПБ--}}
-{{--                                    </th>--}}
                                     <th style="top:25px"><p onclick="sorted_table(19, this.parentNode)">Дата следующего ЭПБ</p>
                                         <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="hide_all_field('fieldsheet_date_next_epb'); if(document.getElementById('fieldsheet_date_next_epb').style.display === 'none'){document.getElementById('fieldsheet_date_next_epb').style.display = ''}else {document.getElementById('fieldsheet_date_next_epb').style.display = 'none'}">
-                                        <fieldset id="fieldsheet_date_next_epb" style="display: none">
-                                            <div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_date_next_epb" placeholder="Поиск...">
-                                                <div class="bat_add" style="margin-left: 0px; top: 0px; position: sticky">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
-                                                        onclick="checked('fieldsheet_date_next_epb')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>
-                                            @foreach($date_next_epb as $row)
-                                                <div class="checkbox">
-                                                    @if($row['in'])
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['date_next_epb']}}" checked>
-                                                    @else
-                                                        <input type="checkbox" class="checkbox_button" name="{{$row['date_next_epb']}}">
-                                                    @endif
-                                                    <label for="{{$row['date_next_epb']}}">{{$row['date_next_epb']}}</label>
-                                                </div>
-                                            @endforeach
-                                        </fieldset>
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('date_next_epb', this.parentNode); hide_all_field('fieldsheet_date_next_epb')">
                                     </th>
-
-
-
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
@@ -476,19 +316,82 @@
             </div>
         </div>
     </div>
+    <div style="display: none">
+        @foreach(array_keys($fieldset) as $row)
+            <div id="{{$row}}_includes">
+                @foreach($fieldset[$row] as $row1)
+                <p>{{$row1}}</p>
+                @endforeach
+            </div>
+        @endforeach
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
-            @can('doc-create')
-            // let excel = document.querySelector('.bat_info');
-            // excel.firstChild.href = '/excel_conclusions_industrial_safety/' + document.getElementById('select__year').value;
-            @endcan
             checked()
         })
+        function get_group_conclusion(column, th){
+            if (!document.getElementById('fieldsheet_'+column)){
+                $.ajax({
+                    url: '/get_group_conclusion/' + column,
+                    type: 'GET',
+                    success: (res) => {
+                        var fieldset = document.createElement('fieldset')
+                        fieldset.id = 'fieldsheet_'+column
+                        fieldset.innerHTML += `<div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
+                                                <input type="text" id="search_fieldsheet_${column}" style="margin: 9px 0px" placeholder="Поиск..." oninput="find_field('fieldsheet_${column}')">
+                                                <div class="bat_add" style="margin-left: 0px;">
+                                                    <a
+                                                        onclick="get_data()"
+                                                        style="display: inline-block; margin-left: 0px">Применить</a>
+                                                    <a
+                                                        onclick="checked('fieldsheet_${column}')"
+                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
+                                                </div>
+                                            </div>`
+                        for(var row of res){
+                            console.log(row)
+                            if (document.getElementById(column+'_includes')){
+                                var bool = false
+                                for (var one_p of document.getElementById(column+'_includes').getElementsByTagName('p')){
+                                    if (one_p.textContent == row[column]){
+                                        bool = true
+                                    }
+                                }
+                                if (bool){
+                                    fieldset.innerHTML += `<div class="checkbox">
+                                                                <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+                                                                <label for="${row[column]}">${row[column]}</label>
+                                                            </div>`
+                                }else {
+                                    fieldset.innerHTML += `<div class="checkbox">
+                                                                <input type="checkbox" class="checkbox_button" name="${row[column]}">
+                                                                <label for="${row[column]}">${row[column]}</label>
+                                                            </div>`
+                                }
+                            }else {
+                                fieldset.innerHTML += `<div class="checkbox">
+                                                            <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+                                                            <label for="${row[column]}">${row[column]}</label>
+                                                        </div>`
+                            }
+                        }
+                        th.appendChild(fieldset)
+                        checked()
+                    }
+                })
+            }
+        }
         function hide_all_field(id){
             for(var field of document.getElementsByTagName('fieldset')){
-                if (field.id !== id)
-                field.style.display = 'none'
+                if (field.id == id){
+                    if (field.style.display === 'none'){
+                        field.style.display = ''
+                    }else {
+                        field.style.display = 'none'
+                    }
+                }else {
+                    field.style.display = 'none'
+                }
             }
         }
         function checked(id){
@@ -521,96 +424,45 @@
                 }
             }
         }
+
+
         function get_data() {
-            var fieldsheet_name_center = document.getElementById('fieldsheet_name_center').getElementsByTagName('input')
-            var arr_name_center = []
-            var name_centre_check = true
-            for(var row of fieldsheet_name_center){
-                if (row.hasAttribute('checked')){
-                    arr_name_center.push(row.getAttribute('name'))
-                }else {
-                    name_centre_check = false
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var post_form = document.getElementById('post_form')
+            for(var fieldsheet of fieldsheets){
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+                for (var one_input of check_input_all){
+                    if (one_input.hasAttribute('checked')){
+                        check_input.push(one_input.getAttribute('name'))
+                    }else {
+                        all_input_checked = false
+                    }
                 }
+                var input_form = document.createElement('input')
+                input_form.name = fieldsheet.id.replace('fieldsheet_', '')
+                input_form.type = 'text'
+                input_form.value = check_input
+                post_form.appendChild(input_form)
             }
-            if (arr_name_center.length == 0 || name_centre_check){
-                arr_name_center = 'all'
-            }
-            var fieldsheet_name_do = document.getElementById('fieldsheet_name_do').getElementsByTagName('input')
-            var arr_name_do = []
-            var name_do_check = true
-            for(var row of fieldsheet_name_do){
-                if (row.hasAttribute('checked')){
-                    arr_name_do.push(row.getAttribute('name'))
-                }else {
-                    name_do_check = false
-                }
-            }
-            if (arr_name_do.length == 0 || name_do_check ){
-                arr_name_do = 'all'
-            }
-            var fieldsheet_type_tu = document.getElementById('fieldsheet_type_tu').getElementsByTagName('input')
-            var arr_type_tu = []
-            var type_tu_check = true
-            for(var row of fieldsheet_type_tu){
-                if (row.hasAttribute('checked')){
-                    arr_type_tu.push(row.getAttribute('name'))
-                }else {
-                    type_tu_check = false
-                }
-            }
-            if (arr_type_tu.length == 0 || type_tu_check){
-                arr_type_tu = 'all'
-            }
-            var fieldsheet_object = document.getElementById('fieldsheet_object').getElementsByTagName('input')
-            var arr_object_name = []
-            var object_name_check = true
-            for(var row of fieldsheet_object){
-                if (row.hasAttribute('checked')){
-                    arr_object_name.push(row.getAttribute('name'))
-                }else {
-                    object_name_check = false
-                }
-            }
-            if (arr_object_name.length == 0 || object_name_check){
-                arr_object_name = 'all'
-            }
-            var fieldsheet_date_epb = document.getElementById('fieldsheet_date_epb').getElementsByTagName('input')
-            var arr_date_epb = []
-            var date_epb_check = true
-            for(var row of fieldsheet_date_epb){
-                if (row.hasAttribute('checked')){
-                    arr_date_epb.push(row.getAttribute('name'))
-                }else {
-                    date_epb_check = false
-                }
-            }
-            if (date_epb_check.length == 0 || date_epb_check){
-                arr_date_epb = 'all'
-            }
-            var fieldsheet_date_next_epb = document.getElementById('fieldsheet_date_next_epb').getElementsByTagName('input')
-            var arr_date_next_epb = []
-            var date_next_epb_check = true
-            for(var row of fieldsheet_date_next_epb){
-                if (row.hasAttribute('checked')){
-                    arr_date_next_epb.push(row.getAttribute('name'))
-                }else {
-                    date_next_epb_check = false
-                }
-            }
-            if (date_next_epb_check.length == 0 || date_next_epb_check){
-                arr_date_next_epb = 'all'
-            }
-
-            document.getElementById('arr_date_epb').value = arr_date_epb
-            document.getElementById('arr_date_next_epb').value = arr_date_next_epb
-            document.getElementById('arr_object_name').value = arr_object_name
-            document.getElementById('arr_name_center').value = arr_name_center
-            document.getElementById('arr_name_do').value = arr_name_do
-            document.getElementById('arr_type_tu').value = arr_type_tu
             document.getElementById('submit_button').click()
+        }
 
-            // console.log(arr_name_center)
-            // window.location.href = '/docs/conclusions_industrial_safety/' + arr_name_center+'/'+arr_name_do+'/'+arr_type_tu;
+
+        //скрипт для удаления
+        function remove_record(id) {
+            $.ajax({
+                url: '/docs/conclusions_industrial_safety/remove/' + id,
+                type: 'GET',
+                success: (res) => {
+                    window.location.href = '/docs/conclusions_industrial_safety'
+                }
+            })
+        }
+        //скрипт для изменения
+        function edit_record(id) {
+            window.location.href = '/docs/conclusions_industrial_safety/edit/' + id
         }
 
         function sorted_table(column, th) {
@@ -660,67 +512,6 @@
                 table_for_search.tBodies[0].append(...sortedRows);
             }
         }
-
-
-        //скрипт для удаления
-        function remove_record(id) {
-            $.ajax({
-                url: '/docs/conclusions_industrial_safety/remove/' + id,
-                type: 'GET',
-                success: (res) => {
-                    window.location.href = '/docs/conclusions_industrial_safety'
-                }
-            })
-        }
-
-
-        //скрипт для изменения
-        function edit_record(id) {
-            window.location.href = '/docs/conclusions_industrial_safety/edit/' + id
-        }
-
-
-        ///скрипт для поиска
-        var input_f1 = document.getElementById('search_fieldsheet_name_center')
-        input_f1.oninput = function () {
-            setTimeout(find_field('fieldsheet_name_center'), 100);
-        };
-        var input_f2 = document.getElementById('search_fieldsheet_date_epb')
-        input_f2.oninput = function () {
-            setTimeout(find_field('fieldsheet_date_epb'), 100);
-        };
-        var input_f3 = document.getElementById('search_fieldsheet_date_next_epb')
-        input_f3.oninput = function () {
-            setTimeout(find_field('fieldsheet_date_next_epb'), 100);
-        };
-        var input_f4 = document.getElementById('search_fieldsheet_object')
-        input_f4.oninput = function () {
-            setTimeout(find_field('fieldsheet_object'), 100);
-        };
-        var input_f5 = document.getElementById('search_fieldsheet_name_do')
-        input_f5.oninput = function () {
-            setTimeout(find_field('fieldsheet_name_do'), 100);
-        };
-        var input_f6 = document.getElementById('search_fieldsheet_type_tu')
-        input_f6.oninput = function () {
-            setTimeout(find_field('fieldsheet_type_tu'), 100);
-        };
-        ///скрипт для поиска
-        var input = document.getElementById('search_text')
-        input.oninput = function () {
-            setTimeout(find_it, 100);
-        };
-        ///скрипт для поиска 2
-        var input2 = document.getElementById('search_text_Second')
-        input2.oninput = function () {
-            setTimeout(find_it, 100);
-        };
-        ///скрипт для поиска 3
-        var input3 = document.getElementById('search_text_third')
-        input3.oninput = function () {
-            setTimeout(find_it, 100);
-        };
-
         function find_it() {
             var table_boby_rows = document.getElementById('table_for_search').getElementsByTagName('tbody')[0].getElementsByTagName('tr')  //строки по которым ищем
             var search_text = new RegExp(document.getElementById('search_text').value, 'i');   //искомый текст
@@ -765,13 +556,11 @@
         }
         function find_field(id) {
             var table_boby_rows = document.getElementById(id).getElementsByClassName('checkbox')  //строки по которым ищем
-            console.log(table_boby_rows)
             var search_text = new RegExp(document.getElementById('search_'+id).value, 'i');   //искомый текст
             var check_full = false
             for (var i = 0; i < table_boby_rows.length; i++) {  //проходимся по строкам
                 var flag_success = false   //станет true, если есть совпадение в строке
                 var tds_row = table_boby_rows[i].getElementsByClassName('checkbox_button')   //ячейки строки
-                console.log(tds_row)
                 for (var j = 0; j < tds_row.length; j++) {   //проходимся по ячейкам
                     if (tds_row[j].getAttribute('name').match(search_text)) {
                         flag_success = true

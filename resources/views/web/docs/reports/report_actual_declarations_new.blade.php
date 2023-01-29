@@ -36,14 +36,6 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <th style="text-align: center">Год</th>
-
-                                    <td style="padding: 0px">
-                                        <input style="width: 20%; " type="number"
-                                               id="year" class="text-field__input" min="1970" max="2030">
-                                    </td>
-                                </tr>
-                                <tr>
                                     <th style="text-align: center">Наименование ДПБ</th>
                                     <td style="padding: 0px"><textarea id="name_DPB" style="height: 100%; width: 95%"
                                                                        class="text-field__input"></textarea></td>
@@ -99,8 +91,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function test() {
-            var date = new Date();
-            document.getElementById('year').value = date.getFullYear()
         })
 
         function save() {
@@ -110,7 +100,7 @@
                 }
             });
 
-            var params = ['name_DPB', 'parts_DPB', 'reg_num_dpb', 'name_zepb', 'reg_num_date_zepb', 'massage_rtn', 'year']
+            var params = ['name_DPB', 'parts_DPB', 'reg_num_dpb', 'name_zepb', 'reg_num_date_zepb', 'massage_rtn']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

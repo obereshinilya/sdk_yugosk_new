@@ -8,6 +8,7 @@ use App\Models\Main_models\RefOpo;
 use App\Models\Main_models\RefTb;
 use App\Models\Main_models\TypeStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\True_;
 
 class JasController extends Controller
@@ -31,6 +32,7 @@ class JasController extends Controller
             $to_table['elem_opo'] = RefTb::where('id_tb', '=', $record_data['id_tb'])->first()->full_name_tb;
             $to_table['sobitie'] = $record_data['sobitie'];
             $to_table['comment'] = $record_data['comment'];
+            $to_table['author'] = Auth::user()->name;
             $to_table['auto_generate'] = true;
             $to_table['check'] = true;
             Jas::create($to_table);
@@ -46,7 +48,7 @@ class JasController extends Controller
 
     public function save_comment($id_record, $text)
     {
-        Jas::where('id', '=', $id_record)->first()->update(['comment' => $text]);
+        Jas::where('id', '=', $id_record)->first()->update(['comment' => $text, 'author'=> Auth::user()->name]);
     }
 
     public function get_tb_for_jas($type_tb, $id_obj)

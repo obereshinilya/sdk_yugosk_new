@@ -3,9 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/gda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/gda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Jas.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Jas.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Reports/ActualDeclarations.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reports/ActualDeclarations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/fond.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/fond.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_bptpg.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_bptpg.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/excel_forms/excel_actual_declarations.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/excel_forms/excel_actual_declarations.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/excel_forms/excel_pat_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/excel_forms/excel_pat_schedule.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/pdf_form/pdf_actual_declarations.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/pdf_form/pdf_actual_declarations.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/pdf_form/pdf_pat_schedule.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/pdf_form/pdf_pat_schedule.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_actual_declarations_new.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/jas/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,9 +182,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../report_result_apk_new.blade.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../../Projects/journal_nadim/journal" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../../../report_result_apk_new.blade.php" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../../../Telegram/opo.blade (3).php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -201,7 +221,9 @@
       <workItem from="1674661715031" duration="7806000" />
       <workItem from="1674708467272" duration="20522000" />
       <workItem from="1674740112941" duration="8843000" />
-      <workItem from="1674794102820" duration="4023000" />
+      <workItem from="1674794102820" duration="10600000" />
+      <workItem from="1674912344733" duration="2382000" />
+      <workItem from="1674972802285" duration="15504000" />
     </task>
     <servers />
   </component>

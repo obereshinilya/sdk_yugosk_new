@@ -102,7 +102,7 @@
       }
 
       .repair_tr {
-          background: #7f7f7f;
+          background: #B3B2B2;
       }
     </style>
 
@@ -2979,7 +2979,7 @@
 .bad {fill:#F0E68C;}
 .critical {fill:#f26161;}
 .corrupt{fill:#864acc;}
-.repair {fill:#7f7f7f;}
+.repair {fill:#B3B2B2;}
 </style>
 
 

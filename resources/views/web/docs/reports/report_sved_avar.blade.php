@@ -1,7 +1,7 @@
 @extends('web.layouts.app')
 
 @section('title')
-    Сведения об аварийности на опасных производственных объектах дочернего общества
+    Сведения об аварийности на ОПО ДО
 @endsection
 
 @section('content')
@@ -49,10 +49,14 @@
                     <div class="card-header" style="text-align: center">
                         <h2 class="text-muted" style="text-align: center; display: inline-block; margin-right: 10px">
                             Сведения об аварийности
-                            на опасных производственных объектах дочернего общества за
+                            на ОПО ДО с
                         </h2>
                         <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
                                id="select__year" class="text-field__input" min="1970" max="2030"
+                               onblur="get_data()"></input>
+                        <h2 class="text-muted" style="text-align: center; display: inline;"> по </h2>
+                        <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
+                               id="select__year_end" class="text-field__input" min="1970" max="2030"
                                onblur="get_data()"></input>
                         <h2 class="text-muted" style="text-align: center; display: inline;">год</h2>
                     </div>
@@ -231,6 +235,7 @@
             document.addEventListener('DOMContentLoaded', function () {
                 var date = new Date();
                 document.getElementById('select__year').value = date.getFullYear()
+                document.getElementById('select__year_end').value = date.getFullYear()
                 get_data()
             })
 
@@ -249,45 +254,48 @@
             function get_data() {
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
-                $.ajax({
-                    url: '/docs/get_sved_avar/' + document.getElementById('select__year').value,
-                    type: 'GET',
-                    success: (res) => {
-                        var num = 1
-                        for (var row of res) {
-                            var tr = document.createElement('tr')
-                            tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['vid_techno_sob']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['mesto_techno_sob']}</td>`
+                if (Number(document.getElementById('select__year').value) > Number(document.getElementById('select__year_end').value)){
+                    alert('Неверно указаны даты!')
+                }else {
+                    $.ajax({
+                        url: '/docs/get_sved_avar/' + document.getElementById('select__year').value + '/' + document.getElementById('select__year_end').value ,
+                        type: 'GET',
+                        success: (res) => {
+                            var num = 1
+                            for (var row of res) {
+                                var tr = document.createElement('tr')
+                                tr.innerHTML += `<td style="text-align: center">${num}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['vid_techno_sob']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['mesto_techno_sob']}</td>`
 
-                            var newDate = new Date(row['data_time']);
+                                var newDate = new Date(row['data_time']);
 
 
-                            let dd = newDate.getDate();
-                            if (dd < 10) dd = '0' + dd;
+                                let dd = newDate.getDate();
+                                if (dd < 10) dd = '0' + dd;
 
-                            let mm = newDate.getMonth() + 1;
-                            if (mm < 10) mm = '0' + mm;
+                                let mm = newDate.getMonth() + 1;
+                                if (mm < 10) mm = '0' + mm;
 
-                            let yyyy = newDate.getFullYear();
+                                let yyyy = newDate.getFullYear();
 
-                            tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy} ${newDate.toISOString().split('T')[1].split('.')[0]}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['vid_avari']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['kratk_opisan']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['nalich_postradav']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['econom_usherb']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['prodolgit_prost']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['litsa_otvetstven']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['meropriytia']}</td>`
-                            if (row['otmetka_vypoln']) {
-                                tr.innerHTML += `<td style="text-align: center">Выполнено</td>`
+                                tr.innerHTML += `<td style="text-align: center">${dd}.${mm}.${yyyy} ${newDate.toISOString().split('T')[1].split('.')[0]}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['vid_avari']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['kratk_opisan']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['nalich_postradav']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['econom_usherb']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['prodolgit_prost']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['litsa_otvetstven']}</td>`
+                                tr.innerHTML += `<td style="text-align: center">${row['meropriytia']}</td>`
+                                if (row['otmetka_vypoln']) {
+                                    tr.innerHTML += `<td style="text-align: center">Выполнено</td>`
 
-                            } else {
-                                tr.innerHTML += `<td style="text-align: center">Не выполнено</td>`
-                            }
-                            tr.innerHTML += `<td style="text-align: center">${row['indikativn_pokazat']}</td>`
-                            tr.innerHTML += ` @can('report-edit') <td style="text-align: center"><a href="#" onclick="edit_record(${row['id']})">
+                                } else {
+                                    tr.innerHTML += `<td style="text-align: center">Не выполнено</td>`
+                                }
+                                tr.innerHTML += `<td style="text-align: center">${row['indikativn_pokazat']}</td>`
+                                tr.innerHTML += ` @can('report-edit') <td style="text-align: center"><a href="#" onclick="edit_record(${row['id']})">
                                                                             <img style="margin-left: 8px" alt=""
                                                                                  src="{{asset('assets/images/icons/edit.svg')}}" class="check_i">
                                                                         </a>
@@ -295,16 +303,17 @@
                                                                             <img style="margin-left: 5px" alt=""
                                                                                  src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                                                                         </a></td> @endcan`
-                            table_body.appendChild(tr)
-                            num += 1
-                        }
-                    },
-                    error: function (error) {
-                        var table_body = document.getElementById('body_table')
-                        table_body.innerText = ''
-                    },
+                                table_body.appendChild(tr)
+                                num += 1
+                            }
+                        },
+                        error: function (error) {
+                            var table_body = document.getElementById('body_table')
+                            table_body.innerText = ''
+                        },
 
-                })
+                    })
+                }
             }
 
             //скрипт для удаления

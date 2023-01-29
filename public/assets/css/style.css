@@ -476,7 +476,7 @@ input[type="radio"]#opo_pass:checked + .per_sood{display:block;width:75%;}
 .risk_color.low_risk span{background:#ffca45;}
 .risk_color.no_risk span{background:#49ce56;}
 .risk_color.bad_info_risk span{background:#864acc;}
-.risk_color.repair_risk span{background:#7f7f7f;}
+.risk_color.repair_risk span{background:#B3B2B2;}
 
 .map_info{background:#fff;border-radius:8px;padding:20px;margin-bottom:0px;    width: 330px;}
 .map_info img{width:20px;position:absolute;margin-left:-15px;margin-top:-15px;}
@@ -1024,7 +1024,7 @@ thead tr:first-child th { position: sticky; top: 0; }
 .rate_fond.bad{color:#F0E68C;border:2px solid #F0E68C;background:#fef1e6;}
 .rate_fond.critical{color:#ea5757;border:2px solid #ea5757;background:#fdeeee;}
 .rate_fond.corrupt{color:#864acc;border:2px solid #864acc;background:#cdc0dd;}
-.rate_fond.repair {color:#7f7f7f;border:2px solid #7f7f7f;background:#e2e2e2;}
+.rate_fond.repair {color:#B3B2B2;border:2px solid #B3B2B2;background:#e2e2e2;}
 
 .fond_info {  position: absolute;z-index: 99;top: 112px;    right: 74px;background:#fff;}
 .fond_info p{font-size:12px;color:#b1b1b1;}
@@ -1060,7 +1060,7 @@ thead tr:first-child th { position: sticky; top: 0; }
 
 
 .modal_table tr td.corrupt{color:#864acc;}
-.modal_table tr td.repair{color:#7f7f7f;}
+.modal_table tr td.repair{color:#B3B2B2;}
 
 .fond_map_block .map_dot{position:absolute;width:10px;height:10px;}
 .m_move {position: absolute;margin-left: -184px;margin-top: -70px;}
@@ -1341,7 +1341,7 @@ thead tr:first-child th { position: sticky; top: 0; }
 .block_rate.bad{color:#f45e1c;border:2px solid #f45e1c;background:#fef1e6;}
 .block_rate.critical{color:#ea5757;border:2px solid #ea5757;background:#fdeeee;}
 .block_rate.corrupt{color:#864acc;border:2px solid #864acc;background:#cdc0dd;}
-.block_rate.repair {color:#7f7f7f;border:2px solid #7f7f7f;background:#e2e2e2;}
+.block_rate.repair {color:#B3B2B2;border:2px solid #B3B2B2;background:#e2e2e2;}
 
 .block_rate p{width:100%;border-top:1px solid;font-size:15px;padding-top:10px;}
 .block_rate h5{font-size:17px;font-weight:normal;margin-top:10px;margin-bottom:6vh;}
@@ -1351,7 +1351,7 @@ thead tr:first-child th { position: sticky; top: 0; }
 .block_rate.bad p{border-color:#f45e1c;}
 .block_rate.critical p{border-color:#ea5757;}
 .block_rate.corrupt p{border-color:#864acc;}
-.block_rate.repair p{border-color:#7f7f7f;}
+.block_rate.repair p{border-color:#B3B2B2;}
 
 .block_rate { width: 28%; height: 14vh; max-height:14vh;display: inline-block;float:left;}
 .new_pages_content .row_block{padding:0px 30px;}
@@ -2272,7 +2272,7 @@ background: url(../images/lpu.svg);
 .info_checker.corrupt svg path{fill:#864acc;}
 
 .info_checker.repair svg {stroke: #505050;stroke-width: 0.8px;}
-.info_checker.repair svg path{fill:#7f7f7f;}
+.info_checker.repair svg path{fill:#B3B2B2;}
 
 .grs {
 position: absolute;
@@ -2286,7 +2286,7 @@ font-size: 16px;
 .grs.normal{color:#f2b140;background:#f9f2e4;border:1px solid #f2b140;}
 .grs.critical{color:#ea5757;background:#fdeeee;border:1px solid #ea5757;}
 .grs.corrupt{color:#864acc;border:2px solid #864acc;background:#cdc0dd;}
-.grs.repair {color:#7f7f7f;border:2px solid #7f7f7f;background:#e2e2e2;}
+.grs.repair {color:#B3B2B2;border:2px solid #B3B2B2;background:#e2e2e2;}
 
 
 .info_checker {position: absolute;text-align:center;}
@@ -3297,14 +3297,14 @@ position:absolute;padding:7px;}
 .kc_blocks.good p{color:#49ce56;}
 .kc_blocks.normal{border:1px solid #ffb948;background:#fff8ec;}
 .kc_blocks.normal p{color:#ffb948;}
-.kc_blocks.bad{border:1px solid #F0E68C;background:#fef1e6;}
-.kc_blocks.bad p{color:#f45e1c;}
+.kc_blocks.bad{border:1px solid black;background:#FFDD00;}
+.kc_blocks.bad p{color:black;}
 .kc_blocks.critical{border:1px solid #ea5757;background:#fdeeee;}
 .kc_blocks.critical p{color:#ea5757;}
 .kc_blocks.corrupt{border:1px solid #864acc;background:#cdc0dd;}
 .kc_blocks.corrupt p{color:#864acc;}
-.kc_blocks.repair {border:1px solid #7f7f7f;background:#e2e2e2;}
-.kc_blocks.repair p{color:#7f7f7f;}
+.kc_blocks.repair {border:1px solid #B3B2B2;background:#e2e2e2;}
+.kc_blocks.repair p{color:#B3B2B2;}
 
 a.kc_blocks{text-decoration:none!important;}
 
@@ -3313,7 +3313,7 @@ a.kc_blocks{text-decoration:none!important;}
 .info_checker.bad.kc_blue rect{fill:#F0E68C;}
 .info_checker.critical.kc_blue rect{fill:#F26161;}
 .info_checker.corrupt.kc_blue rect{fill:#864ACC;}
-.info_checker.repair.kc_blue rect{fill:#7F7F7F;}
+.info_checker.repair.kc_blue rect{fill:#B3B2B2;}
 
 
 .info_checker.kc_blue svg {stroke: none;stroke-width: 0;}

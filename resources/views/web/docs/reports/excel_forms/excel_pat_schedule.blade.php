@@ -44,9 +44,10 @@
     </tr>
     </thead>
     <tbody>
+    <?php $i = 1 ?>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->id}}</td>
+            <td>{{$i}}</td>
             <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->reg_num_opo}}</td>
             <td>{{$row->opo_name}}</td>
@@ -63,6 +64,19 @@
             <td>{{$row->nov}}</td>
             <td>{{$row->dec}}</td>
         </tr>
+        <?php $i++ ?>
     @endforeach
+    <tr>
+        <td colspan="16"></td>
+    </tr>
+    <tr>
+        <td colspan="3">Утверждающий</td>
+        <td colspan="13"></td>
+    </tr>
+
+    <tr>
+        <td colspan="3">Исполняющий</td>
+        <td colspan="13"></td>
+    </tr>
     </tbody>
 </table>

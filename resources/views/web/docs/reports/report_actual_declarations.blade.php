@@ -52,10 +52,6 @@
                             безопасности
                             опасных производственных объектов
                         </h2>
-                        <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
-                               id="select__year" class="text-field__input" min="1970" max="2030"
-                               onblur="get_data()"></input>
-                        <h2 class="text-muted" style="text-align: center; display: inline;">год</h2>
                     </div>
                     <div class="doc_header" style="padding-bottom: 6px">
                         <table>
@@ -131,22 +127,20 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var date = new Date();
-            document.getElementById('select__year').value = date.getFullYear()
             get_data()
         })
 
         function get_data() {
             @can('doc-create')
             let pdf = document.querySelector('.bat_info');
-            pdf.firstChild.href = '/pdf_actual_declarations/' + document.getElementById('select__year').value;
+            pdf.firstChild.href = '/pdf_actual_declarations';
             let excel = document.querySelector('.bat_info');
-            excel.firstChild.href = '/excel_actual_declarations/' + document.getElementById('select__year').value;
+            excel.firstChild.href = '/excel_actual_declarations';
             @endcan
             var table_body = document.getElementById('body_table')
             table_body.innerText = ''
             $.ajax({
-                url: '/docs/actual_declarations/get_params/' + document.getElementById('select__year').value,
+                url: '/docs/actual_declarations/get_params',
                 type: 'GET',
                 success: (res) => {
                     var num = 1

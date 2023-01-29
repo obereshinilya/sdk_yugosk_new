@@ -12,7 +12,7 @@ class Jas extends Model
     public $primaryKey = 'id';
 
     protected $fillable = [
-        'date', 'status', 'opo', 'elem_opo', 'check', 'sobitie', 'comment', 'auto_generate',
+        'date', 'status', 'opo', 'elem_opo', 'check', 'sobitie', 'comment', 'auto_generate', 'author'
     ];
 
 

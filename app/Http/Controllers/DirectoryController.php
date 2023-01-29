@@ -603,7 +603,7 @@ class DirectoryController extends Controller
                 unset($record_data['tag_p_in']);
                 RefTb::where('id_tb', '=', $id_tb)->first()->update($to_ref_tb);
 
-                CleaningGas::where('id_tb', '=', $id_tb)->first()->update($record_data);
+                BPTPG::where('id_tb', '=', $id_tb)->first()->update($record_data);
                 TagTable::where('id_tb', '=', $id_tb)->first()->update($to_tag_name);
 
                 AdminController::log_record('Изменил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал

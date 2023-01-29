@@ -41,9 +41,10 @@
     </tr>
     </thead>
     <tbody>
+    <?php $i = 1 ?>
     @foreach($data as $row)
         <tr>
-            <td>{{$row->id}}</td>
+            <td>{{$i}}</td>
             <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->reg_num_opo}}</td>
             <td>{{$row->opo_name}}</td>
@@ -60,6 +61,32 @@
             <td>{{$row->nov}}</td>
             <td>{{$row->dec}}</td>
         </tr>
+        <?php $i++?>
     @endforeach
     </tbody>
 </table>
+
+<table style="margin-top: 50px; display: table; table-layout: fixed; width: 100%">
+
+    <tbody style="border: 0px">
+    <tr style="text-align: left">
+        <td style="font-size: 12px; width: 30%">Утверждающий</td>
+        <td style="border-bottom: 2px solid black; width: 30%"></td>
+        <td style="width: 30%;"></td>
+        <td style="border-bottom: 2px solid black; width: 10%"></td>
+    </tr>
+    <tr style="text-align: left; height: 30px">
+        <td>.</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr style="text-align: left">
+        <td style="font-size: 12px">Исполнитель</td>
+        <td style="border-bottom: 2px solid black"></td>
+        <td></td>
+        <td style="border-bottom: 2px solid black"></td>
+    </tr>
+    </tbody>
+</table>
+

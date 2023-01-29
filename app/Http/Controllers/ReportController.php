@@ -93,11 +93,10 @@ class ReportController extends Controller
         }
     }
 
-    public function get_actual_declarations($year)
+    public function get_actual_declarations()
     {
-        $data = ActualDeclarations::where('year', '=', $year)->get();
+        $data = ActualDeclarations::orderby('id')->get();
         return $data;
-
     }
 
 //План корректирующих действий ПБ по внутренним проверкам
@@ -516,9 +515,9 @@ class ReportController extends Controller
         return view('web.docs.reports.report_sved_avar');
     }
 
-    public function get_sved_avar($year)
+    public function get_sved_avar($year, $year_end)
     {
-        $data = sved_avar::where('year', '=', $year)->get()->toArray();;
+        $data = sved_avar::where('year', '>=', $year)->where('year', '<=', $year_end)->get()->toArray();;
         foreach ($data as $key => $row) {
             $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
         }
@@ -1278,235 +1277,7 @@ class ReportController extends Controller
         }
     }
 
-    public function show_conclusions_industrial_safety_main(Request $request)
-    {
-        $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($center); $i++){
-            $center[$i]['in'] = true;
-        }
-        $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($do); $i++){
-            $do[$i]['in'] = true;
-        }
-        $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($tu); $i++){
-            $tu[$i]['in'] = true;
-        }
-        $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($object); $i++){
-            $object[$i]['in'] = true;
-        }
-        $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($date_epb); $i++){
-            $date_epb[$i]['in'] = true;
-        }
-        $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();   //отправим в всплывашку
-        for ($i=0; $i<count($date_next_epb); $i++){
-            $date_next_epb[$i]['in'] = true;
-        }
-        $data_one = Conclusions_industrial_safety::orderby('id');
-        $number = Conclusions_industrial_safety::orderby('id');
-        $data_one = $data_one->paginate(1000);
-        $i = count($number->get());
-        $page = $request->page;
-        if ($page == null) {
-            $page = 1;
-        }
-        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu', 'object', 'date_epb', 'date_next_epb'));
-    }
-    public function show_conclusions_industrial_safety(Request $request)
-    {
-        $center_name = $request->arr_name_center;
-        $name_do = $request->arr_name_do;
-        $type_tu = $request->arr_type_tu;
-        $date_next_epb_all = $request->arr_date_next_epb;
-        $object_name = $request->arr_object_name;
-        $date_epb_all = $request->arr_date_epb;
-        if ($center_name != 'all'){
-            $center_name = explode(',', $center_name);
-            $data_one = Conclusions_industrial_safety::wherein('center_name', $center_name);
-            $number = Conclusions_industrial_safety::wherein('center_name', $center_name);
-            $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();
-            for ($i=0; $i<count($center); $i++){
-                if (in_array($center[$i]['center_name'], $center_name)){
-                    $center[$i]['in'] = true;
-                }else{
-                    $center[$i]['in'] = false;
-                }
-            }
-        }else{
-            $data_one = Conclusions_industrial_safety::orderby('id');
-            $number = Conclusions_industrial_safety::orderby('id');
-            $center = Conclusions_industrial_safety::select('center_name')->groupby('center_name')->orderby('center_name')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($center); $i++){
-                $center[$i]['in'] = true;
-            }
-        }
-        if ($name_do != 'all'){
-            $name_do = explode(',', $name_do);
-            $data_one = $data_one->wherein('name_do', $name_do);
-            $number = $number->wherein('name_do', $name_do);
-            $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();
-            for ($i=0; $i<count($do); $i++){
-                if (in_array($do[$i]['name_do'], $name_do)){
-                    $do[$i]['in'] = true;
-                }else{
-                    $do[$i]['in'] = false;
-                }
-            }
-        }else{
-            $do = Conclusions_industrial_safety::select('name_do')->groupby('name_do')->orderby('name_do')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($do); $i++){
-                $do[$i]['in'] = true;
-            }
-        }
-        if ($type_tu != 'all'){
-            $type_tu = explode(',', $type_tu);
-            $data_one = $data_one->wherein('type_tu', $type_tu);
-            $number = $number->wherein('type_tu', $type_tu);
-            $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();
-            for ($i=0; $i<count($tu); $i++){
-                if (in_array($tu[$i]['type_tu'], $type_tu)){
-                    $tu[$i]['in'] = true;
-                }else{
-                    $tu[$i]['in'] = false;
-                }
-            }
-        }else{
-            $tu = Conclusions_industrial_safety::select('type_tu')->groupby('type_tu')->orderby('type_tu')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($tu); $i++){
-                $tu[$i]['in'] = true;
-            }
-        }
-        if ($object_name != 'all'){
-            $object_name = explode(',', $object_name);
-            $data_one = $data_one->wherein('object_name', $object_name);
-            $number = $number->wherein('object_name', $object_name);
-            $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();
-            for ($i=0; $i<count($object); $i++){
-                if (in_array($object[$i]['object_name'], $object_name)){
-                    $object[$i]['in'] = true;
-                }else{
-                    $object[$i]['in'] = false;
-                }
-            }
-        }else{
-            $object = Conclusions_industrial_safety::select('object_name')->groupby('object_name')->orderby('object_name')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($object); $i++){
-                $object[$i]['in'] = true;
-            }
-        }
-        if ($date_epb_all != 'all'){
-            $date_epb_all = explode(',', $date_epb_all);
-            $data_one = $data_one->wherein('date_epb', $date_epb_all);
-            $number = $number->wherein('date_epb', $date_epb_all);
-            $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();
-            for ($i=0; $i<count($date_epb); $i++){
-                if (in_array($date_epb[$i]['date_epb'], $date_epb_all)){
-                    $date_epb[$i]['in'] = true;
-                }else{
-                    $date_epb[$i]['in'] = false;
-                }
-            }
-        }else{
-            $date_epb = Conclusions_industrial_safety::select('date_epb')->groupby('date_epb')->orderby('date_epb')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($date_epb); $i++){
-                $date_epb[$i]['in'] = true;
-            }
-        }
-        if ($date_next_epb_all != 'all'){
-            $date_next_epb_all = explode(',', $date_next_epb_all);
-            $data_one = $data_one->wherein('date_next_epb', $date_next_epb_all);
-            $number = $number->wherein('date_next_epb', $date_next_epb_all);
-            $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();
-            for ($i=0; $i<count($date_next_epb); $i++){
-                if (in_array($date_next_epb[$i]['date_next_epb'], $date_next_epb_all)){
-                    $date_next_epb[$i]['in'] = true;
-                }else{
-                    $date_next_epb[$i]['in'] = false;
-                }
-            }
-        }else{
-            $date_next_epb = Conclusions_industrial_safety::select('date_next_epb')->groupby('date_next_epb')->orderby('date_next_epb')->get()->toArray();   //отправим в всплывашку
-            for ($i=0; $i<count($date_next_epb); $i++){
-                $date_next_epb[$i]['in'] = true;
-            }
-        }
 
-        $data_one = $data_one->paginate(1000);
-        $i = count($number->get());
-        $page = $request->page;
-        if ($page == null) {
-            $page = 1;
-        }
-        return view('web.docs.reports.conclusions_industrial_safety', compact('center', 'i', 'page', 'data_one', 'do', 'tu', 'object', 'date_epb', 'date_next_epb'));
-    }
-
-    public function get_conclusions_industrial_safety($year)
-    {
-        if ($year == 'all') {
-            return Conclusions_industrial_safety::all();
-        } else {
-            return Conclusions_industrial_safety::where('name_do', '=', $year)->get();
-        }
-    }
-
-    public function create_conclusions_industrial_safety()
-    {
-        $do = RefDO::orderby('short_name_do')->select('short_name_do')->get();
-        return view('web.docs.reports.conclusions_industrial_safety_new', compact('do'));
-    }
-
-    public function save_conclusions_industrial_safety(Request $request)
-    {
-        try {
-            $keys = json_decode($request->keys);
-            $values = json_decode($request->values);
-            $record_data = [];
-            for ($j = 0; $j < count($keys); $j++) {
-                $record_data[$keys[$j]] = $values[$j];
-            }
-
-
-            Conclusions_industrial_safety::create($record_data);
-            AdminController::log_record('Добавил запись в реестр заключений экспертизы промышленной безопасности');//пишем в журнал
-        } catch (\Throwable $e) {
-            return $e;
-        }
-    }
-
-    public function remove_conclusions_industrial_safety($id)
-    {
-        Conclusions_industrial_safety::where('id', '=', $id)->first()->delete();
-        AdminController::log_record('Удалил ' . $id . ' запись в реестре заключений экспертизы промышленной безопасности');//пишем в журнал
-    }
-
-    public function edit_conclusions_industrial_safety($id)
-    {
-        $data = Conclusions_industrial_safety::where('id', '=', $id)->first();
-        $do = RefDO::orderby('short_name_do')->select('short_name_do')->get();
-
-        return view('web.docs.reports.conclusions_industrial_safety_edit', compact('data', 'do'));
-    }
-
-    public function update_conclusions_industrial_safety(Request $request, $id)
-    {
-        try {
-            $keys = json_decode($request->keys);
-            $values = json_decode($request->values);
-            $record_data = [];
-            for ($j = 0; $j < count($keys); $j++) {
-                $record_data[$keys[$j]] = $values[$j];
-            }
-
-
-            Conclusions_industrial_safety::where('id', '=', $id)->first()->update($record_data);
-
-            AdminController::log_record('Изменил ' . $id . ' запись в реестре заключений экспертизы промышленной безопасности');//пишем в журнал
-        } catch (\Throwable $e) {
-            return $e;
-        }
-    }
 
     public function show_fulfillment_certification()
     {

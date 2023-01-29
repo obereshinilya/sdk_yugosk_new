@@ -175,6 +175,7 @@
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
+                    // console.log(res)
                     if (localStorage.getItem('redirect')){
                         window.location.href = localStorage.getItem('redirect')
                     }else {
