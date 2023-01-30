@@ -215,7 +215,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/conclusions_industrial_safety_main', 'ConclusionsController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
-            Route::get('/get_group_conclusion/{column}', 'ConclusionsController@get_group_conclusion');
+            Route::post('/get_group_conclusion/{column}', 'ConclusionsController@get_group_conclusion');
 
             Route::post('/docs/conclusions_industrial_safety', 'ConclusionsController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
             Route::get('/docs/conclusions_industrial_safety/create', 'ConclusionsController@create_conclusions_industrial_safety');  // страница создания записи
@@ -266,7 +266,8 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/pdf_jas/{start}/{end}', 'PdfReportController@pdf_jas');     // скачать ЖАС за выбранный период
 
 ///////////************** Отчеты Excel **************************************/////////////////////////
-            Route::get('/excel_conclusions_industrial_safety', 'ExcelReportController@excel_conclusions_industrial_safety');
+            Route::get('/excel_conclusions_industrial_safety_main', 'ExcelReportController@excel_conclusions_industrial_safety_main');
+            Route::post('/excel_conclusions_industrial_safety', 'ExcelReportController@excel_conclusions_industrial_safety')->name('excel_conclusions');
             Route::get('/excel_events/{year}', 'ExcelReportController@excel_events');
             Route::get('/excel_fulfillment_certification/{year}', 'ExcelReportController@excel_fulfillment_certification');
             Route::get('/excel_pat_schedule/{year}', 'ExcelReportController@excel_pat_schedule');

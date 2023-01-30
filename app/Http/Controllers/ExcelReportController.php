@@ -41,16 +41,36 @@ use Excel;
 
 class ExcelReportController extends Controller
 {
-    public function excel_conclusions_industrial_safety()
+    public function excel_conclusions_industrial_safety_main()
     {
-//        set_time_limit(2000000);
-        $data = Conclusions_industrial_safety::all();
+        ini_set('memory_limit', '-1');
+//        set_time_limit( 2147483647);
+        $data = Conclusions_industrial_safety::orderby('id')->get();
         $title = 'Реестр заключений экспертизы промышленной безопасности';
         $patch = 'Conclusions_industrial_safety' . Carbon::now() . '.xlsx';
-
         return Excel::download(new ConclusionsExport($title, $data), $patch);
 
     }
+
+    public function excel_conclusions_industrial_safety(Request $request)
+    {
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode(',', $request[$column]);
+                if (isset($data)) {
+                    $data = $data->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data = Conclusions_industrial_safety::orderby('id')->whereIn($column, $fieldset[$column])->get();
+                }
+            }
+        }
+        $title = 'Реестр заключений экспертизы промышленной безопасности';
+        $patch = 'Conclusions_industrial_safety' . Carbon::now() . '.xlsx';
+        return Excel::download(new ConclusionsExport($title, $data), $patch);
+
+    }
+
 
     public function excel_events($year)
     {

@@ -60,7 +60,8 @@
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin: 5px">Реестр заключений
+                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin: 5px">Реестр
+                            заключений
                             экспертизы промышленной безопасности</h2>
                     </div>
                     <div class="doc_header" style="padding-bottom: 6px">
@@ -69,25 +70,44 @@
                             <tr>
                                 <td style="width: 3%"><img alt="" src="{{asset('assets/images/icons/search.svg')}}">
                                 </td>
-                                <td><input type="text" id="search_text" oninput="find_it()" placeholder="Первый фильтр..."></td>
-                                <td><input type="text" id="search_text_Second" oninput="find_it()" placeholder="Второй фильтр..."></td>
-                                <td><input type="text" id="search_text_third" oninput="find_it()" placeholder="Третий фильтр..."></td>
+                                <td><input type="text" id="search_text" oninput="find_it()"
+                                           placeholder="Первый фильтр..."></td>
+                                <td><input type="text" id="search_text_Second" oninput="find_it()"
+                                           placeholder="Второй фильтр..."></td>
+                                <td><input type="text" id="search_text_third" oninput="find_it()"
+                                           placeholder="Третий фильтр..."></td>
                                 <td>
                                     <div class="bat_info" style="display: inline-block"><a
                                             href="/docs/conclusions_industrial_safety_main"
                                             style="display: inline-block">Сброс фильтров</a>
                                     </div>
-{{--                                    @can('doc-create')--}}
-{{--                                        <div class="bat_info" style="display: inline-block; margin-left: 0px"><a--}}
-{{--                                                href="/excel_conclusions_industrial_safety"--}}
-{{--                                                style="display: inline-block">Экспорт в excel</a>--}}
-{{--                                        </div>--}}
-{{--                                    @endcan--}}
+                                    @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_conclusions') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                                @foreach($fieldset as $key=>$field)
+
+                                                    <input type="text" name="{{$key}}"
+                                                           value="{{implode(',',$field)}}"></input>
+                                                @endforeach
+                                                <button type="submit" id="excel_button" class="btn btn-primary">
+                                                    Сохранить
+                                                </button>
+                                            </div>
+
+                                        </form>
+                                        <div class="bat_info" style="display: inline-block; margin-left: 0px"><a
+                                                href="#"
+                                                style="display: inline-block"
+                                                onclick="document.getElementById('excel_button').click()">Экспорт в
+                                                excel</a>
+                                        </div>
+                                    @endcan
                                     @can('entries-add')
                                         <div class="bat_add" style="margin-left: 0; display: inline-block"><a
                                                 href="/docs/conclusions_industrial_safety/create"
-                                                style="display: inline-block">Добавить
-                                                запись</a>
+                                                style="display: inline-block">Добавить запись</a>
                                         </div>
                                     @endcan
                                 </td>
@@ -136,21 +156,40 @@
                                     label {
                                         font: 14px 'Fira Sans', sans-serif;
                                     }
-                                    .checkbox{
+
+                                    .checkbox {
                                         float: left;
                                         width: 90%;
                                         text-align: left;
                                     }
-                                    input{
+
+                                    input {
                                         margin: 0.4rem;
                                     }
-                                    fieldset{
-                                        position: absolute; width: 250px; height: 500px; right: -240px; bottom: -510px; background-color: white; z-index: 30; padding: 3px; overflow-y: auto
+
+                                    fieldset {
+                                        position: absolute;
+                                        width: 250px;
+                                        height: 500px;
+                                        right: -240px;
+                                        bottom: -510px;
+                                        background-color: white;
+                                        z-index: 30;
+                                        padding: 3px;
+                                        overflow-y: auto
                                     }
-                                    .img{
-                                        position: absolute; right: 0px; bottom: 0px; width: 20px; border: 2px solid white; border-radius: 2px; background-color: white
+
+                                    .img {
+                                        position: absolute;
+                                        right: 0px;
+                                        bottom: 0px;
+                                        width: 20px;
+                                        border: 2px solid white;
+                                        border-radius: 2px;
+                                        background-color: white
                                     }
-                                    .img:hover{
+
+                                    .img:hover {
                                         border: 2px solid darkgray;
                                     }
                                 </style>
@@ -159,96 +198,188 @@
                                     <th rowspan="2" style="position: sticky; left: 2px; z-index: 20"
                                         onclick="sorted_table(0, this)">№ п/п
                                     </th>
-                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"><p onclick="sorted_table(1, this.parentNode)">Наименование центра финансовой
+                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"><p
+                                            onclick="sorted_table(1, this.parentNode)">Наименование центра финансовой
                                             отвественности</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('center_name', this.parentNode); hide_all_field('fieldsheet_center_name')">
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('center_name', this.parentNode); hide_all_field('fieldsheet_center_name')">
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(2, this.parentNode)">Наименование филиала</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('name_do', this.parentNode); hide_all_field('fieldsheet_name_do')">
+                                    <th rowspan="2" style="position:sticky; left: 16.7%; z-index: 20"><p
+                                            onclick="sorted_table(2, this.parentNode)">Наименование филиала</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('name_do', this.parentNode); hide_all_field('fieldsheet_name_do')">
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и сооружений</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">
+                                    <th rowspan="2"><p onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и
+                                            сооружений</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">
                                     </th>
                                     <th colspan="9">Место проведения ЭПБ</th>
-                                    <th rowspan="2" onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</th>
+                                    <th rowspan="2"><p onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('date_comiss', this.parentNode); hide_all_field('fieldsheet_date_comiss')">
+                                    </th>
 
-                                    <th rowspan="2"><p onclick="sorted_table(14, this.parentNode)">Дата проведения ЭПБ</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('date_epb', this.parentNode); hide_all_field('fieldsheet_date_epb')">
+                                    <th rowspan="2"><p onclick="sorted_table(14, this.parentNode)">Дата проведения
+                                            ЭПБ</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('date_epb', this.parentNode); hide_all_field('fieldsheet_date_epb')">
                                     </th>
 
                                     <th colspan="2">Срок эксплуатации/ наработка на момент ЭПБ</th>
                                     <th colspan="2">Срок продления безопасной эксплуатации</th>
                                     <th colspan="2">Дата/наработка следующей ЭПБ</th>
-                                    <th rowspan="2" onclick="sorted_table(21, this)">Уведомление о внесении в реестр (№
-                                        письма,
-                                        дата)
+                                    <th rowspan="2"><p onclick="sorted_table(21, this)">Уведомление о внесении в реестр
+                                            (№
+                                            письма,
+                                            дата) </p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('notification', this.parentNode); hide_all_field('fieldsheet_notification')">
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(22, this)">Регистрационный номер заключения
-                                        ЭПБ
+                                    <th rowspan="2"><p onclick="sorted_table(22, this)">Регистрационный номер заключения
+                                            ЭПБ </p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('reg_num', this.parentNode); hide_all_field('fieldsheet_reg_num')">
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(23, this)">Наличие условий действий
-                                        заключений
+                                    <th rowspan="2"><p onclick="sorted_table(23, this)">Наличие условий действий
+                                            заключений </p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('conditions', this.parentNode); hide_all_field('fieldsheet_conditions')">
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(24, this)">Факт выполнения условий</th>
-                                    <th rowspan="2" onclick="sorted_table(25, this)" style="">Условия действия
-                                        заключений
+                                    <th rowspan="2"><p onclick="sorted_table(24, this)">Факт выполнения условий</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('completion_mark', this.parentNode); hide_all_field('fieldsheet_completion_mark')">
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(26, this)">Срок выполнения условий</th>
-                                    <th rowspan="2" onclick="sorted_table(27, this)">Приоритетность</th>
-                                    <th rowspan="2" onclick="sorted_table(28, this)">Номер заключения ЭПБ подрядной
-                                        организации
+                                    <th rowspan="2" style=""><p onclick="sorted_table(25, this)">Условия действия
+                                            заключений</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('conditions_concl', this.parentNode); hide_all_field('fieldsheet_conditions_concl')">
                                     </th>
-                                    <th rowspan="2" onclick="sorted_table(29, this)">Наименование экспертной
-                                        организации
+                                    <th rowspan="2"><p onclick="sorted_table(26, this)">Срок выполнения условий</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('due_date', this.parentNode); hide_all_field('fieldsheet_due_date')">
+                                    </th>
+                                    <th rowspan="2"><p onclick="sorted_table(27, this)">Приоритетность</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('priority', this.parentNode); hide_all_field('fieldsheet_priority')">
+                                    </th>
+                                    <th rowspan="2"><p onclick="sorted_table(28, this)">Номер заключения ЭПБ подрядной
+                                            организации </p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('concl_num', this.parentNode); hide_all_field('fieldsheet_concl_num')">
+                                    </th>
+                                    <th rowspan="2"><p onclick="sorted_table(29, this)">Наименование экспертной
+                                            организации </p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('exp_org_name', this.parentNode); hide_all_field('fieldsheet_exp_org_name')">
                                     </th>
                                     @can('report-edit')
                                         <th rowspan="2" style="width: 1%"></th>
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th style="top:25px"><p onclick="sorted_table(4, this.parentNode)">Наименование объекта</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('object_name', this.parentNode); hide_all_field('fieldsheet_object_name')">
+                                    <th style="top:25px"><p onclick="sorted_table(4, this.parentNode)">Наименование
+                                            объекта</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('object_name', this.parentNode); hide_all_field('fieldsheet_object_name')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(5, this)">Наименов-е цеха/
-                                        местонахождения
+                                    <th style="top:25px"><p onclick="sorted_table(5, this)">Наименов-е цеха/
+                                            местонахождения</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('workshop_name', this.parentNode); hide_all_field('fieldsheet_workshop_name')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(6, this)">№ цеха</th>
-                                    <th style="top:25px" onclick="sorted_table(7, this)">Наименов-е ТУ, здания,
-                                        сооружения
+                                    <th style="top:25px"><p onclick="sorted_table(6, this)">№ цеха</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('n_workshop', this.parentNode); hide_all_field('fieldsheet_n_workshop')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(8, this)">Изготовитель/ проектная
-                                        организация
+                                    <th style="top:25px"><p onclick="sorted_table(7, this)">Наименов-е ТУ, здания,
+                                            сооружения</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('name_tu', this.parentNode); hide_all_field('fieldsheet_name_tu')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(9, this)"> Станц-й номер, рег.№, участок
-                                        (км-км)
+                                    <th style="top:25px"><p onclick="sorted_table(8, this)">Изготовитель/ проектная
+                                            организация</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('manufacturer', this.parentNode); hide_all_field('fieldsheet_manufacturer')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(10, this)">Зав. №</th>
-                                    <th style="top:25px" onclick="sorted_table(11, this)">Протяженность газопровода, км,
-                                        кол-во, шт.
+                                    <th style="top:25px"><p onclick="sorted_table(9, this)"> Станц-й номер, рег.№,
+                                            участок
+                                            (км-км)</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('station_number', this.parentNode); hide_all_field('fieldsheet_station_number')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(12, this)"> Инв.
-                                        №ТУ, здания, сооружения
+                                    <th style="top:25px" onclick="sorted_table(10, this)"><p
+                                            onclick="sorted_table(10, this)">Зав. №</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('factory_num', this.parentNode); hide_all_field('fieldsheet_factory_num')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(15, this)">Наработка ТУ, часов
+                                    <th style="top:25px"><p onclick="sorted_table(11, this)">Протяженность газопровода,
+                                            км,
+                                            кол-во, шт.</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('pipeline_length', this.parentNode); hide_all_field('fieldsheet_pipeline_length')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(16, this)"> Кол-во лет ТУ, зданию,
-                                        сооружению
+                                    <th style="top:25px"><p onclick="sorted_table(12, this)">Инв.
+                                            №ТУ, здания, сооружения</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('inv_tu_num', this.parentNode); hide_all_field('fieldsheet_inv_tu_num')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(17, this)">Наработка ТУ, часов
+                                    <th style="top:25px"><p onclick="sorted_table(15, this)">Наработка ТУ, часов</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('runtime_tu', this.parentNode); hide_all_field('fieldsheet_runtime_tu')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(18, this)"> Кол-во лет ТУ, зданию,
-                                        сооружению
+                                    <th style="top:25px"><p onclick="sorted_table(16, this)">Кол-во лет ТУ, зданию,
+                                            сооружению</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('age_tu', this.parentNode); hide_all_field('fieldsheet_age_tu')">
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(19, this)">Наработка до следующего ЭПБ
+                                    <th style="top:25px"><p onclick="sorted_table(17, this)">Наработка ТУ, часов</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('runtime_ext_tu', this.parentNode); hide_all_field('fieldsheet_runtime_ext_tu')">
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(19, this.parentNode)">Дата следующего ЭПБ</p>
-                                        <img class="img"  alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}" onclick="get_group_conclusion('date_next_epb', this.parentNode); hide_all_field('fieldsheet_date_next_epb')">
+                                    <th style="top:25px"><p onclick="sorted_table(18, this)">Кол-во лет ТУ, зданию,
+                                            сооружению</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('age_ext_tu', this.parentNode); hide_all_field('fieldsheet_age_ext_tu')">
+                                    </th>
+                                    <th style="top:25px"><p onclick="sorted_table(19, this)">Наработка до следующего
+                                            ЭПБ</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('runtime_epb', this.parentNode); hide_all_field('fieldsheet_runtime_epb')">
+                                    </th>
+                                    <th style="top:25px"><p onclick="sorted_table(20, this.parentNode)">Дата следующего
+                                            ЭПБ</p>
+                                        <img class="img" alt=""
+                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
+                                             onclick="get_group_conclusion('date_next_epb', this.parentNode); hide_all_field('fieldsheet_date_next_epb')">
                                     </th>
                                 </tr>
                                 </thead>
@@ -303,7 +434,8 @@
                         </div>
                     </div>
                     <div style="height: 7vh">
-                        <table class="table table-hover " style="width: border-box; margin-bottom: 0px; float: left; width: 100%">
+                        <table class="table table-hover "
+                               style="width: border-box; margin-bottom: 0px; float: left; width: 100%">
                             <tbody>
                             <tr>
                                 <td style="border-right: 0px"><p style="font-size: 18px">Всего записей:{{$i}}</p></td>
@@ -320,23 +452,46 @@
         @foreach(array_keys($fieldset) as $row)
             <div id="{{$row}}_includes">
                 @foreach($fieldset[$row] as $row1)
-                <p>{{$row1}}</p>
+                    <p>{{$row1}}</p>
                 @endforeach
             </div>
         @endforeach
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            checked()
+            checked();
         })
-        function get_group_conclusion(column, th){
-            if (!document.getElementById('fieldsheet_'+column)){
+
+        function get_group_conclusion(column, th) {
+            if (!document.getElementById('fieldsheet_' + column)) {
+                let params = {};
+                let fieldsheets = document.getElementsByTagName('fieldset');
+                for (var fieldsheet of fieldsheets) {
+                    var check_input_all = fieldsheet.getElementsByTagName('input')
+                    var check_input = []
+                    var all_input_checked = true
+                    for (var one_input of check_input_all) {
+                        if (one_input.hasAttribute('checked')) {
+                            check_input.push(one_input.getAttribute('name'))
+                        } else {
+                            all_input_checked = false
+                        }
+                    }
+                    params[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join(',');
+                }
+                console.log(params)
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 $.ajax({
                     url: '/get_group_conclusion/' + column,
-                    type: 'GET',
+                    type: 'POST',
+                    data: params,
                     success: (res) => {
                         var fieldset = document.createElement('fieldset')
-                        fieldset.id = 'fieldsheet_'+column
+                        fieldset.id = 'fieldsheet_' + column
                         fieldset.innerHTML += `<div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
                                                 <input type="text" id="search_fieldsheet_${column}" style="margin: 9px 0px" placeholder="Поиск..." oninput="find_field('fieldsheet_${column}')">
                                                 <div class="bat_add" style="margin-left: 0px;">
@@ -348,27 +503,27 @@
                                                         style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
                                                 </div>
                                             </div>`
-                        for(var row of res){
-                            console.log(row)
-                            if (document.getElementById(column+'_includes')){
+                        for (var row of res) {
+                            // console.log(row)
+                            if (document.getElementById(column + '_includes')) {
                                 var bool = false
-                                for (var one_p of document.getElementById(column+'_includes').getElementsByTagName('p')){
-                                    if (one_p.textContent == row[column]){
+                                for (var one_p of document.getElementById(column + '_includes').getElementsByTagName('p')) {
+                                    if (one_p.textContent == row[column]) {
                                         bool = true
                                     }
                                 }
-                                if (bool){
+                                if (bool) {
                                     fieldset.innerHTML += `<div class="checkbox">
                                                                 <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
                                                                 <label for="${row[column]}">${row[column]}</label>
                                                             </div>`
-                                }else {
+                                } else {
                                     fieldset.innerHTML += `<div class="checkbox">
                                                                 <input type="checkbox" class="checkbox_button" name="${row[column]}">
                                                                 <label for="${row[column]}">${row[column]}</label>
                                                             </div>`
                                 }
-                            }else {
+                            } else {
                                 fieldset.innerHTML += `<div class="checkbox">
                                                             <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
                                                             <label for="${row[column]}">${row[column]}</label>
@@ -381,43 +536,45 @@
                 })
             }
         }
-        function hide_all_field(id){
-            for(var field of document.getElementsByTagName('fieldset')){
-                if (field.id == id){
-                    if (field.style.display === 'none'){
+
+        function hide_all_field(id) {
+            for (var field of document.getElementsByTagName('fieldset')) {
+                if (field.id == id) {
+                    if (field.style.display === 'none') {
                         field.style.display = ''
-                    }else {
+                    } else {
                         field.style.display = 'none'
                     }
-                }else {
+                } else {
                     field.style.display = 'none'
                 }
             }
         }
-        function checked(id){
-            if (id){
+
+        function checked(id) {
+            if (id) {
                 var true_button = false
                 var checkboxes = document.getElementById(id).getElementsByClassName('checkbox_button')
-                for (var check of checkboxes){
-                    if (check.hasAttribute('checked')){
+                for (var check of checkboxes) {
+                    if (check.hasAttribute('checked')) {
                         true_button = true
                     }
                 }
-                if (true_button){
-                    for (var check of checkboxes){
+                if (true_button) {
+                    for (var check of checkboxes) {
                         check.removeAttribute('checked')
                     }
-                }else {
-                    for (var check of checkboxes){
+                } else {
+                    for (var check of checkboxes) {
                         check.setAttribute('checked', true)
                     }
                 }
-            }else {
-                for (var check of document.getElementsByClassName('checkbox_button')){
-                    check.addEventListener('click', function(){
-                        if (this.hasAttribute('checked')){
+            } else {
+                for (var check of document.getElementsByClassName('checkbox_button')) {
+                    check.addEventListener('click', function () {
+                        if (this.hasAttribute('checked')) {
                             this.removeAttribute('checked')
-                        }else {
+                        } else {
                             this.setAttribute('checked', true)
                         }
                     })
@@ -429,14 +586,14 @@
         function get_data() {
             var fieldsheets = document.getElementsByTagName('fieldset')
             var post_form = document.getElementById('post_form')
-            for(var fieldsheet of fieldsheets){
+            for (var fieldsheet of fieldsheets) {
                 var check_input_all = fieldsheet.getElementsByTagName('input')
                 var check_input = []
                 var all_input_checked = true
-                for (var one_input of check_input_all){
-                    if (one_input.hasAttribute('checked')){
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
                         check_input.push(one_input.getAttribute('name'))
-                    }else {
+                    } else {
                         all_input_checked = false
                     }
                 }
@@ -460,6 +617,7 @@
                 }
             })
         }
+
         //скрипт для изменения
         function edit_record(id) {
             window.location.href = '/docs/conclusions_industrial_safety/edit/' + id
@@ -512,6 +670,7 @@
                 table_for_search.tBodies[0].append(...sortedRows);
             }
         }
+
         function find_it() {
             var table_boby_rows = document.getElementById('table_for_search').getElementsByTagName('tbody')[0].getElementsByTagName('tr')  //строки по которым ищем
             var search_text = new RegExp(document.getElementById('search_text').value, 'i');   //искомый текст
@@ -541,22 +700,23 @@
                     table_boby_rows[i].style.display = "none"
                 }
             }
-            if (!check_full){
+            if (!check_full) {
                 var tr = document.createElement('tr')
                 tr.id = 'time_row'
                 tr.innerHTML = '<td colspan="31" style="text-align: left">На данной странице ничего не найдено</td>'
                 document.getElementById('table_for_search').getElementsByTagName('tbody')[0].appendChild(tr);
-            }else {
-                try{
+            } else {
+                try {
                     document.getElementById('time_row').parentNode.removeChild(document.getElementById('time_row'))
-                }catch (e){
+                } catch (e) {
 
                 }
             }
         }
+
         function find_field(id) {
             var table_boby_rows = document.getElementById(id).getElementsByClassName('checkbox')  //строки по которым ищем
-            var search_text = new RegExp(document.getElementById('search_'+id).value, 'i');   //искомый текст
+            var search_text = new RegExp(document.getElementById('search_' + id).value, 'i');   //искомый текст
             var check_full = false
             for (var i = 0; i < table_boby_rows.length; i++) {  //проходимся по строкам
                 var flag_success = false   //станет true, если есть совпадение в строке
