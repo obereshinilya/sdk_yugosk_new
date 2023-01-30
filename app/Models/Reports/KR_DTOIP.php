@@ -13,7 +13,7 @@ class KR_DTOIP extends Model
 
 
     protected $fillable = [
-        'name_event', 'date', 'plan_year', 'plan_month', 'fact', 'indicator', 'year', 'num_pp', 'check'
+        'name_event', 'date', 'plan_year', 'plan_month', 'fact', 'indicator', 'year', 'num_pp', 'check', 'id_do'
         ];
 
 }

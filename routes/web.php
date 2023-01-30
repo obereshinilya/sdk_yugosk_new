@@ -179,10 +179,10 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/emergency_drills/update/{id}', 'ReportController@update_emergency_drills');  //сохранение изменений
             Route::get('/docs/emergency_drills/get_params/{year}', 'ReportController@get_emergency_drills');  //выборка за выбранный год
 
-            Route::get('/docs/open_kr_dtoip', 'ReportController@open_kr_dtoip');  //Сведения о выполнении графика КР и ДТОиР ОПО
-            Route::post('/docs/save_kr_dtoip/{year}', 'ReportController@save_kr_dtoip');  //сохранение
-            Route::get('/docs/get_kr_dtoip/{year}', 'ReportController@get_kr_dtoip');  //сохранение
-            Route::get('/uncheck_kr_dtoip/{num_pp}/{year}', 'ReportController@uncheck_kr_dtoip');  //убрать из обсчета
+            Route::get('/docs/open_kr_dtoip/{id_do}', 'ReportController@open_kr_dtoip');  //Сведения о выполнении графика КР и ДТОиР ОПО
+            Route::post('/docs/save_kr_dtoip/{year}/{id_do}', 'ReportController@save_kr_dtoip');  //сохранение
+            Route::get('/docs/get_kr_dtoip/{year}/{id_do}', 'ReportController@get_kr_dtoip');  //сохранение
+            Route::get('/uncheck_kr_dtoip/{num_pp}/{year}/{id_do}', 'ReportController@uncheck_kr_dtoip');  //убрать из обсчета
 
             Route::get('/docs/report_events', 'ReportController@show_report_events');  // Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за _____________20_____ года
             Route::get('/docs/report_events/get_params/{year}', 'ReportController@get_report_events_year');  // выборка за год
@@ -206,12 +206,12 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/pat_themes/edit/{id}', 'ReportController@edit_pat_themes');  //редактирование темы ПАТ
             Route::post('/docs/pat_themes/update/{id}', 'ReportController@update_pat_themes');  //сохранение измененной темы ПАТ
 
-            Route::get('/docs/plan_of_industrial_safety', 'ReportController@show_plan_of_industrial_safety');  // План работ в области промышленной безопасности
-            Route::get('/docs/plan_of_industrial_safety/get_params/{year}', 'ReportController@get_plan_of_industrial_safety');  // выборка за год
-            Route::get('/docs/plan_of_industrial_safety/create', 'ReportController@create_plan_of_industrial_safety');  // страница создания записи
-            Route::post('/docs/plan_of_industrial_safety/save', 'ReportController@save_plan_of_industrial_safety');  //сохранение
+            Route::get('/docs/plan_of_industrial_safety/{id_do}', 'ReportController@show_plan_of_industrial_safety');  // План работ в области промышленной безопасности
+            Route::get('/docs/plan_of_industrial_safety/get_params/{year}/{id_do}', 'ReportController@get_plan_of_industrial_safety');  // выборка за год
+            Route::get('/docs/plan_of_industrial_safety/create/{id_do}', 'ReportController@create_plan_of_industrial_safety');  // страница создания записи
+            Route::post('/docs/plan_of_industrial_safety/save/{id_do}', 'ReportController@save_plan_of_industrial_safety');  //сохранение
             Route::get('/docs/plan_of_industrial_safety/remove/{id}', 'ReportController@remove_plan_of_industrial_safety');  //удаление
-            Route::get('/docs/plan_of_industrial_safety/edit/{id}', 'ReportController@edit_plan_of_industrial_safety');  //обновление
+            Route::get('/docs/plan_of_industrial_safety/edit/{id}/{id_do}', 'ReportController@edit_plan_of_industrial_safety');  //обновление
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/conclusions_industrial_safety_main', 'ConclusionsController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
@@ -260,8 +260,8 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/pdf_sved_avar/{start}/{finish}', 'PdfReportController@pdf_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
             Route::get('/pdf_report_events/{year}', 'PdfReportController@pdf_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/pdf_events/{year}', 'PdfReportController@pdf_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
-            Route::get('/pdf_kr_dtoip/{year}', 'PdfReportController@pdf_kr_dtoip');  //скачать КР ДТОиР ОПО
-            Route::get('/pdf_plan_of_industrial_safety/{year}', 'PdfReportController@pdf_plan_of_industrial_safety');     // скачать план работ в области ПБ
+            Route::get('/pdf_kr_dtoip/{year}/{id_do}', 'PdfReportController@pdf_kr_dtoip');  //скачать КР ДТОиР ОПО
+            Route::get('/pdf_plan_of_industrial_safety/{year}/{id_do}', 'PdfReportController@pdf_plan_of_industrial_safety');     // скачать план работ в области ПБ
             Route::get('/pdf_pat_schedule/{year}', 'PdfReportController@pdf_pat_schedule');     // скачать График комплексных противоаварийных тренировок
             Route::get('/pdf_jas/{start}/{end}', 'PdfReportController@pdf_jas');     // скачать ЖАС за выбранный период
 
@@ -270,13 +270,13 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/excel_events/{year}', 'ExcelReportController@excel_events');
             Route::get('/excel_fulfillment_certification/{year}', 'ExcelReportController@excel_fulfillment_certification');
             Route::get('/excel_pat_schedule/{year}', 'ExcelReportController@excel_pat_schedule');
-            Route::get('/excel_plan_of_industrial_safety/{year}', 'ExcelReportController@excel_plan_of_industrial_safety');
+            Route::get('/excel_plan_of_industrial_safety/{year}/{id_do}', 'ExcelReportController@excel_plan_of_industrial_safety');
             Route::get('/excel_actual_declarations', 'ExcelReportController@excel_actual_declarations');
             Route::get('/excel_emergency_drills/{year}', 'ExcelReportController@excel_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
             Route::get('/excel_report_events/{year}', 'ExcelReportController@excel_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/excel_goals_trans_yugorsk/{year}', 'ExcelReportController@excel_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
             Route::get('/excel_kipd_internal_checks/{year}', 'ExcelReportController@excel_kipd_internal_checks');     // скачать План корректирующих действий ПБ по внутренним проверкам за
-            Route::get('/excel_kr_dtoip/{year}', 'ExcelReportController@excel_kr_dtoip');  //скачать КР ДТОиР ОПО
+            Route::get('/excel_kr_dtoip/{year}/{id_do}', 'ExcelReportController@excel_kr_dtoip');  //скачать КР ДТОиР ОПО
             Route::get('/excel_perfomance_plan_KiPD/{year}', 'ExcelReportController@excel_perfomance_plan_KiPD');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
             Route::get('/excel_plan_industrial_safety/{year}', 'ExcelReportController@excel_plan_industrial_safety');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
             Route::get('/excel_result_apk/{year}', 'ExcelReportController@excel_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора

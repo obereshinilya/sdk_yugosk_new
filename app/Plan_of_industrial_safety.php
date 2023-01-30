@@ -13,6 +13,6 @@ class Plan_of_industrial_safety extends Model
 
 
     protected $fillable = [
-        'struct_unit', 'goals', 'risk', 'event', 'cost', 'src', 'completion_date', 'person', 'completion_mark', 'year'
+        'struct_unit', 'goals', 'risk', 'event', 'cost', 'src', 'completion_date', 'person', 'completion_mark', 'year', 'id_do'
     ];
 }

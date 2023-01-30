@@ -9,7 +9,7 @@
         @include('web.admin.inc.new_JAS')
     @endcan
     @include('web.include.sidebar_doc')
-
+    <p style="display: none" id="id_do_plan">{{$id_do}}</p>
     <div class="inside_content">
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
@@ -104,7 +104,7 @@
                                 <div class="bat_add"
                                      style="width: 10%; display: inline-block; margin-top: 20px; margin-bottom: 20px; margin-left: 0px">
                                     <a style="background-color: #CD5C5C"
-                                       href="/docs/plan_of_industrial_safety">Отменить</a></div>
+                                       href="/docs/plan_of_industrial_safety/{{$id_do}}">Отменить</a></div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
             }
 
             $.ajax({
-                url: '/docs/plan_of_industrial_safety/save',
+                url: '/docs/plan_of_industrial_safety/save/'+document.getElementById('id_do_plan').textContent,
                 type: 'POST',
                 data: {
                     keys: JSON.stringify(Object.keys(out_data)),
@@ -141,7 +141,7 @@
                 },
                 success: (res) => {
                     // console.log(res)
-                    window.location.href = '/docs/plan_of_industrial_safety'
+                    window.location.href = '/docs/plan_of_industrial_safety/'+document.getElementById('id_do_plan').textContent
                 }
             })
 

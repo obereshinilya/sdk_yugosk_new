@@ -72,7 +72,7 @@
                         <a href="/docs/plan_industrial_safety" onclick="SaveChecked_link(this)">Сведения о выполнении
                             плана работ в области промышленной
                             безопасности </a>
-                        <a href="/docs/open_kr_dtoip" onclick="SaveChecked_link(this)">Сведения о выполнении графика КР
+                        <a href="#modal_choice_do" id="krdtoip_a" onclick="SaveChecked_link(this); document.getElementById('ssilka').textContent = '/docs/open_kr_dtoip/'">Сведения о выполнении графика КР
                             и ДТОиР ОПО </a>
                         <a href="/docs/goals_trans_yugorsk" onclick="SaveChecked_link(this)">Цели ООО «Газпром трансгаз
                             Югорск» в области
@@ -95,7 +95,7 @@
                         <a href="/docs/events" onclick="SaveChecked_link(this)">Мероприятия
                             по устранению имеющихся нарушений
                         </a>
-                        <a href="/docs/plan_of_industrial_safety" onclick="SaveChecked_link(this)">План работ в области
+                        <a  href="#modal_choice_do" id="plan_of_industrial_a" onclick="SaveChecked_link(this); document.getElementById('ssilka').textContent = '/docs/plan_of_industrial_safety/'">План работ в области
                             промышленной безопасности
                         </a>
                         <a href="/docs/conclusions_industrial_safety_main"
@@ -113,6 +113,43 @@
                         </a>
                     </div>
                 </label>
+            </div>
+        </div>
+    </div>
+</div>
+<p style="display: none" id="ssilka"></p>
+<div id="modal_choice_do" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#close" class="close">×</a>
+            </div>
+            <div class="modal-body">
+                <table class="modal_table map_hover">
+                    <thead>
+                    <th>Выберите объект</th>
+                    </thead>
+                    <tbody>
+                    <tr style="text-align: center">
+                        <td style="padding: 0px; text-align: center"><select id="id_do_in_selector" style="height: 100%; width: 50%; margin-left: 25%; margin-top: 10px"
+                                                         class="select-css">
+                                <option value="all">По дочернему обществу</option>
+                            @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get()  as $row)
+                                    <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <div class="bat_info print__pdf" style="display: inline-block; margin-left: 0; margin-top: 10px"><a
+                                    onclick="window.location.href = document.getElementById('ssilka').textContent+document.getElementById('id_do_in_selector').value"
+                                    style="display: inline-block; margin: 0">Открыть</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

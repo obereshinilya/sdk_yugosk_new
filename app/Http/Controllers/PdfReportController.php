@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events;
 use App\Jas;
 use App\Models\APK_SDK;
+use App\Models\Main_models\RefDO;
 use App\Models\Operational_safety;
 use App\Models\Ref_obj;
 use App\Models\Report_history\ElementStatus_day;
@@ -280,9 +281,9 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_kr_dtoip($year)
+    public function pdf_kr_dtoip($year, $id_do)
     {
-        $data_from_table = KR_DTOIP::where('year', '=', $year)->get();
+        $data_from_table = KR_DTOIP::where('year', '=', $year)->where('id_do', '=', $id_do)->get();
         $data = [];
         for ($i = 1; $i < 47; $i++) {
             $data[$i]['date'] = '';
@@ -310,17 +311,26 @@ class PdfReportController extends Controller
             $data['all_plan_year'] += (int)$row->plan_year;
             $data['all_plan_month'] += (int)$row->plan_month;
         }
-//        dd($data);
-        $title = 'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+        }
+        $title = $name_do.'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
         $patch = 'kr_dtoip' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_kr_dtoip', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
     }
 
-    public function pdf_plan_of_industrial_safety($year)
+    public function pdf_plan_of_industrial_safety($year, $id_do)
     {
-        $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->get();
-        $title = 'План работ в области промышленной безопасности за ' . $year . ' год';
+        $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->where('id_do', '=', $id_do)->get();
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+        }
+        $title = $name_do.'План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $plan) {
             if ($plan->completion_date) {

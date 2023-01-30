@@ -1100,13 +1100,19 @@ class ReportController extends Controller
         return $data_to_table;
     }
 
-    public function open_kr_dtoip()
+    public function open_kr_dtoip($id_do)
     {
-        AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО');//пишем в журнал
-        return view('web.docs.reports.report_kr_dtoip');
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+            AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО. Объект: дочернее общество');//пишем в журнал
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+            AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО. Объект: '. $name_do);//пишем в журнал
+        }
+        return view('web.docs.reports.report_kr_dtoip', compact('id_do', 'name_do'));
     }
 
-    public function save_kr_dtoip(Request $request, $year)
+    public function save_kr_dtoip(Request $request, $year, $id_do)
     {
         try {
             $keys = json_decode($request->keys);
@@ -1118,21 +1124,22 @@ class ReportController extends Controller
                 }
             }
             $record_data['year'] = $year;
-            if (count(KR_DTOIP::where('year', '=', $year)->where('num_pp', '=', $record_data['num_pp'])->get())) {
-                KR_DTOIP::where('year', '=', $year)->where('num_pp', '=', $record_data['num_pp'])->first()->update($record_data);
+            $record_data['id_do'] = $id_do;
+            if (count(KR_DTOIP::where('id_do', '=', $id_do)->where('year', '=', $year)->where('num_pp', '=', $record_data['num_pp'])->get())) {
+                KR_DTOIP::where('id_do', '=', $id_do)->where('year', '=', $year)->where('num_pp', '=', $record_data['num_pp'])->first()->update($record_data);
             } else {
                 KR_DTOIP::create($record_data);
             }
             return $record_data;
-            AdminController::log_record('Изменил сведения о выполнении графика КР и ДТОиР ОПО за ' . $year);//пишем в журнал
+            AdminController::log_record('Изменил сведения о выполнении графика КР и ДТОиР ОПО за ' . $year. 'Объект: '.RefDO::where('id_do', '=', $id_do)->first()->short_name_do);//пишем в журнал
         } catch (\Throwable $e) {
             return $e;
         }
     }
 
-    public function uncheck_kr_dtoip($num_pp, $year)
+    public function uncheck_kr_dtoip($num_pp, $year, $id_do)
     {
-        $check = KR_DTOIP::where('year', '=', $year)->where('num_pp', '=', $num_pp)->first();
+        $check = KR_DTOIP::where('id_do', '=', $id_do)->where('year', '=', $year)->where('num_pp', '=', $num_pp)->first();
         if ($check->check) {
             $check->update(['check' => false]);
         } else {
@@ -1140,10 +1147,10 @@ class ReportController extends Controller
         }
     }
 
-    public function get_kr_dtoip($year)
+    public function get_kr_dtoip($year, $id_do)
     {
         try {
-            $data = KR_DTOIP::where('year', '=', $year)->get();
+            $data = KR_DTOIP::where('id_do', '=', $id_do)->where('year', '=', $year)->get();
             $data_to_table = [];
             foreach ($data as $item) {
                 $data_to_table[$item->num_pp] = $item->toArray();
@@ -1207,27 +1214,31 @@ class ReportController extends Controller
         }
     }
 
-    public function show_plan_of_industrial_safety()
+    public function show_plan_of_industrial_safety($id_do)
     {
-        return view('web.docs.reports.plan_of_industrial_safety');
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+            AdminController::log_record('Открыл план работ в области промышленной безопасности. Объект: дочернее общество');//пишем в журнал
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+            AdminController::log_record('Открыл план работ в области промышленной безопасности. Объект: '. $name_do);//пишем в журнал
+        }
+        return view('web.docs.reports.plan_of_industrial_safety', compact('id_do', 'name_do'));
     }
 
-    public function get_plan_of_industrial_safety($year)
+    public function get_plan_of_industrial_safety($year, $id_do)
     {
-        $data = Plan_of_industrial_safety::where('year', '=', $year)->get();
-
-
+        $data = Plan_of_industrial_safety::where('id_do', '=', $id_do)->where('year', '=', $year)->get();
         return $data;
 
     }
 
-    public function create_plan_of_industrial_safety()
+    public function create_plan_of_industrial_safety($id_do)
     {
-
-        return view('web.docs.reports.plan_of_industrial_safety_new');
+        return view('web.docs.reports.plan_of_industrial_safety_new', compact('id_do'));
     }
 
-    public function save_plan_of_industrial_safety(Request $request)
+    public function save_plan_of_industrial_safety(Request $request, $id_do)
     {
         try {
             $keys = json_decode($request->keys);
@@ -1238,6 +1249,7 @@ class ReportController extends Controller
             }
 
             $record_data['date_update'] = date('Y_m_d');
+            $record_data['id_do'] = $id_do;
 
             Plan_of_industrial_safety::create($record_data);
             AdminController::log_record('Добавил запись в план работ в области промышленной безопасности');//пишем в журнал
@@ -1252,10 +1264,10 @@ class ReportController extends Controller
         AdminController::log_record('Удалил ' . $id . ' запись в планe работ в области промышленной безопасности');//пишем в журнал
     }
 
-    public function edit_plan_of_industrial_safety($id)
+    public function edit_plan_of_industrial_safety($id, $id_do)
     {
         $data = Plan_of_industrial_safety::where('id', '=', $id)->first();
-        return view('web.docs.reports.plan_of_industrial_safety_edit', compact('data'));
+        return view('web.docs.reports.plan_of_industrial_safety_edit', compact('data', 'id_do'));
     }
 
     public function update_plan_of_industrial_safety(Request $request, $id)

@@ -23,6 +23,7 @@ use App\Exports\Sved_avar_Export;
 use App\Exports\Result_apk_Export;
 use App\Fulfillment_certification;
 use App\Http\Controllers\Controller;
+use App\Models\Main_models\RefDO;
 use App\Models\Reports\ActualDeclarations;
 use App\Models\Reports\EmergencyDrills;
 use App\Models\Reports\Goals_trans_yugorsk;
@@ -123,10 +124,15 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_plan_of_industrial_safety($year)
+    public function excel_plan_of_industrial_safety($year, $id_do)
     {
-        $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->get();
-        $title = ' План работ в области промышленной безопасности за ' . $year . ' год';
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+        }
+        $data['data'] = Plan_of_industrial_safety::where('id_do', '=', $id_do)->where('year', '=', $year)->get();
+        $title = $name_do.' План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.xlsx';
 
         foreach ($data['data'] as $key => $plan) {
@@ -234,9 +240,9 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_kr_dtoip($year)
+    public function excel_kr_dtoip($year, $id_do)
     {
-        $data_from_table = KR_DTOIP::where('year', '=', $year)->get();
+        $data_from_table = KR_DTOIP::where('year', '=', $year)->where('id_do', '=', $id_do)->get();
         $data = [];
         for ($i = 1; $i < 47; $i++) {
             $data[$i]['date'] = '';
@@ -264,7 +270,12 @@ class ExcelReportController extends Controller
             $data['all_plan_year'] += (int)$row->plan_year;
             $data['all_plan_month'] += (int)$row->plan_month;
         }
-        $title = 'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
+        if ($id_do == 'all'){
+            $name_do = 'Дочернее общество. ';
+        }else{
+            $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
+        }
+        $title = $name_do.'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
         $patch = 'kr_dtoip' . Carbon::now() . '.xlsx';
 
 

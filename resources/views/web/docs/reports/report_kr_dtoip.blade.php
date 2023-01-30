@@ -57,12 +57,13 @@
             left: 15px
         }
     </style>
+    <p style="display: none" id="id_do_param">{{$id_do}}</p>
     <div class="inside_content" style="margin-top: 0px">
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin-right: 10px">
+                        <h2 class="text-muted" style="text-align: center; display: inline-block; margin-right: 10px">{{$name_do}}
                             Сведения о выполнении
                             графика КР и ДТОиР ОПО за
                         </h2>
@@ -73,12 +74,12 @@
                         @can('doc-create')
                             <div class="bat_info" style="display: inline-block"><a
                                     href="#"
-                                    onclick="window.location.href = '/pdf_kr_dtoip/' + document.getElementById('select__year').value"
+                                    onclick="window.location.href = '/pdf_kr_dtoip/' + document.getElementById('select__year').value+'/'+document.getElementById('id_do_param').textContent "
                                     style="display: inline-block">Печать в pdf</a>
                             </div>
                             <div class="bat_info" style="display: inline-block"><a
                                     href="#"
-                                    onclick="window.location.href = '/excel_kr_dtoip/' + document.getElementById('select__year').value"
+                                    onclick="window.location.href = '/excel_kr_dtoip/' + document.getElementById('select__year').value+'/'+document.getElementById('id_do_param').textContent"
                                     style="display: inline-block">Экспорт в excel</a>
                             </div>
                         @endcan
@@ -1676,6 +1677,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('krdtoip_a').classList.add('active__link')
             //скрипт для селекта с выбором года
             var select = document.getElementById('select__year')
             var year = new Date().getFullYear();
@@ -1685,7 +1687,7 @@
 
         function get_data() {
             $.ajax({
-                url: '/docs/get_kr_dtoip/' + document.getElementById('select__year').value,
+                url: '/docs/get_kr_dtoip/' + document.getElementById('select__year').value+'/'+document.getElementById('id_do_param').textContent,
                 type: 'GET',
                 success: (res) => {
                     var all_plan = 0
@@ -1852,7 +1854,7 @@
             document.getElementById('fact_all').textContent = num_fact
             tr.getElementsByClassName('indicator')[0].textContent = out_data['indicator']
             $.ajax({
-                url: '/docs/save_kr_dtoip/' + document.getElementById('select__year').value,
+                url: '/docs/save_kr_dtoip/' + document.getElementById('select__year').value + '/'+document.getElementById('id_do_param').textContent,
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
@@ -1863,7 +1865,7 @@
         //скрипт, чтоб не учитывать
         function unchecked(num_pp) {
             $.ajax({
-                url: '/uncheck_kr_dtoip/' + num_pp + '/' + document.getElementById('select__year').value,
+                url: '/uncheck_kr_dtoip/' + num_pp + '/' + document.getElementById('select__year').value + '/'+document.getElementById('id_do_param').textContent,
                 type: 'GET',
                 success: (res) => {
                 }

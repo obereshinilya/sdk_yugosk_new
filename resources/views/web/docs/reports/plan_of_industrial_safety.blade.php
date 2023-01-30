@@ -39,12 +39,13 @@
         / word-break: break-all;
         }
     </style>
+    <p style="display: none" id="id_do_param">{{$id_do}}</p>
     <div class="inside_content">
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
                     <div class="card-header" style="text-align: center">
-                        <h2 class="text-muted" style="text-align: center; display: inline; margin-right: 10px;">
+                        <h2 class="text-muted" style="text-align: center; display: inline; margin-right: 10px;">{{$name_do}}
                             План работ в области промышленной безопасности за
                         </h2>
                         <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
@@ -62,17 +63,17 @@
                                     <td>
                                         @can('doc-create')
                                             <div class="bat_info excel" style="display: inline-block"><a
-                                                    href="/excel_plan_of_industrial_safety"
+                                                    href="/excel_plan_of_industrial_safety/{{$id_do}}"
                                                     style="display: inline-block">Экспорт в excel</a>
                                             </div>
                                             <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                    href="/pdf_plan_of_industrial_safety"
+                                                    href="/pdf_plan_of_industrial_safety/{{$id_do}}"
                                                     style="display: inline-block">Печать в pdf</a>
                                             </div>
                                         @endcan
                                         @can('entries-add')
                                             <div class="bat_add" style="margin-left: 0; display: inline-block"><a
-                                                    href="/docs/plan_of_industrial_safety/create"
+                                                    href="/docs/plan_of_industrial_safety/create/{{$id_do}}"
                                                     style="display: inline-block">Добавить
                                                     запись</a>
                                             </div>
@@ -129,14 +130,14 @@
                     url: '/docs/plan_of_industrial_safety/remove/' + id,
                     type: 'GET',
                     success: (res) => {
-                        window.location.href = '/docs/plan_of_industrial_safety'
+                        window.location.href = '/docs/plan_of_industrial_safety/{{$id_do}}'
                     }
                 })
             }
 
             //скрипт для изменения
             function edit_record(id) {
-                window.location.href = '/docs/plan_of_industrial_safety/edit/' + id
+                window.location.href = '/docs/plan_of_industrial_safety/edit/' + id + '/{{$id_do}}'
             }
 
 
@@ -180,6 +181,7 @@
 
             //скрипт для селекта с выбором года
             document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('plan_of_industrial_a').classList.add('active__link')
                 var date = new Date();
                 document.getElementById('select__year').value = date.getFullYear();
                 get_data()
@@ -188,14 +190,14 @@
             function get_data() {
                 @can('doc-create')
                 let pdf = document.querySelector('.pdf');
-                pdf.firstChild.href = '/pdf_plan_of_industrial_safety/' + document.getElementById('select__year').value;
+                pdf.firstChild.href = '/pdf_plan_of_industrial_safety/' + document.getElementById('select__year').value + '/{{$id_do}}';
                 let excel = document.querySelector('.excel');
-                excel.firstChild.href = '/excel_plan_of_industrial_safety/' + document.getElementById('select__year').value;
+                excel.firstChild.href = '/excel_plan_of_industrial_safety/' + document.getElementById('select__year').value+ '/{{$id_do}}';
                 @endcan
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
                 $.ajax({
-                    url: '/docs/plan_of_industrial_safety/get_params/' + document.getElementById('select__year').value,
+                    url: '/docs/plan_of_industrial_safety/get_params/' + document.getElementById('select__year').value+ '/{{$id_do}}',
                     type: 'GET',
                     success: (res) => {
                         // console.log(res)

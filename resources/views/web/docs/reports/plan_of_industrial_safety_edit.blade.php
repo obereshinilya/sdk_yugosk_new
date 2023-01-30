@@ -114,7 +114,7 @@
                                 <div class="bat_add"
                                      style="width: 10%; display: inline-block; margin-top: 20px; margin-bottom: 20px; margin-left: 0px">
                                     <a style="background-color: #CD5C5C"
-                                       href="/docs/plan_of_industrial_safety">Отменить</a></div>
+                                       href="/docs/plan_of_industrial_safety/{{$id_do}}">Отменить</a></div>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                 },
                 success: (res) => {
                     // console.log(res)
-                    window.location.href = '/docs/plan_of_industrial_safety'
+                    window.location.href = '/docs/plan_of_industrial_safety/{{$id_do}}'
                 }
             })
 
