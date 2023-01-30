@@ -20,23 +20,38 @@ class ConclusionsController extends Controller
         if ($page == null) {
             $page = 1;
         }
-        return view('web.docs.reports.conclusions_industrial_safety_main', compact( 'i', 'page', 'data_one'));
+        return view('web.docs.reports.conclusions_industrial_safety_main', compact('i', 'page', 'data_one'));
     }
 
-    public function get_group_conclusion(Request $request, $column){
-        return Conclusions_industrial_safety::select($column)->groupby($column)->orderby($column)->get();
+    public function get_group_conclusion(Request $request, $column)
+    {
+        if ($request->all()) {
+            $keys = array_keys($request->all());
+            foreach ($keys as $key) {
+                $fieldset[$key] = explode(',', $request[$key]);
+                if (isset($data_one)) {
+                    $data_one = $data_one->whereIn($key, $fieldset[$key]);
+                } else {
+                    $data_one = Conclusions_industrial_safety::whereIn($key, $fieldset[$key]);
+                }
+            }
+            $data_one->groupby($column)->orderby($column);
+        } else {
+            $data_one = Conclusions_industrial_safety::groupby($column)->orderby($column);
+        }
+        return $data_one->get($column);
     }
 
     public function show_conclusions_industrial_safety(Request $request)
     {
         $keys = array_keys($request->all());
-        foreach ($keys as $column){
-            if ($column != '_token' && $column != 'page'){
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
                 $fieldset[$column] = explode(',', $request[$column]);
-                if (isset($data_one)){
+                if (isset($data_one)) {
                     $data_one->whereIn($column, $fieldset[$column]);
                     $number->whereIn($column, $fieldset[$column]);
-                }else{
+                } else {
                     $data_one = Conclusions_industrial_safety::orderby('id')->whereIn($column, $fieldset[$column]);
                     $number = Conclusions_industrial_safety::whereIn($column, $fieldset[$column]);
                 }
