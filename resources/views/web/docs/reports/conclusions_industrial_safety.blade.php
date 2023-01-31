@@ -479,7 +479,6 @@
                     }
                     params[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join(',');
                 }
-                console.log(params)
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -504,7 +503,6 @@
                                                 </div>
                                             </div>`
                         for (var row of res) {
-                            // console.log(row)
                             if (document.getElementById(column + '_includes')) {
                                 var bool = false
                                 for (var one_p of document.getElementById(column + '_includes').getElementsByTagName('p')) {
@@ -547,6 +545,10 @@
                     }
                 } else {
                     field.style.display = 'none'
+                    for (var input of field.getElementsByTagName('input')){
+                        input.setAttribute('disabled', true)
+
+                    }
                 }
             }
         }

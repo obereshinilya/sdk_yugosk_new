@@ -501,6 +501,10 @@
                     }
                 } else {
                     field.style.display = 'none'
+                    for (var input of field.getElementsByTagName('input')){
+                        input.setAttribute('disabled', true)
+
+                    }
                 }
             }
         }
