@@ -11,6 +11,14 @@
     @include('web.include.yugorsk_head')
 </head>
 <style>
+    .map_dot#ug02 {
+        margin-top: 207px;
+        margin-left: 690px;
+    }
+    .map_dot#ug08 {
+        margin-top: 249px;
+        margin-left: 725px;
+    }
     .map_hover_jas {
         bottom: auto;
         border-collapse: collapse;
@@ -127,6 +135,7 @@
                     <a href="#openModal" onclick="window.open_modal_opos(5)" class="map_dot good" id="ug05"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(6)" class="map_dot good" id="ug06"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(7)" class="map_dot good" id="ug07"></a>
+                    <a href="#openModal" onclick="window.open_modal_opos(8)" class="map_dot good" id="ug08"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(9)" class="map_dot good" id="ug09"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(10)" class="map_dot good" id="ug10"></a>
                     <a href="#openModal" onclick="window.open_modal_opos(11)" class="map_dot good" id="ug11"></a>
@@ -241,13 +250,13 @@
     function open_modal_opos(id){
         var opos = new Map([     //массив наименований ОПО по точкам
             [1, 'Харп'],
-            [2, 'Салехард'],
+            [2, 'Лабытнанги'],
             [3, 'Ямбург'],
             [4, 'Пуровская'],
             [5, 'Ныдинская'],
             [6, 'Н. Уренгойская'],
             [7, 'Хасырейская'],
-            [8, 'ЦДКС'],
+            [8, 'Салехард'],
             [9, 'Надымская'],
             [10, 'Пангодинская'],
             [11, 'Правохеттинская'],
@@ -266,8 +275,8 @@
             [24, 'Пунгинская'],
             [25, 'Узюм-Юганская'],
             [26, 'Таежная'],
-            [27, 'Комсомольская'],
-            [28, 'Комсомольская'],
+            [27, 'Ново-Комсомольская'],
+            [28, 'Ужгородская'],
             [29, 'Комсомольская'],
             [30, 'Н.Пелымская'],
             [31, 'Пелымская'],
@@ -276,7 +285,7 @@
             [34, 'Краснотурьинская'],
             [35, 'Карпинская'],
             [36, 'Лялинская'],
-            [37, 'Лялинская'],
+            [37, 'Нижнетуринскя'],
         ])
         document.getElementById('name_opo').textContent = opos.get(id)
         var status = document.getElementById('status')

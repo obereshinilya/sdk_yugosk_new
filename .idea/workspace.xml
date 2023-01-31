@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/ugorsk.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/ugorsk.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/gda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/gda.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +206,7 @@
       <workItem from="1675003450145" duration="52000" />
       <workItem from="1675052290116" duration="7862000" />
       <workItem from="1675147743438" duration="1895000" />
-      <workItem from="1675155017895" duration="1164000" />
+      <workItem from="1675155017895" duration="2036000" />
     </task>
     <servers />
   </component>
