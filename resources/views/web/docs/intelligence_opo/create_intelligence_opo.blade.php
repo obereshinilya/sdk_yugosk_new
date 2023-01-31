@@ -86,7 +86,39 @@
                                     <th style="text-align: center">1.2.</th>
                                     <th style="text-align: left">Типовое наименование (именной код объекта)</th>
                                     <td style="padding: 0px"><select id="type_name" style="height: 100%; width: 98%"
-                                                                     class="select-css">
+                                                                     class="select-css" onchange="
+                                                                 switch (Number(this.value)) {
+                                                                        case 1:
+                                                                        case 2:
+                                                                        case 3:
+                                                                        case 4:
+                                                                        case 8:
+                                                                            document.getElementById('section_number').value=5;
+                                                                            break;
+                                                                        case 5:
+                                                                        case 6:
+                                                                            document.getElementById('section_number').value=8;
+                                                                            break;
+                                                                        case 7:
+                                                                            document.getElementById('section_number').value=15;
+                                                                            break;
+                                                                        case 9:
+                                                                            document.getElementById('section_number').value=7;
+                                                                            break;
+                                                                        case 10:
+                                                                        case 11:
+                                                                        case 13:
+                                                                            document.getElementById('section_number').value=11;
+                                                                            break;
+                                                                        case 12:
+                                                                            document.getElementById('section_number').value=12;
+                                                                            break;
+                                                                        default:
+                                                                            console.log('Неудачно')
+                                                                                       }
+
+">
+                                            <option></option>
                                             @foreach(\App\Models\intelligence_opo_model\opo_parts::orderby('object_list')->get() as $row)
                                                 <option value="{{$row->id_parts}}">{{$row->object_list}}</option>
                                             @endforeach
@@ -99,7 +131,7 @@
                                         принадлежности
                                         (вида деятельности)
                                     </th>
-                                    <td style="padding: 0px"><input type="int" id="section_number"
+                                    <td style="padding: 0px"><input type="number" id="section_number"
                                                                     style="height: 100%; width: 95%"
                                                                     class="text-field__input"></td>
                                 </tr>
@@ -128,6 +160,26 @@
                                     <th style="text-align: center">1.7.</th>
                                     <th style="text-align: left" colspan="2">Собственник ОПО <em>(*указывается
                                             в случае, если заявитель не является собственником ОПО)</em></th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center">1.7.1</th>
+                                    <th style="text-align: left">Полное наименование юридического лица,
+                                        организационно-правовая форма или фамилия, имя, отчество (при наличии)
+                                        индивидуального предпринимателя
+                                    </th>
+                                    <td style="padding: 0px"><input type="text"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input" disabled
+                                                                    value="Публичное Акционерное Общество «Газпром»">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center">1.7.2</th>
+                                    <th style="text-align: left">Идентификационный номер налогоплательщика (ИНН)</th>
+                                    <td style="padding: 0px"><input type="text"
+                                                                    style="height: 100%; width: 95%"
+                                                                    class="text-field__input" disabled
+                                                                    value="7736050003"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">1.8.</th>
@@ -165,7 +217,30 @@
                                         опасных производственных объектов" (далее - Федеральный закон № 116-ФЗ)
                                         в количествах, указанных в приложении 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_1">
+                                    <td style="text-align: center"><input class="check" type="checkbox" onchange="
+                                if(this.checked) {
+                                    switch(Number(document.getElementById('type_name').value)){
+                                    case 1:
+                                    case 2:
+                                        document.getElementById('chk_4_1').setAttribute('checked','true');
+                                        break;
+                                    case 4:
+                                    case 10:
+                                    case 11:
+                                        document.getElementById('chk_4_4').setAttribute('checked','true');
+                                        break;
+                                    }
+                                    }
+                                else {
+                                    if( document.getElementById('chk_4_1').checked) {
+                                        document.getElementById('chk_4_1').removeAttribute('checked')
+                                    }
+                                    if( document.getElementById('chk_4_4').checked) {
+                                        document.getElementById('chk_4_4').removeAttribute('checked')
+                                    }
+                                }
+
+" id="chk_2_1">
                                     </td>
                                 </tr>
                                 <tr>
@@ -178,7 +253,14 @@
                                     <th style="text-align: center"></th>
                                     <th style="text-align: left">а) пара, газа (в газообразном, сжиженном состоянии)
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_1_a">
+                                    <td style="text-align: center"><input class="check" type="checkbox" onchange="
+                                     if(this.checked){
+                                         document.getElementById('chk_4_5').setAttribute('checked','true')
+                                     }
+                                     else {
+                                          document.getElementById('chk_4_5').removeAttribute('checked')
+                                     }
+" id="chk_2_1_a">
                                     </td>
                                 </tr>
                                 <tr>
@@ -203,7 +285,15 @@
                                         механизмов (за исключением лифтов, подъемных платформ для инвалидов),
                                         эскалаторов в метрополитенах, канатных дорог, фуникулеров
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_3">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_3"
+                                                                          onchange="
+                                     if(this.checked){
+                                         document.getElementById('chk_4_6').setAttribute('checked','true')
+                                     }
+                                     else {
+                                          document.getElementById('chk_4_6').removeAttribute('checked')
+                                     }
+">
                                     </td>
                                 </tr>
                                 <tr>
@@ -213,7 +303,8 @@
                                         оборудования, рассчитанного на максимальное количество расплава 500 килограммов
                                         и более
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_4">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_4"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -223,7 +314,8 @@
                                         полезных ископаемых, осуществляемых открытым способом без применения взрывных
                                         работ), работ по обогащению полезных ископаемых
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_5">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_5"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -234,7 +326,8 @@
                                         гореть после его удаления, а также осуществление хранения зерна, продуктов его
                                         переработки и комбикормового сырья, склонных к самосогреванию и самовозгоранию
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_6">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_2_6"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -253,25 +346,42 @@
                                 <tr>
                                     <th style="text-align: center">3.1.</th>
                                     <th style="text-align: left">ОПО чрезвычайно высокой опасности (I класс)</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_1">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_1"
+                                                                          onchange="if(this.checked){document.getElementById('chk_5_1').setAttribute('checked','true')}else{document.getElementById('chk_5_1').removeAttribute('checked')}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">3.2.</th>
                                     <th style="text-align: left">ОПО высокой опасности (II класс)</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_2">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_2"
+                                                                          onchange="if(this.checked){document.getElementById('chk_5_1').setAttribute('checked','true')}else{document.getElementById('chk_5_1').removeAttribute('checked')}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">3.3.</th>
                                     <th style="text-align: left">ОПО средней опасности (III класс)</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_3">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_3"
+                                                                          onchange="if(this.checked){document.getElementById('chk_5_1').setAttribute('checked','true')}else{document.getElementById('chk_5_1').removeAttribute('checked')}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">3.4.</th>
                                     <th style="text-align: left">ОПО низкой опасности (IV класс)</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_4">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_3_4"
+                                                                          onchange="
+                                        if(this.checked) {
+                                            document.getElementById('chk_5_1').setAttribute('disabled','true');
+                                            document.getElementById('chk_5_2').setAttribute('disabled','true');
+                                            document.getElementById('chk_5_3').setAttribute('disabled','true');
+                                        }
+                                        else {
+                                            document.getElementById('chk_5_1').removeAttribute('disabled');
+                                            document.getElementById('chk_5_2').removeAttribute('disabled');
+                                            document.getElementById('chk_5_3').removeAttribute('disabled');
+                                        }
+
+
+">
                                     </td>
                                 </tr>
 
@@ -301,7 +411,8 @@
                                         объектов по уничтожению химического оружия и ОПО спецхимии, указанные в пункте
                                         2 приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_2">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_2"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -310,7 +421,8 @@
                                         газового конденсата, указанные в пункте 3 приложения 2 к Федеральному закону
                                         № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_3">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_3"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -319,7 +431,8 @@
                                         сетей газораспределения и сетей газопотребления, предусмотренные пунктом
                                         4 приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_4">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_4"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -327,7 +440,8 @@
                                     <th style="text-align: left">ОПО, предусмотренные пунктом 5 приложения
                                         2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_5">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_5"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -335,7 +449,8 @@
                                     <th style="text-align: left">ОПО, предусмотренные пунктом 6
                                         приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_6">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_6"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -343,7 +458,8 @@
                                     <th style="text-align: left">ОПО, предусмотренные пунктом 7 приложения
                                         2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_7">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_7"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -351,7 +467,8 @@
                                     <th style="text-align: left">ОПО, предусмотренные пунктом 8 приложения
                                         2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_8">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_8"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -359,7 +476,8 @@
                                     <th style="text-align: left">ОПО, предусмотренные пунктом 9 приложения
                                         2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_9">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_9"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -367,7 +485,8 @@
                                     <th style="text-align: left">Наличие факторов, предусмотренных пунктом
                                         10 приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_10">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_10"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -375,19 +494,22 @@
                                     <th style="text-align: left">Наличие факторов, предусмотренных пунктом
                                         11 приложения 2 к Федеральному закону № 116-ФЗ
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center"></th>
                                     <th style="text-align: left">на землях особо охраняемых природных территорий</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_a">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_a"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center"></th>
                                     <th style="text-align: left">на континентальном шельфе Российской Федерации</th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_b">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_b"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -395,7 +517,8 @@
                                     <th style="text-align: left">во внутренних морских водах, территориальном море или
                                         прилежащей зоне Российской Федерации
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_v">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_11_v"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 <tr>
@@ -403,7 +526,8 @@
                                     <th style="text-align: left">ОПО, аварии на котором могут иметь трансграничное
                                         воздействие
                                     </th>
-                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_12">
+                                    <td style="text-align: center"><input class="check" type="checkbox" id="chk_4_12"
+                                                                          disabled>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -540,7 +664,8 @@
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="full_name_le"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled value="Общество с ограниченной ответственностью «Газпром трансгаз Югорск»
+"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">8.2.</th>
@@ -550,35 +675,40 @@
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="applicants_address"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled
+                                                                    value="86, Тюменская область, Ханты-Мансийский автономный округ - Югра, г. Югорск, ул. Мира, 15">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">8.3.</th>
                                     <th style="text-align: left">Должность руководителя</th>
                                     <td style="padding: 0px"><input type="text" id="head_position"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled
+                                                                    value="Главный инженер – первый заместитель генерального директора ООО «Газпром трансгаз Югорск»">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">8.4.</th>
                                     <th style="text-align: left">Фамилия, имя, отчество (при наличии) руководителя</th>
                                     <td style="padding: 0px"><input type="text" id="surname_head"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled
+                                                                    value="Братков Валерий Борисович"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">8.5.</th>
                                     <th style="text-align: left">Подпись руководителя</th>
                                     <td style="padding: 0px"><input type="text" id="sign"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">8.6.</th>
                                     <th style="text-align: left">Дата подписания руководителем</th>
-                                    <td style="padding: 0px"><input type="date" id="date_signing"
+                                    <td style="padding: 0px"><input type="text" id="date_signing"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -621,7 +751,9 @@
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="name_rostekhnadzor"
                                                                     style="height: 100%; width: 95%"
-                                                                    class="text-field__input"></td>
+                                                                    class="text-field__input" disabled
+                                                                    value="Северо-Уральское управление Федеральной службы по экологическому, технологическому и атомному надзору ">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">9.5.</th>
@@ -629,7 +761,7 @@
                                         органа Ростехнадзора
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="position_person_rostekh"
-                                                                    style="height: 100%; width: 95%"
+                                                                    style="height: 100%; width: 95%" disabled
                                                                     class="text-field__input"></td>
                                 </tr>
                                 <tr>
@@ -638,7 +770,7 @@
                                         лица территориального органа Ростехнадзора
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="full_name_person_rostekh"
-                                                                    style="height: 100%; width: 95%"
+                                                                    style="height: 100%; width: 95%" disabled
                                                                     class="text-field__input"></td>
                                 </tr>
                                 <tr>
@@ -647,7 +779,7 @@
                                         органа Ростехнадзора
                                     </th>
                                     <td style="padding: 0px"><input type="text" id="sign_person_rostekh"
-                                                                    style="height: 100%; width: 95%"
+                                                                    style="height: 100%; width: 95%" disabled
                                                                     class="text-field__input"></td>
                                 </tr>
                                 <tr>
@@ -656,7 +788,7 @@
                                         территориального органа Ростехнадзора
                                     </th>
                                     <td style="padding: 0px"><input type="date" id="date_person_rostekh"
-                                                                    style="height: 100%; width: 95%"
+                                                                    style="height: 100%; width: 95%" disabled
                                                                     class="text-field__input"></td>
                                 </tr>
                                 </tbody>
@@ -676,13 +808,13 @@
             </div>
         </div>
     </div>
-<style>
-    .pdf_i:hover{
-        transform: scale(1.3);
-    }
-</style>
+    <style>
+        .pdf_i:hover {
+            transform: scale(1.3);
+        }
+    </style>
     <script>
-        function add_new_part(){
+        function add_new_part() {
             alert('Добавить сведения возможно только после сохранения записи!')
         }
 
@@ -694,12 +826,12 @@
             });
 
             var params = [
-                 'full_name_opo', 'type_name', 'section_number', 'address_opo', 'oktmo', 'date_commiss',
+                'full_name_opo', 'type_name', 'section_number', 'address_opo', 'oktmo', 'date_commiss',
                 'full_name_legal_entity', 'inn',
                 'full_name_le', 'applicants_address', 'head_position', 'surname_head', 'sign', 'date_signing',
                 'registration_number', 'date_registration', 'date_change', 'name_rostekhnadzor', 'position_person_rostekh',
                 'full_name_person_rostekh', 'sign_person_rostekh', 'date_person_rostekh'];
-            let themes = [ 'chk_2_1_a','chk_2_1',
+            let themes = ['chk_2_1_a', 'chk_2_1',
                 'chk_2_1_b', 'chk_2_1_v', 'chk_2_3', 'chk_2_4', 'chk_2_5', 'chk_2_6', 'chk_3_1', 'chk_3_2', 'chk_3_3', 'chk_3_4',
                 'chk_4_1', 'chk_4_2', 'chk_4_3', 'chk_4_4', 'chk_4_5', 'chk_4_6', 'chk_4_7', 'chk_4_8', 'chk_4_9', 'chk_4_10',
                 'chk_4_11', 'chk_4_11_a', 'chk_4_11_b', 'chk_4_11_v', 'chk_4_12', 'chk_5_1', 'chk_5_2', 'chk_5_3']
