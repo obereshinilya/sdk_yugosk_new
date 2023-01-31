@@ -5084,10 +5084,10 @@
                 <p class="info_name_txt km_117" id="km20"></p>
                 <p class="info_name_txt km_155" id="km21"></p>
                 <p class="info_name_txt km_156" id="km22"></p>
-                <p class="info_name_txt" id="km23">1057.1</p>
+                <p class="info_name_txt" id="km23">502.1</p>
                 <p class="info_name_txt km_138" id="km24"></p>
                 <p class="info_name_txt km_139" id="km25"></p>
-                <p class="info_name_txt km_158" id="km26"></p>
+                <p class="info_name_txt" id="km26"> 496.0</p>
 
                 <p class="info_name_txt km_102" id="km27"></p>
                 <p class="info_name_txt km_85" id="km28"></p>

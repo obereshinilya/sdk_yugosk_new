@@ -3,19 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExcelReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PdfReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Reports/KR_DTOIP.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reports/KR_DTOIP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Plan_of_industrial_safety.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Plan_of_industrial_safety.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/plan_of_industrial_safety_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kr_dtoip.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_kr_dtoip.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_new.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/report_sved_avar_new.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/include/sidebar_doc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/ks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/ks.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/opo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/opo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +204,9 @@
       <workItem from="1674912344733" duration="2382000" />
       <workItem from="1674972802285" duration="15565000" />
       <workItem from="1675003450145" duration="52000" />
-      <workItem from="1675052290116" duration="6061000" />
+      <workItem from="1675052290116" duration="7862000" />
+      <workItem from="1675147743438" duration="1895000" />
+      <workItem from="1675155017895" duration="1164000" />
     </task>
     <servers />
   </component>

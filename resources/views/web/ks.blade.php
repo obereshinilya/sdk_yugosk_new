@@ -1719,7 +1719,7 @@
                                          <p>62</p>
                                      </a>
 
-                                     <a href="#openModalInfo" class="info_checker kc_blue tb_190" onclick="update_modal_tb_kc(190)" id="kc6b3" title="ГПА-63" style="transform: scale(-1,1)">
+                                     <a href="#openModalInfo" class="info_checker kc_blue tb_191" onclick="update_modal_tb_kc(191)" id="kc6b3" title="ГПА-63" style="transform: scale(-1,1)">
                                          <svg version="1.1" id="Layer_kc_blue" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 16.4" style="enable-background:new 0 0 32 16.4" xml:space="preserve"><style type="text/css">.st0{fill:#c0cbcd}.st1{fill:#adb9bc}</style><rect class="blue_rect" x="5.3" y="1.8" width="21.4" height="12.8"/><path class="st0" d="M1.3,15.4H1.2c-0.7,0-1.2-0.5-1.2-1.2l0-12C0,1.5,0.5,1,1.2,1h0.1C2,1,2.5,1.5,2.5,2.2v12
                            C2.5,14.9,2,15.4,1.3,15.4z M32,14.2v-12C32,1.5,31.5,1,30.8,1h-0.1c-0.7,0-1.2,0.5-1.2,1.2v12c0,0.7,0.5,1.2,1.2,1.2h0.1
                            C31.5,15.4,32,14.9,32,14.2z"/><path class="st1" d="M4.1,16.4H3.7c-0.7,0-1.2-0.5-1.2-1.2v-14C2.5,0.5,3,0,3.7,0l0.4,0c0.7,0,1.2,0.5,1.2,1.2v14
