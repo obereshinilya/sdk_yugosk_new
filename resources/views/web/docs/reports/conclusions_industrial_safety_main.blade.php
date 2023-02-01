@@ -473,7 +473,7 @@
                                                     <a
                                                         onclick="get_data()"
                                                         style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a
+                                                    <a class="on_off_btn"
                                                         onclick="checked('fieldsheet_${column}')"
                                                         style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
                                                 </div>
@@ -501,9 +501,9 @@
                     }
                 } else {
                     field.style.display = 'none'
+                    field.getElementsByClassName('on_off_btn')[0].onclick = ''
                     for (var input of field.getElementsByTagName('input')){
                         input.setAttribute('disabled', true)
-
                     }
                 }
             }

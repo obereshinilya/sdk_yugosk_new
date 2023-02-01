@@ -48,10 +48,10 @@
                         <th onclick="sorted_table(1, this)" style="width: 5%">Номер
                             <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
                         </th>
-                        <th onclick="sorted_table(2, this)" style="width: 18.5%">Наименование филиала ДО
+                        <th onclick="sorted_table(2, this)" style="width: 15.5%">Наименование филиала ДО
                             <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
                         </th>
-                        <th onclick="sorted_table(3, this)" style="width: 22.5%">Наименование ОПО
+                        <th onclick="sorted_table(3, this)" style="width: 15.5%">Наименование ОПО
                             <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
                         </th>
                         <th onclick="sorted_table(4, this)" style="width: 10%">Дата регистрации
@@ -63,7 +63,10 @@
                         <th onclick="sorted_table(6, this)" style="width: 8%">Рег. №
                             <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
                         </th>
-                        <th onclick="sorted_table(7, this)" style="width: 6%">Состояние
+                        <th onclick="sorted_table(7, this)" style="width: 8%">Класс опасности
+                            <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
+                        </th>
+                        <th onclick="sorted_table(8, this)" style="width: 10%">Состояние
                             <img class="img" style="display: none" alt="" src="{{asset('assets/images/icons/arrow_bottom.svg')}}">
                         </th>
                         @can('entries-edit')
@@ -81,6 +84,7 @@
                             <td style="text-align: center" class="name_event">{{ date('m.d.Y', strtotime($row->registration_date)) }}</td>
                             <td style="text-align: center">{{ $row->region_opo }}</td>
                             <td style="text-align: center" class="name_event">{{ $row->reg_num }}</td>
+                            <td style="text-align: center">{{ $row->hazard_class }}</td>
                             <td style="text-align: center">{{ $row->descstatus }}</td>
                             @can('entries-edit')
                                 <td class="centered" style="text-align: center">

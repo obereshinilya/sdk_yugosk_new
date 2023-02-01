@@ -14,7 +14,7 @@ class UploadFilesController extends Controller
     public function show_excel()
     {
         AdminController::log_record('Открыл журнал СтатусГТЮ');//пишем в журнал
-        $pdf_files = ExcelFiles::all();
+        $pdf_files = ExcelFiles::orderbydesc('date')->get();
         $date = false;
         $message = '';
         foreach ($pdf_files as $key => $row) {

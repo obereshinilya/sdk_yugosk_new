@@ -81,7 +81,7 @@ class OpoController extends Controller
         return RefTb::wherein('id_tb', [5, 6, 25, 26, 43, 42, 60, 59, 77, 78, 94, 95])->join('public.typestatus', 'public.ref_tb.id_status','=' ,  'public.typestatus.id_status')->orderby('id_tb')->select('id_tb', 'class')->get();
     }
     public function get_status_do(){
-        return DB::table('public.ref_do')->
+        return DB::table('public.ref_do')->where('id_do', '=', 1)->
         join('public.typestatus', 'public.ref_do.id_status','=' ,  'public.typestatus.id_status')->
         get()->first()->class;
     }
