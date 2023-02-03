@@ -11,7 +11,7 @@ class TagTable extends Model
     public $primaryKey = 'id_tb';
 
     protected $fillable = [
-       'id_tb', 'tag_p_in', 'tag_p_out', 'tag_t_in', 'tag_t_out', 'status_kran', 'typetb', 'tag_for_gpa'
+       'id_tb', 'tag_p_in', 'tag_p_out', 'tag_t_in', 'tag_t_out', 'status_kran', 'typetb', 'tag_for_gpa', 'gpa_mode_tag'
     ];
 
 

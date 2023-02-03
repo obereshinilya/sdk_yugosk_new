@@ -177,6 +177,7 @@ class OpoController extends Controller
         $comment_rows['tech_obv']['n_w']['desc'] = 'Общее количество дефектов в работоспособном состоянии';
         $comment_rows['tech_obv']['n_lim']['desc'] = 'Общее количество дефектов в предельном состоянии';
 //        //ГПА
+        $comment_rows['gpa']['mode']['desc'] = 'Режим работы ГПА';
         $comment_rows['gpa']['p_w']['desc'] = 'Разрешенное рабочее давление (кгс/см²)';
         $comment_rows['gpa']['p_in']['desc'] = 'Давление на входе ГПА (кгс/см²)';
         $comment_rows['gpa']['p_out']['desc'] = 'Давление на выходе ГПА (кгс/см²)';

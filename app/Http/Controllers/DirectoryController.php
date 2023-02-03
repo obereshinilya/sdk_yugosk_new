@@ -21,6 +21,7 @@ use App\Models\Main_models\TechObv;
 use App\Models\Main_models\TypeTb;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class DirectoryController extends Controller
 {
@@ -448,8 +449,10 @@ class DirectoryController extends Controller
                 $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
                 $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
                 $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
+                $to_tag_name['gpa_mode_tag'] = $record_data['gpa_mode_tag'];
                 unset($record_data['status_kran']);
                 unset($record_data['tag_p_in']);
+                unset($record_data['gpa_mode_tag']);
                 unset($record_data['tag_p_out']);
                 unset($record_data['tag_t_in']);
                 unset($record_data['tag_t_out']);
@@ -770,6 +773,9 @@ class DirectoryController extends Controller
             $data_to_table[9]['text'] = 'Температура на выходе (тег)';
             $data_to_table[9]['id'] = 'tag_t_out';
             $data_to_table[9]['type'] = 'text';
+            $data_to_table[10]['text'] = 'Режим работы ГПА (тег)';
+            $data_to_table[10]['id'] = 'gpa_mode_tag';
+            $data_to_table[10]['type'] = 'text';
         } elseif ($type_tb == 4) { //если тех обвязка
             $data_to_table[3]['text'] = 'Разрешенное рабочее давление (кгс/см2)';
             $data_to_table[3]['id'] = 'p_w';
@@ -1022,13 +1028,13 @@ class DirectoryController extends Controller
                 $to_tag_name['tag_p_in'] = $record_data['tag_p_in'];
                 $to_tag_name['tag_p_out'] = $record_data['tag_p_out'];
                 $to_tag_name['tag_t_in'] = $record_data['tag_t_in'];
-                $to_tag_name['tag_t_out'] = $record_data['tag_t_out'];
+                $to_tag_name['gpa_mode_tag'] = $record_data['gpa_mode_tag'];
                 $to_tag_name['typetb'] = $type_tb;
                 unset($record_data['tag_for_gpa']);
                 unset($record_data['tag_p_in']);
+                unset($record_data['gpa_mode_tag']);
                 unset($record_data['tag_p_out']);
                 unset($record_data['tag_t_in']);
-                unset($record_data['tag_t_out']);
                 TagTable::create($to_tag_name);
                 GPA::create($record_data);
                 AdminController::log_record('Добавил ТБ ' . $to_ref_tb['short_name_tb']);//пишем в журнал

@@ -142,6 +142,12 @@
                                                                     class="text-field__input" value="{{$data_tb->tag_t_out}}">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th style="text-align: center">Режим работы ГПА (тег)</th>
+                                    <td style="padding: 0px"><input id="gpa_mode_tag" type="text"  style="height: 100%; width: 95%"
+                                                                    class="text-field__input" value="{{$data_tb->gpa_mode_tag}}">
+                                    </td>
+                                </tr>
 
                                 </tbody>
                             </table>
@@ -258,7 +264,7 @@
                 }
             });
 
-            var params = ['full_name_tb', 'short_name_tb', 'guid_tb', 'p_w', 'date_end', 'tag_t_in', 'tag_t_out', 'tag_p_in', 'tag_p_out', 'id_status', 'status_kran']
+            var params = ['full_name_tb', 'short_name_tb', 'guid_tb', 'p_w', 'date_end', 'tag_t_in', 'tag_t_out', 'tag_p_in', 'tag_p_out', 'id_status', 'status_kran', 'gpa_mode_tag']
             var out_data = []
             for (var param of params) {
                 out_data[param] = document.getElementById(param).value

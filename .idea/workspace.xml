@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d79f799a-d62c-4574-8160-484ef58df8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoOPO/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoOPO/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/reports/conclusions_industrial_safety_main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Main_models/TagTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main_models/TagTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_gpa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/docs/infoTB/edit_gpa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +208,9 @@
       <workItem from="1675003450145" duration="52000" />
       <workItem from="1675052290116" duration="7862000" />
       <workItem from="1675147743438" duration="1895000" />
-      <workItem from="1675155017895" duration="4931000" />
+      <workItem from="1675155017895" duration="4972000" />
+      <workItem from="1675237797113" duration="36000" />
+      <workItem from="1675241434449" duration="3028000" />
     </task>
     <servers />
   </component>
