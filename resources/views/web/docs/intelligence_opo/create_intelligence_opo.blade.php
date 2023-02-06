@@ -78,14 +78,14 @@
                                 <tr>
                                     <th style="text-align: center">1.1.</th>
                                     <th style="text-align: left">Полное наименование ОПО</th>
-                                    <td style="padding: 0px"><input type="text" id="full_name_opo"
+                                    <td style="padding: 0px"><input type="text"  id="full_name_opo"
                                                                     style="height: 100%; width: 95%"
                                                                     class="text-field__input"></td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">1.2.</th>
                                     <th style="text-align: left">Типовое наименование (именной код объекта)</th>
-                                    <td style="padding: 0px"><select id="type_name" style="height: 100%; width: 98%"
+                                    <td style="padding: 0px"><select id="type_name"  style="height: 100%; width: 98%"
                                                                      class="select-css" onchange="
                                                                  switch (Number(this.value)) {
                                                                         case 1:
@@ -848,6 +848,7 @@
                     out_data[theme] = 0
                 }
             }
+            if (document.getElementById("type_name").value) {
             $.ajax({
                 url: '/docs/intelligence_opo/save',
                 type: 'POST',
@@ -858,6 +859,10 @@
                     window.location.href = '/docs/opo'
                 }
             })
+            }
+            else {
+                alert('Заполните поле : Типовое наименование (именной код объекта)')
+            }
         }
     </script>
 
