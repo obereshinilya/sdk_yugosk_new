@@ -789,9 +789,106 @@
                             tr.innerHTML += `<td style="text-align: center">${i}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['name_part']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['desc']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_thing']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['desc_tech']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['class_hazard']}</td>`
+                            let str = '';
+                            if (row['name_tu'].split(',!').length > 2) {
+                                for (var j = 0; j < row['name_tu'].split(',!').length - 1; j++) {
+                                    str += `${row['name_tu'].split(',!')[j]} <br>`
+                                    if (row['st_num'].split(',!')[j]) {
+                                        str += `ст. № ${row['st_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['zav_num'].split(',!')[j]) {
+                                        str += ` Зав № ${row['zav_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['reg_num'].split(',!')[j]) {
+                                        str += `  Рег № ${row['reg_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['inv_num'].split(',!')[j]) {
+                                        str += `Инв № ${row['inv_num'].split(',!')[j]} <br>`
+                                    }
+                                }
+                            } else {
+                                str += `${row['name_tu'].split(',!')[0]} <br>`
+                                if (row['st_num'].split(',!')[0]) {
+                                    str += `ст. № ${row['st_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['zav_num'].split(',!')[0]) {
+                                    str += ` Зав № ${row['zav_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['reg_num'].split(',!')[0]) {
+                                    str += `  Рег № ${row['reg_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['inv_num'].split(',!')[0]) {
+                                    str += `Инв № ${row['inv_num'].split(',!')[0]} <br>`
+                                }
+                            }
+                            if (row['name_dangerous_subst']) {
+                                if (row['name_dangerous_subst'].split(',!').length > 2) {
+                                    for (j = 0; j < row['name_dangerous_subst'].split(',!').length - 1; j++) {
+                                        str += `${row['name_dangerous_subst'].split(',!')[j]} <br>`
+                                    }
+                                } else {
+                                    str += `${row['name_dangerous_subst'].split(',!')[0]} <br>`
+                                }
+                            }
+                            tr.innerHTML += `<td style="text-align: center">${str}</td>`
+                            str = '';
+                            if (row['dn']) {
+                                str += `DN = ${row['dn']} мм. <br>`
+                            }
+                            if (row['pn']) {
+                                str += `PN = ${row['pn']} МПа. <br>`
+                            }
+                            if (row['l']) {
+                                str += `L = ${row['l']} км. <br>`
+                            }
+                            if (row['v']) {
+                                str += `V = ${row['v']} м3 <br>`
+                            }
+                            if (row['n']) {
+                                str += `N = ${row['n']} МВт. <br>`
+                            }
+                            if (row['q']) {
+                                str += `Q = ${row['q']} <span>млн. м<sup>3</sup>/сут.</span> <br>`
+                            }
+                            if (row['pn_in']) {
+                                str += `PN вх. = ${row['pn_in']} МПа. <br>`
+                            }
+                            if (row['pn_out']) {
+                                str += `PN вых. = ${row['pn_out']} МПа. <br>`
+                            }
+                            if (row['capacity']) {
+                                str += `Грузоподъемность - ${row['capacity']} т. <br>`
+                            }
+                            if (row['pn_gas']) {
+                                str += `PN газа = ${row['pn_gas']} МПа. <br>`
+                            }
+                            if (row['pn_water']) {
+                                str += `PN воды = ${row['pn_water']} МПа. <br>`
+                            }
+                            if (row['therm']) {
+                                str += `Теплопроизводительн. - ${row['therm']} Гкал/час. <br>`
+                            }
+                            if (row['t_max']) {
+                                str += `T макс. вых = ${row['t_max']} ºС. <br>`
+                            }
+                            if (row['flow_consump']) {
+                                str += `Расход топлива - ${row['flow_consump']} <span> м<sup>3</sup>/час</span>. <br>`
+                            }
+                            str += `Год изготовления - ${row['year_manufacture']} г. <br>`;
+                            str += `Год ввода в эксплуатацию - ${row['year_commis']} г. <br>`;
+                            if (row['name_dangerous_subst']) {
+                                str += 'Опасное вещество: <br>';
+                                if (row['name_dangerous_subst'].split(',!').length > 2) {
+                                    for (j = 0; j < row['name_dangerous_subst'].split(',!').length - 1; j++) {
+                                        str += `${row['name_dangerous_subst'].split(',!')[j]} - ${row['count_dangerous_subst'].split(',!')[j]} т.  <br>`
+
+                                    }
+                                } else {
+                                    str += `${row['name_dangerous_subst'].split(',!')[0]} - ${row['count_dangerous_subst'].split(',!')[0]} т. <br>`
+                                }
+                            }
+                            tr.innerHTML += `<td style="text-align: center">${str}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['signs_danger']}</td>`
                             tbody.appendChild(tr)
                             i++
                         }
