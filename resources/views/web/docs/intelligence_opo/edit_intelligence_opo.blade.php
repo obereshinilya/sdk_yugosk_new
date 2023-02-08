@@ -902,7 +902,7 @@
                         input.classList.add('reg_num');
                         break;
                     case 'зав. №':
-                        input.classList.add('zav_mum');
+                        input.classList.add('zav_num');
                         break;
                     case 'инв. №':
                         input.classList.add('inv_num');
@@ -996,6 +996,7 @@
                             break;
                         case 'Используются стационарно установленные грузоподъемные механизмы':
                             document.getElementById('signs_danger').textContent=2.3;
+                            document.getElementById('haz_names').style.display = 'none';
                             break;
                     }
 " style="width: 100%">
