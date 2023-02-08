@@ -891,7 +891,23 @@
                 input.style.marginBottom = '6px'
                 input.type = 'text';
                 input.classList.add('text-field__input');
-                input.classList.add('name_tu');
+                switch (a) {
+                    case 'Наименование технического устройства':
+                        input.classList.add('name_tu');
+                        break;
+                    case 'ст. №':
+                        input.classList.add('st_mum');
+                        break;
+                    case 'рег. №':
+                        input.classList.add('reg_num');
+                        break;
+                    case 'зав. №':
+                        input.classList.add('zav_mum');
+                        break;
+                    case 'инв. №':
+                        input.classList.add('inv_num');
+                        break;
+                }
                 input.style.width = '85%';
                 body.append(label);
                 body.append(input);
