@@ -614,10 +614,10 @@
                             <table>
                                 <col style="width: 5%">
                                 <col style="width: 20%">
-                                <col style="width: 18%">
-                                <col style="width: 16%">
-                                <col style="width: 17%">
-                                <col style="width: 16%">
+                                <col style="width: 22%">
+                                <col style="width: 20%">
+                                <col style="width: 21%">
+                                <col style="width: 5%">
                                 <col style="width: 7%">
                                 <thead>
                                 <tr>
@@ -634,9 +634,25 @@
                                     <th>Наименование площадки, участка, цеха, здания, сооружения, входящих в состав
                                         ОПО
                                     </th>
-                                    <th>Краткая характеристика опасности</th>
-                                    <th>Наименование опасного вещества</th>
-                                    <th>Проектные (эксплуатационные) характеристики технических устройств</th>
+                                    <th>Краткая характеристика опасности в соответствии с приложением 1
+                                        к Федеральному закону № 116-ФЗ
+                                    </th>
+                                    <th>Наименование опасного вещества. наименование, тип. марка, модель (при наличии),
+                                        регистрационные или учётные номера (для подъёмных сооружений и оборудования,
+                                        работающего под давлением, подлежащего учёту в регистрирующем органе (при
+                                        наличии)), заводские номера и (или) инвентарные номера (при наличии) технических
+                                        устройств
+                                    </th>
+                                    <th>Проектные (эксплуатационные) характеристики технических устройств (объем,
+                                        температура, давление в МПа, грузоподъёмность в тоннах), опасного вещества (вид
+                                        в соответствии с таблицами 1 и 2 приложения 2 к Федеральному закону № 116-ФЗ,
+                                        характеристика, количество опасного вещества, выраженное в тоннах
+                                        регламентированного объемом резервуаров, емкостей и параметрами трубопроводов
+                                        (диаметр, протяжённость, проектное давление) или иного оборудования, процентное
+                                        содержание сероводорода в добываемой продукции, объем выплавки и объем горных
+                                        работ). Год изготовления и ввода в эксплуатацию технических устройств, зданий
+                                        (сооружений)
+                                    </th>
                                     <th>Числовое обозначение признака опасности</th>
                                     @can('entries-edit')
                                         <th></th>
@@ -862,22 +878,207 @@
             get_parts()
         })
 
+        function add_tu() {
+            let body = document.getElementById('tu_block');
+            let arr = ['Наименование технического устройства', 'ст. №', 'рег. №', 'зав. №', 'инв. №']
+            let input, label;
+            for (let a of arr) {
+                label = document.createElement('label');
+                label.style.display = 'flex';
+                label.style.marginBottom = '2%';
+                label.textContent = a
+                input = document.createElement('input');
+                input.style.marginBottom = '6px'
+                input.type = 'text';
+                input.classList.add('text-field__input');
+                switch (a) {
+                    case 'Наименование технического устройства':
+                        input.classList.add('name_tu');
+                        break;
+                    case 'ст. №':
+                        input.classList.add('st_mum');
+                        break;
+                    case 'рег. №':
+                        input.classList.add('reg_num');
+                        break;
+                    case 'зав. №':
+                        input.classList.add('zav_num');
+                        break;
+                    case 'инв. №':
+                        input.classList.add('inv_num');
+                        break;
+                }
+                input.style.width = '85%';
+                body.append(label);
+                body.append(input);
+            }
+        }
+
+        function type_tu(el) {
+            const arr = el.value.toLowerCase().split(' ');
+            if (arr.includes('газопровод') || arr.includes('трубопровод')) {
+                document.getElementById('dn_block').style.display = 'flex';
+                document.getElementById('pn_block').style.display = 'flex';
+                document.getElementById('l_block').style.display = 'flex';
+            } else {
+                if (arr.includes('пылеуловители') || arr.includes('газосепараторы') || arr.includes('адсорберы') || arr.includes('ёмкость') || arr.includes('емкость') || arr.includes('скруббер') || arr.includes('аккумулятор') || arr.includes('резервуар')) {
+                    document.getElementById('pn_block').style.display = 'flex';
+                    document.getElementById('v_block').style.display = 'flex';
+                } else {
+                    if (arr.includes('подогреватель') || arr.includes('аво')) {
+                        document.getElementById('pn_block').style.display = 'flex';
+                    } else {
+                        if (arr.includes('газоперекачивающий')) {
+                            document.getElementById('n_block').style.display = 'flex';
+                            document.getElementById('q_block').style.display = 'flex';
+                            document.getElementById('pn_in_block').style.display = 'flex';
+                            document.getElementById('pn_out_block').style.display = 'flex';
+                            document.getElementById('haz_names').style.display = 'none';
+                        } else {
+                            if (arr.includes('кран') || arr.includes('таль') || arr.includes('тельфер.')) {
+                                document.getElementById('capacity_block').style.display = 'flex';
+                                document.getElementById('haz_names').style.display = 'none';
+                            } else {
+                                if (arr.includes('котельная')) {
+                                    document.getElementById('pn_gas_block').style.display = 'flex';
+                                    document.getElementById('pn_water_block').style.display = 'flex';
+                                    document.getElementById('therm_block').style.display = 'flex';
+                                    document.getElementById('t_max_block').style.display = 'flex';
+                                    document.getElementById('flow_block').style.display = 'flex';
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function check_haz(el) {
+            if (el.checked) {
+                if (!document.getElementById('tu').value.toLowerCase().split(' ').includes('газоперекачивающий') &&
+                    !document.getElementById('tu').value.toLowerCase().split(' ').includes('привод') &&
+                    !document.getElementById('tu').value.toLowerCase().split(' ').includes('нагнетатель') &&
+                    !document.getElementById('tu').value.toLowerCase().split(' ').includes('кран') &&
+                    !document.getElementById('tu').value.toLowerCase().split(' ').includes('таль') &&
+                    !document.getElementById('tu').value.toLowerCase().split(' ').includes('тельфер.')) {
+                    create_haz_thing(el);
+                }
+            } else {
+                document.querySelector(`[aria-label='${el.value}']`).remove()
+            }
+        }
+
+        function create_haz_thing(el) {
+            document.getElementById('haz_thing').style.display = 'block';
+            document.getElementById('haz_things').innerHTML += `<span style="display: flex; justify-content: space-between; align-items: center;" aria-label="${el.value}"><label>${el.value}</label><input type='number' class="text-field__input count_dangerous_subst" style="width: 30%"> т.</span>`;
+        }
+
         function add_new_part() {
+            let i = 1;
             var tbody = document.getElementById('tbody_part')
             tbody.innerHTML = ''
             var tr = document.createElement('tr')
             tr.id = 'new_tr'
-            tr.innerHTML += `<td></td>`
-            tr.innerHTML += `<td class="name_part" contenteditable="true"></td>`
-            tr.innerHTML += `<td class="desc" contenteditable="true"></td>`
-            tr.innerHTML += `<td class="name_thing" contenteditable="true"></td>`
-            tr.innerHTML += `<td class="desc_tech" contenteditable="true"></td>`
-            tr.innerHTML += `<td class="class_hazard" contenteditable="true"></td>`
+            tr.innerHTML += `<td>${i}</td>`
+            tr.innerHTML += `<td class="name_part" id='name_part' contenteditable="true"></td>`
+            tr.innerHTML += `<td class="desc" contenteditable="true"><select class="select-css" id='desc' onchange="
+                    switch (this.value) {
+                    case 'Транспортируются опасные вещества':
+                        case 'Используются опасные вещества' :
+                        case 'Хранятся опасные вещества' :
+                            document.getElementById('signs_danger').textContent=2.1;
+                            break;
+                        case 'Транспортируются опасные вещества; Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля':
+                            document.getElementById('signs_danger').textContent='2.1 2.2';
+                            break;
+                        case 'Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля':
+                            document.getElementById('signs_danger').textContent=2.2;
+                            break;
+                        case 'Используются стационарно установленные грузоподъемные механизмы':
+                            document.getElementById('signs_danger').textContent=2.3;
+                            document.getElementById('haz_names').style.display = 'none';
+                            break;
+                    }
+" style="width: 100%">
+                               <option value=''></option>
+                <option value='Транспортируются опасные вещества'>Транспортируются опасные вещества  </option>
+                <option value='Используются опасные вещества'>Используются опасные вещества </option>
+                <option value='Хранятся опасные вещества'>Хранятся опасные вещества   </option>
+                <option value='Транспортируются опасные вещества; Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля'>Транспортируются опасные вещества; Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля   </option>
+                <option value='Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля'>Используется оборудование, работающее под избыточным давлением более 0,07 мегапаскаля   </option>
+                <option value='Используются стационарно установленные грузоподъемные механизмы'>Используются стационарно установленные грузоподъемные механизмы  </option>
+</select></td>`
+            tr.innerHTML += `<td class="name_thing">
+    <div class="tu" id="tu_block">
+        <label style="display: flex; margin-bottom: 2%"> Наименование технического устройства:</label>
+            <input type="text" class="text-field__input name_tu" id='tu' style="width: 85%; margin-bottom: 6px" onblur="type_tu(this)">
+        <label style="display: flex; margin-bottom: 2%"> ст. №</label>
+            <input type="text" class="text-field__input st_num" style="width: 85%; margin-bottom: 6px">
+        <label style="display: flex; margin-bottom: 2%"> рег. №</label>
+            <input type="text" class="text-field__input zav_num" style="width: 85%; margin-bottom: 6px">
+        <label style="display: flex; margin-bottom: 2%"> зав. №</label>
+            <input type="text" class="text-field__input reg_num" style="width: 85%; margin-bottom: 6px">
+        <label style="display: flex; margin-bottom: 2%"> инв. №</label>
+            <input type="text" class="text-field__input inv_num" style="width: 85%; margin-bottom: 6px">
+    </div>
+        <button onclick="add_tu()" style="background-color: #49ce56; color: white; margin-bottom: 5px" class="btn";>Добавить устройство</button>
+
+
+    <div id='haz_names'>
+        <label style="font-size: medium; display: flex; margin-bottom: 3%">Наименование опасного вещества:</label>
+            <div style="display:flex; flex-direction: column;">
+                <span><label>Природный газ</label><input class="check name_dangerous_subst" onchange="check_haz(this)" style="float:right" type="checkbox" value="Природный газ"></span>
+                <span><label>Масло</label> <input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Масло"></span>
+                <span><label>Пропан</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Пропан"></span>
+                <span><label>Кислород</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Кислород"></span>
+                <span><label>Одорант</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Одорант"></span>
+                <span><label>Диэтиленгликоль</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Диэтиленгликоль"></span>
+                <span><label>Конденсат</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Конденсат"></span>
+                <span><label>Метанол</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Метанол"></span>
+                <span><label>Дизельное топливо</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Дизельное топливо"></span>
+                <span><label>Бензин</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Бензин"></span>
+                <span><label>Керосин</label><input class="check name_dangerous_subst" style="float:right" onchange="check_haz(this)" type="checkbox" value="Керосин"></span>
+            </div>
+    </div>
+</td>`
+            tr.innerHTML += `<td class="desc_tech">
+<div id='desc_tech'>
+<span style='display:none;justify-content: space-between; align-items: center;' id='dn_block'><label style="margin-right: 5px">DN = </label> <input type='number' id='dn' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   мм </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='pn_block'><label style="margin-right: 5px">PN = </label> <input type='number' id='pn' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   МПа </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='l_block'><label style="margin-right: 5px">L = </label> <input type='number' id='l' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   км </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='v_block'><label style="margin-right: 5px">V = </label> <input type='number' id='v' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   м3 </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='n_block'><label style="margin-right: 5px">N = </label> <input type='number' id='n' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   МВт </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='q_block'><label style="margin-right: 5px">Q = </label> <input type='number' id='q' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%"> <span>   млн. м<sup>3</sup>/сут</span> </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='pn_in_block'><label style="margin-right: 5px">PN вх = </label> <input type='number' id='pn_in' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   МПа </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='pn_out_block'><label style="margin-right: 5px">PN вых = </label> <input type='number' id='pn_out' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   МПа </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='capacity_block'><label style="margin-right: 5px">Грузоподъемность </label> <input type='text' id='capacity' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   т. </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='pn_gas_block'><label style="margin-right: 5px">PN газа </label> <input type='number' id='pn_gas' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   МПа </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='pn_water_block'><label style="margin-right: 5px">PN воды </label> <input type='number' id='pn_water' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   Мпа </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='therm_block'><label style="margin-right: 5px">Теплопроизводительн. </label> <input type='number' id='therm' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%"> Гкал/час</span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='t_max_block'><label style="margin-right: 5px">Т макс. вых. </label> <input type='number' id='t_max' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">   ºС </span>
+<span style='display:none;justify-content: space-between; align-items: center;' id='flow_block'><label style="margin-right: 5px">Расход топлива  </label> <input type='number' id='fuel_consump' class="text-field__input" min='0' style="padding: 0.3rem;height: 1em; margin: 0 5px 5px 0; width: 25%">  <span> м<sup>3</sup>/час</span> </span>
+</div>
+<span>
+<label style="display: flex; margin-bottom: 2%" >Год изготовления:</label>
+<input type='number' class="text-field__input" id='year_manufacture' style="width:85%; margin-bottom: 6px" step='1' min='1970' max='2030'>
+</span>
+<span>
+<label style="display: flex; margin-bottom: 2%">Год ввода в эксплуатацию:</label>
+<input type='number' class="text-field__input" id='year_commis' style="width:85%; margin-bottom: 6px" step='1' min='1970' max='2030'>
+</span>
+<div id='haz_thing' style="display: none">
+  <label>Опасное вещество:</label>
+    <div id='haz_things' style="display: flex; flex-direction: column"> </div>
+</div>
+
+</td>`
+            tr.innerHTML += `<td class="class_hazard" id='signs_danger' style="text-align: center"></td>`
             tr.innerHTML += `<td>
-                <img style="height: 20px" src="{{ asset('assets/images/icons/check.svg') }}" onclick="save_part()" class="pdf_i">
+                <img style="height: 20px" src="{{ asset('assets/images/icons/check.svg') }}" onclick="save_part()" id="save_parts" class="pdf_i">
                 <img style="height: 20px; margin-left: 10px" src="{{ asset('assets/images/icons/close.svg') }}" onclick="get_parts()" class="pdf_i">
             </td>`
             tbody.appendChild(tr)
+            i++
         }
 
         function save_part() {
@@ -888,17 +1089,34 @@
             });
             var out_data = []
             out_data['id_opo_from_list'] = '{{$data->id_add_info_opo}}'
-            var tds = document.getElementById('new_tr').getElementsByTagName('td')
-            for (var td of tds) {
-                if (td.className) {
-                    out_data[td.className] = td.textContent
-                }
+            out_data['name_part'] = document.getElementById('name_part').textContent;
+            out_data['signs_danger'] = document.getElementById('signs_danger').textContent;
+            let params_id = ['desc', 'dn', 'pn', 'l', 'v', 'n', 'q', 'pn_in', 'pn_out', 'capacity', 'pn_gas', 'pn_water', 'therm', 't_max', 'fuel_consump', 'year_manufacture', 'year_commis']
+            let params_class = ['name_tu', 'st_num', 'zav_num', 'reg_num', 'inv_num', 'name_dangerous_subst', 'count_dangerous_subst']
+            let str = '';
+            for (let param of params_id) {
+                out_data[param] = document.getElementById(param).value;
             }
+            for (let param of params_class) {
+                str = ''
+                document.querySelectorAll('.' + param).forEach((el) => {
+                    if (param != 'name_dangerous_subst') {
+                        str += el.value + ',!';
+                    } else {
+                        if (el.checked) {
+                            str += el.value + ',!';
+                        }
+                    }
+                });
+                out_data[param] = str;
+            }
+            // console.log(out_data);
             $.ajax({
                 url: '/docs/intelligence_opo/save_part',
                 type: 'POST',
                 data: {keys: JSON.stringify(Object.keys(out_data)), values: JSON.stringify(Object.values(out_data))},
                 success: (res) => {
+                    console.log('успешно')
                     // console.log(res)
                     get_parts()
                 }
@@ -918,13 +1136,110 @@
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center">${i}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['name_part']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['desc']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_thing']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['desc_tech']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['class_hazard']}</td>`
+                            tr.innerHTML += `<td style="text-align: center"> ${row['desc']}</td>`
+                            let str = '';
+                            if (row['name_tu'].split(',!').length > 2) {
+                                for (var j = 0; j < row['name_tu'].split(',!').length - 1; j++) {
+                                    str += `${row['name_tu'].split(',!')[j]} <br>`
+                                    if (row['st_num'].split(',!')[j]) {
+                                        str += `ст. № ${row['st_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['zav_num'].split(',!')[j]) {
+                                        str += ` Зав № ${row['zav_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['reg_num'].split(',!')[j]) {
+                                        str += `  Рег № ${row['reg_num'].split(',!')[j]} <br>`
+                                    }
+                                    if (row['inv_num'].split(',!')[j]) {
+                                        str += `Инв № ${row['inv_num'].split(',!')[j]} <br>`
+                                    }
+                                }
+                            } else {
+                                str += `${row['name_tu'].split(',!')[0]} <br>`
+                                if (row['st_num'].split(',!')[0]) {
+                                    str += `ст. № ${row['st_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['zav_num'].split(',!')[0]) {
+                                    str += ` Зав № ${row['zav_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['reg_num'].split(',!')[0]) {
+                                    str += `  Рег № ${row['reg_num'].split(',!')[0]} <br>`
+                                }
+                                if (row['inv_num'].split(',!')[0]) {
+                                    str += `Инв № ${row['inv_num'].split(',!')[0]} <br>`
+                                }
+                            }
+                            if (row['name_dangerous_subst']) {
+                                if (row['name_dangerous_subst'].split(',!').length > 2) {
+                                    for (j = 0; j < row['name_dangerous_subst'].split(',!').length - 1; j++) {
+                                        str += `${row['name_dangerous_subst'].split(',!')[j]} <br>`
+                                    }
+                                } else {
+                                    str += `${row['name_dangerous_subst'].split(',!')[0]} <br>`
+                                }
+                            }
+                            tr.innerHTML += `<td style="text-align: center">${str}</td>`
+                            str = '';
+                            if (row['dn']) {
+                                str += `DN = ${row['dn']} мм. <br>`
+                            }
+                            if (row['pn']) {
+                                str += `PN = ${row['pn']} МПа. <br>`
+                            }
+                            if (row['l']) {
+                                str += `L = ${row['l']} км. <br>`
+                            }
+                            if (row['v']) {
+                                str += `V = ${row['v']} м3 <br>`
+                            }
+                            if (row['n']) {
+                                str += `N = ${row['n']} МВт. <br>`
+                            }
+                            if (row['q']) {
+                                str += `Q = ${row['q']} <span>млн. м<sup>3</sup>/сут.</span> <br>`
+                            }
+                            if (row['pn_in']) {
+                                str += `PN вх. = ${row['pn_in']} МПа. <br>`
+                            }
+                            if (row['pn_out']) {
+                                str += `PN вых. = ${row['pn_out']} МПа. <br>`
+                            }
+                            if (row['capacity']) {
+                                str += `Грузоподъемность - ${row['capacity']} т. <br>`
+                            }
+                            if (row['pn_gas']) {
+                                str += `PN газа = ${row['pn_gas']} МПа. <br>`
+                            }
+                            if (row['pn_water']) {
+                                str += `PN воды = ${row['pn_water']} МПа. <br>`
+                            }
+                            if (row['therm']) {
+                                str += `Теплопроизводительн. - ${row['therm']} Гкал/час. <br>`
+                            }
+                            if (row['t_max']) {
+                                str += `T макс. вых = ${row['t_max']} ºС. <br>`
+                            }
+                            if (row['flow_consump']) {
+                                str += `Расход топлива - ${row['flow_consump']} <span> м<sup>3</sup>/час</span>. <br>`
+                            }
+                            str += `Год изготовления - ${row['year_manufacture']} г. <br>`;
+                            str += `Год ввода в эксплуатацию - ${row['year_commis']} г. <br>`;
+                            if (row['name_dangerous_subst']) {
+                                str += 'Опасное вещество: <br>';
+                                if (row['name_dangerous_subst'].split(',!').length > 2) {
+                                    for (j = 0; j < row['name_dangerous_subst'].split(',!').length - 1; j++) {
+                                        str += `${row['name_dangerous_subst'].split(',!')[j]} - ${row['count_dangerous_subst'].split(',!')[j]} т.  <br>`
+
+                                    }
+                                } else {
+                                    str += `${row['name_dangerous_subst'].split(',!')[0]} - ${row['count_dangerous_subst'].split(',!')[0]} т. <br>`
+                                }
+                            }
+                            tr.innerHTML += `<td style="text-align: center">${str}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['signs_danger']}</td>`
                             tr.innerHTML += `<td>
-<img style="height: 20px" src="{{ asset('assets/images/icons/trash.svg') }}" onclick="delete_part(${row['id']})" class="pdf_i">
-</td>`
+                            <img style="height: 20px" src="{{ asset('assets/images/icons/trash.svg') }}" onclick="delete_part(${row['id']})" class="pdf_i">
+                            </td>`
                             tbody.appendChild(tr)
                             i++
                         }
@@ -995,6 +1310,7 @@
                 }
             })
         }
+
 
     </script>
 
