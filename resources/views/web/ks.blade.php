@@ -3076,6 +3076,10 @@ hide: { effect: "none" }
         update_status_kran()
         setInterval(update_status_tb ,10000)
         setInterval(update_status_kran ,10000)
+        if(localStorage.getItem('item')) {
+            document.querySelector('.tb_'+localStorage.getItem('item')).click();
+            localStorage.removeItem('item');
+        }
     })
     function update_modal_tb_kc(id) {
         $.ajax({

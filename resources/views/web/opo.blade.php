@@ -5302,7 +5302,11 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function test() {
-
+        if(localStorage.getItem('item')) {
+           update_ModalWindowInfo('tb_'+localStorage.getItem('item'))
+            window.location.href='#openModalInfo'
+            localStorage.removeItem('item')
+        }
         update_status_tb()
         update_status_kc()
         setInterval(update_status_tb ,30000)

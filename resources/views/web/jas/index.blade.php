@@ -228,7 +228,7 @@
                     url: '/get_jas/' + document.getElementById('jas_start').value + '/' + document.getElementById('jas_end').value,
                     type: 'GET',
                     success: (res) => {
-                        if (res.length){
+                        if (res.length) {
                             if ($.fn.dataTable.isDataTable('#myTable')) {
                                 $('#myTable').DataTable().destroy();
                             }
@@ -249,7 +249,7 @@
                                 tr.innerHTML += `<td style="text-align: center">${row['opo']}</td>`
 
 
-                                tr.innerHTML += `<td style="text-align: center">${row['elem_opo']}</td>`
+                                tr.innerHTML += `<td style="text-align: center"><p onclick="go_to_tb(this)" style="cursor:pointer">${row['elem_opo']}</p></td>`
                                 tr.innerHTML += `<td style="text-align: center">${row['sobitie']}</td>`
                                 tr.innerHTML += `<td style="text-align: center" id='${row['id']}' contenteditable="true" onblur="save_comment(this.id, this.textContent)" >${row['comment']}</td>`
                                 tr.innerHTML += `<td style="text-align: center">${row['author']}</td>`
@@ -270,7 +270,7 @@
                                 destroy: true,
                                 order: [[0, 'desc']],
                             });
-                        }else {
+                        } else {
                             if ($.fn.dataTable.isDataTable('#myTable')) {
                                 $('#myTable').DataTable().destroy();
                             }
@@ -316,6 +316,24 @@
                     type: 'GET',
                     success: (res) => {
                         get_data()
+                    }
+                })
+            }
+
+            function go_to_tb(el) {
+                let name = el.textContent;
+                $.ajax({
+                    url: '/get_tb/' + name,
+                    type: 'GET',
+                    success: (res) => {
+                        if (Array.isArray(res)) {
+                            localStorage.open_kc = Number(res[1].split('-')[1]);
+                            localStorage.item = res[2];
+                            window.location.href = '/ks'
+                        } else {
+                            localStorage.item = res;
+                            window.location.href = '/opo'
+                        }
                     }
                 })
             }

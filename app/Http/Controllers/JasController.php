@@ -48,7 +48,7 @@ class JasController extends Controller
 
     public function save_comment($id_record, $text)
     {
-        Jas::where('id', '=', $id_record)->first()->update(['comment' => $text, 'author'=> Auth::user()->name]);
+        Jas::where('id', '=', $id_record)->first()->update(['comment' => $text, 'author' => Auth::user()->name]);
     }
 
     public function get_tb_for_jas($type_tb, $id_obj)
@@ -105,5 +105,15 @@ class JasController extends Controller
         return $data;
     }
 
+    public function get_tb($name)
+    {
+        $id = RefTb::where('full_name_tb', $name)->value('id_tb');
+        if (RefObj::where('id_obj', (int)RefTb::where('full_name_tb', $name)->value('id_obj'))->value('id_opo') == 2) {
+            $ks = RefObj::where('id_obj', (int)RefTb::where('full_name_tb', $name)->value('id_obj'))->value('short_name_obj');
+            return [2, $ks, $id];
+        }
+        return $id;
+
+    }
 
 }

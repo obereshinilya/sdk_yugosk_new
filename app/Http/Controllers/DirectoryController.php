@@ -87,6 +87,26 @@ class DirectoryController extends Controller
         return view('web.docs.infoDO.show', compact('data'));
     }
 
+    public function get_do_data(Request $request)
+    {
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode(',', $request[$column]);
+                if (isset($data_one)) {
+                    $data_one->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data_one = DB::table('public.ref_do')->
+                    join('public.typestatus', 'public.ref_do.id_status', '=', 'public.typestatus.id_status')
+                        ->orderby('short_name_do')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+
+
+        return $data_one->get();
+    }
+
     public function show_directory_opo()
     {
         $opos = DB::table('public.ref_opo')->

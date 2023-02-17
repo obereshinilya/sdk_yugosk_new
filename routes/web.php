@@ -66,6 +66,8 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
                 Route::get('/save_comment/{id_record}/{text}', "JasController@save_comment"); // изменение комментария
                 Route::post('/save_new_jas', 'JasController@save_new_jas');  //сохранение
                 Route::get('/get_jas/{start}/{end}', "JasController@get_jas_date"); // жас за определенный период
+                Route::get('/get_tb/{name}', "JasController@get_tb"); // редирект со страницы жаса
+
             });
             //********************* Справочники ******************************************
             Route::get('/docs/directory_do', 'DirectoryController@show_directory_do');  //Справочник ДО
@@ -74,6 +76,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/directory_do/edit/{id_do}', 'DirectoryController@edit_do');  //обновление
             Route::post('/docs/directory_do/update/{id_do}', 'DirectoryController@update_do');  //сохранение изменений
             Route::get('/docs/directory_do/show/{id_do}', 'DirectoryController@show_do');  //просмотр
+            Route::post('/docs/get_do_data', 'DirectoryController@get_do_data')->name('get_do_data');  //Справочник ДО
 
 
             Route::get('/docs/directory_opo', 'DirectoryController@show_directory_opo');  //Справочник ОПО
@@ -215,7 +218,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/conclusions_industrial_safety_main', 'ConclusionsController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
-            Route::post('/get_group_conclusion/{column}', 'ConclusionsController@get_group_conclusion');
+            Route::post('/get_group_conclusion/{table}/{column}', 'ConclusionsController@get_group_conclusion');
 
             Route::post('/docs/conclusions_industrial_safety', 'ConclusionsController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
             Route::get('/docs/conclusions_industrial_safety/create', 'ConclusionsController@create_conclusions_industrial_safety');  // страница создания записи

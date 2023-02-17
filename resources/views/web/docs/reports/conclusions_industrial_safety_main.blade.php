@@ -461,7 +461,7 @@
                     }
                 });
                 $.ajax({
-                    url: '/get_group_conclusion/' + column,
+                    url: '/get_group_conclusion/' + 'conclusions/' + column,
                     type: 'POST',
                     data: params,
                     success: (res) => {
@@ -502,7 +502,7 @@
                 } else {
                     field.style.display = 'none'
                     field.getElementsByClassName('on_off_btn')[0].onclick = ''
-                    for (var input of field.getElementsByTagName('input')){
+                    for (var input of field.getElementsByTagName('input')) {
                         input.setAttribute('disabled', true)
                     }
                 }
