@@ -71,13 +71,32 @@
                                     <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                     <td>
                                         @can('doc-create')
+                                            <form method="POST" style="display: none"
+                                                  action="{{ route('excel_events') }}">
+                                                @csrf
+                                                <div id="excel_form">
+                                                </div>
+                                                <button type="submit" id="excel_button" class="btn btn-primary">
+                                                    Сохранить
+                                                </button>
+                                            </form>
                                             <div class="bat_info excel" style="display: inline-block"><a
-                                                    href="/excel_events"
-                                                    style="display: inline-block">Экспорт в excel</a>
+                                                    href="#"
+                                                    style="display: inline-block" onclick="print_data('excel')">Экспорт
+                                                    в excel</a>
                                             </div>
+                                            <form method="POST" style="display: none"
+                                                  action="{{ route('pdf_events') }}">
+                                                @csrf
+                                                <div id="pdf_form">
+                                                </div>
+                                                <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                    Сохранить
+                                                </button>
+                                            </form>
 
                                             <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                    href="/pdf_events"
+                                                    href="#" onclick="print_data('pdf')"
                                                     style="display: inline-block">Печать в pdf</a>
                                             </div>
                                         @endcan
@@ -98,34 +117,52 @@
                                 <table id="table_for_search" style="display: table; table-layout: fixed; width: 100%">
                                     <thead>
                                     <tr>
-                                        <th style="text-align: center" rowspan="2">Наименование филиала
+                                        <th style="text-align: center" rowspan="2" class="filter short_name_do events">
+                                            Наименование филиала
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Организация, которой выдан акт
+                                        <th style="text-align: center" rowspan="2" class="filter org events">
+                                            Организация, которой выдан акт
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Выявленные нарушения норм и правил
+                                        <th style="text-align: center" rowspan="2" class="filter viols events">
+                                            Выявленные нарушения норм и правил
                                             (из акта обследования)
                                         </th>
-                                        <th style="text-align: center" rowspan="2">№ акта
+                                        <th style="text-align: center" rowspan="2" class="filter act_num events">№ акта
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Дата выдачи акта</th>
-                                        <th style="text-align: center" rowspan="2">Мероприятия дочернего общества</th>
-                                        <th style="text-align: center" rowspan="2">Ответственный за устранение</th>
+                                        <th style="text-align: center" rowspan="2" class="filter date_issue events">Дата
+                                            выдачи акта
+                                        </th>
+                                        <th style="text-align: center" rowspan="2" class="filter events events">
+                                            Мероприятия дочернего общества
+                                        </th>
+                                        <th style="text-align: center" rowspan="2" class="filter person events">
+                                            Ответственный за устранение
+                                        </th>
                                         <th style="text-align: center" colspan="2">Установленный срок выполнения</th>
-                                        <th style="text-align: center" rowspan="2">Фактический срок выполнения</th>
-                                        <th style="text-align: center" rowspan="2">Проведённая за отчётный период работа
+                                        <th style="text-align: center" rowspan="2" class="filter date_fact events">
+                                            Фактический срок выполнения
+                                        </th>
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter completion_mark events">Проведённая за отчётный период работа
                                             по выполнению мероприятий
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Дата записи</th>
-                                        <th style="text-align: center; padding: 5px" rowspan="2">Примечание</th>
+                                        <th style="text-align: center" rowspan="2" class="filter date_update events">
+                                            Дата записи
+                                        </th>
+                                        <th style="text-align: center; padding: 5px" rowspan="2"
+                                            class="filter note events">Примечание
+                                        </th>
                                         @can('report-edit')
                                             <th rowspan="2" style="width: 3%"></th>
                                         @endcan
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center;     position: sticky;    top: 25px;">без учета
+                                        <th style="text-align: center;     position: sticky;    top: 25px;"
+                                            class="filter date_base events">без учета
                                             переноса срока
                                         </th>
-                                        <th style="text-align: center;  position: sticky;    top: 25px;">с учётом
+                                        <th style="text-align: center;  position: sticky;    top: 25px;"
+                                            class="filter date_repiat events">с учётом
                                             переноса срока
                                         </th>
                                     </tr>
@@ -138,6 +175,7 @@
                 </div>
             </div>
         </div>
+        @include('web.include.filters_js')
         <script>
             //скрипт для удаления
             function remove_record(id) {
@@ -202,17 +240,37 @@
             })
 
             function get_data() {
-                @can('doc-create')
-                let pdf = document.querySelector('.pdf');
-                pdf.firstChild.href = '/pdf_events/' + document.getElementById('select__year').value;
-                let excel = document.querySelector('.excel');
-                excel.firstChild.href = '/excel_events/' + document.getElementById('select__year').value;
-                @endcan
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
+                var fieldsheets = document.getElementsByTagName('fieldset')
+                var data = {}
+                for (var fieldsheet of fieldsheets) {
+                    var check_input_all = fieldsheet.getElementsByTagName('input')
+                    var check_input = []
+                    var all_input_checked = true
+
+                    for (var one_input of check_input_all) {
+                        if (one_input.hasAttribute('checked')) {
+                            check_input.push(one_input.getAttribute('name'))
+                        } else {
+                            all_input_checked = false
+                        }
+                    }
+                    console.log(check_input.join(','))
+                    data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+                }
+                data['year'] = document.getElementById('select__year').value
+                console.log(data)
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
                 $.ajax({
-                    url: '/docs/events/get_params/' + document.getElementById('select__year').value,
-                    type: 'GET',
+                    url: '/docs/events/get_params',
+                    type: 'POST',
+                    data: data,
                     success: (res) => {
                         console.log(res)
                         var keys = Object.keys(res)

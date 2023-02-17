@@ -233,50 +233,61 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_events($year)
+    public function pdf_events(Request $request)
     {
-        $data['data'] = Events::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                if (isset($data)) {
+                    $data = $data->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data = Events::orderby('id')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+        $data_to_table['data'] = $data->get();
         $title = 'Мероприятия
                             по устранению имеющихся нарушений действующих норм и правил, выявленных
                             Северо-Уральским управлением ООО «Газпром газнадзор» при эксплуатации объектов ЕСГ ПАО
-                            «Газпром» за ' . $year . ' год.';
+                            «Газпром»';
         $patch = 'events' . Carbon::now() . '.pdf';
-        foreach ($data['data'] as $key => $event) {
+        foreach ($data_to_table['data'] as $key => $event) {
             if ($event->date_issue) {
-                $data['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
+                $data_to_table['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
             } else {
-                $data['date_issue'][$key] = '';
+                $data_to_table['date_issue'][$key] = '';
 
             }
             if ($event->date_base) {
 
-                $data['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
+                $data_to_table['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
             } else {
-                $data['date_base'][$key] = '';
+                $data_to_table['date_base'][$key] = '';
 
             }
             if ($event->date_repiat) {
-                $data['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
+                $data_to_table['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
 
             } else {
-                $data['date_repiat'][$key] = '';
+                $data_to_table['date_repiat'][$key] = '';
 
             }
             if ($event->date_fact) {
-                $data['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
+                $data_to_table['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
 
             } else {
-                $data['date_fact'][$key] = '';
+                $data_to_table['date_fact'][$key] = '';
 
             }
             if ($event->date_update) {
-                $data['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
+                $data_to_table['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
             } else {
-                $data['date_update'][$key] = '';
+                $data_to_table['date_update'][$key] = '';
 
             }
         }
-        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_events', compact('data', 'title'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_events', compact('data_to_table', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
     }
@@ -311,12 +322,12 @@ class PdfReportController extends Controller
             $data['all_plan_year'] += (int)$row->plan_year;
             $data['all_plan_month'] += (int)$row->plan_month;
         }
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
-        $title = $name_do.'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
+        $title = $name_do . 'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
         $patch = 'kr_dtoip' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_kr_dtoip', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
@@ -325,12 +336,12 @@ class PdfReportController extends Controller
     public function pdf_plan_of_industrial_safety($year, $id_do)
     {
         $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->where('id_do', '=', $id_do)->get();
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
-        $title = $name_do.'План работ в области промышленной безопасности за ' . $year . ' год';
+        $title = $name_do . 'План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $plan) {
             if ($plan->completion_date) {

@@ -147,7 +147,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/actual_declarations/remove/{id}', 'ReportController@remove_actual_declarations');  //удаление
             Route::get('/docs/actual_declarations/edit/{id}', 'ReportController@edit_actual_declarations');  //обновление
             Route::post('/docs/actual_declarations/update/{id}', 'ReportController@update_actual_declarations');  //сохранение изменений
-            Route::get('/docs/actual_declarations/get_params', 'ReportController@get_actual_declarations');  //за год
+            Route::post('/docs/actual_declarations/get_params', 'ReportController@get_actual_declarations');  //за год
 
             Route::get('/docs/sved_avar', 'ReportController@sved_avar');  //Сведения об аварийности на опасных производственных объектах ДО
             Route::get('/docs/get_sved_avar/{year}/{year_end}', 'ReportController@get_sved_avar');  //данные
@@ -188,7 +188,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/uncheck_kr_dtoip/{num_pp}/{year}/{id_do}', 'ReportController@uncheck_kr_dtoip');  //убрать из обсчета
 
             Route::get('/docs/report_events', 'ReportController@show_report_events');  // Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за _____________20_____ года
-            Route::get('/docs/report_events/get_params/{year}', 'ReportController@get_report_events_year');  // выборка за год
+            Route::post('/docs/report_events/get_params', 'ReportController@get_report_events_year');  // выборка за год
             Route::get('/docs/report_events/create', 'ReportController@create_report_events');  // страница создания записи
             Route::post('/docs/report_events/save', 'ReportController@save_report_events');  //сохранение
             Route::get('/docs/report_events/remove/{id}', 'ReportController@remove_report_events');  //удаление
@@ -196,7 +196,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/report_events/update/{id}', 'ReportController@update_report_events');  //сохранение изменений
 
             Route::get('/docs/events', 'ReportController@show_events');  // Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за _____________20_____ года
-            Route::get('/docs/events/get_params/{year}', 'ReportController@get_events');  // выборка за год
+            Route::post('/docs/events/get_params', 'ReportController@get_events');  // выборка за год
             Route::get('/docs/events/create', 'ReportController@create_events');  // страница создания записи
             Route::post('/docs/events/save', 'ReportController@save_events');  //сохранение
             Route::get('/docs/events/remove/{id}', 'ReportController@remove_events');  //удаление
@@ -218,7 +218,8 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/plan_of_industrial_safety/update/{id}', 'ReportController@update_plan_of_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/conclusions_industrial_safety_main', 'ConclusionsController@show_conclusions_industrial_safety_main');  // План работ в области промышленной безопасности
-            Route::post('/get_group_conclusion/{table}/{column}', 'ConclusionsController@get_group_conclusion');
+
+            Route::post('/get_group/{table}/{column}', 'GroupController@get_group'); //получить группу для fieldset
 
             Route::post('/docs/conclusions_industrial_safety', 'ConclusionsController@show_conclusions_industrial_safety')->name('open_conclusions_industrial_safety');  // План работ в области промышленной безопасности
             Route::get('/docs/conclusions_industrial_safety/create', 'ConclusionsController@create_conclusions_industrial_safety');  // страница создания записи
@@ -228,7 +229,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/conclusions_industrial_safety/update/{id}', 'ConclusionsController@update_conclusions_industrial_safety');  //сохранение изменений
 
             Route::get('/docs/fulfillment_certification', 'ReportController@show_fulfillment_certification');  // План работ в области промышленной безопасности
-            Route::get('/docs/fulfillment_certification/get_params/{year}', 'ReportController@get_fulfillment_certification');  // выборка за год
+            Route::post('/docs/fulfillment_certification/get_params', 'ReportController@get_fulfillment_certification');  // выборка за год
             Route::get('/docs/fulfillment_certification/create', 'ReportController@create_fulfillment_certification');  // страница создания записи
             Route::post('/docs/fulfillment_certification/save', 'ReportController@save_fulfillment_certification');  //сохранение
             Route::get('/docs/fulfillment_certification/remove/{id}', 'ReportController@remove_fulfillment_certification');  //удаление
@@ -262,7 +263,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/pdf_result_apk/{year}/{type}', 'PdfReportController@pdf_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора
             Route::get('/pdf_sved_avar/{start}/{finish}', 'PdfReportController@pdf_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
             Route::get('/pdf_report_events/{year}', 'PdfReportController@pdf_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
-            Route::get('/pdf_events/{year}', 'PdfReportController@pdf_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
+            Route::post('/pdf_events', 'PdfReportController@pdf_events')->name('pdf_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/pdf_kr_dtoip/{year}/{id_do}', 'PdfReportController@pdf_kr_dtoip');  //скачать КР ДТОиР ОПО
             Route::get('/pdf_plan_of_industrial_safety/{year}/{id_do}', 'PdfReportController@pdf_plan_of_industrial_safety');     // скачать план работ в области ПБ
             Route::get('/pdf_pat_schedule/{year}', 'PdfReportController@pdf_pat_schedule');     // скачать График комплексных противоаварийных тренировок
@@ -271,11 +272,11 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
 ///////////************** Отчеты Excel **************************************/////////////////////////
             Route::get('/excel_conclusions_industrial_safety_main', 'ExcelReportController@excel_conclusions_industrial_safety_main');
             Route::post('/excel_conclusions_industrial_safety', 'ExcelReportController@excel_conclusions_industrial_safety')->name('excel_conclusions');
-            Route::get('/excel_events/{year}', 'ExcelReportController@excel_events');
-            Route::get('/excel_fulfillment_certification/{year}', 'ExcelReportController@excel_fulfillment_certification');
+            Route::post('/excel_events', 'ExcelReportController@excel_events')->name('excel_events');
+            Route::post('/excel_fulfillment_certification', 'ExcelReportController@excel_fulfillment_certification')->name('excel_fulfillment');
             Route::get('/excel_pat_schedule/{year}', 'ExcelReportController@excel_pat_schedule');
             Route::get('/excel_plan_of_industrial_safety/{year}/{id_do}', 'ExcelReportController@excel_plan_of_industrial_safety');
-            Route::get('/excel_actual_declarations', 'ExcelReportController@excel_actual_declarations');
+            Route::post('/excel_actual_declarations', 'ExcelReportController@excel_actual_declarations')->name('excel_actual');
             Route::get('/excel_emergency_drills/{year}', 'ExcelReportController@excel_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
             Route::get('/excel_report_events/{year}', 'ExcelReportController@excel_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/excel_goals_trans_yugorsk/{year}', 'ExcelReportController@excel_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год

@@ -9,6 +9,7 @@ use App\Models\Main_models\GPA;
 use App\Models\Main_models\InputShleif;
 use App\Models\Main_models\KRANS;
 use App\Models\Main_models\KRANS_KC;
+
 //use App\Models\Main_models\LineRecirk;
 use App\Models\Main_models\MKU;
 use App\Models\Main_models\OutputShleif;
@@ -92,7 +93,7 @@ class DirectoryController extends Controller
         $keys = array_keys($request->all());
         foreach ($keys as $column) {
             if ($column != '_token' && $column != 'page') {
-                $fieldset[$column] = explode(',', $request[$column]);
+                $fieldset[$column] = explode('!!', $request[$column]);
                 if (isset($data_one)) {
                     $data_one->whereIn($column, $fieldset[$column]);
                 } else {

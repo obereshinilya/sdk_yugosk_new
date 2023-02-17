@@ -52,21 +52,21 @@
 
     <tbody>
 
-    @foreach($data['data'] as $key=>$row)
+    @foreach($data_to_table['data'] as $key=>$row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
             <td>{{$row->org}}</td>
             <td>{{$row->viols}}</td>
             <td>{{$row->act_num}}</td>
-            <td>{{$data['date_issue'][$key]}}</td>
+            <td>{{$data_to_table['date_issue'][$key]}}</td>
             <td>{{$row->events}}</td>
             <td>{{$row->person}}</td>
-            <td>{{$data['date_base'][$key]}}</td>
-            <td>{{$data['date_repiat'][$key]}}</td>
-            <td>{{$data['date_fact'][$key]}}</td>
+            <td>{{$data_to_table['date_base'][$key]}}</td>
+            <td>{{$data_to_table['date_repiat'][$key]}}</td>
+            <td>{{$data_to_table['date_fact'][$key]}}</td>
             <td>{{$row->completion_mark}}</td>
-            <td>{{$data['date_update'][$key]}}</td>
+            <td>{{$data_to_table['date_update'][$key]}}</td>
             <td>{{$row->note}}</td>
 
         </tr>
