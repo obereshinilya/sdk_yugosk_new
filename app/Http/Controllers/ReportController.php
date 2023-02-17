@@ -93,10 +93,24 @@ class ReportController extends Controller
         }
     }
 
-    public function get_actual_declarations()
+    public function get_actual_declarations(Request $request)
     {
-        $data = ActualDeclarations::orderby('id')->get();
-        return $data;
+        $keys = array_keys($request->all());
+        if ($keys) {
+            foreach ($keys as $column) {
+                if ($column != '_token' && $column != 'page') {
+                    $fieldset[$column] = explode('!!', $request[$column]);
+                    if (isset($data_one)) {
+                        $data_one->whereIn($column, $fieldset[$column]);
+                    } else {
+                        $data_one = ActualDeclarations::orderby('id')->whereIn($column, $fieldset[$column]);
+                    }
+                }
+            }
+        } else {
+            $data_one = ActualDeclarations::orderby('id');
+        }
+        return $data_one->get();
     }
 
 //План корректирующих действий ПБ по внутренним проверкам
@@ -848,18 +862,22 @@ class ReportController extends Controller
         return view('web.docs.reports.report_events');
     }
 
-    public function get_report_events_year($year)
+    public function get_report_events_year(Request $request)
     {
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.report_events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.report_events.id_do');
 //        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
-        $data = DB::table('reports.report_events')->
-        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.report_events.id_do')->get();
-        foreach ($data as $row) {
-
-            $data_to_table[$row->short_name_do] = Report_events::where('year', '=', $year)->where('id_do', '=', $row->id_do)->orderbydesc('id_do')->get()->toArray();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
-
+        foreach ($data_one->get() as $row) {
+            $data_to_table[$row->short_name_do] = Report_events::whereIN('id', $data_one->select('id'))->orderbydesc('id_do')->get()->toArray();
+        }
         return $data_to_table;
-
     }
 
     public function create_report_events()
@@ -927,18 +945,22 @@ class ReportController extends Controller
         return view('web.docs.reports.events');
     }
 
-    public function get_events($year)
+    public function get_events(Request $request)
     {
-//        $data = Events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
-        $data = DB::table('reports.events')->
-        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.events.id_do')->get();
-        foreach ($data as $row) {
-
-            $data_to_table[$row->short_name_do] = Events::where('year', '=', $year)->orderbydesc('id')->where('id_do', '=', $row->id_do)->orderbydesc('id_do')->get()->toArray();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.events.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
 
+        foreach ($data_one->get() as $row) {
+            $data_to_table[$row->short_name_do] = Events::whereIN('id', $data_one->select('id'))->orderbydesc('id')->orderbydesc('id_do')->get()->toArray();
+        }
         return $data_to_table;
-
     }
 
     public function create_events()
@@ -1102,12 +1124,12 @@ class ReportController extends Controller
 
     public function open_kr_dtoip($id_do)
     {
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
             AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО. Объект: дочернее общество');//пишем в журнал
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
-            AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО. Объект: '. $name_do);//пишем в журнал
+            AdminController::log_record('Открыл сведения о КР и ДТОиР ОПО. Объект: ' . $name_do);//пишем в журнал
         }
         return view('web.docs.reports.report_kr_dtoip', compact('id_do', 'name_do'));
     }
@@ -1131,7 +1153,7 @@ class ReportController extends Controller
                 KR_DTOIP::create($record_data);
             }
             return $record_data;
-            AdminController::log_record('Изменил сведения о выполнении графика КР и ДТОиР ОПО за ' . $year. 'Объект: '.RefDO::where('id_do', '=', $id_do)->first()->short_name_do);//пишем в журнал
+            AdminController::log_record('Изменил сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . 'Объект: ' . RefDO::where('id_do', '=', $id_do)->first()->short_name_do);//пишем в журнал
         } catch (\Throwable $e) {
             return $e;
         }
@@ -1216,12 +1238,12 @@ class ReportController extends Controller
 
     public function show_plan_of_industrial_safety($id_do)
     {
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
             AdminController::log_record('Открыл план работ в области промышленной безопасности. Объект: дочернее общество');//пишем в журнал
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
-            AdminController::log_record('Открыл план работ в области промышленной безопасности. Объект: '. $name_do);//пишем в журнал
+            AdminController::log_record('Открыл план работ в области промышленной безопасности. Объект: ' . $name_do);//пишем в журнал
         }
         return view('web.docs.reports.plan_of_industrial_safety', compact('id_do', 'name_do'));
     }
@@ -1290,18 +1312,26 @@ class ReportController extends Controller
     }
 
 
-
     public function show_fulfillment_certification()
     {
         return view('web.docs.reports.fulfillment_certification');
     }
 
-    public function get_fulfillment_certification($year)
+    public function get_fulfillment_certification(Request $request)
     {
-        $data = Fulfillment_certification::where('year', '=', $year)->get();
-        foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.fulfillment_certification')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.fulfillment_certification.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
+        $data = $data_one->get();
+//        foreach ($data as $key => $row) {
+//            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+//        }
 
         return $data;
 
