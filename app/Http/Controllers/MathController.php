@@ -223,8 +223,7 @@ class MathController extends Controller
         AllIndicators::create($data_to_table);
     }
 
-    public function get_indicator($year){
-        return AllIndicators::orderbydesc('date')->where('date', '>=', date($year.'-01-01'))->where('date', '<', date($year.'-12-31'))->get()->toArray();
-
+    public function get_indicator($year, $id){
+        return AllIndicators::orderbydesc('date')->where('date', '>=', date($year.'-01-01'))->where('date', '<', date($year.'-12-31'))->where('id_do',$id)->get()->toArray();
     }
 }
