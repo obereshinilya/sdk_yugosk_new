@@ -66,6 +66,11 @@ class GroupController extends Controller
                             $data_one = DB::table('reports.plan_industrial_safety')->
                             join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do')->whereIN($key, $fieldset[$key]);
                             break;
+                        case 'ref_opo':
+                            $data_one = DB::table('public.ref_opo')->
+                            join('public.typestatus', 'public.ref_opo.id_status', '=', 'public.typestatus.id_status')
+                                ->join('public.ref_do', 'public.ref_opo.id_do', 'public.ref_do.id_do')->whereIN($key, $fieldset[$key]);
+                            break;
 
                     }
                 }
@@ -119,6 +124,11 @@ class GroupController extends Controller
                 case 'plan_industrial':
                     $data_one = DB::table('reports.plan_industrial_safety')->
                     join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do')->groupby($column)->orderby($column);
+                    break;
+                case 'ref_opo':
+                    $data_one = DB::table('public.ref_opo')->
+                    join('public.typestatus', 'public.ref_opo.id_status', '=', 'public.typestatus.id_status')
+                        ->join('public.ref_do', 'public.ref_opo.id_do', 'public.ref_do.id_do')->groupby($column)->orderby($column);
                     break;
             }
 

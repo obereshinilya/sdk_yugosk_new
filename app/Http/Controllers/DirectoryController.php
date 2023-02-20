@@ -197,6 +197,25 @@ class DirectoryController extends Controller
         return view('web.docs.infoOPO.show', compact('data'));
     }
 
+    public function get_opo_data(Request $request)
+    {
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                if (isset($data_one)) {
+                    $data_one->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data_one = DB::table('public.ref_opo')->
+                    join('public.typestatus', 'public.ref_opo.id_status', '=', 'public.typestatus.id_status')
+                        ->join('public.ref_do', 'public.ref_opo.id_do', 'public.ref_do.id_do')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+
+
+        return $data_one->get();
+    }
 
 //    Создание и редактирование элементов
     public function create_obj()
