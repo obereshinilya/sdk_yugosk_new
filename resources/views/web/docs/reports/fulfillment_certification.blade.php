@@ -112,51 +112,107 @@
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)</th>
-                                    <th colspan="2">Повышение квалификации, чел</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности с использованием ИС
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации, чел</th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности с использованием ИС
                                         ЕПТ(чел.)
                                     </th>
-                                    <th colspan="2">Повышение квалификации по ОТ, чел</th>
-                                    <th colspan="3"> Аттестация по промышленной безопасности (чел.)
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации по ОТ,
+                                        чел
                                     </th>
-                                    <th colspan="2">Повышение квалификации, чел</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)
+                                    <th colspan="3" style="position: sticky; top: 21px"> Аттестация по промышленной
+                                        безопасности (чел.)
                                     </th>
-                                    <th colspan="3"> Аттестация по промышленной безопасности с использованием ИС
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации, чел</th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="3" style="position: sticky; top: 21px"> Аттестация по промышленной
+                                        безопасности с использованием ИС
                                         ЕПТ(чел.)
                                     </th>
-                                    <th colspan="2">Повышение квалификации по ПБ, чел
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации по ПБ,
+                                        чел
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th class="filter rostech_cec fulfillment">всего</th>
-                                    <th class="filter rostech_cec_plan fulfillment">план</th>
-                                    <th class="filter rostech_cec_fact fulfillment">факт</th>
-                                    <th class="filter skills_up_cec_plan fulfillment">план</th>
-                                    <th class="filter skills_up_cec_fact fulfillment">факт</th>
-                                    <th class="filter rostech_adm_do fulfillment">всего</th>
-                                    <th class="filter rostech_adm_do_plan fulfillment">план</th>
-                                    <th class="filter rostech_adm_do_fact fulfillment">факт</th>
-                                    <th class="filter is_ept_adm_do fulfillment">всего</th>
-                                    <th class="filter is_ept_adm_do_plan fulfillment">план</th>
-                                    <th class="filter is_ept_adm_do_fact fulfillment">факт</th>
-                                    <th class="filter ot_adm_do_plan fulfillment">план</th>
-                                    <th class="filter ot_adm_do_fact fulfillment">факт</th>
-                                    <th class="filter pb_ec fulfillment">всего</th>
-                                    <th class="filter pb_ec_plan fulfillment">план</th>
-                                    <th class="filter pb_ec_fact fulfillment">факт</th>
-                                    <th class="filter skills_up_ec_plan fulfillment">план</th>
-                                    <th class="filter skills_up_ec_fact fulfillment">факт</th>
-                                    <th class="filter rostech_do fulfillment">всего</th>
-                                    <th class="filter rostech_do_plan fulfillment">план</th>
-                                    <th class="filter rostech_do_fact fulfillment">факт</th>
-                                    <th class="filter is_ept_do fulfillment">всего</th>
-                                    <th class="filter is_ept_do_plan fulfillment">план</th>
-                                    <th class="filter is_ept_do_fact fulfillment">факт</th>
-                                    <th class="filter pb_do_plan fulfillment">план</th>
-                                    <th class="filter pb_do_fact fulfillment">факт</th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_cec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_cec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_adm_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter rostech_adm_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter rostech_adm_do_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_adm_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter is_ept_adm_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter is_ept_adm_do_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter ot_adm_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter ot_adm_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec fulfillment">всего</th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_ec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_ec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do fulfillment">всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_do_fact fulfillment">факт
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">

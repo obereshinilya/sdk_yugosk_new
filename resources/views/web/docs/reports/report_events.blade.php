@@ -154,10 +154,12 @@
                                         @endcan
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center" class="filter num_act report_events">со сроком,
+                                        <th style="text-align: center; position: sticky; top: 24px"
+                                            class="filter num_act report_events">со сроком,
                                             установленным по Акту, ед.
                                         </th>
-                                        <th style="text-align: center" class="filter num_repiat report_events">с
+                                        <th style="text-align: center; position: sticky; top: 24px"
+                                            class="filter num_repiat report_events">с
                                             переносом срока устранения, ед.
                                         </th>
                                     </tr>

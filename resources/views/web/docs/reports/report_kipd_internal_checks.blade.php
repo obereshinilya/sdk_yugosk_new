@@ -167,32 +167,59 @@
                                 <tr>
                                 <tr>
                                     <th rowspan="2">№</th>
-                                    <th rowspan="2" class="filter short_name_do kipd_internal">Наименование<br> филиала
+                                    <th rowspan="2" class="filter short_name_do kipd_internal"
+                                        style="position:sticky; top:0">Наименование<br> филиала
                                         ДО
                                     </th>
-                                    <th rowspan="2" class="filter podrazdelenie kipd_internal">Подразделение</th>
-                                    <th rowspan="2" class="filter date_act kipd_internal">Дата акта</th>
-                                    <th rowspan="2" class="filter num_act kipd_internal">Номер акта</th>
-                                    <th rowspan="2" class="filter error_comment kipd_internal">Описание несоответствия
+                                    <th rowspan="2" class="filter podrazdelenie kipd_internal"
+                                        style="position:sticky; top:0">Подразделение
                                     </th>
-                                    <th colspan="3">Мероприятия по устранению несоответствия</th>
-                                    <th colspan="5">Корректирующие действия</th>
-                                    <th rowspan="2" class="filter indicator kipd_internal">Индикативный <br>показатель
+                                    <th rowspan="2" class="filter date_act kipd_internal"
+                                        style="position:sticky; top:0">Дата акта
                                     </th>
-                                    <th rowspan="2"></th>
+                                    <th rowspan="2" class="filter num_act kipd_internal" style="position:sticky; top:0">
+                                        Номер акта
+                                    </th>
+                                    <th rowspan="2" class="filter error_comment kipd_internal"
+                                        style="position:sticky; top:0">Описание несоответствия
+                                    </th>
+                                    <th colspan="3" style="position:sticky; top:0">Мероприятия по устранению
+                                        несоответствия
+                                    </th>
+                                    <th colspan="5" style="position:sticky; top:0">Корректирующие действия</th>
+                                    <th rowspan="2" style="position:sticky; top:0"
+                                        class="filter indicator kipd_internal">Индикативный <br>показатель
+                                    </th>
+                                    <th rowspan="2" style="position:sticky; top:0"></th>
                                     @can('report-edit')
-                                        <th rowspan="2"></th>
+                                        <th rowspan="2" style="position:sticky; top:0"></th>
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th class="filter name_event kipd_internal">Наименование мероприятия</th>
-                                    <th class="filter person kipd_internal">Ответственный исполнитель</th>
-                                    <th class="filter date_check kipd_internal">Срок выполнения</th>
-                                    <th class="filter reason kipd_internal">Причины появления несоответствия</th>
-                                    <th class="filter correct_event kipd_internal">Корректирующее действие</th>
-                                    <th class="filter usloviya kipd_internal">Требуемые условия и ресурсы</th>
-                                    <th class="filter person_correct kipd_internal">Ответственный исполнитель</th>
-                                    <th class="filter date_check_correct kipd_internal">Дата выполнения</th>
+                                    <th style="position:sticky; top:21px" class="filter name_event kipd_internal">
+                                        Наименование мероприятия
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter person kipd_internal">
+                                        Ответственный исполнитель
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter date_check kipd_internal">Срок
+                                        выполнения
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter reason kipd_internal">Причины
+                                        появления несоответствия
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter correct_event kipd_internal">
+                                        Корректирующее действие
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter usloviya kipd_internal">
+                                        Требуемые условия и ресурсы
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter person_correct kipd_internal">
+                                        Ответственный исполнитель
+                                    </th>
+                                    <th style="position:sticky; top:21px"
+                                        class="filter date_check_correct kipd_internal">Дата выполнения
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
