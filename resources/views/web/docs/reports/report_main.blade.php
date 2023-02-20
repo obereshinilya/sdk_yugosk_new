@@ -30,6 +30,7 @@
                                id="select__year" class="text-field__input" min="1970" max="2030"
                                onblur="get_data(document.getElementById('id_do').value)"></input>
                         <h2 class="text-muted" style="text-align: center; display: inline; margin-right: 60px">год</h2>
+
                         <span style="display: inline-block; margin: 0">
                                 <select onchange="get_data(document.getElementById('id_do').value)" id="id_do" style="height: 100%; width: 100%" class="select-css">
                                     <option value="0">По дочернему обществу</option>

@@ -247,7 +247,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/update_goals_trans_yugorsk', 'MathController@update_goals_trans_yugorsk'); //Обновление Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности
 
             Route::get('/create_record_indicator', 'MathController@create_record_indicator'); //Создание записи в таблицу с результатами
-            Route::get('/get_indicator/{year}/{id}', 'MathController@get_indicator'); //получение данных с таблицы с результатами
+            Route::get('/get_indicator/{year}/{id}', 'MathController@get_indicator'); //получение данных с таблицы с результатами (дата и выбор ДО)
 
 ///////////************** Отчеты PDF **************************************/////////////////////////
             Route::get('/pdf_actual_declarations', 'PdfReportController@pdf_actual_declarations');     // скачать реестр актуальных деклараций

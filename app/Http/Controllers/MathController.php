@@ -225,6 +225,5 @@ class MathController extends Controller
 
     public function get_indicator($year, $id){
         return AllIndicators::orderbydesc('date')->where('date', '>=', date($year.'-01-01'))->where('date', '<', date($year.'-12-31'))->where('id_do',$id)->get()->toArray();
-
     }
 }
