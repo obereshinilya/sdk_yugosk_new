@@ -38,50 +38,7 @@
                                     @endforeach
                                 </select>
                         </span>
-{{--                        <span class="bat_add">--}}
-{{--                            <a href="#modal"--}}
-{{--                               style="display: inline-block">--}}
-{{--                                Выберите объект--}}
-{{--                            </a>--}}
-{{--                        </span>--}}
                     </div>
-                    <div id="modal" class="modal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <a href="#close" class="close">×</a>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="modal_table map_hover">
-                                        <thead>
-                                        <th>Выберите объект</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr style="text-align: center">
-{{--                                            <td style="padding: 0px; text-align: center"><select id="id_do" style="height: 100%; width: 50%; margin-left: 25%; margin-top: 10px"--}}
-{{--                                                                                                 class="select-css">--}}
-{{--                                                    <option value="0">По дочернему обществу</option>--}}
-{{--                                                    @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get()  as $row)--}}
-{{--                                                        <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>--}}
-{{--                                                    @endforeach--}}
-{{--                                                </select>--}}
-{{--                                            </td>--}}
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align: center">
-                                                <div class="bat_info print__pdf" style="display: inline-block; margin-left: 0; margin-top: 10px"><a
-                                                        onclick="get_data(document.getElementById('id_do').value); window.location.href='#close'"
-                                                        style="display: inline-block; margin: 0">Открыть</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="doc_header" style="padding-bottom: 6px; width: 75%">
                         <table>
                             <tbody>
