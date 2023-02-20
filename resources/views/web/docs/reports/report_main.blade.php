@@ -24,16 +24,64 @@
         <div class="row justify-content-center" style="height: 100%">
             <div class="col-md-12" style="height: 100%">
                 <div class="card" style="height: 100%">
-                    <div class="card-header" style="text-align: center; color: ${color_text}">
-                        <h2 class="text-muted"
-                            style="text-align: center; color: ${color_text}; display: inline-block; margin-right: 10px">
-                            Оценка состояния промышленной безопасности</h2>
-
+                    <div class="card-header" style="text-align: center;  color: ${color_text}">
+                        <h2 class="text-muted" style="text-align: center; color: ${color_text}; display: inline-block; margin-right: 10px"> Оценка состояния промышленной безопасности</h2>
                         <input style="width: 5%; display: inline-block; margin-right: 10px" type="number"
                                id="select__year" class="text-field__input" min="1970" max="2030"
-                               onblur="get_data()"></input>
-                        <h2 class="text-muted" style="text-align: center; display: inline;">год</h2>
+                               onblur="get_data(document.getElementById('id_do').value)"></input>
+                        <h2 class="text-muted" style="text-align: center; display: inline; margin-right: 60px">год</h2>
+                        <span style="display: inline-block; margin: 0">
+                                <select onchange="get_data(document.getElementById('id_do').value)" id="id_do" style="height: 100%; width: 100%" class="select-css">
+                                    <option value="0">По дочернему обществу</option>
+                                    @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get()  as $row)
+                                        <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>
+                                    @endforeach
+                                </select>
+                        </span>
+{{--                        <span class="bat_add">--}}
+{{--                            <a href="#modal"--}}
+{{--                               style="display: inline-block">--}}
+{{--                                Выберите объект--}}
+{{--                            </a>--}}
+{{--                        </span>--}}
                     </div>
+                    <div id="modal" class="modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <a href="#close" class="close">×</a>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="modal_table map_hover">
+                                        <thead>
+                                        <th>Выберите объект</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="text-align: center">
+{{--                                            <td style="padding: 0px; text-align: center"><select id="id_do" style="height: 100%; width: 50%; margin-left: 25%; margin-top: 10px"--}}
+{{--                                                                                                 class="select-css">--}}
+{{--                                                    <option value="0">По дочернему обществу</option>--}}
+{{--                                                    @foreach(\App\Models\Main_models\RefDO::orderby('short_name_do')->get()  as $row)--}}
+{{--                                                        <option value="{{$row->id_do}}">{{$row->short_name_do}}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                            </td>--}}
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center">
+                                                <div class="bat_info print__pdf" style="display: inline-block; margin-left: 0; margin-top: 10px"><a
+                                                        onclick="get_data(document.getElementById('id_do').value); window.location.href='#close'"
+                                                        style="display: inline-block; margin: 0">Открыть</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="doc_header" style="padding-bottom: 6px; width: 75%">
                         <table>
                             <tbody>
@@ -83,12 +131,12 @@
         document.addEventListener('DOMContentLoaded', function () {
             var date = new Date();
             document.getElementById('select__year').value = date.getFullYear()
-            get_data()
+            get_data(0)
         })
 
-        function get_data() {
+        function get_data(id) {
             $.ajax({
-                url: '/get_indicator/' + document.getElementById('select__year').value,
+                url: '/get_indicator/' + document.getElementById('select__year').value + '/' + id,
                 type: 'GET',
                 success: (res) => {
                     var table_body = document.getElementById('tbody_main_report')
