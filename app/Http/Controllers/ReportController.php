@@ -120,12 +120,21 @@ class ReportController extends Controller
         return view('web.docs.reports.report_kipd_internal_checks');
     }
 
-    public function get_kipd_internal_checks($year)
+    public function get_kipd_internal_checks(Request $request)
     {
-        $data = KIPDInternalChecks::where('year', '=', $year)->orderbydesc('date_check')->get()->toArray();
-        foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.kipd_internal_checks')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.kipd_internal_checks.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
+        $data = $data_one->orderbydesc('date_check')->get()->toArray();
+//        foreach ($data as $key => $row) {
+//            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+//        }
         return $data;
     }
 
@@ -613,12 +622,22 @@ class ReportController extends Controller
         return view('web.docs.reports.report_perfomance_plan_KiPD');
     }
 
-    public function get_perfomance_plan_KiPD($year)
+    public function get_perfomance_plan_KiPD(Request $request)
     {
-        $data = Perfomance_plan_KiPD::orderByDesc('id')->where('year', '=', $year)->get()->toArray();;
-        foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.perfomance_plan_KiPD')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.perfomance_plan_KiPD.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
+        $data = $data_one->get();
+//        foreach ($data as $key => $row) {
+//            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+//        }
         return $data;
 
     }
@@ -700,12 +719,19 @@ class ReportController extends Controller
 
     }
 
-    public function get_plan_industrial_safety($year)
+    public function get_plan_industrial_safety(Request $request)
     {
-        $data = Plan_industrial_safety::orderByDesc('id')->where('year', '=', $year)->get();
-        foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.plan_industrial_safety')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
+        $data = $data_one->get();
         return $data;
     }
 
@@ -850,10 +876,19 @@ class ReportController extends Controller
         }
     }
 
-    public function get_goals_trans_yugorsk($year)
+    public function get_goals_trans_yugorsk(Request $request)
     {
-        $data = Goals_trans_yugorsk::where('year', '=', $year)->get();
-        return $data;
+        $keys = array_keys($request->all());
+        $data_one = Goals_trans_yugorsk::orderby('id');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+
+        return $data_one->get();
 
     }
 
@@ -1109,14 +1144,25 @@ class ReportController extends Controller
         }
     }
 
-    public function get_emergency_drills($year)
+    public function get_emergency_drills(Request $request)
     {
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.emergency_drills')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+
 //        $data = EmergencyDrills::where('year', '=', $year)->select('id_do')->groupby('id_do')->get();
-        $data = DB::table('reports.emergency_drills')->
-        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do')->get();
+//        $data = DB::table('reports.emergency_drills')->
+//        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do')->get();
 //      dd($data);
-        foreach ($data as $row) {
-            $data_to_table[$row->short_name_do] = EmergencyDrills::where('year', '=', $year)->where('id_do', '=', $row->id_do)->orderbydesc('date_PAT')->get()->toArray();
+//        return $data_one->get();
+        foreach ($data_one->get() as $row) {
+            $data_to_table[$row->short_name_do] = EmergencyDrills::whereIN('id', $data_one->select('id'))->orderbydesc('date_PAT')->get()->toArray();
         }
 //        dd($data_to_table);
         return $data_to_table;
@@ -1400,14 +1446,24 @@ class ReportController extends Controller
         return view('web.docs.reports.pat_schedule');
     }
 
-    public function get_pat_schedule($year)
+    public function get_pat_schedule(Request $request)
     {
 
-        $data = Pat_schedule::where('year', '=', $year)->get();
-        foreach ($data as $key => $row) {
-            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
-            $data[$key]['name_opo'] = RefOpo::where('id_opo', '=', $row['id_opo'])->value('full_name_opo');
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.pat_schedule')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.pat_schedule.id_do')->join('public.ref_opo', 'public.ref_opo.id_opo', '=', 'reports.pat_schedule.id_opo');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
         }
+        $data = $data_one->get();
+
+//        foreach ($data as $key => $row) {
+//            $data[$key]['name_do'] = RefDO::where('id_do', '=', $row['id_do'])->value('short_name_do');
+//            $data[$key]['name_opo'] = RefOpo::where('id_opo', '=', $row['id_opo'])->value('full_name_opo');
+//        }
 
         return $data;
 

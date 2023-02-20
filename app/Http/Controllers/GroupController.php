@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Conclusions_industrial_safety;
 use App\Http\Controllers\Controller;
 use App\Models\Reports\ActualDeclarations;
+use App\Models\Reports\Goals_trans_yugorsk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,6 +43,30 @@ class GroupController extends Controller
                             $data_one = DB::table('reports.fulfillment_certification')->
                             join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.fulfillment_certification.id_do')->whereIN($key, $fieldset[$key]);
                             break;
+                        case 'pat_schedule':
+                            $data_one = DB::table('reports.pat_schedule')->
+                            join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.pat_schedule.id_do')->join('public.ref_opo', 'public.ref_opo.id_opo', '=', 'reports.pat_schedule.id_opo')->whereIN($key, $fieldset[$key]);
+                            break;
+                        case 'emergency_drills':
+                            $data_one = DB::table('reports.emergency_drills')->
+                            join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do')->whereIN($key, $fieldset[$key]);
+                            break;
+                        case 'goals_trans':
+                            $data_one = Goals_trans_yugorsk::whereIN($key, $fieldset[$key]);
+                            break;
+                        case 'kipd_internal':
+                            $data_one = DB::table('reports.kipd_internal_checks')->
+                            join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.kipd_internal_checks.id_do')->whereIN($key, $fieldset[$key]);
+                            break;
+                        case 'perfomance_plan':
+                            $data_one = DB::table('reports.perfomance_plan_KiPD')->
+                            join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.perfomance_plan_KiPD.id_do')->whereIN($key, $fieldset[$key]);
+                            break;
+                        case 'plan_industrial':
+                            $data_one = DB::table('reports.plan_industrial_safety')->
+                            join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do')->whereIN($key, $fieldset[$key]);
+                            break;
+
                     }
                 }
             }
@@ -71,6 +96,29 @@ class GroupController extends Controller
                 case 'fulfillment':
                     $data_one = DB::table('reports.fulfillment_certification')->
                     join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.fulfillment_certification.id_do')->where('year', $request->year)->groupby($column)->orderby($column);
+                    break;
+                case 'pat_schedule':
+                    $data_one = DB::table('reports.pat_schedule')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.pat_schedule.id_do')->join('public.ref_opo', 'public.ref_opo.id_opo', '=', 'reports.pat_schedule.id_opo')->where('year', $request->year)->groupby($column)->orderby($column);
+                    break;
+                case 'emergency_drills':
+                    $data_one = DB::table('reports.emergency_drills')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do')->where('year', $request->year)->groupby($column)->orderby($column);
+                    break;
+                case 'goals_trans':
+                    $data_one = Goals_trans_yugorsk::where('year', $request->year)->groupby($column)->orderby($column);
+                    break;
+                case 'kipd_internal':
+                    $data_one = DB::table('reports.kipd_internal_checks')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.kipd_internal_checks.id_do')->groupby($column)->orderby($column);
+                    break;
+                case 'perfomance_plan':
+                    $data_one = DB::table('reports.perfomance_plan_KiPD')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.perfomance_plan_KiPD.id_do')->groupby($column)->orderby($column);
+                    break;
+                case 'plan_industrial':
+                    $data_one = DB::table('reports.plan_industrial_safety')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do')->groupby($column)->orderby($column);
                     break;
             }
 

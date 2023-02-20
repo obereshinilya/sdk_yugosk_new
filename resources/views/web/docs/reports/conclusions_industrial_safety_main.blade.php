@@ -206,7 +206,7 @@
                                         {{--                                             onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">--}}
                                     </th>
                                     <th colspan="9">Место проведения ЭПБ</th>
-                                    <th rowspan="2" class="filter type_tu conclusions"><p
+                                    <th rowspan="2" class="filter date_comiss conclusions"><p
                                             onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</p>
                                         {{--                                        <img class="img" alt=""--}}
                                         {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}

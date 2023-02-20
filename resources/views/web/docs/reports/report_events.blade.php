@@ -64,12 +64,32 @@
                                     <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                     <td>
                                         @can('doc-create')
+                                            <form method="POST" style="display: none"
+                                                  action="{{ route('excel_report_events') }}">
+                                                @csrf
+                                                <div id="excel_form">
+                                                </div>
+                                                <button type="submit" id="excel_button" class="btn btn-primary">
+                                                    Сохранить
+                                                </button>
+                                            </form>
                                             <div class="bat_info excel" style="display: inline-block"><a
-                                                    href="/excel_report_events"
+                                                    href="#"
+                                                    onclick="print_data('excel')"
                                                     style="display: inline-block">Экспорт в excel</a>
                                             </div>
+                                            <form method="POST" style="display: none"
+                                                  action="{{ route('pdf_report_events') }}">
+                                                @csrf
+                                                <div id="pdf_form">
+                                                </div>
+                                                <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                    Сохранить
+                                                </button>
+                                            </form>
                                             <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                    href="/pdf_report_events"
+                                                    href="#"
+                                                    onclick="print_data('pdf')"
                                                     style="display: inline-block">Печать в pdf</a>
                                             </div>
                                         @endcan
@@ -105,28 +125,41 @@
                                     <thead>
                                     <tr>
                                         <th style="text-align: center" rowspan="2">№ п/п</th>
-                                        <th style="text-align: center" rowspan="2">Наименование филиала/ дочернего
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter short_name_do report_events">Наименование филиала/ дочернего
                                             общества
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Количество устранённых нарушений за
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter num_elim report_events">Количество устранённых нарушений за
                                             отчётный период, ед.
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Количество не устранённых нарушений с
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter num_unrem report_events">Количество не устранённых нарушений с
                                             истекшим сроком устранения, ед.
                                         </th>
-                                        <th style="text-align: center" rowspan="2">Количество нарушений с не истекшим
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter num_unexp_deadlines report_events">Количество нарушений с не
+                                            истекшим
                                             сроком устранения, ед.
                                         </th>
                                         <th style="text-align: center" colspan="2">Из них</th>
-                                        <th style="text-align: center" rowspan="2">Примечание</th>
-                                        <th style="text-align: center" rowspan="2">Дата записи</th>
+                                        <th style="text-align: center" rowspan="2" class="filter note report_events">
+                                            Примечание
+                                        </th>
+                                        <th style="text-align: center" rowspan="2"
+                                            class="filter date_update report_events">Дата записи
+                                        </th>
                                         @can('report-edit')
                                             <th rowspan="2"></th>
                                         @endcan
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center">со сроком, установленным по Акту, ед.</th>
-                                        <th style="text-align: center">с переносом срока устранения, ед.</th>
+                                        <th style="text-align: center" class="filter num_act report_events">со сроком,
+                                            установленным по Акту, ед.
+                                        </th>
+                                        <th style="text-align: center" class="filter num_repiat report_events">с
+                                            переносом срока устранения, ед.
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody id="body_table">
@@ -141,6 +174,7 @@
                 </div>
             </div>
         </div>
+        @include('web.include.filters_js')
         <script>
             //скрипт для удаления
             function remove_record(id) {
@@ -205,17 +239,39 @@
             })
 
             function get_data() {
-                @can('doc-create')
-                let pdf = document.querySelector('.pdf');
-                pdf.firstChild.href = '/pdf_report_events/' + document.getElementById('select__year').value;
-                let excel = document.querySelector('.excel');
-                excel.firstChild.href = '/excel_report_events/' + document.getElementById('select__year').value;
-                @endcan
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
+                var fieldsheets = document.getElementsByTagName('fieldset')
+                var data = {}
+                for (var fieldsheet of fieldsheets) {
+                    var check_input_all = fieldsheet.getElementsByTagName('input')
+                    var check_input = []
+                    var all_input_checked = true
+
+                    for (var one_input of check_input_all) {
+                        if (one_input.hasAttribute('checked')) {
+                            check_input.push(one_input.getAttribute('name'))
+                        } else {
+                            all_input_checked = false
+                        }
+                    }
+                    console.log(check_input.join(','))
+                    data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+                }
+
+                // console.log(document.getElementById('select__year').value)
+                data['year'] = document.getElementById('select__year').value
+
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 $.ajax({
-                    url: '/docs/report_events/get_params/' + document.getElementById('select__year').value,
-                    type: 'GET',
+                    url: '/docs/report_events/get_params',
+                    type: 'POST',
+                    data: data,
                     success: (res) => {
                         //console.log(res)
                         var num = 1

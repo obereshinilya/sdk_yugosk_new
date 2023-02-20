@@ -99,15 +99,57 @@
     </div>
 </div>`
                     for (var row of res) {
+                        let regexp = /\"/g;
+
+                        // if(row[column].include("\"")||row[column].include("\'")) {
+                        //     row[column][row[column].indexOf("\"")]='&quot';
+                        // }
                         if (column == 'completion_mark') {
+                            if (table == 'conclusions') {
+                                fieldset.innerHTML += `<div class="checkbox">
+    <input type="checkbox" class="checkbox_button" name="${row[column].replace(regexp, '&quot')}" checked>
+    <label for="${row[column].replace(regexp, '&quot')}">${row[column].replace(regexp, '&quot')}</label>
+</div>`
+                            } else {
+                                fieldset.innerHTML += `<div class="checkbox">
+    <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+    <label for="${row[column]}">${Number(row[column]) ? 'Выполнено' : 'Не выполнено'}</label>
+</div>`
+                            }
+
+                        } else if (column == 'grade') {
                             fieldset.innerHTML += `<div class="checkbox">
     <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
-    <label for="${row[column]}">${row[column] ? 'Выполнено' : 'Не выполнено'}</label>
+    <label for="${row[column]}">${row[column] ? 'Удов.' : 'Не удов.'}</label>
+</div>`
+                        } else if (column.includes('date') || column.includes('deadline') || column.includes('data') || column.includes('period_execution')) {
+                            let date = new Date(row[column]);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+
+                            fieldset.innerHTML += `<div class="checkbox">
+    <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+    <label for="${row[column]}">${dd}.${mm}.${yyyy}</label>
+</div>`
+                        } else if (column.includes('data_time')) {
+                            let date = new Date(row[column]);
+                            let dd = date.getDate();
+                            if (dd < 10) dd = '0' + dd;
+                            let mm = date.getMonth() + 1;
+                            if (mm < 10) mm = '0' + mm;
+                            let yyyy = date.getFullYear();
+
+                            fieldset.innerHTML += `<div class="checkbox">
+    <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+    <label for="${row[column]}">${dd}.${mm}.${yyyy} ${newDate.toISOString().split('T')[1].split('.')[0]}</label>
 </div>`
                         } else {
                             fieldset.innerHTML += `<div class="checkbox">
-    <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
-    <label for="${row[column]}">${row[column]}</label>
+    <input type="checkbox" class="checkbox_button" name="${row[column].replace(regexp, '&quot')}" checked>
+    <label for="${row[column].replace(regexp, '&quot')}">${row[column].replace(regexp, '&quot')}</label>
 </div>`
                         }
                     }
@@ -185,7 +227,9 @@
             console.log(check_input.join(','))
             data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
         }
-        data['year'] = document.getElementById('select__year').value
+        if (document.getElementById('select__year') !== null) {
+            data['year'] = document.getElementById('select__year').value
+        }
         for (let key in data) {
             const input = document.createElement('input')
             input.type = 'text'

@@ -125,7 +125,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/result_apk/update/{id}', 'ReportController@update_result_apk');  //сохранение изменений
 
             Route::get('/docs/kipd_internal_checks', 'ReportController@kipd_internal_checks');  //План корректирующих действий ПБ по внутренним проверкам
-            Route::get('/docs/get_kipd_internal_checks/{year}', 'ReportController@get_kipd_internal_checks');  //данные
+            Route::post('/docs/get_kipd_internal_checks', 'ReportController@get_kipd_internal_checks');  //данные
             Route::get('/docs/kipd_internal_checks/remove/{id}', 'ReportController@remove_kipd_internal_checks');  //удаление
             Route::get('/docs/kipd_internal_checks/checked/{id}', 'ReportController@checked_kipd_internal_checks');  //не учитывать в обсчете
             Route::get('/docs/kipd_internal_checks/create', 'ReportController@create_kipd_internal_checks');  //создание
@@ -134,7 +134,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/kipd_internal_checks/update/{id}', 'ReportController@update_kipd_internal_checks');  //сохранение изменений
 
             Route::get('/docs/perfomance_plan_KiPD', 'ReportController@perfomance_plan_KiPD');  //Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
-            Route::get('/docs/get_perfomance_plan_KiPD/{year}', 'ReportController@get_perfomance_plan_KiPD');  //данные
+            Route::post('/docs/get_perfomance_plan_KiPD', 'ReportController@get_perfomance_plan_KiPD');  //данные
             Route::get('/docs/perfomance_plan_KiPD/create', 'ReportController@create_perfomance_plan_KiPD');  //создание
             Route::post('/docs/perfomance_plan_KiPD/save', 'ReportController@save_perfomance_plan_KiPD');  //сохранение
             Route::get('/docs/perfomance_plan_KiPD/remove/{id}', 'ReportController@remove_perfomance_plan_KiPD');  //удаление
@@ -158,13 +158,13 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/sved_avar/update/{id}', 'ReportController@update_sved_avar');  //сохранение изменений
 
             Route::get('/docs/plan_industrial_safety', 'ReportController@plan_industrial_safety');  //Сведения о выполнении плана работ в области промышленной безопасности
-            Route::get('/docs/get_plan_industrial_safety/{year}', 'ReportController@get_plan_industrial_safety');  //Сведения о выполнении плана работ в области промышленной безопасности
+            Route::post('/docs/get_plan_industrial_safety', 'ReportController@get_plan_industrial_safety');  //Сведения о выполнении плана работ в области промышленной безопасности
             Route::get('/docs/plan_industrial_safety/create', 'ReportController@create_plan_industrial_safety');  //создание
             Route::post('/docs/plan_industrial_safety/save', 'ReportController@save_plan_industrial_safety');  //сохранение
             Route::get('/docs/plan_industrial_safety/remove/{id}', 'ReportController@remove_plan_industrial_safety');  //удаление
             Route::get('/docs/plan_industrial_safety/edit/{id}', 'ReportController@edit_plan_industrial_safety');  //обновление
             Route::post('/docs/plan_industrial_safety/update/{id}', 'ReportController@update_plan_industrial_safety');  //сохранение изменений
-            Route::get('/docs/plan_industrial_safety/get_params/{year}', 'ReportController@get_plan_industrial_safety');  //обновление
+//            Route::get('/docs/plan_industrial_safety/get_params/{year}', 'ReportController@get_plan_industrial_safety');  //обновление
 
             Route::get('/docs/goals_trans_yugorsk', 'ReportController@goals_trans_yugorsk');  //Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности
             Route::get('/docs/goals_trans_yugorsk/create', 'ReportController@create_goals_trans_yugorsk');  //создание
@@ -172,7 +172,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/goals_trans_yugorsk/remove/{id}', 'ReportController@remove_goals_trans_yugorsk');  //удаление
             Route::get('/docs/goals_trans_yugorsk/edit/{id}', 'ReportController@edit_goals_trans_yugorsk');  //обновление
             Route::post('/docs/goals_trans_yugorsk/update/{id}', 'ReportController@update_goals_trans_yugorsk');  //сохранение изменений
-            Route::get('/docs/goals_trans_yugorsk/get_params/{year}', 'ReportController@get_goals_trans_yugorsk');  //выборка за выбранный год
+            Route::post('/docs/goals_trans_yugorsk/get_params', 'ReportController@get_goals_trans_yugorsk');  //выборка за выбранный год
 
             Route::get('/docs/emergency_drills', 'ReportController@emergency_drills');  //Сведения о противоаварийных тренировках, проведенных на опасных производственных объектах
             Route::get('/docs/emergency_drills/create', 'ReportController@create_emergency_drills');  //создание
@@ -180,7 +180,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/docs/emergency_drills/remove/{id}', 'ReportController@remove_emergency_drills');  //удаление
             Route::get('/docs/emergency_drills/edit/{id}', 'ReportController@edit_emergency_drills');  //обновление
             Route::post('/docs/emergency_drills/update/{id}', 'ReportController@update_emergency_drills');  //сохранение изменений
-            Route::get('/docs/emergency_drills/get_params/{year}', 'ReportController@get_emergency_drills');  //выборка за выбранный год
+            Route::post('/docs/emergency_drills/get_params', 'ReportController@get_emergency_drills');  //выборка за выбранный год
 
             Route::get('/docs/open_kr_dtoip/{id_do}', 'ReportController@open_kr_dtoip');  //Сведения о выполнении графика КР и ДТОиР ОПО
             Route::post('/docs/save_kr_dtoip/{year}/{id_do}', 'ReportController@save_kr_dtoip');  //сохранение
@@ -237,7 +237,7 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/docs/fulfillment_certification/update/{id}', 'ReportController@update_fulfillment_certification');  //сохранение изменений
 
             Route::get('/docs/pat_schedule', 'ReportController@show_pat_schedule');  // План работ в области промышленной безопасности
-            Route::get('/docs/pat_schedule/get_params/{year}', 'ReportController@get_pat_schedule');  // выборка за год
+            Route::post('/docs/pat_schedule/get_params', 'ReportController@get_pat_schedule');  // выборка за год
             Route::get('/docs/pat_schedule/create', 'ReportController@create_pat_schedule');  // страница создания записи
             Route::post('/docs/pat_schedule/save', 'ReportController@save_pat_schedule');  //сохранение
             Route::get('/docs/pat_schedule/remove/{id}', 'ReportController@remove_pat_schedule');  //удаление
@@ -254,19 +254,19 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::get('/get_indicator/{year}', 'MathController@get_indicator'); //получение данных с таблицы с результатами
 
 ///////////************** Отчеты PDF **************************************/////////////////////////
-            Route::get('/pdf_actual_declarations', 'PdfReportController@pdf_actual_declarations');     // скачать реестр актуальных деклараций
-            Route::get('/pdf_emergency_drills/{year}', 'PdfReportController@pdf_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
-            Route::get('/pdf_goals_trans_yugorsk/{year}', 'PdfReportController@pdf_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
-            Route::get('/pdf_perfomance_plan_KiPD/{year}', 'PdfReportController@pdf_perfomance_plan_KiPD');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
-            Route::get('/pdf_plan_industrial_safety/{year}', 'PdfReportController@pdf_plan_industrial_safety');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
-            Route::get('/pdf_kipd_internal_checks/{year}', 'PdfReportController@pdf_kipd_internal_checks');     // скачать План корректирующих действий ПБ по внутренним проверкам за
+            Route::post('/pdf_actual_declarations', 'PdfReportController@pdf_actual_declarations')->name('pdf_actual');     // скачать реестр актуальных деклараций
+            Route::post('/pdf_emergency_drills', 'PdfReportController@pdf_emergency_drills')->name('pdf_emergency');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
+            Route::post('/pdf_goals_trans_yugorsk', 'PdfReportController@pdf_goals_trans_yugorsk')->name('pdf_goals');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
+            Route::post('/pdf_perfomance_plan_KiPD/', 'PdfReportController@pdf_perfomance_plan_KiPD')->name('pdf_perfomance_plan_kipd');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
+            Route::post('/pdf_plan_industrial_safety/', 'PdfReportController@pdf_plan_industrial_safety')->name('pdf_plan_industrial');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
+            Route::post('/pdf_kipd_internal_checks', 'PdfReportController@pdf_kipd_internal_checks')->name('pdf_kipd_internal');     // скачать План корректирующих действий ПБ по внутренним проверкам за
             Route::get('/pdf_result_apk/{year}/{type}', 'PdfReportController@pdf_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора
             Route::get('/pdf_sved_avar/{start}/{finish}', 'PdfReportController@pdf_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
-            Route::get('/pdf_report_events/{year}', 'PdfReportController@pdf_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
+            Route::post('/pdf_report_events', 'PdfReportController@pdf_report_events')->name('pdf_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::post('/pdf_events', 'PdfReportController@pdf_events')->name('pdf_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
             Route::get('/pdf_kr_dtoip/{year}/{id_do}', 'PdfReportController@pdf_kr_dtoip');  //скачать КР ДТОиР ОПО
             Route::get('/pdf_plan_of_industrial_safety/{year}/{id_do}', 'PdfReportController@pdf_plan_of_industrial_safety');     // скачать план работ в области ПБ
-            Route::get('/pdf_pat_schedule/{year}', 'PdfReportController@pdf_pat_schedule');     // скачать График комплексных противоаварийных тренировок
+            Route::post('/pdf_pat_schedule', 'PdfReportController@pdf_pat_schedule')->name('pdf_pat_schedule');     // скачать График комплексных противоаварийных тренировок
             Route::get('/pdf_jas/{start}/{end}', 'PdfReportController@pdf_jas');     // скачать ЖАС за выбранный период
 
 ///////////************** Отчеты Excel **************************************/////////////////////////
@@ -274,16 +274,16 @@ Route::group(['middleware' => 'forbid-banned-user',], function () {      //ра�
             Route::post('/excel_conclusions_industrial_safety', 'ExcelReportController@excel_conclusions_industrial_safety')->name('excel_conclusions');
             Route::post('/excel_events', 'ExcelReportController@excel_events')->name('excel_events');
             Route::post('/excel_fulfillment_certification', 'ExcelReportController@excel_fulfillment_certification')->name('excel_fulfillment');
-            Route::get('/excel_pat_schedule/{year}', 'ExcelReportController@excel_pat_schedule');
+            Route::post('/excel_pat_schedule', 'ExcelReportController@excel_pat_schedule')->name('excel_pat_schedule');
             Route::get('/excel_plan_of_industrial_safety/{year}/{id_do}', 'ExcelReportController@excel_plan_of_industrial_safety');
             Route::post('/excel_actual_declarations', 'ExcelReportController@excel_actual_declarations')->name('excel_actual');
-            Route::get('/excel_emergency_drills/{year}', 'ExcelReportController@excel_emergency_drills');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
-            Route::get('/excel_report_events/{year}', 'ExcelReportController@excel_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
-            Route::get('/excel_goals_trans_yugorsk/{year}', 'ExcelReportController@excel_goals_trans_yugorsk');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
-            Route::get('/excel_kipd_internal_checks/{year}', 'ExcelReportController@excel_kipd_internal_checks');     // скачать План корректирующих действий ПБ по внутренним проверкам за
+            Route::post('/excel_emergency_drills', 'ExcelReportController@excel_emergency_drills')->name('excel_emergency');     // скачать сведения о противоаварийных тренировках, проведенных на опасных производственных объектах в 20__ году
+            Route::post('/excel_report_events', 'ExcelReportController@excel_report_events')->name('excel_report_events');     // скачать Отчет наименование филиала/дочернего общества о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром»
+            Route::post('/excel_goals_trans_yugorsk', 'ExcelReportController@excel_goals_trans_yugorsk')->name('excel_goals');     // скачать Цели ООО «Газпром трансгаз Югорск» в области производственной безопасности на 20__ год
+            Route::post('/excel_kipd_internal_checks', 'ExcelReportController@excel_kipd_internal_checks')->name('excel_kipd_internal');     // скачать План корректирующих действий ПБ по внутренним проверкам за
             Route::get('/excel_kr_dtoip/{year}/{id_do}', 'ExcelReportController@excel_kr_dtoip');  //скачать КР ДТОиР ОПО
-            Route::get('/excel_perfomance_plan_KiPD/{year}', 'ExcelReportController@excel_perfomance_plan_KiPD');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
-            Route::get('/excel_plan_industrial_safety/{year}', 'ExcelReportController@excel_plan_industrial_safety');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
+            Route::post('/excel_perfomance_plan_KiPD', 'ExcelReportController@excel_perfomance_plan_KiPD')->name('excel_perfomance_plan_kipd');     // скачать Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром»
+            Route::post('/excel_plan_industrial_safety', 'ExcelReportController@excel_plan_industrial_safety')->name('excel_plan_industrial');     // скачать Сведения о выполнении плана работ в области промышленной безопасности
             Route::get('/excel_result_apk/{year}', 'ExcelReportController@excel_result_apk');     // скачать Результаты АПК, корпоративного контроля и государственного надзора
             Route::get('/excel_sved_avar/{start}/{finish}', 'ExcelReportController@excel_sved_avar');     // скачать Сведения об аварийности на опасных производственных объектах дочернего общества за
             Route::get('/excel_jas/{start}/{end}', 'ExcelReportController@excel_jas');     // скачать Жас за определенный период

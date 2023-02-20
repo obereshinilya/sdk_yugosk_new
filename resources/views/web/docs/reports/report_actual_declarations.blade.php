@@ -62,12 +62,30 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_actual') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info excel" style="display: inline-block"><a
-                                                href="/excel_actual_declarations"
+                                                href="#" onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('pdf_actual') }}">
+                                            @csrf
+                                            <div id="pdf_form">
+                                            </div>
+                                            <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                href="/pdf_actual_declarations"
+                                                href="#" onclick="print_data('pdf')"
                                                 style="display: inline-block">Печать в pdf</a>
                                         </div>
                                     @endcan
@@ -101,14 +119,24 @@
                                 <thead>
                                 <tr>
                                     <th style="text-align: center">№ п/п</th>
-                                    <th style="text-align: center">Наименование ДПБ</th>
-                                    <th style="text-align: center">Составные части ДПБ</th>
-                                    <th style="text-align: center">Введена в действие уведомлением Ростехнадзора рег. №,
+                                    <th style="text-align: center" class="filter name_DPB actual_declarations">
+                                        Наименование ДПБ
+                                    </th>
+                                    <th style="text-align: center" class="filter parts_DPB actual_declarations">
+                                        Составные части ДПБ
+                                    </th>
+                                    <th style="text-align: center" class="filter massage_rtn actual_declarations">
+                                        Введена в действие уведомлением Ростехнадзора рег. №,
                                         дата
                                     </th>
-                                    <th style="text-align: center">Рег. № ДПБ в Ростехнадзоре</th>
-                                    <th style="text-align: center">Наименование ЗЭПБ</th>
-                                    <th style="text-align: center">Рег.№ ЗЭПБ в Ростехнадзоре,
+                                    <th style="text-align: center" class="filter reg_num_dpb actual_declarations">Рег. №
+                                        ДПБ в Ростехнадзоре
+                                    </th>
+                                    <th style="text-align: center" class="filter name_zepb actual_declarations">
+                                        Наименование ЗЭПБ
+                                    </th>
+                                    <th style="text-align: center" class="filter reg_num_date_zepb actual_declarations">
+                                        Рег.№ ЗЭПБ в Ростехнадзоре,
                                         дата
                                     </th>
                                     @can('report-edit')
@@ -125,34 +153,55 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             get_data()
         })
 
         function get_data() {
-            @can('doc-create')
-            let pdf = document.querySelector('.bat_info');
-            pdf.firstChild.href = '/pdf_actual_declarations';
-            let excel = document.querySelector('.bat_info');
-            excel.firstChild.href = '/excel_actual_declarations';
-            @endcan
-            var table_body = document.getElementById('body_table')
-            table_body.innerText = ''
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var data = {}
+            for (var fieldsheet of fieldsheets) {
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
+                        check_input.push(one_input.getAttribute('name'))
+                    } else {
+                        all_input_checked = false
+                    }
+                }
+                console.log(check_input.join(','))
+                data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+            }
+            console.log(data)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
                 url: '/docs/actual_declarations/get_params',
-                type: 'GET',
-                success: (res) => {
-                    var num = 1
+                method: 'POST',
+                data: data,
+                success(res) {
+                    let tbody = document.getElementById('table_for_search').getElementsByTagName('tbody')[0];
+                    tbody.innerHTML = '';
+                    console.log(res)
+                    let num = 1
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_DPB']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['parts_DPB']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['massage_rtn']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['reg_num_dpb']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_zepb']}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['reg_num_date_zepb']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter name_DPB actual_declarations">${row['name_DPB']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter parts_DPB actual_declarations">${row['parts_DPB']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter massage_rtn actual_declarations">${row['massage_rtn']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter reg_num_dpb actual_declarations">${row['reg_num_dpb']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter name_zepb actual_declarations">${row['name_zepb']}</td>`
+                        tr.innerHTML += `<td style="text-align: center" class="filter reg_num_date_zepb actual_declarations">${row['reg_num_date_zepb']}</td>`
                         tr.innerHTML += ` @can('report-edit') <td style="text-align: center"><a href="#" onclick="edit_record(${row['id']})">
                                                                             <img style="margin-left: 8px" alt=""
                                                                                  src="{{asset('assets/images/icons/edit.svg')}}" class="check_i">
@@ -161,13 +210,43 @@
                                                                             <img style="margin-left: 5px" alt=""
                                                                                  src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">
                                                                         </a></td> @endcan`
-                        table_body.appendChild(tr)
+                        tbody.appendChild(tr)
                         num += 1
                     }
+
+
+
+                    {{--var table_body = document.getElementById('body_table')--}}
+                    {{--table_body.innerText = ''--}}
+                    {{--$.ajax({--}}
+                    {{--    url: '/docs/actual_declarations/get_params',--}}
+                    {{--    type: 'GET',--}}
+                    {{--    success: (res) => {--}}
+                    {{--        var num = 1--}}
+                    {{--        for (var row of res) {--}}
+                    {{--            var tr = document.createElement('tr')--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center">${num}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter name_DPB actual_declarations">${row['name_DPB']}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter parts_DPB actual_declarations">${row['parts_DPB']}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter massage_rtn actual_declarations">${row['massage_rtn']}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter reg_num_dpb actual_declarations">${row['reg_num_dpb']}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter name_zepb actual_declarations">${row['name_zepb']}</td>`--}}
+                    {{--            tr.innerHTML += `<td style="text-align: center" class="filter reg_num_date_zepb actual_declarations">${row['reg_num_date_zepb']}</td>`--}}
+                    {{--            tr.innerHTML += ` @can('report-edit') <td style="text-align: center"><a href="#" onclick="edit_record(${row['id']})">--}}
+                    {{--                                                                <img style="margin-left: 8px" alt=""--}}
+                    {{--                                                                     src="{{asset('assets/images/icons/edit.svg')}}" class="check_i">--}}
+                    {{--                                                            </a>--}}
+                    {{--                                                            <a href="#" onclick="remove_record(${row['id']})">--}}
+                    {{--                                                                <img style="margin-left: 5px" alt=""--}}
+                    {{--                                                                     src="{{asset('assets/images/icons/trash.svg')}}" class="trash_i">--}}
+                    {{--                                                            </a></td> @endcan`--}}
+                    {{--            table_body.appendChild(tr)--}}
+                    {{--            num += 1--}}
+                    {{--        }--}}
                 },
                 error: function (error) {
-                    var table_body = document.getElementById('body_table')
-                    table_body.innerText = ''
+                    let tbody = document.getElementById('table_for_search').getElementsByTagName('tbody')[0];
+                    tbody.innerHTML = '';
                 },
 
             })

@@ -84,14 +84,14 @@
                                         несоответствия
                                     </th>
                                     <th style="text-align: center">Наименование мероприятия</th>
-                                    <td style="padding: 0px"><input id="person" type="text"
+                                    <td style="padding: 0px"><input id="name_event" type="text"
                                                                     style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">Ответственный исполнитель</th>
-                                    <td style="padding: 0px"><input id="name_event" type="text"
+                                    <td style="padding: 0px"><input id="person" type="text"
                                                                     style="height: 100%; width: 95%"
                                                                     class="text-field__input" value="">
                                     </td>
