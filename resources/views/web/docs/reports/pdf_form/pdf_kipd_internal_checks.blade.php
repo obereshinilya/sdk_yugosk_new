@@ -48,11 +48,11 @@
     </tr>
     </thead>
     <tbody>
-
+    <?php $i = 1;?>
     @foreach($data['data'] as $key=>$row)
         <tr>
-            <td>{{$row->id}}</td>
-            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
+            <td>{{$i}}</td>
+            <td>{{$row->short_name_do}}</td>
             <td>{{$row->podrazdelenie}}</td>
             @if($row->date_act)
                 <td>{{$data['date_act'][$key]}}</td>
@@ -76,6 +76,7 @@
             <td>{{$row->indicator}}</td>
 
         </tr>
+        <?php $i++?>
     @endforeach
 
     </tbody>

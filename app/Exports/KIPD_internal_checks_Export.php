@@ -51,24 +51,25 @@ class KIPD_internal_checks_Export implements FromView, WithStyles, ShouldAutoSiz
         ];
         $styleArray2 = [
             'font' => [
-                'size'=>20
+                'size' => 20
             ]
         ];
 
         $sheet->getStyle('A1')->applyFromArray($styleArray2);
 
-        $sheet->getStyle('A1:N3')->applyFromArray($styleArray);
-        $sheet->getStyle('N2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('F7CAAC');;
+        $sheet->getStyle('A1:O3')->applyFromArray($styleArray);
+        $sheet->getStyle('O2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('F7CAAC');;
         $sheet->getRowDimension('2')->setRowHeight(50);
         $sheet->getRowDimension('3')->setRowHeight(50);
         $sheet->getRowDimension('1')->setRowHeight(50);
 
 
     }
+
     public function columnWidths(): array
     {
         return [
-            'A'=>5,
+            'A' => 5,
         ];
     }
 }

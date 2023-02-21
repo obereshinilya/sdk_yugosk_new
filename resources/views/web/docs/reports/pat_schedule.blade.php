@@ -66,12 +66,30 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_pat_schedule') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info excel" style="display: inline-block; margin-left: 0px"><a
-                                                href="/excel_pat_schedule/"
+                                                href="#" onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('pdf_pat_schedule') }}">
+                                            @csrf
+                                            <div id="pdf_form">
+                                            </div>
+                                            <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                href="/pdf_pat_schedule/"
+                                                href="#" onclick="print_data('pdf')"
                                                 style="display: inline-block">Печать в pdf</a>
                                         </div>
                                     @endcan
@@ -95,22 +113,51 @@
                                 <thead>
                                 <tr>
                                     <th style="text-align: center; width: 3%">№ п/п</th>
-                                    <th style="text-align: center; width:8%; padding: 10px 2px">Наименование филиала
+                                    <th style="text-align: center; width:8%; padding: 10px 2px"
+                                        class="filter short_name_do pat_schedule">Наименование филиала
                                     </th>
-                                    <th style="text-align: center; width:8%;padding: 10px 2px">Рег. № ОПО</th>
-                                    <th style="text-align: center; width:8%;padding: 10px 2px">Наименование ОПО</th>
-                                    <th style="text-align: center; padding: 10px 2px">Январь, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Февраль, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Март, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Апрель, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Май, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Июнь, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Июль, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Август, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Сентябрь, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Октябрь, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Ноябрь, <br>№ темы</th>
-                                    <th style="text-align: center; padding: 10px 2px">Декабрь, <br>№ темы</th>
+                                    <th style="text-align: center; width:8%;padding: 10px 2px"
+                                        class="filter reg_num_opo pat_schedule">Рег. № ОПО
+                                    </th>
+                                    <th style="text-align: center; width:8%;padding: 10px 2px"
+                                        class="filter full_name_opo pat_schedule">Наименование ОПО
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter jan pat_schedule">
+                                        Январь, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter feb pat_schedule">
+                                        Февраль, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter mar pat_schedule">
+                                        Март, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter apr pat_schedule">
+                                        Апрель, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter may pat_schedule">
+                                        Май, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter jun pat_schedule">
+                                        Июнь, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter jul pat_schedule">
+                                        Июль, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter aug pat_schedule">
+                                        Август, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter sep pat_schedule">
+                                        Сентябрь, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter oct pat_schedule">
+                                        Октябрь, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter nov pat_schedule">
+                                        Ноябрь, <br>№ темы
+                                    </th>
+                                    <th style="text-align: center; padding: 10px 2px" class="filter dec pat_schedule">
+                                        Декабрь, <br>№ темы
+                                    </th>
                                     @can('report-edit')
                                         <th></th>
                                     @endcan
@@ -124,6 +171,7 @@
                 </div>
             </div>
         </div>
+        @include('web.include.filters_js')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var date = new Date();
@@ -132,25 +180,44 @@
             })
 
             function get_data() {
-                @can('doc-create')
-                let pdf = document.querySelector('.pdf');
-                pdf.firstChild.href = '/pdf_pat_schedule/' + document.getElementById('select__year').value;
-                let excel = document.querySelector('.excel');
-                excel.firstChild.href = '/excel_pat_schedule/' + document.getElementById('select__year').value;
-                @endcan
                 var table_body = document.getElementById('body_table')
                 table_body.innerText = ''
+                var fieldsheets = document.getElementsByTagName('fieldset')
+                var data = {}
+                for (var fieldsheet of fieldsheets) {
+                    var check_input_all = fieldsheet.getElementsByTagName('input')
+                    var check_input = []
+                    var all_input_checked = true
+
+                    for (var one_input of check_input_all) {
+                        if (one_input.hasAttribute('checked')) {
+                            check_input.push(one_input.getAttribute('name'))
+                        } else {
+                            all_input_checked = false
+                        }
+                    }
+                    console.log(check_input.join(','))
+                    data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+                }
+                data['year'] = document.getElementById('select__year').value
+                console.log(data)
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 $.ajax({
-                    url: '/docs/pat_schedule/get_params/' + document.getElementById('select__year').value,
-                    type: 'GET',
+                    url: '/docs/pat_schedule/get_params',
+                    type: 'POST',
+                    data: data,
                     success: (res) => {
                         var num = 1
                         for (var row of res) {
                             var tr = document.createElement('tr')
                             tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['short_name_do']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['reg_num_opo']}</td>`
-                            tr.innerHTML += `<td style="text-align: center">${row['name_opo']}</td>`
+                            tr.innerHTML += `<td style="text-align: center">${row['full_name_opo']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['jan']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['feb']}</td>`
                             tr.innerHTML += `<td style="text-align: center">${row['mar']}</td>`

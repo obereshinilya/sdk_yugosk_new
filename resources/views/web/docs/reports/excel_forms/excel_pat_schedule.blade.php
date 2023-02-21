@@ -48,9 +48,9 @@
     @foreach($data as $row)
         <tr>
             <td>{{$i}}</td>
-            <td>{{\App\Models\Main_models\RefDO::where('id_do',$row->id_do)->value('short_name_do') }}</td>
+            <td>{{$row->short_name_do}}</td>
             <td>{{$row->reg_num_opo}}</td>
-            <td>{{$row->opo_name}}</td>
+            <td>{{$row->full_name_opo}}</td>
             <td>{{$row->jan}}</td>
             <td>{{$row->feb}}</td>
             <td>{{$row->mar}}</td>

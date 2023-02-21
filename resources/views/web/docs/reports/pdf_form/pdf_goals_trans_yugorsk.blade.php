@@ -34,10 +34,10 @@
     </tr>
     </thead>
     <tbody>
-
+    <?php $i = 1;?>
     @foreach($data['data'] as $key=>$row)
         <tr>
-            <td>{{$row->id}}</td>
+            <td>{{$i}}</td>
             <td>{{$row->safety_goals}}</td>
             <td>{{$row->result_goal}}</td>
             <td>{{$data['data_goal'][$key]}}</td>
@@ -50,6 +50,7 @@
             <td>{{$row->indicative_indicator}}</td>
 
         </tr>
+        <?php $i++?>
     @endforeach
 
     </tbody>

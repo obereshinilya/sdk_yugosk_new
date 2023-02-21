@@ -55,14 +55,32 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_emergency') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info" style="display: inline-block"><a
                                                 href="#"
-                                                onclick="window.location.href = '/excel_emergency_drills/' + document.getElementById('select__year').value"
+                                                onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('pdf_emergency') }}">
+                                            @csrf
+                                            <div id="pdf_form">
+                                            </div>
+                                            <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info" style="display: inline-block; margin-left: 0px"><a
                                                 href="#"
-                                                onclick="window.location.href = '/pdf_emergency_drills/' + document.getElementById('select__year').value"
+                                                onclick="print_data('pdf')"
                                                 style="display: inline-block">Печать в pdf</a>
                                         </div>
                                     @endcan
@@ -101,25 +119,44 @@
                                 <thead>
                                 <tr>
                                     <th rowspan="2" style="text-align: center; padding: 10px 7px">№ п/п</th>
-                                    <th rowspan="2" style="text-align: center">Наименование филиала ДО</th>
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter short_name_do emergency_drills">Наименование филиала ДО
+                                    </th>
                                     <th colspan="3" style="text-align: center">Количество ПАТ</th>
-                                    <th rowspan="2" style="text-align: center">Наименование ПАТ
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter workout_theme emergency_drills">Наименование ПАТ
                                     </th>
-                                    <th rowspan="2" style="text-align: center">Наименование, рег. № ОПО</th>
-                                    <th rowspan="2" style="text-align: center">Дата ПАТ</th>
-                                    <th rowspan="2" style="text-align: center">№ и дата протокола проведения ПАТ</th>
-                                    <th rowspan="2" style="text-align: center">Основание проведения ПАТ
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter name_reg_№_OPO emergency_drills">Наименование, рег. № ОПО
                                     </th>
-                                    <th rowspan="2" style="text-align: center">Оценка</th>
-                                    <th rowspan="2" style="text-align: center">Индикативный показатель</th>
+                                    <th rowspan="2" style="text-align: center" class="filter date_PAT emergency_drills">
+                                        Дата ПАТ
+                                    </th>
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter №_date_protocol_PAT emergency_drills">№ и дата протокола
+                                        проведения ПАТ
+                                    </th>
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter basis_PAT emergency_drills">Основание проведения ПАТ
+                                    </th>
+                                    <th rowspan="2" style="text-align: center" class="filter grade emergency_drills">
+                                        Оценка
+                                    </th>
+                                    <th rowspan="2" style="text-align: center"
+                                        class="filter indicative_indicator emergency_drills">Индикативный показатель
+                                    </th>
                                     @can('report-edit')
                                         <th rowspan="2"></th>
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center">План на год</th>
-                                    <th style="text-align: center">План тек.</th>
-                                    <th style="text-align: center">Факт</th>
+                                    <th style="text-align: center" class="filter plan_PAT emergency_drills">План на
+                                        год
+                                    </th>
+                                    <th style="text-align: center" class="filter plan_month_PAT emergency_drills">План
+                                        тек.
+                                    </th>
+                                    <th style="text-align: center" class="filter fact_PAT emergency_drills">Факт</th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_table">
@@ -134,6 +171,7 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
     <script>
         //скрипт для удаления
         function remove_record(id) {
@@ -199,9 +237,34 @@
         function get_data() {
             var table_body = document.getElementById('body_table')
             table_body.innerText = ''
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var data = {}
+            for (var fieldsheet of fieldsheets) {
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
+                        check_input.push(one_input.getAttribute('name'))
+                    } else {
+                        all_input_checked = false
+                    }
+                }
+                console.log(check_input.join(','))
+                data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+            }
+            data['year'] = document.getElementById('select__year').value
+            console.log(data)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
-                url: '/docs/emergency_drills/get_params/' + document.getElementById('select__year').value,
-                type: 'GET',
+                url: '/docs/emergency_drills/get_params',
+                type: 'POST',
+                data: data,
                 success: (res) => {
                     var num = 1
                     var keys = Object.keys(res)
