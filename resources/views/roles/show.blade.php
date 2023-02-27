@@ -4,6 +4,11 @@
 @endsection
 
 @section('content')
+    <style>
+        body {
+            overflow-y: scroll;
+        }
+    </style>
     @push('app-css')
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @endpush
