@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Conclusions_industrial_safety;
 use App\Models\Main_models\RefDO;
+use App\Models\Main_models\RefOpo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -23,24 +24,42 @@ class ConclusionsController extends Controller
         return view('web.docs.reports.conclusions_industrial_safety_main', compact('i', 'page', 'data_one'));
     }
 
-    public function get_group_conclusion(Request $request, $column)
-    {
-        if ($request->all()) {
-            $keys = array_keys($request->all());
-            foreach ($keys as $key) {
-                $fieldset[$key] = explode(',', $request[$key]);
-                if (isset($data_one)) {
-                    $data_one = $data_one->whereIn($key, $fieldset[$key]);
-                } else {
-                    $data_one = Conclusions_industrial_safety::whereIn($key, $fieldset[$key]);
-                }
-            }
-            $data_one->groupby($column)->orderby($column);
-        } else {
-            $data_one = Conclusions_industrial_safety::groupby($column)->orderby($column);
-        }
-        return $data_one->get($column);
-    }
+//    public function get_group_conclusion(Request $request, $table, $column)
+//    {
+//        if ($request->all()) {
+//            $keys = array_keys($request->all());
+//            foreach ($keys as $key) {
+//                $fieldset[$key] = explode(',', $request[$key]);
+//                if (isset($data_one)) {
+//                    $data_one = $data_one->whereIn($key, $fieldset[$key]);
+//                } else {
+//                    switch ($table) {
+//                        case 'conclusions':
+//                            $data_one = Conclusions_industrial_safety::whereIn($key, $fieldset[$key]);
+//                            break;
+//                        case 'ref_do':
+//                            $data_one = DB::table('public.ref_do')->
+//                            join('public.typestatus', 'public.ref_do.id_status', '=', 'public.typestatus.id_status')->whereIN($key, $fieldset[$key]);
+//                            break;
+//                    }
+//                }
+//            }
+//            $data_one->groupby($column)->orderby($column);
+//        } else {
+//            switch ($table) {
+//                case 'conclusions':
+//                    $data_one = Conclusions_industrial_safety::groupby($column)->orderby($column);
+//                    break;
+//                case 'ref_do':
+//                    $data_one = DB::table('public.ref_do')->
+//                    join('public.typestatus', 'public.ref_do.id_status', '=', 'public.typestatus.id_status')
+//                        ->groupby($column)->orderby($column);
+//                    break;
+//            }
+//
+//        }
+//        return $data_one->get($column);
+//    }
 
     public function show_conclusions_industrial_safety(Request $request)
     {

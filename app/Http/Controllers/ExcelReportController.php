@@ -39,6 +39,7 @@ use App\Report_events;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Excel;
+use Illuminate\Support\Facades\DB;
 
 class ExcelReportController extends Controller
 {
@@ -73,71 +74,96 @@ class ExcelReportController extends Controller
     }
 
 
-    public function excel_events($year)
+    public function excel_events(Request $request)
     {
-        $data['data'] = Events::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                if (isset($data)) {
+                    $data = $data->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data = Events::orderby('id')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+        $data_to_table['data'] = $data->get();
         $title = ' Мероприятия
                             по устранению имеющихся нарушений действующих норм и правил, выявленных
                             Северо-Уральским управлением ООО «Газпром газнадзор» при эксплуатации объектов ЕСГ ПАО
-                            «Газпром» за ' . $year . ' год';
-        foreach ($data['data'] as $key => $event) {
+                            «Газпром»';
+        foreach ($data_to_table['data'] as $key => $event) {
             if ($event->date_issue) {
-                $data['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
+                $data_to_table['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
             } else {
-                $data['date_issue'][$key] = '';
+                $data_to_table['date_issue'][$key] = '';
 
             }
             if ($event->date_base) {
-
-                $data['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
+                $data_to_table['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
             } else {
-                $data['date_base'][$key] = '';
-
+                $data_to_table['date_base'][$key] = '';
             }
             if ($event->date_repiat) {
-                $data['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
-
+                $data_to_table['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
             } else {
-                $data['date_repiat'][$key] = '';
-
+                $data_to_table['date_repiat'][$key] = '';
             }
             if ($event->date_fact) {
-                $data['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
-
+                $data_to_table['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
             } else {
-                $data['date_fact'][$key] = '';
-
+                $data_to_table['date_fact'][$key] = '';
             }
             if ($event->date_update) {
-                $data['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
+                $data_to_table['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
             } else {
-                $data['date_update'][$key] = '';
-
+                $data_to_table['date_update'][$key] = '';
             }
         }
         $patch = 'Events' . Carbon::now() . '.xlsx';
 
-        return Excel::download(new EventsExport($title, $data), $patch);
+        return Excel::download(new EventsExport($title, $data_to_table), $patch);
 
     }
 
-    public function excel_fulfillment_certification($year)
+    public function excel_fulfillment_certification(Request $request)
     {
-        $data = Fulfillment_certification::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                if (isset($data)) {
+                    $data = $data->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data = DB::table('reports.fulfillment_certification')->
+                    join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.fulfillment_certification.id_do')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+        $data_to_table = $data->get();
         $title = ' Выполнение
-                            плана-графика аттестации в области промышленной безопасности за ' . $year . ' год';
+                            плана-графика аттестации в области промышленной безопасности за ' . $request->year . ' год.';
         $patch = 'Fulfillment_certification' . Carbon::now() . '.xlsx';
 
-        return Excel::download(new FulfillmentsExport($title, $data), $patch);
+        return Excel::download(new FulfillmentsExport($title, $data_to_table), $patch);
 
     }
 
-    public function excel_pat_schedule($year)
+    public function excel_pat_schedule(Request $request)
     {
-        $data = Pat_schedule::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.pat_schedule')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.pat_schedule.id_do')->join('public.ref_opo', 'public.ref_opo.id_opo', '=', 'reports.pat_schedule.id_opo');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data = $data_one->get();
         $title = ' График
                             комплексных противоаварийных тренировок I - II уровня на опасных производственных объектах
-                            ООО «Газпром трансгаз Югорск» на ' . $year . ' год';
+                            ООО «Газпром трансгаз Югорск» на ' . $request->year . ' год.';
         $patch = 'Pat_schedule' . Carbon::now() . '.xlsx';
 
         return Excel::download(new Pat_scheduleExport($title, $data), $patch);
@@ -146,13 +172,13 @@ class ExcelReportController extends Controller
 
     public function excel_plan_of_industrial_safety($year, $id_do)
     {
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
         $data['data'] = Plan_of_industrial_safety::where('id_do', '=', $id_do)->where('year', '=', $year)->get();
-        $title = $name_do.' План работ в области промышленной безопасности за ' . $year . ' год';
+        $title = $name_do . ' План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.xlsx';
 
         foreach ($data['data'] as $key => $plan) {
@@ -166,9 +192,25 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_actual_declarations()
+    public function excel_actual_declarations(Request $request)
     {
-        $data = ActualDeclarations::orderby('id')->get();
+        $keys = array_keys($request->all());
+        if ($keys) {
+            foreach ($keys as $column) {
+                if ($column != '_token' && $column != 'page') {
+                    $fieldset[$column] = explode('!!', $request[$column]);
+                    if (isset($data_one)) {
+                        $data_one->whereIn($column, $fieldset[$column]);
+                    } else {
+                        $data_one = ActualDeclarations::orderby('id')->whereIn($column, $fieldset[$column]);
+                    }
+                }
+            }
+        } else {
+            $data_one = ActualDeclarations::orderby('id');
+        }
+        $data = $data_one->get();
+
         $title = ' Реестр актуальных
                             деклараций промышленной
                             безопасности
@@ -179,12 +221,21 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_emergency_drills($year)
+    public function excel_emergency_drills(Request $request)
     {
-        $data['data'] = EmergencyDrills::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.emergency_drills')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->orderbydesc('date_PAT')->get();
         $title = ' Сведения о
                             противоаварийных тренировках, проведенных на
-                            ОПО в ' . $year . ' году';
+                            ОПО в ' . $request->year . ' году';
         $patch = 'report_emergency_drills' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_PAT) {
@@ -197,12 +248,22 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_report_events($year)
+    public function excel_report_events(Request $request)
     {
-        $data['data'] = Report_events::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.report_events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.report_events.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = ' Отчет
                             о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных
-                            Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $year . ' год';
+                            Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $request->year . ' год';
         $patch = 'report_events' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_update) {
@@ -215,12 +276,21 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_goals_trans_yugorsk($year)
+    public function excel_goals_trans_yugorsk(Request $request)
     {
-        $data['data'] = Goals_trans_yugorsk::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = Goals_trans_yugorsk::orderby('id');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = ' Цели ООО «Газпром
                             трансгаз Югорск» в области
-                            производственной безопасности на ' . $year . ' год';
+                            производственной безопасности на ' . $request->year . ' год';
         $patch = 'goals_trans_yugorsk' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->data_goal) {
@@ -233,11 +303,20 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_kipd_internal_checks($year)
+    public function excel_kipd_internal_checks(Request $request)
     {
-        $data['data'] = KIPDInternalChecks::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.kipd_internal_checks')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.kipd_internal_checks.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->orderbydesc('date_check')->get();
         $title = ' План корректирующих
-                            действий ПБ по внутренним проверкам за ' . $year . ' год';
+                            действий ПБ по внутренним проверкам за ' . $request->year . ' год';
         $patch = 'kipd_internal_checks' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_act) {
@@ -290,12 +369,12 @@ class ExcelReportController extends Controller
             $data['all_plan_year'] += (int)$row->plan_year;
             $data['all_plan_month'] += (int)$row->plan_month;
         }
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
-        $title = $name_do.'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
+        $title = $name_do . 'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
         $patch = 'kr_dtoip' . Carbon::now() . '.xlsx';
 
 
@@ -303,10 +382,20 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_perfomance_plan_KiPD($year)
+    public function excel_perfomance_plan_KiPD(Request $request)
     {
-        $data['data'] = Perfomance_plan_KiPD::where('year', '=', $year)->get();
-        $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $year . ' год';
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.perfomance_plan_KiPD')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.perfomance_plan_KiPD.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
+        $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $request->year . ' год';
         $patch = 'perfomance_plan_kipd' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->deadline) {
@@ -319,12 +408,22 @@ class ExcelReportController extends Controller
 
     }
 
-    public function excel_plan_industrial_safety($year)
+    public function excel_plan_industrial_safety(Request $request)
     {
-        $data['data'] = Plan_industrial_safety::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.plan_industrial_safety')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = 'Сведения о выполнении плана работ в области
                             промышленной
-                            безопасности за ' . $year . ' год';
+                            безопасности за ' . $request->year . ' год';
         $patch = 'plan_industrial_safety' . Carbon::now() . '.xlsx';
         foreach ($data['data'] as $key => $row) {
             if ($row->period_execution) {

@@ -59,15 +59,33 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_plan_industrial') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info" style="display: inline-block"><a
                                                 href="#"
-                                                onclick="window.location.href = '/excel_plan_industrial_safety/'+document.getElementById('select__year').value"
+                                                onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('pdf_plan_industrial') }}">
+                                            @csrf
+                                            <div id="pdf_form">
+                                            </div>
+                                            <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info" style="display: inline-block; margin-left: 0px"><a
                                                 href="#"
-                                                onclick="window.location.href = '/pdf_plan_industrial_safety/'+document.getElementById('select__year').value"
-                                                style="display: inline-block">Печать в pdf</a>
+                                                onclick="print_data('pdf')" style="display: inline-block">Печать в
+                                                pdf</a>
                                         </div>
                                     @endcan
                                     @can('entries-add')
@@ -98,14 +116,29 @@
                                 @endcan
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">Наименование филиала ДО</th>
-                                    <th style="text-align: center;">Цели в области ОТ и ПБ</th>
-                                    <th style="text-align: center;">Наименование риска</th>
-                                    <th style="text-align: center;">Мероприятие</th>
-                                    <th style="text-align: center;">Срок исполнения</th>
-                                    <th style="text-align: center;">Ответственный исполнитель (Ф.И.О., должность)</th>
-                                    <th style="text-align: center;">Отметка о выполнении</th>
-                                    <th style="text-align: center;">Индикативный показатель</th>
+                                    <th style="text-align: center;" class="filter short_name_do plan_industrial">
+                                        Наименование филиала ДО
+                                    </th>
+                                    <th style="text-align: center;" class="filter goals_OT_PB plan_industrial">Цели в
+                                        области ОТ и ПБ
+                                    </th>
+                                    <th style="text-align: center;" class="filter name_risk plan_industrial">
+                                        Наименование риска
+                                    </th>
+                                    <th style="text-align: center;" class="filter events plan_industrial">Мероприятие
+                                    </th>
+                                    <th style="text-align: center;" class="filter period_execution plan_industrial">Срок
+                                        исполнения
+                                    </th>
+                                    <th style="text-align: center;" class="filter responsible plan_industrial">
+                                        Ответственный исполнитель (Ф.И.О., должность)
+                                    </th>
+                                    <th style="text-align: center;" class="filter completion_mark plan_industrial">
+                                        Отметка о выполнении
+                                    </th>
+                                    <th style="text-align: center;" class="filter indicative_indicat plan_industrial">
+                                        Индикативный показатель
+                                    </th>
                                     @can('report-edit')
                                         <th></th>
                                     @endcan
@@ -120,6 +153,7 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var date = new Date();
@@ -130,13 +164,41 @@
         function get_data() {
             var table_body = document.getElementById('body_table')
             table_body.innerText = ''
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var data = {}
+            for (var fieldsheet of fieldsheets) {
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
+                        check_input.push(one_input.getAttribute('name'))
+                    } else {
+                        all_input_checked = false
+                    }
+                }
+                console.log(check_input.join(','))
+                data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+            }
+
+            // console.log(document.getElementById('select__year').value)
+            data['year'] = document.getElementById('select__year').value
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
-                url: '/docs/get_plan_industrial_safety/' + document.getElementById('select__year').value,
-                type: 'GET',
+                url: '/docs/get_plan_industrial_safety',
+                type: 'POST',
+                data: data,
                 success: (res) => {
                     for (var row of res) {
                         var tr = document.createElement('tr')
-                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['short_name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['goals_OT_PB']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['name_risk']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['events']}</td>`

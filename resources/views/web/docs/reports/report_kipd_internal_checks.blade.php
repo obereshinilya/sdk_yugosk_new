@@ -32,7 +32,7 @@
         }
 
         @endcan
-        input[type="checkbox"] {
+        .inp_checkbox {
             position: relative;
             width: 30px;
             height: 15px;
@@ -44,11 +44,11 @@
             transition: .5s
         }
 
-        input:checked[type="checkbox"] {
+        .inp_checkbox:checked {
             background: #4bd562;
         }
 
-        input[type="checkbox"]::before {
+        .inp_checkbox::before {
             content: '';
             position: absolute;
             width: 15px;
@@ -61,7 +61,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
         }
 
-        input:checked[type="checkbox"]::before {
+        .inp_checkbox:checked::before {
             left: 15px
         }
 
@@ -100,12 +100,30 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_kipd_internal') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info excel" style="display: inline-block"><a
-                                                href="/excel_kipd_internal_checks/"
+                                                href="#" onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('pdf_kipd_internal') }}">
+                                            @csrf
+                                            <div id="pdf_form">
+                                            </div>
+                                            <button type="submit" id="pdf_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info pdf" style="display: inline-block; margin-left: 0px"><a
-                                                href="/pdf_kipd_internal_checks/"
+                                                href="#" onclick="print_data('pdf')"
                                                 style="display: inline-block">Печать в pdf</a>
                                         </div>
                                     @endcan
@@ -149,28 +167,59 @@
                                 <tr>
                                 <tr>
                                     <th rowspan="2">№</th>
-                                    <th rowspan="2">Наименование<br> филиала ДО</th>
-                                    <th rowspan="2">Подразделение</th>
-                                    <th rowspan="2">Дата акта</th>
-                                    <th rowspan="2">Номер акта</th>
-                                    <th rowspan="2">Описание несоответствия</th>
-                                    <th colspan="3">Мероприятия по устранению несоответствия</th>
-                                    <th colspan="5">Корректирующие действия</th>
-                                    <th rowspan="2">Индикативный <br>показатель</th>
-                                    <th rowspan="2"></th>
+                                    <th rowspan="2" class="filter short_name_do kipd_internal"
+                                        style="position:sticky; top:0">Наименование<br> филиала
+                                        ДО
+                                    </th>
+                                    <th rowspan="2" class="filter podrazdelenie kipd_internal"
+                                        style="position:sticky; top:0">Подразделение
+                                    </th>
+                                    <th rowspan="2" class="filter date_act kipd_internal"
+                                        style="position:sticky; top:0">Дата акта
+                                    </th>
+                                    <th rowspan="2" class="filter num_act kipd_internal" style="position:sticky; top:0">
+                                        Номер акта
+                                    </th>
+                                    <th rowspan="2" class="filter error_comment kipd_internal"
+                                        style="position:sticky; top:0">Описание несоответствия
+                                    </th>
+                                    <th colspan="3" style="position:sticky; top:0">Мероприятия по устранению
+                                        несоответствия
+                                    </th>
+                                    <th colspan="5" style="position:sticky; top:0">Корректирующие действия</th>
+                                    <th rowspan="2" style="position:sticky; top:0"
+                                        class="filter indicator kipd_internal">Индикативный <br>показатель
+                                    </th>
+                                    <th rowspan="2" style="position:sticky; top:0"></th>
                                     @can('report-edit')
-                                        <th rowspan="2"></th>
+                                        <th rowspan="2" style="position:sticky; top:0"></th>
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th>Наименование мероприятия</th>
-                                    <th>Ответственный исполнитель</th>
-                                    <th>Срок выполнения</th>
-                                    <th>Причины появления несоответствия</th>
-                                    <th>Корректирующее действие</th>
-                                    <th>Требуемые условия и ресурсы</th>
-                                    <th>Ответственный исполнитель</th>
-                                    <th>Дата выполнения</th>
+                                    <th style="position:sticky; top:21px" class="filter name_event kipd_internal">
+                                        Наименование мероприятия
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter person kipd_internal">
+                                        Ответственный исполнитель
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter date_check kipd_internal">Срок
+                                        выполнения
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter reason kipd_internal">Причины
+                                        появления несоответствия
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter correct_event kipd_internal">
+                                        Корректирующее действие
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter usloviya kipd_internal">
+                                        Требуемые условия и ресурсы
+                                    </th>
+                                    <th style="position:sticky; top:21px" class="filter person_correct kipd_internal">
+                                        Ответственный исполнитель
+                                    </th>
+                                    <th style="position:sticky; top:21px"
+                                        class="filter date_check_correct kipd_internal">Дата выполнения
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
@@ -182,6 +231,7 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var date = new Date();
@@ -190,23 +240,45 @@
         })
 
         function get_data() {
-            @can('doc-create')
-            let pdf = document.querySelector('.pdf');
-            pdf.firstChild.href = '/pdf_kipd_internal_checks/' + document.getElementById('select__year').value;
-            let excel = document.querySelector('.excel');
-            excel.firstChild.href = '/excel_kipd_internal_checks/' + document.getElementById('select__year').value;
-            @endcan
             var table_body = document.getElementById('body_table')
             table_body.innerText = ''
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var data = {}
+            for (var fieldsheet of fieldsheets) {
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
+                        check_input.push(one_input.getAttribute('name'))
+                    } else {
+                        all_input_checked = false
+                    }
+                }
+                console.log(check_input.join(','))
+                data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+            }
+
+            // console.log(document.getElementById('select__year').value)
+            data['year'] = document.getElementById('select__year').value
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
-                url: '/docs/get_kipd_internal_checks/' + document.getElementById('select__year').value,
-                type: 'GET',
+                url: '/docs/get_kipd_internal_checks',
+                type: 'POST',
+                data: data,
                 success: (res) => {
                     var num = 1;
                     for (var row of res) {
                         var tr = document.createElement('tr')
                         tr.innerHTML += `<td style="text-align: center">${num}</td>`
-                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['short_name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['podrazdelenie']}</td>`
                         if (row['date_act']) {
                             let date = new Date(row['date_act']);
@@ -252,9 +324,9 @@
                         }
                         tr.innerHTML += `<td style="text-align: center">${row['indicator']}</td>`
                         if (row['in_use']) {
-                            tr.innerHTML += `<td style="text-align: center"><input type="checkbox" onclick="unchecked(${row['id']})" checked></td>`
+                            tr.innerHTML += `<td style="text-align: center"><input type="checkbox" class="inp_checkbox" onclick="unchecked(${row['id']})" checked></td>`
                         } else {
-                            tr.innerHTML += `<td style="text-align: center"><input type="checkbox" onclick="unchecked(${row['id']})"></td>`
+                            tr.innerHTML += `<td style="text-align: center"><input type="checkbox" class="inp_checkbox" onclick="unchecked(${row['id']})"></td>`
                         }
                         tr.innerHTML += ` @can('report-edit') <td style="text-align: center; min-width: auto">
                     <a href="#" onclick="edit_record(${row['id']})"><img style="width: 15px; height: 15px"  alt="" src="{{asset('assets/images/icons/edit.svg')}}" class="check_i"></a>

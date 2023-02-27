@@ -32,6 +32,7 @@ use App\Ref_opo;
 use App\Report_events;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class PdfReportController extends Controller
@@ -68,9 +69,24 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_actual_declarations()
+    public function pdf_actual_declarations(Request $request)
     {
-        $data = ActualDeclarations::orderby('id')->get();
+        $keys = array_keys($request->all());
+        if ($keys) {
+            foreach ($keys as $column) {
+                if ($column != '_token' && $column != 'page') {
+                    $fieldset[$column] = explode('!!', $request[$column]);
+                    if (isset($data_one)) {
+                        $data_one->whereIn($column, $fieldset[$column]);
+                    } else {
+                        $data_one = ActualDeclarations::orderby('id')->whereIn($column, $fieldset[$column]);
+                    }
+                }
+            }
+        } else {
+            $data_one = ActualDeclarations::orderby('id');
+        }
+        $data = $data_one->get();
         $title = 'Реестр актуальных деклараций промышленной безопасности опасных производственных объектов';
         $patch = 'actual_declarations' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_actual_declarations', compact('data', 'title'))->setPaper('a4', 'landscape');
@@ -78,12 +94,21 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_emergency_drills($year)
+    public function pdf_emergency_drills(Request $request)
     {
-        $data['data'] = EmergencyDrills::where('year', '=', $year)->orderbyDesc('name_branch')->orderbydesc('date_PAT')->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.emergency_drills')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.emergency_drills.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->orderbydesc('date_PAT')->get();
         $title = 'Сведения о
                             противоаварийных тренировках, проведенных на
-                            опасных производственных объектах в ' . $year . ' году';
+                            опасных производственных объектах в ' . $request->year . ' году';
         $patch = 'emergency_drills' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_PAT) {
@@ -97,12 +122,21 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_goals_trans_yugorsk($year)
+    public function pdf_goals_trans_yugorsk(Request $request)
     {
-        $data['data'] = Goals_trans_yugorsk::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = Goals_trans_yugorsk::orderby('id');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = 'Цели ООО «Газпром
                             трансгаз Югорск» в области
-                            производственной безопасности на ' . $year . ' год';
+                            производственной безопасности на ' . $request->year . ' год';
         $patch = 'goals_trans_yugorsk' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->data_goal) {
@@ -116,10 +150,20 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_perfomance_plan_KiPD($year)
+    public function pdf_perfomance_plan_KiPD(Request $request)
     {
-        $data['data'] = Perfomance_plan_KiPD::where('year', '=', $year)->get();
-        $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $year . ' год';
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.perfomance_plan_KiPD')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.perfomance_plan_KiPD.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
+        $title = 'Выполнение плана КиПД, утвержденного по результатам анализа ЕСУПБ в ПАО «Газпром» за ' . $request->year . ' год';
         $patch = 'perfomance_plan_KiPD' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->deadline) {
@@ -133,12 +177,22 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_plan_industrial_safety($year)
+    public function pdf_plan_industrial_safety(Request $request)
     {
-        $data['data'] = Plan_industrial_safety::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.plan_industrial_safety')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.plan_industrial_safety.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = 'Сведения о выполнении плана работ в области
                             промышленной
-                            безопасности за ' . $year . ' год';
+                            безопасности за ' . $request->year . ' год';
         $patch = 'plan_industrial_safety' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->period_execution) {
@@ -152,11 +206,20 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_kipd_internal_checks($year)
+    public function pdf_kipd_internal_checks(Request $request)
     {
-        $data['data'] = KIPDInternalChecks::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.kipd_internal_checks')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.kipd_internal_checks.id_do');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->orderbydesc('date_check')->get();;
         $title = 'План корректирующих
-                            действий ПБ по внутренним проверкам за ' . $year . ' год.';
+                            действий ПБ по внутренним проверкам за ' . $request->year . ' год.';
         $patch = 'kipd_internal_checks' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_act) {
@@ -214,12 +277,22 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_report_events($year)
+    public function pdf_report_events(Request $request)
     {
-        $data['data'] = Report_events::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.report_events')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.report_events.id_do');
+//        $data = Report_events::where('year', '=', $year)->select('name_do')->groupby('name_do')->get();
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data['data'] = $data_one->get();
         $title = 'Отчет
                             о выполнении Мероприятий по устранению нарушений действующих норм и правил, выявленных
-                            Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $year . ' год.';
+                            Ростехнадзором при эксплуатации объектов ЕСГ ПАО «Газпром» за ' . $request->year . ' год.';
         $patch = 'report_events' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $row) {
             if ($row->date_update) {
@@ -233,50 +306,61 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_events($year)
+    public function pdf_events(Request $request)
     {
-        $data['data'] = Events::where('year', '=', $year)->get();
+        $keys = array_keys($request->all());
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                if (isset($data)) {
+                    $data = $data->whereIn($column, $fieldset[$column]);
+                } else {
+                    $data = Events::orderby('id')->whereIn($column, $fieldset[$column]);
+                }
+            }
+        }
+        $data_to_table['data'] = $data->get();
         $title = 'Мероприятия
                             по устранению имеющихся нарушений действующих норм и правил, выявленных
                             Северо-Уральским управлением ООО «Газпром газнадзор» при эксплуатации объектов ЕСГ ПАО
-                            «Газпром» за ' . $year . ' год.';
+                            «Газпром»';
         $patch = 'events' . Carbon::now() . '.pdf';
-        foreach ($data['data'] as $key => $event) {
+        foreach ($data_to_table['data'] as $key => $event) {
             if ($event->date_issue) {
-                $data['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
+                $data_to_table['date_issue'][$key] = date('d.m.Y', strtotime($event->date_issue));
             } else {
-                $data['date_issue'][$key] = '';
+                $data_to_table['date_issue'][$key] = '';
 
             }
             if ($event->date_base) {
 
-                $data['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
+                $data_to_table['date_base'][$key] = date('d.m.Y', strtotime($event->date_base));
             } else {
-                $data['date_base'][$key] = '';
+                $data_to_table['date_base'][$key] = '';
 
             }
             if ($event->date_repiat) {
-                $data['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
+                $data_to_table['date_repiat'][$key] = date('d.m.Y', strtotime($event->date_repiat));
 
             } else {
-                $data['date_repiat'][$key] = '';
+                $data_to_table['date_repiat'][$key] = '';
 
             }
             if ($event->date_fact) {
-                $data['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
+                $data_to_table['date_fact'][$key] = date('d.m.Y', strtotime($event->date_fact));
 
             } else {
-                $data['date_fact'][$key] = '';
+                $data_to_table['date_fact'][$key] = '';
 
             }
             if ($event->date_update) {
-                $data['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
+                $data_to_table['date_update'][$key] = date('d.m.Y', strtotime($event->date_update));
             } else {
-                $data['date_update'][$key] = '';
+                $data_to_table['date_update'][$key] = '';
 
             }
         }
-        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_events', compact('data', 'title'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_events', compact('data_to_table', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
 
     }
@@ -311,12 +395,12 @@ class PdfReportController extends Controller
             $data['all_plan_year'] += (int)$row->plan_year;
             $data['all_plan_month'] += (int)$row->plan_month;
         }
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
-        $title = $name_do.'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
+        $title = $name_do . 'Сведения о выполнении графика КР и ДТОиР ОПО за ' . $year . ' год.';
         $patch = 'kr_dtoip' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_kr_dtoip', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);
@@ -325,12 +409,12 @@ class PdfReportController extends Controller
     public function pdf_plan_of_industrial_safety($year, $id_do)
     {
         $data['data'] = Plan_of_industrial_safety::where('year', '=', $year)->where('id_do', '=', $id_do)->get();
-        if ($id_do == 'all'){
+        if ($id_do == 'all') {
             $name_do = 'Дочернее общество. ';
-        }else{
+        } else {
             $name_do = RefDO::where('id_do', '=', $id_do)->first()->short_name_do . '. ';
         }
-        $title = $name_do.'План работ в области промышленной безопасности за ' . $year . ' год';
+        $title = $name_do . 'План работ в области промышленной безопасности за ' . $year . ' год';
         $patch = 'plan_of_industrial_safety' . Carbon::now() . '.pdf';
         foreach ($data['data'] as $key => $plan) {
             if ($plan->completion_date) {
@@ -344,10 +428,19 @@ class PdfReportController extends Controller
 
     }
 
-    public function pdf_pat_schedule($year)
+    public function pdf_pat_schedule(Request $request)
     {
-        $data = Pat_schedule::where('year', '=', $year)->get();
-        $title = 'График комплексных противоаварийных тренировок I - II уровня на опасных производственных объектах ООО «Газпром трансгаз Югорск» на ' . $year . ' год';
+        $keys = array_keys($request->all());
+        $data_one = DB::table('reports.pat_schedule')->
+        join('public.ref_do', 'public.ref_do.id_do', '=', 'reports.pat_schedule.id_do')->join('public.ref_opo', 'public.ref_opo.id_opo', '=', 'reports.pat_schedule.id_opo');
+        foreach ($keys as $column) {
+            if ($column != '_token' && $column != 'page') {
+                $fieldset[$column] = explode('!!', $request[$column]);
+                $data_one->whereIn($column, $fieldset[$column]);
+            }
+        }
+        $data = $data_one->get();
+        $title = 'График комплексных противоаварийных тренировок I - II уровня на опасных производственных объектах ООО «Газпром трансгаз Югорск» на ' . $request->year . ' год';
         $patch = 'pat_schedule' . Carbon::now() . '.pdf';
         $pdf = PDF::loadView('web.docs.reports.pdf_form.pdf_pat_schedule', compact('data', 'title'))->setPaper('a4', 'landscape');
         return $pdf->download($patch);

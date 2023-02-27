@@ -182,188 +182,217 @@
                                     <th rowspan="2" style="position: sticky; left: 2px; z-index: 20"
                                         onclick="sorted_table(0, this)">№ п/п
                                     </th>
-                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"><p
+                                    <th rowspan="2" style="position:sticky; left: 5.8%; z-index: 20"
+                                        class="filter center_name conclusions"><p
                                             onclick="sorted_table(1, this.parentNode)">Наименование центра финансовой
                                             отвественности</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('center_name', this.parentNode); hide_all_field('fieldsheet_center_name')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('center_name', this.parentNode); hide_all_field('fieldsheet_center_name')"--}}
+
                                     </th>
-                                    <th rowspan="2" style="position:sticky; left: 16.7%; z-index: 20"><p
+                                    <th rowspan="2" style="position:sticky; left: 16.7%; z-index: 20"
+                                        class="filter name_do conclusions"><p
                                             onclick="sorted_table(2, this.parentNode)">Наименование филиала</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('name_do', this.parentNode); hide_all_field('fieldsheet_name_do')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('name_do', this.parentNode); hide_all_field('fieldsheet_name_do')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и
+                                    <th rowspan="2" class="filter type_tu conclusions"><p
+                                            onclick="sorted_table(3, this.parentNode)">Вид ТУ, зданий и
                                             сооружений</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('type_tu', this.parentNode); hide_all_field('fieldsheet_type_tu')">--}}
                                     </th>
                                     <th colspan="9">Место проведения ЭПБ</th>
-                                    <th rowspan="2"><p onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('date_comiss', this.parentNode); hide_all_field('fieldsheet_date_comiss')">
+                                    <th rowspan="2" class="filter date_comiss conclusions"><p
+                                            onclick="sorted_table(13, this)">Дата ввода в эксплуатацию</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('date_comiss', this.parentNode); hide_all_field('fieldsheet_date_comiss')">--}}
                                     </th>
 
-                                    <th rowspan="2"><p onclick="sorted_table(14, this.parentNode)">Дата проведения
+                                    <th rowspan="2" class="filter date_epb conclusions"><p
+                                            onclick="sorted_table(14, this.parentNode)">Дата проведения
                                             ЭПБ</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('date_epb', this.parentNode); hide_all_field('fieldsheet_date_epb')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('date_epb', this.parentNode); hide_all_field('fieldsheet_date_epb')">--}}
                                     </th>
 
                                     <th colspan="2">Срок эксплуатации/ наработка на момент ЭПБ</th>
                                     <th colspan="2">Срок продления безопасной эксплуатации</th>
                                     <th colspan="2">Дата/наработка следующей ЭПБ</th>
-                                    <th rowspan="2"><p onclick="sorted_table(21, this)">Уведомление о внесении в реестр
+                                    <th rowspan="2" class="filter notification conclusions"><p
+                                            onclick="sorted_table(21, this)">Уведомление о внесении в реестр
                                             (№
                                             письма,
                                             дата) </p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('notification', this.parentNode); hide_all_field('fieldsheet_notification')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('notification', this.parentNode); hide_all_field('fieldsheet_notification')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(22, this)">Регистрационный номер заключения
+                                    <th rowspan="2" class="filter reg_num conclusions"><p
+                                            onclick="sorted_table(22, this)">Регистрационный номер заключения
                                             ЭПБ </p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('reg_num', this.parentNode); hide_all_field('fieldsheet_reg_num')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('reg_num', this.parentNode); hide_all_field('fieldsheet_reg_num')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(23, this)">Наличие условий действий
+                                    <th rowspan="2" class="filter conditions conclusions"><p
+                                            onclick="sorted_table(23, this)">Наличие условий действий
                                             заключений </p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('conditions', this.parentNode); hide_all_field('fieldsheet_conditions')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('conditions', this.parentNode); hide_all_field('fieldsheet_conditions')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(24, this)">Факт выполнения условий</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('completion_mark', this.parentNode); hide_all_field('fieldsheet_completion_mark')">
+                                    <th rowspan="2" class="filter completion_mark conclusions"><p
+                                            onclick="sorted_table(24, this)">Факт выполнения условий</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('completion_mark', this.parentNode); hide_all_field('fieldsheet_completion_mark')">--}}
                                     </th>
-                                    <th rowspan="2" style=""><p onclick="sorted_table(25, this)">Условия действия
+                                    <th rowspan="2" style="" class="filter conditions_concl conclusions"><p
+                                            onclick="sorted_table(25, this)">Условия действия
                                             заключений</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('conditions_concl', this.parentNode); hide_all_field('fieldsheet_conditions_concl')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('conditions_concl', this.parentNode); hide_all_field('fieldsheet_conditions_concl')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(26, this)">Срок выполнения условий</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('due_date', this.parentNode); hide_all_field('fieldsheet_due_date')">
+                                    <th rowspan="2" class="filter due_date conclusions"><p
+                                            onclick="sorted_table(26, this)">Срок выполнения условий</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('due_date', this.parentNode); hide_all_field('fieldsheet_due_date')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(27, this)">Приоритетность</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('priority', this.parentNode); hide_all_field('fieldsheet_priority')">
+                                    <th rowspan="2" class="filter priority conclusions"><p
+                                            onclick="sorted_table(27, this)">Приоритетность</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('priority', this.parentNode); hide_all_field('fieldsheet_priority')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(28, this)">Номер заключения ЭПБ подрядной
+                                    <th rowspan="2" class="filter concl_num conclusions"><p
+                                            onclick="sorted_table(28, this)">Номер заключения ЭПБ подрядной
                                             организации </p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('concl_num', this.parentNode); hide_all_field('fieldsheet_concl_num')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('concl_num', this.parentNode); hide_all_field('fieldsheet_concl_num')">--}}
                                     </th>
-                                    <th rowspan="2"><p onclick="sorted_table(29, this)">Наименование экспертной
+                                    <th rowspan="2" class="filter exp_org_name conclusions"><p
+                                            onclick="sorted_table(29, this)">Наименование экспертной
                                             организации </p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('exp_org_name', this.parentNode); hide_all_field('fieldsheet_exp_org_name')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('exp_org_name', this.parentNode); hide_all_field('fieldsheet_exp_org_name')">--}}
                                     </th>
                                     @can('report-edit')
                                         <th rowspan="2" style="width: 1%"></th>
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th style="top:25px"><p onclick="sorted_table(4, this.parentNode)">Наименование
+                                    <th style="top:25px" class="filter object_name conclusions"><p
+                                            onclick="sorted_table(4, this.parentNode)">Наименование
                                             объекта</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('object_name', this.parentNode); hide_all_field('fieldsheet_object_name')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('object_name', this.parentNode); hide_all_field('fieldsheet_object_name')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(5, this)">Наименов-е цеха/
+                                    <th style="top:25px" class="filter workshop_name conclusions"><p
+                                            onclick="sorted_table(5, this)">Наименов-е цеха/
                                             местонахождения</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('workshop_name', this.parentNode); hide_all_field('fieldsheet_workshop_name')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('workshop_name', this.parentNode); hide_all_field('fieldsheet_workshop_name')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(6, this)">№ цеха</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('n_workshop', this.parentNode); hide_all_field('fieldsheet_n_workshop')">
+                                    <th style="top:25px" class="filter n_workshop conclusions"><p
+                                            onclick="sorted_table(6, this)">№ цеха</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('n_workshop', this.parentNode); hide_all_field('fieldsheet_n_workshop')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(7, this)">Наименов-е ТУ, здания,
+                                    <th style="top:25px" class="filter name_tu conclusions"><p
+                                            onclick="sorted_table(7, this)">Наименов-е ТУ, здания,
                                             сооружения</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('name_tu', this.parentNode); hide_all_field('fieldsheet_name_tu')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('name_tu', this.parentNode); hide_all_field('fieldsheet_name_tu')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(8, this)">Изготовитель/ проектная
+                                    <th style="top:25px" class="filter manufacturer conclusions"><p
+                                            onclick="sorted_table(8, this)">Изготовитель/ проектная
                                             организация</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('manufacturer', this.parentNode); hide_all_field('fieldsheet_manufacturer')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('manufacturer', this.parentNode); hide_all_field('fieldsheet_manufacturer')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(9, this)"> Станц-й номер, рег.№,
+                                    <th style="top:25px" class="filter station_number conclusions"><p
+                                            onclick="sorted_table(9, this)"> Станц-й номер, рег.№,
                                             участок
                                             (км-км)</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('station_number', this.parentNode); hide_all_field('fieldsheet_station_number')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('station_number', this.parentNode); hide_all_field('fieldsheet_station_number')">--}}
                                     </th>
-                                    <th style="top:25px" onclick="sorted_table(10, this)"><p
+                                    <th style="top:25px" class="filter factory_num conclusions"><p
                                             onclick="sorted_table(10, this)">Зав. №</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('factory_num', this.parentNode); hide_all_field('fieldsheet_factory_num')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('factory_num', this.parentNode); hide_all_field('fieldsheet_factory_num')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(11, this)">Протяженность газопровода,
+                                    <th style="top:25px" class="filter pipeline_length conclusions"><p
+                                            onclick="sorted_table(11, this)">Протяженность газопровода,
                                             км,
                                             кол-во, шт.</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('pipeline_length', this.parentNode); hide_all_field('fieldsheet_pipeline_length')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('pipeline_length', this.parentNode); hide_all_field('fieldsheet_pipeline_length')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(12, this)">Инв.
+                                    <th style="top:25px" class="filter inv_tu_num conclusions"><p
+                                            onclick="sorted_table(12, this)">Инв.
                                             №ТУ, здания, сооружения</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('inv_tu_num', this.parentNode); hide_all_field('fieldsheet_inv_tu_num')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('inv_tu_num', this.parentNode); hide_all_field('fieldsheet_inv_tu_num')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(15, this)">Наработка ТУ, часов</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('runtime_tu', this.parentNode); hide_all_field('fieldsheet_runtime_tu')">
+                                    <th style="top:25px" class="filter runtime_tu conclusions"><p
+                                            onclick="sorted_table(15, this)">Наработка ТУ, часов</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('runtime_tu', this.parentNode); hide_all_field('fieldsheet_runtime_tu')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(16, this)">Кол-во лет ТУ, зданию,
+                                    <th style="top:25px" class="filter age_tu conclusions"><p
+                                            onclick="sorted_table(16, this)">Кол-во лет ТУ, зданию,
                                             сооружению</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('age_tu', this.parentNode); hide_all_field('fieldsheet_age_tu')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('age_tu', this.parentNode); hide_all_field('fieldsheet_age_tu')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(17, this)">Наработка ТУ, часов</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('runtime_ext_tu', this.parentNode); hide_all_field('fieldsheet_runtime_ext_tu')">
+                                    <th style="top:25px" class="filter runtime_ext_tu conclusions"><p
+                                            onclick="sorted_table(17, this)">Наработка ТУ, часов</p>
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('runtime_ext_tu', this.parentNode); hide_all_field('fieldsheet_runtime_ext_tu')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(18, this)">Кол-во лет ТУ, зданию,
+                                    <th style="top:25px" class="filter age_ext_tu conclusions"><p
+                                            onclick="sorted_table(18, this)">Кол-во лет ТУ, зданию,
                                             сооружению</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('age_ext_tu', this.parentNode); hide_all_field('fieldsheet_age_ext_tu')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('age_ext_tu', this.parentNode); hide_all_field('fieldsheet_age_ext_tu')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(19, this)">Наработка до следующего
+                                    <th style="top:25px" class="filter runtime_epb conclusions"><p
+                                            onclick="sorted_table(19, this)">Наработка до следующего
                                             ЭПБ</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('runtime_epb', this.parentNode); hide_all_field('fieldsheet_runtime_epb')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('runtime_epb', this.parentNode); hide_all_field('fieldsheet_runtime_epb')">--}}
                                     </th>
-                                    <th style="top:25px"><p onclick="sorted_table(20, this.parentNode)">Дата следующего
+                                    <th style="top:25px" class="filter date_next_epb conclusions"><p
+                                            onclick="sorted_table(20, this.parentNode)">Дата следующего
                                             ЭПБ</p>
-                                        <img class="img" alt=""
-                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"
-                                             onclick="get_group_conclusion('date_next_epb', this.parentNode); hide_all_field('fieldsheet_date_next_epb')">
+                                        {{--                                        <img class="img" alt=""--}}
+                                        {{--                                             src="{{asset('assets/images/icons/arrow_bottom.svg')}}"--}}
+                                        {{--                                             onclick="get_group_conclusion('date_next_epb', this.parentNode); hide_all_field('fieldsheet_date_next_epb')">--}}
                                     </th>
                                 </tr>
                                 </thead>
@@ -432,113 +461,114 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             checked()
         })
 
-        function get_group_conclusion(column, th) {
-            if (!document.getElementById('fieldsheet_' + column)) {
-                let params = {};
-                let fieldsheets = document.getElementsByTagName('fieldset');
-                for (var fieldsheet of fieldsheets) {
-                    var check_input_all = fieldsheet.getElementsByTagName('input')
-                    var check_input = []
-                    var all_input_checked = true
-                    for (var one_input of check_input_all) {
-                        if (one_input.hasAttribute('checked')) {
-                            check_input.push(one_input.getAttribute('name'))
-                        } else {
-                            all_input_checked = false
-                        }
-                    }
-                    params[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join(',');
-                }
-                console.log(params)
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: '/get_group_conclusion/' + column,
-                    type: 'POST',
-                    data: params,
-                    success: (res) => {
-                        var fieldset = document.createElement('fieldset')
-                        fieldset.id = 'fieldsheet_' + column
-                        fieldset.innerHTML += `<div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
-                                                <input type="text" id="search_fieldsheet_${column}" style="margin: 9px 0px" placeholder="Поиск..." oninput="find_field('fieldsheet_${column}')">
-                                                <div class="bat_add" style="margin-left: 0px;">
-                                                    <a
-                                                        onclick="get_data()"
-                                                        style="display: inline-block; margin-left: 0px">Применить</a>
-                                                    <a class="on_off_btn"
-                                                        onclick="checked('fieldsheet_${column}')"
-                                                        style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
-                                                </div>
-                                            </div>`
-                        for (var row of res) {
-                            fieldset.innerHTML += `<div class="checkbox">
-                                            <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
-                                            <label for="${row[column]}">${row[column]}</label>
-                                         </div>`
-                        }
-                        th.appendChild(fieldset)
-                        checked()
-                    }
-                })
-            }
-        }
-
-        function hide_all_field(id) {
-            for (var field of document.getElementsByTagName('fieldset')) {
-                if (field.id == id) {
-                    if (field.style.display === 'none') {
-                        field.style.display = ''
-                    } else {
-                        field.style.display = 'none'
-                    }
-                } else {
-                    field.style.display = 'none'
-                    field.getElementsByClassName('on_off_btn')[0].onclick = ''
-                    for (var input of field.getElementsByTagName('input')){
-                        input.setAttribute('disabled', true)
-                    }
-                }
-            }
-        }
-
-        function checked(id) {
-            if (id) {
-                var true_button = false
-                var checkboxes = document.getElementById(id).getElementsByClassName('checkbox_button')
-                for (var check of checkboxes) {
-                    if (check.hasAttribute('checked')) {
-                        true_button = true
-                    }
-                }
-                if (true_button) {
-                    for (var check of checkboxes) {
-                        check.removeAttribute('checked')
-                    }
-                } else {
-                    for (var check of checkboxes) {
-                        check.setAttribute('checked', true)
-                    }
-                }
-            } else {
-                for (var check of document.getElementsByClassName('checkbox_button')) {
-                    check.addEventListener('click', function () {
-                        if (this.hasAttribute('checked')) {
-                            this.removeAttribute('checked')
-                        } else {
-                            this.setAttribute('checked', true)
-                        }
-                    })
-                }
-            }
-        }
+        // function get_group_conclusion(column, th) {
+        //     if (!document.getElementById('fieldsheet_' + column)) {
+        //         let params = {};
+        //         let fieldsheets = document.getElementsByTagName('fieldset');
+        //         for (var fieldsheet of fieldsheets) {
+        //             var check_input_all = fieldsheet.getElementsByTagName('input')
+        //             var check_input = []
+        //             var all_input_checked = true
+        //             for (var one_input of check_input_all) {
+        //                 if (one_input.hasAttribute('checked')) {
+        //                     check_input.push(one_input.getAttribute('name'))
+        //                 } else {
+        //                     all_input_checked = false
+        //                 }
+        //             }
+        //             params[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join(',');
+        //         }
+        //         console.log(params)
+        //         $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             }
+        //         });
+        //         $.ajax({
+        //             url: '/get_group_conclusion/' + 'conclusions/' + column,
+        //             type: 'POST',
+        //             data: params,
+        //             success: (res) => {
+        //                 var fieldset = document.createElement('fieldset')
+        //                 fieldset.id = 'fieldsheet_' + column
+        //                 fieldset.innerHTML += `<div class="doc_header" style="padding: 0px; width: 100%;  top: 0px; position: sticky">
+        //                                         <input type="text" id="search_fieldsheet_${column}" style="margin: 9px 0px" placeholder="Поиск..." oninput="find_field('fieldsheet_${column}')">
+        //                                         <div class="bat_add" style="margin-left: 0px;">
+        //                                             <a
+        //                                                 onclick="get_data()"
+        //                                                 style="display: inline-block; margin-left: 0px">Применить</a>
+        //                                             <a class="on_off_btn"
+        //                                                 onclick="checked('fieldsheet_${column}')"
+        //                                                 style="display: inline-block; margin-left: 0px">Вкл/выкл все</a>
+        //                                         </div>
+        //                                     </div>`
+        //                 for (var row of res) {
+        //                     fieldset.innerHTML += `<div class="checkbox">
+        //                                     <input type="checkbox" class="checkbox_button" name="${row[column]}" checked>
+        //                                     <label for="${row[column]}">${row[column]}</label>
+        //                                  </div>`
+        //                 }
+        //                 th.appendChild(fieldset)
+        //                 checked()
+        //             }
+        //         })
+        //     }
+        // }
+        //
+        // function hide_all_field(id) {
+        //     for (var field of document.getElementsByTagName('fieldset')) {
+        //         if (field.id == id) {
+        //             if (field.style.display === 'none') {
+        //                 field.style.display = ''
+        //             } else {
+        //                 field.style.display = 'none'
+        //             }
+        //         } else {
+        //             field.style.display = 'none'
+        //             field.getElementsByClassName('on_off_btn')[0].onclick = ''
+        //             for (var input of field.getElementsByTagName('input')) {
+        //                 input.setAttribute('disabled', true)
+        //             }
+        //         }
+        //     }
+        // }
+        //
+        // function checked(id) {
+        //     if (id) {
+        //         var true_button = false
+        //         var checkboxes = document.getElementById(id).getElementsByClassName('checkbox_button')
+        //         for (var check of checkboxes) {
+        //             if (check.hasAttribute('checked')) {
+        //                 true_button = true
+        //             }
+        //         }
+        //         if (true_button) {
+        //             for (var check of checkboxes) {
+        //                 check.removeAttribute('checked')
+        //             }
+        //         } else {
+        //             for (var check of checkboxes) {
+        //                 check.setAttribute('checked', true)
+        //             }
+        //         }
+        //     } else {
+        //         for (var check of document.getElementsByClassName('checkbox_button')) {
+        //             check.addEventListener('click', function () {
+        //                 if (this.hasAttribute('checked')) {
+        //                     this.removeAttribute('checked')
+        //                 } else {
+        //                     this.setAttribute('checked', true)
+        //                 }
+        //             })
+        //         }
+        //     }
+        // }
 
 
         function get_data() {

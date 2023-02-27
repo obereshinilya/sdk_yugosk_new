@@ -67,8 +67,17 @@
                                 <td><input type="text" id="search_text" placeholder="Поиск..."></td>
                                 <td>
                                     @can('doc-create')
+                                        <form method="POST" style="display: none"
+                                              action="{{ route('excel_fulfillment') }}">
+                                            @csrf
+                                            <div id="excel_form">
+                                            </div>
+                                            <button type="submit" id="excel_button" class="btn btn-primary">
+                                                Сохранить
+                                            </button>
+                                        </form>
                                         <div class="bat_info excel" style="display: inline-block"><a
-                                                href="/excel_fulfillment_certification/"
+                                                href="#" onclick="print_data('excel')"
                                                 style="display: inline-block">Экспорт в excel</a>
                                         </div>
                                     @endcan
@@ -90,7 +99,9 @@
                             <table id="table_for_search" style="display: table; table-layout: fixed; width: 100%">
                                 <thead>
                                 <tr>
-                                    <th style="width: 6%" rowspan="3">Наименование филиала общества</th>
+                                    <th style="width: 6%" rowspan="3" class="filter short_name_do fulfillment">
+                                        Наименование филиала общества
+                                    </th>
                                     <th colspan="5">Руководители и члены ЦЭК ДО
                                     </th>
                                     <th colspan="8">Работники администрации ДО</th>
@@ -101,51 +112,107 @@
                                     @endcan
                                 </tr>
                                 <tr>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)</th>
-                                    <th colspan="2">Повышение квалификации, чел</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности с использованием ИС
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации, чел</th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности с использованием ИС
                                         ЕПТ(чел.)
                                     </th>
-                                    <th colspan="2">Повышение квалификации по ОТ, чел</th>
-                                    <th colspan="3"> Аттестация по промышленной безопасности (чел.)
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации по ОТ,
+                                        чел
                                     </th>
-                                    <th colspan="2">Повышение квалификации, чел</th>
-                                    <th colspan="3">Аттестация по промышленной безопасности в Ростехнадзоре (чел.)
+                                    <th colspan="3" style="position: sticky; top: 21px"> Аттестация по промышленной
+                                        безопасности (чел.)
                                     </th>
-                                    <th colspan="3"> Аттестация по промышленной безопасности с использованием ИС
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации, чел</th>
+                                    <th colspan="3" style="position: sticky; top: 21px">Аттестация по промышленной
+                                        безопасности в Ростехнадзоре (чел.)
+                                    </th>
+                                    <th colspan="3" style="position: sticky; top: 21px"> Аттестация по промышленной
+                                        безопасности с использованием ИС
                                         ЕПТ(чел.)
                                     </th>
-                                    <th colspan="2">Повышение квалификации по ПБ, чел
+                                    <th colspan="2" style="position: sticky; top: 21px">Повышение квалификации по ПБ,
+                                        чел
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>всего</th>
-                                    <th>план</th>
-                                    <th>факт</th>
-                                    <th>план</th>
-                                    <th>факт</th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_cec_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_cec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_cec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_adm_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter rostech_adm_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter rostech_adm_do_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_adm_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter is_ept_adm_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter is_ept_adm_do_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter ot_adm_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter ot_adm_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec fulfillment">всего</th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_ec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_ec_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px"
+                                        class="filter skills_up_ec_fact fulfillment">факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do fulfillment">
+                                        всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter rostech_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do fulfillment">всего
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do_plan fulfillment">
+                                        план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter is_ept_do_fact fulfillment">
+                                        факт
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_do_plan fulfillment">план
+                                    </th>
+                                    <th style="position: sticky; top: 58px" class="filter pb_do_fact fulfillment">факт
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_table" style="">
@@ -157,6 +224,7 @@
             </div>
         </div>
     </div>
+    @include('web.include.filters_js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var date = new Date();
@@ -166,19 +234,40 @@
         })
 
         function get_data() {
-            @can('doc-create')
-            let excel = document.querySelector('.excel');
-            excel.firstChild.href = '/excel_fulfillment_certification/' + document.getElementById('select__year').value;
-            @endcan
             var table_body = document.getElementById('body_table')
             table_body.innerText = ''
+            var fieldsheets = document.getElementsByTagName('fieldset')
+            var data = {}
+            for (var fieldsheet of fieldsheets) {
+                var check_input_all = fieldsheet.getElementsByTagName('input')
+                var check_input = []
+                var all_input_checked = true
+
+                for (var one_input of check_input_all) {
+                    if (one_input.hasAttribute('checked')) {
+                        check_input.push(one_input.getAttribute('name'))
+                    } else {
+                        all_input_checked = false
+                    }
+                }
+                console.log(check_input.join(','))
+                data[fieldsheet.id.replace('fieldsheet_', '')] = check_input.join('!!')
+            }
+            data['year'] = document.getElementById('select__year').value
+            console.log(data)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $.ajax({
-                url: '/docs/fulfillment_certification/get_params/' + document.getElementById('select__year').value,
-                type: 'GET',
+                url: '/docs/fulfillment_certification/get_params',
+                type: 'POST',
+                data: data,
                 success: (res) => {
                     for (var row of res) {
                         var tr = document.createElement('tr')
-                        tr.innerHTML += `<td style="text-align: center">${row['name_do']}</td>`
+                        tr.innerHTML += `<td style="text-align: center">${row['short_name_do']}</td>`
                         tr.innerHTML += `<td style="text-align: center">${row['rostech_cec']}</td>`
 
                         tr.innerHTML += `<td style="text-align: center">${row['rostech_cec_plan']}</td>`
